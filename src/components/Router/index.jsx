@@ -8,9 +8,9 @@ export function RouterMain() {
   return (
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route exact path='/home' component={Home}/>
-      <Route exact path='/about' component={About}/>
-      <Route exact path='/contacts' component={Contacts}/>
+      <Route path='/home' component={Home}/>
+      <Route path='/about' component={About}/>
+      <Route path='/contacts' component={Contacts}/>
     </Switch>
   );
 }
