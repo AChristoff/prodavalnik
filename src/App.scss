@@ -4,7 +4,19 @@
 @import './sass/_animations.scss';
 @import './sass/media.scss';
 
+#root {
+	.app-main {
+		button.MuiButton-containedPrimary {
+			&:hover {
+				background-color: #65D9A5;
+			}
+		}
+	}
+}
+
+
 .wrapper {
 	width: 60em;
 	margin: 0 auto;
 }
+
