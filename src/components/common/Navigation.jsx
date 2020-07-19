@@ -6,8 +6,8 @@ export function Navigation() {
     <nav>
       <ul className="App-header">
         <li><NavLink to="/" exact activeStyle={{color: 'red'}}>Home</NavLink></li>
-        <li><NavLink to="/about" activeStyle={{color: 'red'}}>About</NavLink></li>
-        <li><NavLink to="/contacts" activeStyle={{color: 'red'}}>Contacts</NavLink></li>
+        <li><NavLink to="/user/login" exact activeStyle={{color: 'red'}}>Login</NavLink></li>
+        <li><NavLink to="/user/register" activeStyle={{color: 'red'}}>Register</NavLink></li>
       </ul>
     </nav>
   );
