@@ -1,0 +1,16 @@
+@mixin add-font($name, $weight ,$style, $url) {
+	@font-face {
+		font-family: $name;
+		src: url($url) format('truetype');
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+@mixin casita-strong() {
+	strong {
+		color: $color-theme-red;
+		font: 2.1em/1 'Caveat', sans-serif;
+		padding-right: 0.2em;
+	}
+}

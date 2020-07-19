@@ -3,7 +3,7 @@ import React from 'react';
 export default function RegisterConfirm() {
   return (
     <div className="RegisterConfirm">
-      <h1>RegisterConfirm</h1>
+      <h2>RegisterConfirm</h2>
     </div>
   );
 }

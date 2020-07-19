@@ -1,0 +1,117 @@
+.app-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3.5em;
+	background: $color-theme-green;
+
+	.wrapper {
+		display: flex;
+		height: 100%;
+
+		a {
+			color: $pure-white;
+			text-decoration: none;
+
+			.MuiSvgIcon-root {
+				width: 1.25em;
+				height: 1.25em;
+				margin: -0.2em 0 0 -0.25em;
+			}
+		}
+
+		.header-logo {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			font-weight: bold;
+			font-size: 1.7em;
+		}
+
+		.site-nav {
+
+			margin-left: auto;
+
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				margin: 0;
+				padding: 0;
+				height: 100%;
+
+				li {
+					list-style: none;
+					height: 100%;
+
+					.MuiButton-contained {
+						height: 100%;
+
+						&:hover {
+							background-color: rgba(255, 255, 255, 0.15) !important;
+							border-radius: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.app-main {
+	margin-top: 3.5em;
+	height: calc(100vh - 6.5em);
+	padding: 1em 0;
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		height: 100%;
+	}
+}
+
+.app-footer {
+	background: $color-theme-green;
+	color: $pure-white;
+
+	.wrapper {
+		height: 3em;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+
+		.copy-icon {
+			margin: -0.09em 0.15em 0;
+			height: 0.75em;
+		}
+
+		span {
+
+			&.site-name {
+				font-weight: bold;
+				font-size: 1.25em;
+				padding: 0 0.5em;
+			}
+
+			&.dev-by {
+				padding: 0 0.5em;
+			}
+		}
+
+
+
+		a {
+			color: $pure-white;
+
+			&.developer {
+
+				img {
+					height: 1.75em;
+				}
+			}
+		}
+	}
+}

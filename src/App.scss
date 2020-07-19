@@ -1,10 +1,8 @@
-@import "./components/common/header/header";
-@import "./components/common/navigation/navigation";
-@import "./components/pages/user/login/login";
-
-.app-main {
-	margin-top: 50px;
-}
+@import './sass/_variables.scss';
+@import './sass/_mixins.scss';
+@import './sass/_typography.scss';
+@import './sass/_animations.scss';
+@import './sass/media.scss';
 
 .wrapper {
 	width: 60em;

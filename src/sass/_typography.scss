@@ -1,0 +1,94 @@
+@include add-font('Roboto', normal, normal, '../assets/fonts/roboto/Roboto-Regular.ttf');
+@include add-font('Roboto', normal, italic, '../assets/fonts/roboto/Roboto-Italic.ttf');
+@include add-font('Roboto', bold, normal, '../assets/fonts/roboto/Roboto-Bold.ttf');
+@include add-font('Roboto', bold, italic, '../assets/fonts/roboto/Roboto-BoldItalic.ttf');
+
+@include add-font('montserrat', normal, normal, '../assets/fonts/montserrat/Montserrat-Regular.ttf');
+@include add-font('montserrat', normal, italic, '../assets/fonts/montserrat/Montserrat-Italic.ttf');
+@include add-font('montserrat', bold, normal, '../assets/fonts/montserrat/Montserrat-Bold.ttf');
+@include add-font('montserrat', bold, italic, '../assets/fonts/montserrat/Montserrat-BoldItalic.ttf');
+
+*, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font: #{$font-size-phone}/1.5 'Roboto', sans-serif;
+	color: $color-base-font-green-black;
+	line-height: 1;
+}
+
+body, form, input, option, select, textarea, table, th, td {
+	font: inherit;
+}
+
+$headings: h1, h2, h3, h4, h5, h6;
+$heading-size: 3;
+$step: 1;
+
+@each $heading in $headings {
+
+	#{$heading} {
+		font-size: #{$heading-size}rem;
+	}
+
+	$heading-size: $heading-size - $step;
+
+	@if ($step > 0.4) {
+		$step: $step - 0.2
+	}
+}
+
+#{$headings} {
+	font-family: 'Montserrat';
+	line-height: 1.1em;
+	margin: 0.3em 0 0.5em 0;
+	font-weight: normal;
+	color: $color-theme-green;
+}
+
+p, ul, ol {
+	padding-bottom: 1.5em;
+}
+
+ul, ol {
+	padding-left: 2em;
+}
+
+li {
+	padding-left: 0.5em;
+}
+
+ul ul, ul ol, ol ul, ol ol {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+a {
+	text-decoration: none;
+	color: $color-base-font-black;
+}
+
+blockquote {
+	padding: 1rem;
+	font-style: italic;
+	opacity: 0.5;
+
+	.quote:before,
+	.quote:after {
+		content: '"';
+		padding: 0 0.2em;
+	}
+
+	.author {
+		text-align: right;
+
+		&:before {
+			display: inline-block;
+			content: "‒";
+			padding-right: 0.5em;
+		}
+	}
+}

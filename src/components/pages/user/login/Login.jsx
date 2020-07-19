@@ -32,7 +32,7 @@ export default function Login() {
 
   return (
     <div className="wrapper login">
-      <h1>Login</h1>
+      <h2>Login</h2>
 
       <p>
         <FormControl required>
