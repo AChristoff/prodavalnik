@@ -1,0 +1,12 @@
+@import "./components/common/header/header";
+@import "./components/common/navigation/navigation";
+@import "./components/pages/user/login/login";
+
+.app-main {
+	margin-top: 50px;
+}
+
+.wrapper {
+	width: 60em;
+	margin: 0 auto;
+}

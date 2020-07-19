@@ -1,16 +1,16 @@
 import React from 'react';
-import './App.css';
-import {Header} from "./components/common/Header";
+import './App.scss';
+import {Header} from "./components/common/header/Header";
 import {RouterMain} from "./Router";
 import {Footer} from "./components/common/Footer";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
 
       <Header/>
 
-      <main>
+      <main className="app-main">
         <RouterMain/>
       </main>
 

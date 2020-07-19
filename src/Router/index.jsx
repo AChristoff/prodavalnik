@@ -10,7 +10,7 @@ export function RouterMain() {
       <Switch>
         <Route path='/' exact component={Home}/>
 
-        <Route path='/user/login' exact component={lazy(() => import('../components/pages/user/Login'))}/>
+        <Route path='/user/login' exact component={lazy(() => import('../components/pages/user/login/Login'))}/>
         <Route path='/user/register' exact component={lazy(() => import('../components/pages/user/Register'))}/>
         <Route path='/user/register/confirm' exact component={lazy(() => import('../components/pages/user/RegisterConfirm'))}/>
 
