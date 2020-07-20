@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import {Header} from "./components/common/header/Header";
+import {Header} from "./components/common/Header";
 import {RouterMain} from "./Router";
 import Footer from "./components/common/Footer";
 

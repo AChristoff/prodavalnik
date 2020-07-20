@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navigation} from "../navigation/Navigation";
+import {Navigation} from "./Navigation";
 import {NavLink} from "react-router-dom";
 import {Loyalty} from "@material-ui/icons";
 
