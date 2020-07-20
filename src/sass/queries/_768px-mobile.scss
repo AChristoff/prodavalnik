@@ -3,7 +3,7 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	height: 3.5em;
+	height: $header-height;
 	background: $color-theme-green;
 
 	.wrapper {
@@ -84,25 +84,24 @@
 }
 
 .app-main {
-	margin-top: 3.5em;
-	height: calc(100vh - 6.5em);
-	padding: 1em 0;
+	padding: $header-height 0 0;
 
 	.wrapper {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
-		height: 100%;
+		padding: 1em 0 2em;
 	}
 }
 
 .app-footer {
+	margin-top: auto;
 	background: $color-theme-green;
 	color: $pure-white;
 
 	.wrapper {
-		height: 3em;
+		min-height: 3em;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
