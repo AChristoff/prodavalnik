@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Copyright} from "@material-ui/icons";
-import logo from '../../assets/img/aleksov-logo.svg';
+import logo from '../../assets/svg/aleksov-logo.svg';
 import {NavLink} from "react-router-dom";
 
 class Footer extends React.Component {

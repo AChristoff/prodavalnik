@@ -2,7 +2,7 @@ import React, {lazy, Suspense} from 'react';
 import {Switch, Route} from 'react-router-dom';
 
 import NotFound from "../components/pages/NotFound";
-import Home from "../components/pages/Home";
+import Home from "../components/pages/home/Home";
 
 export function RouterMain() {
   return (

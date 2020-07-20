@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import {Header} from "./components/common/Header";
-import {RouterMain} from "./Router";
-import Footer from "./components/common/Footer";
+import {Header} from "./components/shared/Header";
+import {RouterMain} from "./router";
+import Footer from "./components/shared/Footer";
 
 function App() {
   return (
