@@ -6,7 +6,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import {AccountCircle, MailOutline, Visibility, VisibilityOff} from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 
-export default function FormikField({name, label, type="text", icon}) {
+export default function FormikField({name, label, type="text", placeholder='', icon}) {
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -63,6 +63,7 @@ export default function FormikField({name, label, type="text", icon}) {
         label={label}
         type={getType(type)}
         helperText={<ErrorMessage className="error-msg" name={name}/>}
+        placeholder={placeholder}
         required
         fullWidth
         autoComplete="off"

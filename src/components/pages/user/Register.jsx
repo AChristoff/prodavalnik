@@ -51,9 +51,9 @@ export default function Register() {
         {(props) => (
           <Form className="register-from">
 
-            <FormikField name="username" label="Username" icon="username"/>
-            <FormikField name="email" label="Email" icon="email"/>
-            <FormikField name="password" label="Password" type="password" icon="password"/>
+            <FormikField name="username" label="Username" placeholder="Ex. John" icon="username"/>
+            <FormikField name="email" label="Email" placeholder="Ex. john-doe@mail.com" icon="email"/>
+            <FormikField name="password" label="Password" type="password" placeholder="Ex. John#567" icon="password"/>
             <FormikField name="rePassword" label="Confirm Password" type="password" icon="password"/>
 
             <Button
