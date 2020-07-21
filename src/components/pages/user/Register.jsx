@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import {Form, Formik} from "formik";
 import FormikField from "../../shared/FormikField";
 
-
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
 const numericRegex = /(?=.*[0-9])/;
@@ -52,10 +51,10 @@ export default function Register() {
         {(props) => (
           <Form className="register-from">
 
-            <FormikField name="username" label="Username"/>
-            <FormikField name="email" label="Email"/>
-            <FormikField name="password" label="Password" type="password"/>
-            <FormikField name="rePassword" label="Confirm Password" type="password"/>
+            <FormikField name="username" label="Username" icon="username"/>
+            <FormikField name="email" label="Email" icon="email"/>
+            <FormikField name="password" label="Password" type="password" icon="password"/>
+            <FormikField name="rePassword" label="Confirm Password" type="password" icon="password"/>
 
             <Button
               fullWidth

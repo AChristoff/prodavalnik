@@ -33,8 +33,8 @@ export default function Login() {
         {(props) => (
           <Form className="login-from">
 
-            <FormikField name="email" label="Email"/>
-            <FormikField name="password" label="Password" type="password"/>
+            <FormikField name="email" label="Email" icon="email"/>
+            <FormikField name="password" label="Password" type="password" icon="password"/>
 
             <Button
               fullWidth

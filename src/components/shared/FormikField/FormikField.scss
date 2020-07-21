@@ -1,4 +1,14 @@
 .formik-field {
+
+	.MuiInputAdornment-positionEnd > svg {
+		margin-right: 5px !important;
+		color: #707070;
+	}
+
+	.MuiIconButton-root {
+		padding: 0 5px;
+	}
+
 	.MuiFormHelperText-root {
 		min-height: 5em;
 		color: red;
