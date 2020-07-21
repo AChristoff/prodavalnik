@@ -1,44 +1,76 @@
 import React from 'react';
 
 import Button from "@material-ui/core/Button";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import MailOutline from '@material-ui/icons/MailOutline';
-import FormControl from "@material-ui/core/FormControl";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
+import * as Yup from "yup";
+import {Form, Formik} from "formik";
+import FormikField from "../../shared/FormikField";
 
+
+const lowercaseRegex = /(?=.*[a-z])/;
+const uppercaseRegex = /(?=.*[A-Z])/;
+const numericRegex = /(?=.*[0-9])/;
+const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
+const letterRegex = /^[A-Za-z]+$/;
+
+const RegisterSchema = Yup.object().shape({
+  username: Yup.string()
+    .min(2, 'Username must be at least 2 characters!')
+    .max(20, 'Username must be maximum 20 characters!')
+    .matches(letterRegex, 'Username must contain only letters!')
+    .required('Username is required!'),
+  email: Yup.string()
+    .email('Invalid email!')
+    .required('Email is required!'),
+  password: Yup.string()
+    .min(6, 'Minimum 6 character required!')
+    .max(40, 'Maximum 40 character!')
+    .matches(lowercaseRegex, 'One lowercase required')
+    .matches(uppercaseRegex, 'One uppercase required')
+    .matches(numericRegex, 'One number required')
+    .matches(specialRegex, 'One special character required')
+    .required('Password is required!'),
+  rePassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Passwords do not match!')
+    .required('Password confirmation is required!'),
+});
 
 export default function Register() {
-  const [values, setValues] = React.useState({
-    email: '',
-  });
+
+  const handleSubmit = (values) => {
+    console.log(values);
+  };
 
   return (
     <div className="wrapper register">
       <h2>Register</h2>
 
-      <form className="register-from">
+      <Formik
+        initialValues={{username: '', email: '', password: '', rePassword: ''}}
+        validationSchema={RegisterSchema}
+        onSubmit={handleSubmit}
+      >
+        {(props) => (
+          <Form className="register-from">
 
-        <p>
-          <FormControl required className="email">
-            <InputLabel htmlFor="email">Email</InputLabel>
-            <Input
-              id="email"
-              placeholder="Ex. john@mail.com"
-              type="text"
-              value={values.email}
-              endAdornment={
-                <InputAdornment position="end">
-                  <MailOutline/>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-        </p>
+            <FormikField name="username" label="Username"/>
+            <FormikField name="email" label="Email"/>
+            <FormikField name="password" label="Password" type="password"/>
+            <FormikField name="rePassword" label="Confirm Password" type="password"/>
 
-        <Button variant="contained" size="large" color="primary">Register</Button>
+            <Button
+              fullWidth
+              type="submit"
+              variant="contained"
+              size="large"
+              color="primary"
+              disabled={!props.isValid || !props.dirty}
+            >
+              Register
+            </Button>
 
-      </form>
+          </Form>
+        )}
+      </Formik>
 
     </div>
   );

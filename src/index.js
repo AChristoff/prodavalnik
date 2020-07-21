@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from 'react-router-dom';
-import theme from "./theme";
+import theme from "./assets/material-ui/theme";
 import {ThemeProvider} from  '@material-ui/core/styles'
 
 ReactDOM.render(
@@ -16,4 +15,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorker.unregister();
