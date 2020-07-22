@@ -9,11 +9,13 @@ export function Header() {
     <header className="app-header">
 
       <div className="wrapper">
+
         <NavLink to="/" className="header-logo">
           Prodavalnik <Loyalty/>
         </NavLink>
 
         <Navigation/>
+
       </div>
 
     </header>

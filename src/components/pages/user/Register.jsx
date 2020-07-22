@@ -3,7 +3,7 @@ import React from 'react';
 import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import {Form, Formik} from "formik";
-import FormikField from "../../shared/FormikField";
+import FormikField from "../../shared/form/FormikField";
 
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;

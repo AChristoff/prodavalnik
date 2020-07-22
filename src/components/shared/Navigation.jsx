@@ -13,6 +13,16 @@ export function Navigation() {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/offers" exact activeClassName="active">
+            <Button variant="contained" color="primary" disableElevation>Offers</Button>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/user/offers" exact activeClassName="active">
+            <Button variant="contained" color="primary" disableElevation>My Offers</Button>
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/user/login" exact activeClassName="active">
             <Button variant="contained" color="primary" disableElevation>Login</Button>
           </NavLink>

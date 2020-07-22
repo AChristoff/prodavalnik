@@ -2,7 +2,7 @@ import React, {isValidElement} from 'react';
 
 import * as Yup from "yup";
 import {Form, Formik} from 'formik';
-import FormikField from "../../shared/FormikField";
+import FormikField from "../../shared/form/FormikField";
 import Button from "@material-ui/core/Button";
 
 const LoginSchema = Yup.object().shape({
