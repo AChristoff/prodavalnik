@@ -5,11 +5,8 @@ import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import {Search} from "@material-ui/icons";
-import {requester} from "../../../../services/offers";
 
 export default function Jumbotron() {
-  // const res = requester.getOffers(1, 4, '', '', 'dog', '?subtitle=Doodle');
-  // console.log(res);
 
   const [values] = React.useState({
     search: '',
@@ -35,7 +32,6 @@ export default function Jumbotron() {
               }
             />
           </FormControl>
-
 
         </form>
       </div>

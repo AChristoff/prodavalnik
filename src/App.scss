@@ -7,7 +7,9 @@
 #root {
 	.app-main {
 		button.MuiButton-containedPrimary {
+
 			&:hover {
+
 				background-color: #65D9A5;
 			}
 		}
@@ -15,6 +17,7 @@
 }
 
 .app {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
@@ -23,5 +26,12 @@
 .wrapper {
 	max-width: 60em;
 	margin: 0 auto;
+}
+
+.loading {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 

@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import Jumbotron from "./subcomponents/Jumbotron";
-import Categories from "./subcomponents/Categories";
+import Jumbotron from "./partials/Jumbotron";
+import Categories from "./partials/Categories";
 
 
 export default function Home() {
