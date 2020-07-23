@@ -1,10 +1,17 @@
 .app-header {
-	position: absolute;
+	position: fixed;
+	z-index: 10;
 	top: 0;
 	left: 0;
 	right: 0;
 	height: $header-height;
 	background: $gradient-theme;
+	box-shadow: none;
+	transition: all 0.35s ease-in-out;
+
+	&.active {
+		box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.6);
+	}
 
 	.wrapper {
 		display: flex;

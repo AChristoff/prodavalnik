@@ -1,23 +1,49 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Navigation} from "./Navigation";
 import {NavLink} from "react-router-dom";
 import {Loyalty} from "@material-ui/icons";
 
-export function Header() {
-  return (
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      scrolled: false,
+    }
+  }
 
-    <header className="app-header">
+  componentDidMount() {
+    window.addEventListener('scroll', () => {
+      const isTop = window.scrollY < 1;
+      if (!isTop) {
+        this.setState({scrolled: true});
+      } else {
+        this.setState({scrolled: false});
+      }
+    })
+  }
 
-      <div className="wrapper">
+  componentWillUnmount() {
+    window.removeEventListener('scroll');
+  }
 
-        <NavLink to="/" className="header-logo">
-          Prodavalnik <Loyalty/>
-        </NavLink>
+  render() {
+    return (
 
-        <Navigation/>
+      <header className={this.state.scrolled ? 'app-header active' : 'app-header'}>
 
-      </div>
+        <div className="wrapper">
 
-    </header>
-  );
+          <NavLink to="/" className="header-logo">
+            Prodavalnik <Loyalty/>
+          </NavLink>
+
+          <Navigation/>
+
+        </div>
+
+      </header>
+    );
+  }
 }
+
+export default Header;

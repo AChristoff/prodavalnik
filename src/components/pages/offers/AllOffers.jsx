@@ -46,7 +46,7 @@ class AllOffers extends React.Component {
     )
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
 
     this.isLoading = true;
 
