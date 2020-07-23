@@ -1,3 +1,16 @@
 html {
 	font-size: #{$font-size-tablet};
 }
+
+
+.app-main {
+	padding: $header-height 0 0;
+
+	.jumbotron {
+		height: 420px;
+
+		.search-from {
+			margin-bottom: 2em;
+		}
+	}
+}

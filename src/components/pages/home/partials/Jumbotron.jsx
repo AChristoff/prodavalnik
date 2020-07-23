@@ -16,7 +16,7 @@ export default function Jumbotron() {
     <div className="jumbotron">
       <div className="wrapper">
         <form className="search-from">
-          <h1>Buy <span>&</span> sell <span>online!</span></h1>
+          <h1> <span>Buy</span> & <span>sell</span> online!</h1>
 
           <FormControl className="search">
             <InputLabel htmlFor="search">Search</InputLabel>
