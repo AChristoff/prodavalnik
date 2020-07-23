@@ -10,7 +10,7 @@ export function Header() {
 
       <div className="wrapper">
 
-        <NavLink to="/" className="header-logo">
+        <NavLink to="/home" className="header-logo">
           Prodavalnik <Loyalty/>
         </NavLink>
 

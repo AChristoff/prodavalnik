@@ -1,0 +1,102 @@
+.card-list {
+
+	&:before,
+	&:after {
+		display: block;
+		content: '';
+		flex: 0 1 22%;
+		order: 1000;
+	}
+
+	.site-card {
+		display: flex;
+		flex-direction: column;
+		flex: 0 1 22%;
+		margin-bottom: 4em;
+
+		.card-head {
+			&:before {
+				padding-top: 80%;
+			}
+		}
+
+		.card-body {
+			.outdoor-btn {
+				margin: 1em 0;
+				width: 100%;
+				min-width: 200px;
+				font-size: 1.2em;
+				padding: 0.3em 0 0.5em;
+			}
+		}
+	}
+}
+
+.card-list {
+
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+
+	.site-card {
+		flex: 0 1 31%;
+		margin-bottom: 4em;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		border-radius: 0.4em;
+		background: rgba(255, 255, 255, 0.5);
+		box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+
+		.card-head {
+			position: relative;
+			overflow: hidden;
+			flex: 0 0 auto;
+			transition: all 0.3s ease-in;
+
+			&:before {
+				display: block;
+				content: '';
+				padding-top: 70%;
+			}
+
+			img {
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: auto;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				transition: all 0.25s ease-in;
+			}
+
+			&:hover img {
+				display: block;
+				width: 120%;
+				cursor: pointer;
+			}
+		}
+
+		.card-body {
+			display: flex;
+			flex-direction: column;
+			flex: 1 1 auto;
+			justify-content: space-between;
+			padding: 0 1em 1em;
+			height: 100%;
+
+			h5 {
+				margin: 0.75em 0 1em;
+			}
+
+			button {
+				margin-top: auto;
+				font-size: 1em;
+				padding: 0.4em 0;
+			}
+		}
+	}
+}

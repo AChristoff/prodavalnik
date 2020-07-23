@@ -4,7 +4,7 @@
 	left: 0;
 	right: 0;
 	height: $header-height;
-	background: $color-theme-green;
+	background: $gradient-theme;
 
 	.wrapper {
 		display: flex;
@@ -53,13 +53,9 @@
 
 						&.active {
 
-							button {
-								background-color: #65D9A5;
-							}
-
 							&:after {
 								content: '';
-								background-color: #FFFFFF;
+								background-color: $pure-white;
 								height: 0.17em;
 								position: absolute;
 								top: 0;
@@ -89,7 +85,7 @@
 	.jumbotron {
 
 		background-image: url(../../assets/img/cover.png);
-		color: #FFFFFF;
+		color: $pure-white;
 		position: relative;
 		display: flex;
 		justify-content: center;
@@ -120,7 +116,7 @@
 			position: absolute;
 			background-repeat: no-repeat;
 			overflow: hidden;
-			bottom: 0;
+			bottom: -3px;
 			left: 0;
 			right: 0;
 			width: 100%;
@@ -164,7 +160,7 @@
 
 
 						&:hover {
-							background-color: #65D9A5;
+							background-color: #46CD9A;
 
 							img {
 								width: 90%;
@@ -228,7 +224,7 @@
 
 .app-footer {
 	margin-top: auto;
-	background: $color-theme-green;
+	background: $gradient-theme;
 	color: $pure-white;
 
 	.wrapper {

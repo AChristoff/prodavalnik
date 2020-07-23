@@ -41,7 +41,7 @@ export default function Register() {
 
   return (
     <div className="wrapper register">
-      <h2>Register</h2>
+      <h3>Register</h3>
 
       <Formik
         initialValues={{username: '', email: '', password: '', rePassword: ''}}

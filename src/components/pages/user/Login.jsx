@@ -23,7 +23,7 @@ export default function Login() {
 
   return (
     <div className="wrapper login">
-      <h2>Login</h2>
+      <h3>Login</h3>
 
       <Formik
         initialValues={{email: '', password: ''}}

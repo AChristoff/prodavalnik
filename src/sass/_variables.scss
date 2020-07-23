@@ -28,12 +28,18 @@ $color-main-bgrd: #fbf8f2;
 $color-theme-grey: #A3ABBD;
 
 $color-theme-green-brgd-text: #B4F2E2;
-$color-theme-green: #4AD295;
+$color-theme-green: #3CC0AA;
+$color-theme-green-hover: #65D9A5;
+
+$gradient-theme: linear-gradient(160deg, #2baac3 0%, #4AD295 100%);
+$gradient-theme-hover: linear-gradient(160deg, #2BB5CE 0%, #4CDE9F 100%);
+$gradient-theme-disabled: linear-gradient(160deg, #B1E0E9 0%, #B4F2E2 100%);
 
 $pure-white: #FFFFFF;
 $color-site-bgrd: #DFE0E4;
 $color-base-font-black: #333333;
 $color-base-font-green-black: #252626;
+$color-base-font-grey: #5F6368;
 $color-soft-black: #231F20;
 
 //font size

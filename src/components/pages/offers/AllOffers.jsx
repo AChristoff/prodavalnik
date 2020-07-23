@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Card from "../../shared/Card";
+import Card from "../../shared/card/Card";
 import Loading from "../../shared/Loading";
 
 import OffersService from '../../../services/offers-service'
@@ -34,12 +34,14 @@ class AllOffers extends React.Component {
 
     return (
       <div className="all-offers wrapper">
-        <h1>Offers</h1>
-        {
-          offers.map((offer) => (
-            <Card key={offer._id} {...offer} />
-          ))
-        }
+        <h3>Offers</h3>
+        <div className="card-list">
+          {
+            offers.map((offer) => (
+              <Card key={offer._id} {...offer} />
+            ))
+          }
+        </div>
       </div>
     )
   }
