@@ -30,7 +30,7 @@ class Categories extends React.Component {
   render() {
     return (
       <div className="categories wrapper">
-        <h3>Categories</h3>
+        <h4>Categories</h4>
         <Category categories={this.state.categories}/>
       </div>
     );

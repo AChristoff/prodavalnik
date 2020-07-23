@@ -105,7 +105,7 @@
 			text-transform: uppercase;
 			font-weight: bold;
 			color: $pure-white;
-			font-size: 2.5em;
+			font-size: 2.25em;
 			text-shadow: 1px 2px 2px rgba(35, 109, 97, 0.6);
 
 			span {
@@ -138,13 +138,25 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
-		padding: 1em 0 2em;
+		padding: 1em 0;
 
 		&.categories {
 
-			h3 {
+			h4 {
 				text-transform: uppercase;
-				margin-bottom: 1.5em;
+				margin-bottom: 1em;
+				position: relative;
+
+				&:after {
+					content: '';
+					background: $color-theme-green;
+					position: absolute;
+					bottom: -0.35em;
+					left: 50%;
+					transform: translateX(-50%);
+					width: 5em;
+					height: 0.05em;
+				}
 			}
 
 			.categories-container {
@@ -163,8 +175,8 @@
 						color: $pure-white;
 						background-color: $color-theme-green;
 						border-radius: 50%;
-						width: 5.5em;
-						height: 5.5em;
+						width: 5.2em;
+						height: 5.2em;
 						display: flex;
 						flex-wrap: wrap;
 						justify-content: center;
