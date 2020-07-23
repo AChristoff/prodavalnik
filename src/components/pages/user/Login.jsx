@@ -33,8 +33,12 @@ class Login extends React.Component {
       error: '',
     }, async () => {
       try {
-        const credentials = await Login.service.login(values);
-        console.log(credentials);
+        const res = await Login.service.login(values);
+
+        if (!res.success) {
+          const message = res.message;
+          throw new Error(message);
+        }
         this.setState({
           isAuth: true,
         });
@@ -58,8 +62,8 @@ class Login extends React.Component {
     return (
       <div className="wrapper login">
 
-        {/* TODO: create toastr component */}
-        {/*{ this.error.length ? <div>Something went wrong: {this.error}</div> : null }*/}
+        {/* TODO: toaster component*/}
+        { this.state.error.length ? <div>Something went wrong: {this.state.error}</div> : null }
 
         <Heading text="Login"/>
 
