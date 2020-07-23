@@ -25,6 +25,15 @@ class CardsContainer extends React.Component {
       return <Loading/>
     }
 
+    if (!offers) {
+      // TODO: toastr component;
+      return (
+        <div className="wrapper">
+          Something went wrong!
+        </div>
+      );
+    }
+
     if (!isLoading && !offers.length) {
       return (
         <div className="all-offers wrapper">
