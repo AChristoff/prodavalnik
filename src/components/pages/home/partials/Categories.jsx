@@ -20,8 +20,9 @@ class Categories extends React.Component {
         'Fashion & Beauty': 'bag.svg',
         'Pets': 'pet.svg',
         'Sports & Equipments': 'ball.svg',
-        'Art & Books': 'guitar.svg',
         'Machines & Tools': 'tools.svg',
+        'Art & Books': 'guitar.svg',
+        'Antiques': 'antique.svg',
       }
     })
   }
@@ -29,7 +30,7 @@ class Categories extends React.Component {
   render() {
     return (
       <div className="categories wrapper">
-        <h2>Categories</h2>
+        <h3>Categories</h3>
         <Category categories={this.state.categories}/>
       </div>
     );
