@@ -7,7 +7,7 @@
 	height: $header-height;
 	background: $gradient-theme;
 	box-shadow: none;
-	transition: all 0.35s ease-in-out;
+	transition: all 0.3s ease-in-out;
 
 	&.active {
 		box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.6);
