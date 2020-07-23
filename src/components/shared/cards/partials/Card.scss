@@ -1,5 +1,11 @@
 .card-list {
 
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+
 	&:before,
 	&:after {
 		display: block;
@@ -7,38 +13,6 @@
 		flex: 0 1 22%;
 		order: 1000;
 	}
-
-	.site-card {
-		display: flex;
-		flex-direction: column;
-		flex: 0 1 22%;
-		margin-bottom: 4em;
-
-		.card-head {
-			&:before {
-				padding-top: 80%;
-			}
-		}
-
-		.card-body {
-			.outdoor-btn {
-				margin: 1em 0;
-				width: 100%;
-				min-width: 200px;
-				font-size: 1.2em;
-				padding: 0.3em 0 0.5em;
-			}
-		}
-	}
-}
-
-.card-list {
-
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-
 
 	.site-card {
 		flex: 0 1 31%;

@@ -1,21 +1,25 @@
 import React from 'react';
 import "./Card.scss"
 import Button from "@material-ui/core/Button";
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function Card({title, subtitle, content, price, image, _id}) {
   return (
     <div className="site-card">
+
       <div className="card-head">
-        <img src={image} alt={title}/>
+        <Link to={`/offers/view/${_id}`}>
+          <img src={image} alt={title}/>
+        </Link>
       </div>
+
       <div className="card-body">
         <h5>{title}</h5>
         <p>{subtitle}</p>
         <p>{content}</p>
         <p>{price}</p>
 
-        <NavLink to={`/offers/view/${_id}`} className="view-btn">
+        <Link to={`/offers/view/${_id}`} className="view-btn">
           <Button
             fullWidth
             disableElevation
@@ -25,7 +29,7 @@ export default function Card({title, subtitle, content, price, image, _id}) {
           >
             View
           </Button>
-        </NavLink>
+        </Link>
 
       </div>
     </div>

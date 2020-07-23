@@ -1,12 +1,14 @@
 import React from 'react';
-import Heading from "../../shared/Heading";
 
-export default function UserOffers() {
-  return (
-    <div className="user-offers wrapper">
+import CardsContainer from "../../shared/cards/CardsContainer";
 
-      <Heading text="My offers"/>
+class UserOffers extends React.Component {
+  render() {
 
-    </div>
-  );
+    return (
+      <CardsContainer method='user' headingText='My Offers'/>
+    )
+  }
 }
+
+export default UserOffers;
