@@ -1,9 +1,12 @@
 import React from 'react';
+import Heading from "../../shared/Heading";
 
 export default function CreateOffer() {
   return (
     <div className="CreateOffer">
-      <h1>CreateOffer</h1>
+
+      <Heading text="Create offer"/>
+
     </div>
   );
 }

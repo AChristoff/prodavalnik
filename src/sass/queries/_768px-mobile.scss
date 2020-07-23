@@ -142,23 +142,6 @@
 
 		&.categories {
 
-			h4 {
-				text-transform: uppercase;
-				margin-bottom: 1em;
-				position: relative;
-
-				&:after {
-					content: '';
-					background: $color-theme-green;
-					position: absolute;
-					bottom: -0.35em;
-					left: 50%;
-					transform: translateX(-50%);
-					width: 5em;
-					height: 0.05em;
-				}
-			}
-
 			.categories-container {
 				display: flex;
 				flex-wrap: wrap;

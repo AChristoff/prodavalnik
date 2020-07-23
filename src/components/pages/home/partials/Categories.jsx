@@ -1,5 +1,6 @@
 import React from 'react';
 import Category from "./Category";
+import Heading from "../../../shared/Heading";
 
 class Categories extends React.Component {
   constructor(props) {
@@ -30,7 +31,9 @@ class Categories extends React.Component {
   render() {
     return (
       <div className="categories wrapper">
-        <h4>Categories</h4>
+
+        <Heading text="Categories"/>
+
         <Category categories={this.state.categories}/>
       </div>
     );

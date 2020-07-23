@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import {Form, Formik} from 'formik';
 import FormikField from "../../shared/form/FormikField";
 import Button from "@material-ui/core/Button";
+import Heading from "../../shared/Heading";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,7 +24,8 @@ export default function Login() {
 
   return (
     <div className="wrapper login">
-      <h3>Login</h3>
+
+      <Heading text="Login"/>
 
       <Formik
         initialValues={{email: '', password: ''}}

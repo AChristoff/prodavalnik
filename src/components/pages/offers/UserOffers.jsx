@@ -1,9 +1,12 @@
 import React from 'react';
+import Heading from "../../shared/Heading";
 
 export default function UserOffers() {
   return (
     <div className="user-offers wrapper">
-      <h3>UserOffers</h3>
+
+      <Heading text="My offers"/>
+
     </div>
   );
 }

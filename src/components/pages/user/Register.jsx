@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import {Form, Formik} from "formik";
 import FormikField from "../../shared/form/FormikField";
+import Heading from "../../shared/Heading";
 
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
@@ -41,7 +42,8 @@ export default function Register() {
 
   return (
     <div className="wrapper register">
-      <h3>Register</h3>
+
+      <Heading text="Register"/>
 
       <Formik
         initialValues={{username: '', email: '', password: '', rePassword: ''}}

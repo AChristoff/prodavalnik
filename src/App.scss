@@ -91,3 +91,21 @@ html {
 	transform: translate(-50%, -50%);
 }
 
+.page-heading {
+	text-transform: uppercase;
+	margin-bottom: 1em;
+	position: relative;
+
+	&:after {
+		content: '';
+		background: $color-theme-green;
+		position: absolute;
+		bottom: -0.35em;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 4em;
+		height: 0.06em;
+		border-radius: 50%;
+	}
+}
+

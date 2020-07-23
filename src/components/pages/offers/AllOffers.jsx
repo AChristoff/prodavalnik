@@ -4,6 +4,7 @@ import Card from "../../shared/card/Card";
 import Loading from "../../shared/Loading";
 
 import OffersService from '../../../services/offers-service'
+import Heading from "../../shared/Heading";
 
 class AllOffers extends React.Component {
   constructor(props) {
@@ -34,7 +35,9 @@ class AllOffers extends React.Component {
 
     return (
       <div className="all-offers wrapper">
-        <h3>Offers</h3>
+
+        <Heading text="Offers"/>
+
         <div className="card-list">
           {
             offers.map((offer) => (
