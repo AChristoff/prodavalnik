@@ -16,6 +16,7 @@ class LogoutContext extends React.Component {
       isAuth: false,
       username: '',
       role: '',
+      updateUserData,
     });
   }
 

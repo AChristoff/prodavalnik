@@ -51,6 +51,7 @@ class Login extends React.Component {
           isAuth: true,
           username: res.username,
           role: res.role,
+          updateUserData,
         });
 
       } catch (error) {
