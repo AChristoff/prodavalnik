@@ -36,8 +36,15 @@
 			font-size: 1.7em;
 		}
 
-		.site-nav {
+		.greeter {
+			display: flex;
+			align-items: center;
+			margin-right: 2em;
+			color: white;
+		}
 
+		.site-nav {
+			display: flex;
 			margin-left: auto;
 
 			ul {

@@ -7,6 +7,7 @@ import FormikField from "../../shared/form/FormikField";
 import Button from "@material-ui/core/Button";
 import Heading from "../../shared/Heading";
 import AuthService from "../../../services/auth-service";
+import {UserConsumer} from "../../../context/user-context"
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -19,15 +20,21 @@ const LoginSchema = Yup.object().shape({
 });
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   static service = new AuthService();
 
   state = {
-    isAuth: false,
     error: '',
   };
 
+
   handleSubmit = (values) => {
-    console.log(values);
+    console.log(this.props);
+    const {updateUserData} = this.props;
+    console.log('those are Login props', this.props);
 
     this.setState({
       error: '',
@@ -35,15 +42,23 @@ class Login extends React.Component {
       try {
         const res = await Login.service.login(values);
 
-        if (!res.success) {
+        if (res.errors) {
           const message = res.message;
           throw new Error(message);
         }
-        this.setState({
+
+        window.localStorage.setItem('username', res.username);
+        window.localStorage.setItem('role', res.role);
+        window.localStorage.setItem('token', res.token);
+
+        updateUserData({
           isAuth: true,
+          username: res.username,
+          role: res.role,
         });
+
       } catch (error) {
-        console.log(error);
+
         this.setState({
           error: error.message,
         })
@@ -53,7 +68,9 @@ class Login extends React.Component {
 
   render() {
 
-    if (this.state.isAuth) {
+    const {isAuth} = this.props;
+
+    if (isAuth) {
       return (
         <Redirect to="/"/>
       );
@@ -63,7 +80,7 @@ class Login extends React.Component {
       <div className="wrapper login">
 
         {/* TODO: toaster component*/}
-        { this.state.error.length ? <div>Something went wrong: {this.state.error}</div> : null }
+        {this.state.error.length ? <div>Error: {this.state.error}</div> : null}
 
         <Heading text="Login"/>
 
@@ -98,4 +115,21 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const LoginContext = (props) => {
+
+  return (
+    <UserConsumer>
+      {
+        (user) => (
+          <Login
+            {...props}
+            isAuth={user.isAuth}
+            updateUserData={user.updateUserData}
+          />
+        )
+      }
+    </UserConsumer>
+  );
+};
+
+export default LoginContext;

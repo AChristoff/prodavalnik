@@ -3,6 +3,7 @@ import {Switch, Route} from 'react-router-dom';
 import Loading from "../components/shared/Loading";
 import ViewOffer from "../components/pages/offers/ViewOffer";
 import EditOffer from "../components/pages/offers/EditOffer";
+import PrivateRoute from "./PrivateRoute";
 
 const Home = lazy(() => import('../components/pages/home/Home'));
 const AllOffers = lazy(() => import('../components/pages/offers/AllOffers'));
@@ -20,7 +21,7 @@ export function RouterMain() {
         <Route path='/offers' exact component={AllOffers}/>
         <Route path='/offers/view/:id' exact component={ViewOffer}/>
         <Route path='/offers/edit/:id' exact component={EditOffer}/>
-        <Route path='/user/offers' exact component={UserOffers}/>
+        <PrivateRoute path="/user/offers" exact component={UserOffers}/>
         <Route path='/user/login' exact component={Login}/>
         <Route path='/user/register' exact component={Register}/>
         <Route path='/user/register/confirm' exact component={RegisterConfirm}/>

@@ -1,14 +1,20 @@
 function request(method) {
+  const token = window.localStorage.getItem('token');
 
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVXNlciIsIm5hbWUiOiJBbGV4IiwiZW1haWwiOiJkc2Fkc2FAbWFpbC5iZyIsInVzZXJJZCI6IjVmMGI4OTkwNzM0ZjJmNWI4Y2FjODBmNCIsImlhdCI6MTU5NTUzNzAxNSwiZXhwIjoxNTk1NTQwNjE1fQ.54slp0ZOb-4xz7V7rp5aKWkvl7fKCYnNvkHs8b7p6wg';
+  const getAuthHeader = () => {
+    return (token && token.length)
+      ? {'Authorization': `Bearer ${token}`}
+      : '';
+  };
 
   return async (url = '', data, options) => {
+    const authHeader = getAuthHeader();
     const response = await fetch(url, {
       method,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': `Bearer ${token}`
+        ...authHeader
       },
       body: JSON.stringify(data),
       ...options

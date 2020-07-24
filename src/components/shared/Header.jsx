@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Navigation} from "./Navigation";
+import Navigation from "./Navigation";
 import {NavLink} from "react-router-dom";
 import {Loyalty} from "@material-ui/icons";
 

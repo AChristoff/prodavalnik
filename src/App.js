@@ -3,21 +3,42 @@ import './App.scss';
 import Header from "./components/shared/Header";
 import {RouterMain} from "./router";
 import Footer from "./components/shared/Footer";
+import {UserProvider, defaultUserState} from "./context/user-context";
 
-function App() {
-  return (
-    <div className="app">
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-      <Header/>
+    this.state = {
+      user: {
+        ...defaultUserState,
+        updateUserData: this.updateUserData,
+      }
+    };
+  }
 
-      <main className="app-main">
-        <RouterMain/>
-      </main>
+  updateUserData = (data) => {
+    this.setState({user: {...data}})
+  };
 
-      <Footer/>
+  render() {
+    console.log('from App', this.state);
+    const {user} = this.state;
 
-    </div>
-  );
+    return (
+      <div className="app">
+        <UserProvider value={user}>
+          <Header/>
+
+          <main className="app-main">
+            <RouterMain/>
+          </main>
+
+          <Footer/>
+        </UserProvider>
+      </div>
+    );
+  }
 }
 
 export default App;
