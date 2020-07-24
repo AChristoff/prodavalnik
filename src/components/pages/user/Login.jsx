@@ -31,7 +31,7 @@ class Login extends React.Component {
 
   handleSubmit = (values) => {
     const {updateUserData} = this.props;
-    console.log(this.props, 'from login');
+
     this.setState({
       error: '',
     }, async () => {
