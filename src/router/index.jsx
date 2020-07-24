@@ -3,6 +3,7 @@ import {Switch, Route} from 'react-router-dom';
 import Loading from "../components/shared/Loading";
 import ViewOffer from "../components/pages/offers/ViewOffer";
 import EditOffer from "../components/pages/offers/EditOffer";
+import Logout from "../components/pages/user/Logout";
 import PrivateRoute from "./PrivateRoute";
 
 const Home = lazy(() => import('../components/pages/home/Home'));
@@ -23,6 +24,7 @@ export function RouterMain() {
         <Route path='/offers/edit/:id' exact component={EditOffer}/>
         <PrivateRoute path="/user/offers" exact component={UserOffers}/>
         <Route path='/user/login' exact component={Login}/>
+        <PrivateRoute path="/user/logout" exact component={Logout}/>
         <Route path='/user/register' exact component={Register}/>
         <Route path='/user/register/confirm' exact component={RegisterConfirm}/>
         <Route component={NotFound}/>

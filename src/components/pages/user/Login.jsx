@@ -22,20 +22,16 @@ const LoginSchema = Yup.object().shape({
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      error: '',
+    };
   }
 
   static service = new AuthService();
 
-  state = {
-    error: '',
-  };
-
-
   handleSubmit = (values) => {
-    console.log(this.props);
     const {updateUserData} = this.props;
-    console.log('those are Login props', this.props);
-
+    console.log(this.props, 'from login');
     this.setState({
       error: '',
     }, async () => {

@@ -8,17 +8,17 @@ class NavigationWithContex extends React.Component {
     super(props);
   }
 
-  handleClick = () => {
-    const {updateUserData} = this.props;
-
-    updateUserData({
-      isAuth: false,
-      username: '',
-      role: '',
-    });
-    window.localStorage.clear();
-    return <Redirect to='/'/>
-  };
+  // handleClick = () => {
+  //   const {updateUserData} = this.props;
+  //
+  //   updateUserData({
+  //     isAuth: false,
+  //     username: '',
+  //     role: '',
+  //   });
+  //   window.localStorage.clear();
+  //   return <Redirect to='/'/>
+  // };
 
   render() {
     const {isAuth, username} = this.props;
@@ -69,7 +69,7 @@ class NavigationWithContex extends React.Component {
           {
             isAuth
               ? <li>
-                <NavLink to="/" exact activeClassName="active" onClick={this.handleClick}>
+                <NavLink to="/user/logout" exact activeClassName="active">
                   <Button variant="contained" color="primary" disableElevation>Logout</Button>
                 </NavLink>
               </li>

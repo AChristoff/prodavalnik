@@ -64,8 +64,6 @@ class CardsContainer extends React.Component {
     this.isLoading = true;
     let offers;
 
-   ;
-
     try {
       if (this.method === 'all') {
         offers = await CardsContainer.service.getAllOffers();
