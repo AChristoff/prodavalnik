@@ -1,14 +1,14 @@
 function request(method) {
-  const token = window.localStorage.getItem('token');
-
-  const getAuthHeader = () => {
-    return (token && token.length)
-      ? {'Authorization': `Bearer ${token}`}
-      : '';
-  };
 
   return async (url = '', data, options) => {
+    const token = window.localStorage.getItem('token');
+    const getAuthHeader = () => {
+      return (token && token.length)
+        ? {'Authorization': `Bearer ${token}`}
+        : '';
+    };
     const authHeader = getAuthHeader();
+
     const response = await fetch(url, {
       method,
       headers: {
