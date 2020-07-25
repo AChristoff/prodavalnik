@@ -35,12 +35,14 @@ $gradient-theme: linear-gradient(160deg, #2baac3 0%, #4AD295 100%);
 $gradient-theme-hover: linear-gradient(160deg, #2BB5CE 0%, #4CDE9F 100%);
 $gradient-theme-disabled: linear-gradient(160deg, #B1E0E9 0%, #B4F2E2 100%);
 
+$gradient-edit-btn: linear-gradient(160deg, #1573BC 0%, #78B5E6 100%);
+$gradient-edit-btn-hover: linear-gradient(160deg, #1581CB 0%, #87C4F5 100%);
 
-$gradient-edit: linear-gradient(160deg, #7F0063 50%, #F0015D 100%);
-$gradient-edit-hover: linear-gradient(160deg, #910074 50%, #FA015E 100%);
-$gradient-delete: linear-gradient(160deg, #FD1D1D 50%, #FCB045 100%);
-$gradient-delete-hover: linear-gradient(160deg, #FF3522 50%, #FFBC35 100%);
+$gradient-delete-btn: linear-gradient(160deg, #EE363E 0%, #FA7848 100%);
+$gradient-delete-btn-hover: linear-gradient(160deg, #EA0329 0%, #FF0B00 100%);
 
+$color-button-delete: #FD1D1D;
+$color-delete-button-hover: #FF3522;
 
 $pure-white: #FFFFFF;
 $color-site-bgrd: #DFE0E4;

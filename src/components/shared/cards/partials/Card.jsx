@@ -37,20 +37,20 @@ export default function Card({title, subtitle, content, price, image, _id, isCre
         {
           isCreator
 
-            ? <div>
-              <Link to={`/offers/edit/${_id}`} className="view-btn">
+            ? <div className="edit-card">
+              <Link to={`/offers/edit/${_id}`} className="btn-medium">
                 <Button
                   fullWidth
                   disableElevation
                   variant="contained"
                   size="large"
-                  className="edit-btn"
+                  className="edit-btn btn-small"
                 >
                   Edit
                 </Button>
               </Link>
 
-              <Link to={`/offers/delete/${_id}`} className="view-btn">
+              <Link to={`/offers/delete/${_id}`} className="btn-medium">
                 <Button
                   fullWidth
                   disableElevation

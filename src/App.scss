@@ -50,23 +50,25 @@
 
 		button.edit-btn {
 			color: $pure-white;
-			background: $gradient-edit;
+			background: $gradient-edit-btn;
 
 			&:hover {
-				background: $gradient-edit-hover;
+				color: $pure-white;
+				background: $gradient-edit-btn-hover;
 			}
 
 			&:disabled {
-				background: $gradient-theme-disabled;
+				//background: $gradient-theme-disabled;
 			}
 		}
 
 		button.delete-btn {
 			color: $pure-white;
-			background: $gradient-delete;
+			background: $gradient-delete-btn;
 
 			&:hover {
-				background: $gradient-delete-hover;
+				color: $pure-white;
+				background: $gradient-delete-btn-hover;
 			}
 
 			&:disabled {
@@ -74,6 +76,14 @@
 			}
 		}
 	}
+}
+
+.btn-medium {
+	width: 47%;
+}
+
+.btn-small {
+	width: 20%;
 }
 
 // scrollbar
