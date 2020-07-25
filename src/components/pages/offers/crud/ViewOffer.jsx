@@ -1,7 +1,7 @@
 import React from 'react';
-import Heading from "../../shared/Heading";
-import OffersService from "../../../services/offers-service";
-import Loading from "../../shared/Loading";
+import Heading from "../../../shared/Heading";
+import OffersService from "../../../../services/offers-service";
+import Loading from "../../../shared/Loading";
 import Button from "@material-ui/core/Button";
 
 class ViewOffer extends React.Component {

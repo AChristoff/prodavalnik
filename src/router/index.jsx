@@ -1,12 +1,12 @@
 import React, {lazy, Suspense} from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Loading from "../components/shared/Loading";
-import ViewOffer from "../components/pages/offers/ViewOffer";
-import EditOffer from "../components/pages/offers/EditOffer";
+import ViewOffer from "../components/pages/offers/crud/ViewOffer";
+import EditOffer from "../components/pages/offers/crud/EditOffer";
 import Logout from "../components/pages/user/Logout";
 import PrivateRoute from "./PrivateRoute";
-import CreateOffer from "../components/pages/offers/CreateOffer";
-import DeleteOffer from "../components/pages/offers/DeleteOffer";
+import CreateOffer from "../components/pages/offers/crud/CreateOffer";
+import DeleteOffer from "../components/pages/offers/crud/DeleteOffer";
 
 const Home = lazy(() => import('../components/pages/home/Home'));
 const AllOffers = lazy(() => import('../components/pages/offers/AllOffers'));

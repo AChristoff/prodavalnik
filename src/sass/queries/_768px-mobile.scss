@@ -211,10 +211,12 @@
 		}
 
 		&.login,
-		&.register {
+		&.register,
+		&.create-offer {
 
 			.login-from,
-			.register-from {
+			.register-from,
+			.create-offer-from {
 
 				width: 24em;
 

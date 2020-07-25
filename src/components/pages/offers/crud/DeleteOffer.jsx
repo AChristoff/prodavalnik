@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from "../../shared/Heading";
+import Heading from "../../../shared/Heading";
 import Button from "@material-ui/core/Button";
 
 class DeleteOffer extends React.Component {

@@ -27,7 +27,6 @@ class CardsContainer extends React.Component {
       return <Loading/>
     }
 
-    console.log(error);
     if (error) {
       // TODO: toastr component;
       return (
@@ -74,7 +73,6 @@ class CardsContainer extends React.Component {
         res = await CardsContainer.service.getUserOffers();
       }
 
-      console.log(res);
       if (res.error) {
         const message = res.message + ' ' + res.error.message;
         throw new Error(message);
@@ -83,7 +81,7 @@ class CardsContainer extends React.Component {
       this.setState({
         offers: res.posts,
         isLoading: false,
-        });
+      });
     } catch (error) {
       console.log(error);
       this.setState({
