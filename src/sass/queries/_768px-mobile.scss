@@ -145,9 +145,11 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
-		padding: 1em 0;
+		padding: 1em 0 3em;
 
 		&.categories {
+
+			padding-bottom: 2em;
 
 			.categories-container {
 				display: flex;
@@ -238,6 +240,33 @@
 					margin-top: 2em;
 					width: 100%;
 				}
+			}
+		}
+
+		&.view-offer {
+			.view-offer-img-wrapper {
+				display: block;
+				position: relative;
+				width: 80%;
+				height: 0;
+				padding-bottom: 45%;
+				overflow: hidden;
+				border-radius: 0.25em;
+				background: rgba(255, 255, 255, 0.5);
+				box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+
+				img {
+					width: 100%;
+					height: auto;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+
+			.view-offer-back-btn {
+				width: 15em;
 			}
 		}
 	}

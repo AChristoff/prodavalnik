@@ -2,6 +2,7 @@ import React from 'react';
 import Heading from "../../shared/Heading";
 import OffersService from "../../../services/offers-service";
 import Loading from "../../shared/Loading";
+import Button from "@material-ui/core/Button";
 
 class ViewOffer extends React.Component {
   constructor(props) {
@@ -48,10 +49,27 @@ class ViewOffer extends React.Component {
       <div className="view-offer wrapper">
 
         <Heading text="View offer"/>
-        <img src={offer.image} alt={offer.title}/>
+
+        <div className="view-offer-img-wrapper">
+          <img src={offer.image} alt={offer.title}/>
+        </div>
         <p>{offer.title}</p>
+        <p>{offer.price}</p>
         <p>{offer.subtitle}</p>
         <p>{offer.content}</p>
+
+        <div className="view-offer-back-btn">
+          <Button
+            fullWidth
+            disableElevation
+            variant="contained"
+            size="large"
+            color="primary"
+            onClick={this.props.history.goBack}
+          >
+            Back
+          </Button>
+        </div>
 
       </div>
     );

@@ -1,10 +1,11 @@
 import React from 'react';
 import "./Card.scss"
 import Button from "@material-ui/core/Button";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import SliceText from "../../slice-text/SliceText";
 
-export default function Card({title, subtitle, content, price, image, _id}) {
+export default function Card({title, subtitle, content, price, image, _id, isCreator}) {
+
   return (
     <div className="site-card">
 
@@ -30,6 +31,34 @@ export default function Card({title, subtitle, content, price, image, _id}) {
           >
             View
           </Button>
+
+
+          {
+            isCreator
+
+              ? <div>
+                <Button
+                  fullWidth
+                  disableElevation
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                >
+                  Edit
+                </Button>
+                <Button
+                  fullWidth
+                  disableElevation
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                >
+                  Delete
+                </Button>
+              </div>
+              : null
+          }
+
         </Link>
 
       </div>

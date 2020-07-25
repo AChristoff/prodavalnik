@@ -14,6 +14,7 @@ class CardsContainer extends React.Component {
     };
     this.method = props.method;
     this.headingText = props.headingText;
+    this.isCreator = props.isCreator;
   }
 
   static service = new OffersService();
@@ -51,7 +52,7 @@ class CardsContainer extends React.Component {
         <div className="card-list">
           {
             offers.map((offer) => (
-              <Card key={offer._id} {...offer} />
+              <Card key={offer._id} {...offer} isCreator={this.isCreator}/>
             ))
           }
         </div>
