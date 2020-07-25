@@ -46,6 +46,16 @@ class NavigationWithContex extends React.Component {
 
           {
             isAuth
+              ? <li>
+                <NavLink to="/offers/create" exact activeClassName="active">
+                  <Button variant="contained" color="primary" disableElevation>Create Offers</Button>
+                </NavLink>
+              </li>
+              : null
+          }
+
+          {
+            isAuth
               ? null
               : <li>
                 <NavLink to="/user/register" activeClassName="active">

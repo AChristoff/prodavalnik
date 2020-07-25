@@ -1,12 +1,31 @@
 import React from 'react';
 import Heading from "../../shared/Heading";
+import Button from "@material-ui/core/Button";
 
-export default function CreateOffer() {
-  return (
-    <div className="CreateOffer">
+class CreateOffer extends React.Component {
 
-      <Heading text="Create offer"/>
+  render() {
+    return (
+      <div className="create-offer wrapper">
 
-    </div>
-  );
+        <Heading text="Create Offer"/>
+
+        <div className="view-offer-back-btn">
+          <Button
+            fullWidth
+            disableElevation
+            variant="contained"
+            size="large"
+            color="primary"
+            onClick={this.props.history.goBack}
+          >
+            Back
+          </Button>
+        </div>
+
+      </div>
+    );
+  }
 }
+
+export default CreateOffer;

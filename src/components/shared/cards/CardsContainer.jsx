@@ -9,6 +9,7 @@ class CardsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: '',
       offers: [],
       isLoading: false,
     };
@@ -20,17 +21,18 @@ class CardsContainer extends React.Component {
   static service = new OffersService();
 
   render() {
-    const {offers, isLoading} = this.state;
+    const {offers, isLoading, error} = this.state;
 
     if (isLoading) {
       return <Loading/>
     }
 
-    if (!offers) {
+    console.log(error);
+    if (error) {
       // TODO: toastr component;
       return (
         <div className="wrapper">
-          Something went wrong!
+          Error: {error}!
         </div>
       );
     }
@@ -63,18 +65,31 @@ class CardsContainer extends React.Component {
   async componentDidMount() {
 
     this.isLoading = true;
-    let offers;
+    let res;
 
     try {
       if (this.method === 'all') {
-        offers = await CardsContainer.service.getAllOffers();
+        res = await CardsContainer.service.getAllOffers();
       } else {
-        offers = await CardsContainer.service.getUserOffers();
+        res = await CardsContainer.service.getUserOffers();
       }
-      this.setState({offers: offers.posts});
-      this.isLoading = false;
-    } catch (err) {
-      this.isLoading = false;
+
+      console.log(res);
+      if (res.error) {
+        const message = res.message + ' ' + res.error.message;
+        throw new Error(message);
+      }
+
+      this.setState({
+        offers: res.posts,
+        isLoading: false,
+        });
+    } catch (error) {
+      console.log(error);
+      this.setState({
+        error: error.message,
+        isLoading: false,
+      })
     }
   }
 }

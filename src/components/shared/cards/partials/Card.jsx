@@ -21,6 +21,7 @@ export default function Card({title, subtitle, content, price, image, _id, isCre
         <SliceText text={content}/>
 
         <p className="price"><span>{price}</span> BGN</p>
+
         <Link to={`/offers/view/${_id}`} className="view-btn">
           <Button
             fullWidth
@@ -31,35 +32,38 @@ export default function Card({title, subtitle, content, price, image, _id, isCre
           >
             View
           </Button>
+        </Link>
 
+        {
+          isCreator
 
-          {
-            isCreator
-
-              ? <div>
+            ? <div>
+              <Link to={`/offers/edit/${_id}`} className="view-btn">
                 <Button
                   fullWidth
                   disableElevation
                   variant="contained"
                   size="large"
-                  color="primary"
+                  className="edit-btn"
                 >
                   Edit
                 </Button>
+              </Link>
+
+              <Link to={`/offers/delete/${_id}`} className="view-btn">
                 <Button
                   fullWidth
                   disableElevation
                   variant="contained"
                   size="large"
-                  color="primary"
+                  className="delete-btn"
                 >
                   Delete
                 </Button>
-              </div>
-              : null
-          }
-
-        </Link>
+              </Link>
+            </div>
+            : null
+        }
 
       </div>
     </div>

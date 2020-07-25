@@ -5,6 +5,8 @@ import ViewOffer from "../components/pages/offers/ViewOffer";
 import EditOffer from "../components/pages/offers/EditOffer";
 import Logout from "../components/pages/user/Logout";
 import PrivateRoute from "./PrivateRoute";
+import CreateOffer from "../components/pages/offers/CreateOffer";
+import DeleteOffer from "../components/pages/offers/DeleteOffer";
 
 const Home = lazy(() => import('../components/pages/home/Home'));
 const AllOffers = lazy(() => import('../components/pages/offers/AllOffers'));
@@ -20,8 +22,10 @@ export function RouterMain() {
       <Switch>
         <Route path='/' exact component={Home}/>
         <Route path='/offers' exact component={AllOffers}/>
+        <Route path='/offers/create' exact component={CreateOffer}/>
         <Route path='/offers/view/:id' exact component={ViewOffer}/>
         <Route path='/offers/edit/:id' exact component={EditOffer}/>
+        <Route path='/offers/delete/:id' exact component={DeleteOffer}/>
         <PrivateRoute path="/user/offers" exact component={UserOffers}/>
         <Route path='/user/login' exact component={Login}/>
         <PrivateRoute path="/user/logout" exact component={Logout}/>

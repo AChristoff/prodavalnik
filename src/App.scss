@@ -47,6 +47,32 @@
 				background: $gradient-theme-disabled;
 			}
 		}
+
+		button.edit-btn {
+			color: $pure-white;
+			background: $gradient-edit;
+
+			&:hover {
+				background: $gradient-edit-hover;
+			}
+
+			&:disabled {
+				background: $gradient-theme-disabled;
+			}
+		}
+
+		button.delete-btn {
+			color: $pure-white;
+			background: $gradient-delete;
+
+			&:hover {
+				background: $gradient-delete-hover;
+			}
+
+			&:disabled {
+				background: $gradient-theme-disabled;
+			}
+		}
 	}
 }
 
