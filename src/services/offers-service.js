@@ -6,6 +6,7 @@ class OffersService {
 
     this.allOffersUrl = `${this.baseUrl}/posts/all`;
     this.UserOffersUrl = `${this.baseUrl}/posts`;
+    this.getOfferUrl = `${this.baseUrl}/post/`;
   }
 
   getAllOffers(page = '1', limit = '6', sort = '', order = '', search = '', filter = '') {
@@ -14,6 +15,10 @@ class OffersService {
 
   getUserOffers() {
     return get(`${this.UserOffersUrl}`);
+  }
+
+  getOffer(id) {
+    return get(`${this.getOfferUrl}` + id);
   }
 }
 

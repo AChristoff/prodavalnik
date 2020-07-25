@@ -8,18 +8,6 @@ class NavigationWithContex extends React.Component {
     super(props);
   }
 
-  // handleClick = () => {
-  //   const {updateUserData} = this.props;
-  //
-  //   updateUserData({
-  //     isAuth: false,
-  //     username: '',
-  //     role: '',
-  //   });
-  //   window.localStorage.clear();
-  //   return <Redirect to='/'/>
-  // };
-
   render() {
     const {isAuth, username} = this.props;
 
