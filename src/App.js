@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import Header from "./components/shared/Header";
+import Header from "./components/shared/main/Header";
 import {RouterMain} from "./router";
-import Footer from "./components/shared/Footer";
+import Footer from "./components/shared/main/Footer";
 import {UserProvider, defaultUserState} from "./context/user-context";
 
 class App extends React.Component {

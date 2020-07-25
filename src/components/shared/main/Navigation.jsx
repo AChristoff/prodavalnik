@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink, Redirect} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {UserConsumer} from "../../context/user-context";
+import {UserConsumer} from "../../../context/user-context";
 
 class NavigationWithContex extends React.Component {
   constructor(props) {

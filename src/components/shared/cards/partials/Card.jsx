@@ -2,6 +2,7 @@ import React from 'react';
 import "./Card.scss"
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
+import SliceText from "../../slice-text/SliceText";
 
 export default function Card({title, subtitle, content, price, image, _id}) {
   return (
@@ -16,9 +17,9 @@ export default function Card({title, subtitle, content, price, image, _id}) {
       <div className="card-body">
         <h5>{title}</h5>
         <p>{subtitle}</p>
-        <p>{content}</p>
-        <p>{price}</p>
+        <SliceText text={content}/>
 
+        <p className="price"><span>{price}</span> BGN</p>
         <Link to={`/offers/view/${_id}`} className="view-btn">
           <Button
             fullWidth
