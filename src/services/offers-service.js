@@ -1,4 +1,4 @@
-import {get, post, put} from './data/requester';
+import {del, get, post, put} from './data/requester';
 
 class OffersService {
   constructor() {
@@ -9,6 +9,7 @@ class OffersService {
     this.getOfferUrl = `${this.baseUrl}/post/`;
     this.createOfferUrl = `${this.baseUrl}/post/create`;
     this.editOfferUrl = `${this.baseUrl}/post/edit/`;
+    this.deleteOfferUrl = `${this.baseUrl}/post/delete/`;
   }
 
   getAllOffers(page = '1', limit = '6', sort = '', order = '', search = '', filter = '') {
@@ -29,6 +30,10 @@ class OffersService {
 
   editOffer(id, offerData) {
     return put(`${this.editOfferUrl}` + id, offerData);
+  }
+
+  deleteOffer(id) {
+    return del(`${this.deleteOfferUrl}` + id);
   }
 }
 

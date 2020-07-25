@@ -1,6 +1,5 @@
 import React from 'react';
 import Heading from "../../../shared/Heading";
-import Button from "@material-ui/core/Button";
 import OffersForm from "../../../shared/form/offers/OffersForm";
 import OffersService from "../../../../services/offers-service";
 import Loading from "../../../shared/Loading";
@@ -55,7 +54,7 @@ class EditOffer extends React.Component {
           history={this.props.history}
           match={this.props.match}
           {...offer}
-          isEdit={true}/>
+          formType='edit'/>
 
       </div>
     );

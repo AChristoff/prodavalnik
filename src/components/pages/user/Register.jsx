@@ -1,8 +1,7 @@
 import React from 'react';
-
-import Button from "@material-ui/core/Button";
-import * as Yup from "yup";
 import {Form, Formik} from "formik";
+import * as Yup from "yup";
+import Button from "@material-ui/core/Button";
 import FormikField from "../../shared/form/FormikField";
 import Heading from "../../shared/Heading";
 
@@ -58,14 +57,7 @@ export default function Register() {
             <FormikField name="password" label="Password" type="password" placeholder="Ex. John#567" icon="password"/>
             <FormikField name="rePassword" label="Confirm Password" type="password" icon="password"/>
 
-            <Button
-              fullWidth
-              type="submit"
-              variant="contained"
-              size="large"
-              color="primary"
-              disabled={!props.isValid || !props.dirty}
-            >
+            <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>
               Register
             </Button>
 

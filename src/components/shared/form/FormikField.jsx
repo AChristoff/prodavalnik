@@ -6,10 +6,10 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import {AccountCircle, MailOutline, Visibility, VisibilityOff} from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 
-export default function FormikField({name, label, type="text", placeholder='', icon}) {
+export default function FormikField({name, label, type = "text", placeholder = '', icon, required, disabled = false}) {
 
   const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
+    setValues({...values, showPassword: !values.showPassword});
   };
 
   const [values, setValues] = React.useState({
@@ -26,11 +26,11 @@ export default function FormikField({name, label, type="text", placeholder='', i
 
   function getIcon(icon) {
     if (icon === 'email') {
-      return  <MailOutline/>;
+      return <MailOutline/>;
     }
 
     if (icon === 'username') {
-      return <AccountCircle />;
+      return <AccountCircle/>;
     }
 
     if (icon === 'password') {
@@ -39,7 +39,7 @@ export default function FormikField({name, label, type="text", placeholder='', i
         onClick={handleClickShowPassword}
         onMouseDown={handleMouseDownPassword}
       >
-        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+        {values.showPassword ? <Visibility/> : <VisibilityOff/>}
       </IconButton>;
     }
 
@@ -64,7 +64,7 @@ export default function FormikField({name, label, type="text", placeholder='', i
         type={getType(type)}
         helperText={<ErrorMessage className="error-msg" name={name}/>}
         placeholder={placeholder}
-        required
+        disabled={disabled}
         fullWidth
         autoComplete="off"
         InputProps={{

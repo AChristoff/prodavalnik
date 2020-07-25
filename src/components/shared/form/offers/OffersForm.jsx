@@ -28,6 +28,14 @@ const OfferSchema = Yup.object().shape({
     .required('Image is required!'),
 });
 
+const DeleteSchema = Yup.object().shape({
+  title: Yup.string(),
+  category: Yup.string(),
+  content: Yup.string(),
+  price: Yup.number(),
+  image: Yup.string(),
+});
+
 class OffersForm extends React.Component {
   constructor(props) {
     super(props);
@@ -81,50 +89,80 @@ class OffersForm extends React.Component {
     }
   };
 
+  handleDelete = async () => {
+    try {
+      const res = await OffersForm.service.deleteOffer(this.offerId);
+
+      if (res.errors) {
+        const message = res.message;
+        throw new Error(message);
+      } else {
+        this.props.history.push("/user/offers");
+      }
+
+    } catch (error) {
+
+      this.setState({
+        error: error.message,
+      })
+    }
+
+  };
+
+  handleSubmit = (formType) => {
+    switch (formType) {
+      case 'create':
+        return this.handleCreate;
+      case 'edit':
+        return this.handleEdit;
+      case 'delete':
+        return this.handleDelete;
+      default:
+        return;
+    }
+  };
+
   render() {
-    const {title, category, content, price, image, isEdit} = this.props;
+    const {title, category, content, price, image, formType} = this.props;
 
     return (
-      <div className="create-offer wrapper">
-
-        <Formik
-          initialValues={
-            {
-              title: title || '',
-              category: category || '',
-              content: content || '',
-              price: price || '',
-              image: image || ''
-            }
+      <Formik
+        initialValues={
+          {
+            title: title || '',
+            category: category || '',
+            content: content || '',
+            price: price || '',
+            image: image || ''
           }
-          validationSchema={OfferSchema}
-          onSubmit={isEdit ? this.handleEdit : this.handleCreate}
-        >
-          {(props) => (
-            <Form className="create-offer-from">
+        }
+        validationSchema={formType === 'delete' ? DeleteSchema : OfferSchema}
+        onSubmit={this.handleSubmit(formType)}
+      >
+        {(props) => (
+          <Form className="offer-from">
 
-              <FormikField name="title" label="Title" icon="username"/>
-              <FormikField name="category" label="Category" icon="username"/>
-              <FormikField name="content" label="Description" icon="username"/>
-              <FormikField name="price" label="Price" icon="username"/>
-              <FormikField name="image" label="Image" icon="username"/>
+            <FormikField name="title" label="Title" icon="username" disabled={formType === 'delete'}/>
+            <FormikField name="category" label="Category" icon="username" disabled={formType === 'delete'}/>
+            <FormikField name="content" label="Description" icon="username" disabled={formType === 'delete'}/>
+            <FormikField name="price" label="Price" icon="username" disabled={formType === 'delete'}/>
+            <FormikField name="image" label="Image" icon="username" disabled={formType === 'delete'}/>
 
-              <Button
-                fullWidth
-                type="submit"
-                variant="contained"
-                size="large"
-                color="primary"
-                disabled={!props.isValid || !props.dirty}
-              >
-                {isEdit ? 'Edit' : 'Create'}
-              </Button>
+            <Button
+              fullWidth
+              type="submit"
+              variant="contained"
+              size="large"
+              color="primary"
+              className={formType === 'delete' ? 'delete-btn' : ''}
+              disabled={formType !== 'delete' ? (!props.isValid || !props.dirty) : false}
+            >
+              {formType}
+            </Button>
 
-            </Form>
-          )}
-        </Formik>
-
-      </div>
+          </Form>
+        )}
+      </Formik>
     );
   }
 }

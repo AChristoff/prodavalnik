@@ -212,11 +212,13 @@
 
 		&.login,
 		&.register,
-		&.create-offer {
+		&.create-offer,
+		&.edit-offer,
+		&.delete-offer {
 
 			.login-from,
 			.register-from,
-			.create-offer-from {
+			.offer-from {
 
 				width: 24em;
 

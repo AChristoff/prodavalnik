@@ -92,14 +92,7 @@ class Login extends React.Component {
               <FormikField name="email" label="Email" icon="email"/>
               <FormikField name="password" label="Password" type="password" icon="password"/>
 
-              <Button
-                fullWidth
-                type="submit"
-                variant="contained"
-                size="large"
-                color="primary"
-                disabled={!props.isValid || !props.dirty}
-              >
+              <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>
                 Login
               </Button>
 
