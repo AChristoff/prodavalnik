@@ -2,8 +2,8 @@ import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {UserConsumer} from "../context/user-context";
 
-function RouteContext(props) {
-  const {path, exact, component, isAuth, role } = props;
+function RouteWithContext(props) {
+  const {path, exact, component, isAuth, role} = props;
 
   if (isAuth && role === 'Admin') {
     return <Route path={path} exact={exact} component={component}/>
@@ -18,15 +18,7 @@ const PrivateRoute = (props) => {
 
   return (
     <UserConsumer>
-      {
-        (user) => (
-          <RouteContext
-            {...props}
-            isAuth={user.isAuth}
-            role={user.role}
-          />
-        )
-      }
+      {userContext => <RouteWithContext {...props} isAuth={userContext.isAuth} role={userContext.role}/>}
     </UserConsumer>
   );
 };

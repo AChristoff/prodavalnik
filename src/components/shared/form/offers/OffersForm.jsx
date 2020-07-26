@@ -12,19 +12,19 @@ const OfferSchema = Yup.object().shape({
     .required('Title is required!'),
   category: Yup.string()
     .min(2, 'Min 6 chars!')
-    .max(20, 'Max 40 chars!')
+    .max(30, 'Max 30 chars!')
     .required('Category is required!'),
   content: Yup.string()
     .min(20, 'Min 20 chars!')
-    .max(1200, 'Max 400 chars!')
+    .max(1200, 'Max 1200 chars!')
     .required('Description is required!'),
   price: Yup.number()
     .typeError('Price must a valid number!')
-    .min(1, 'Price must be more then 1 BGN!')
+    .min(0.01, 'Price must be more then 0!')
     .required('Price is required!'),
   image: Yup.string()
     .min(6, 'Min 6 chars!')
-    .max(80, 'Max 80 chars!')
+    .max(400, 'Max 400 chars!')
     .required('Image is required!'),
 });
 
@@ -142,11 +142,11 @@ class OffersForm extends React.Component {
         {(props) => (
           <Form className="offer-from">
 
-            <FormikField name="title" label="Title" icon="username" disabled={formType === 'delete'}/>
-            <FormikField name="category" label="Category" icon="username" disabled={formType === 'delete'}/>
-            <FormikField name="content" label="Description" icon="username" disabled={formType === 'delete'}/>
-            <FormikField name="price" label="Price" icon="username" disabled={formType === 'delete'}/>
-            <FormikField name="image" label="Image" icon="username" disabled={formType === 'delete'}/>
+            <FormikField name="title" label="Title" icon="text" disabled={formType === 'delete'}/>
+            <FormikField name="category" label="Category" icon="text" disabled={formType === 'delete'}/>
+            <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'}/>
+            <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'}/>
+            <FormikField name="image" label="Image" icon="image" disabled={formType === 'delete'}/>
 
             <Button
               fullWidth

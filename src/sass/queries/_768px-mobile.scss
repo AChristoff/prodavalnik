@@ -109,6 +109,7 @@
 		height: 31vh;
 
 		h1 {
+			margin-top: 1em;
 			text-transform: uppercase;
 			font-weight: bold;
 			color: $pure-white;
@@ -121,8 +122,22 @@
 			}
 		}
 
-		.search {
+		.search-form {
 			width: 100%;
+
+			.formik-field {
+				.MuiIconButton-root {
+					padding: 5px;
+					margin-top: -2px;
+					border-radius: 8px 8px 0 0;
+					color: $pure-white;
+					background-color: $color-theme-green;
+
+					&:hover {
+						background-color: #43C99F;
+					}
+				}
+			}
 		}
 
 		&:after {

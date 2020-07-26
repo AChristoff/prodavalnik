@@ -3,7 +3,16 @@ import TextField from "@material-ui/core/TextField";
 import {ErrorMessage, Field} from "formik";
 import "./FormikField.scss"
 import InputAdornment from "@material-ui/core/InputAdornment";
-import {AccountCircle, MailOutline, Visibility, VisibilityOff} from "@material-ui/icons";
+import {
+  AccountCircle,
+  Image,
+  LocalOffer,
+  MailOutline,
+  Search,
+  TextFields,
+  Visibility,
+  VisibilityOff
+} from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 
 export default function FormikField({name, label, type = "text", placeholder = '', icon, required, disabled = false}) {
@@ -24,26 +33,33 @@ export default function FormikField({name, label, type = "text", placeholder = '
     event.preventDefault();
   };
 
+  const handleSearch = (event) => {
+    console.log(event);
+  };
+
   function getIcon(icon) {
-    if (icon === 'email') {
-      return <MailOutline/>;
+    switch (icon) {
+      case 'email':
+        return <MailOutline/>;
+      case 'username':
+        return <AccountCircle/>;
+      case 'text':
+        return <TextFields/>;
+      case 'image':
+        return <Image/>;
+      case 'price':
+        return <LocalOffer/>;
+      case 'password':
+        return <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                {values.showPassword ? <Visibility/> : <VisibilityOff/>}
+              </IconButton>;
+      case 'search':
+        return <IconButton type="submit" onClick={handleSearch}>
+                <Search/>
+              </IconButton>;
+      default:
+        return null;
     }
-
-    if (icon === 'username') {
-      return <AccountCircle/>;
-    }
-
-    if (icon === 'password') {
-      return <IconButton
-        aria-label="toggle password visibility"
-        onClick={handleClickShowPassword}
-        onMouseDown={handleMouseDownPassword}
-      >
-        {values.showPassword ? <Visibility/> : <VisibilityOff/>}
-      </IconButton>;
-    }
-
-    return null;
   }
 
   function getType(type) {

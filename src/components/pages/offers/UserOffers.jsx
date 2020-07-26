@@ -6,7 +6,7 @@ class UserOffers extends React.Component {
   render() {
 
     return (
-      <CardsContainer method='user' headingText='My Offers' isCreator={true}/>
+      <CardsContainer method='user' headingText='My Offers' isCreator={true} history={this.props.history}/>
     )
   }
 }

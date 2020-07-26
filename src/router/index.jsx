@@ -21,16 +21,16 @@ export function RouterMain() {
     <Suspense fallback={<Loading/>}>
       <Switch>
         <Route path='/' exact component={Home}/>
-        <Route path='/offers' exact component={AllOffers}/>
-        <Route path='/offers/create' exact component={CreateOffer}/>
+        <Route path='/offers/:page?/:limit?/:sort?/:order?/:search?/:filters?' exact component={AllOffers}/>
         <Route path='/offers/view/:id' exact component={ViewOffer}/>
-        <Route path='/offers/edit/:id' exact component={EditOffer}/>
-        <Route path='/offers/delete/:id' exact component={DeleteOffer}/>
-        <PrivateRoute path="/user/offers" exact component={UserOffers}/>
         <Route path='/user/login' exact component={Login}/>
-        <PrivateRoute path="/user/logout" exact component={Logout}/>
         <Route path='/user/register' exact component={Register}/>
         <Route path='/user/register/confirm' exact component={RegisterConfirm}/>
+        <PrivateRoute path="/user/offers" exact component={UserOffers}/>
+        <PrivateRoute path='/offers/create' exact component={CreateOffer}/>
+        <PrivateRoute path='/offers/edit/:id' exact component={EditOffer}/>
+        <PrivateRoute path='/offers/delete/:id' exact component={DeleteOffer}/>
+        <PrivateRoute path="/user/logout" exact component={Logout}/>
         <Route component={NotFound}/>
       </Switch>
     </Suspense>
