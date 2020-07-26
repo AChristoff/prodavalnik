@@ -29,26 +29,6 @@ class Jumbotron extends React.Component {
       search: values.search,
       redirect: true,
     })
-
-    //page = '1', limit = '6', sort = '', order = '', search = '', filter = ''
-
-    // this.setState({
-    //   error: '',
-    // }, async () => {
-    //   try {
-    //     const res = await Jumbotron.service.getAllOffers(values);
-    //
-    //     if (res.errors) {
-    //       const message = res.message;
-    //       throw new Error(message);
-    //     }
-    //   } catch (error) {
-    //
-    //     this.setState({
-    //       error: error.message,
-    //     })
-    //   }
-    // });
   };
 
   render() {
@@ -56,7 +36,7 @@ class Jumbotron extends React.Component {
     const {redirect, search} = this.state;
 
     if (redirect) {
-      return <Redirect to={`/offers/${search}`} />
+      return <Redirect to={`/offers/all/1/4/createdAt/-1/${search}`} />
     }
 
     return (
@@ -77,23 +57,6 @@ class Jumbotron extends React.Component {
             )}
           </Formik>
 
-
-          {/*<form className="search-from">*/}
-          {/*  <FormControl className="search">*/}
-          {/*    <InputLabel htmlFor="search">Search</InputLabel>*/}
-          {/*    <Input*/}
-          {/*      id="search"*/}
-          {/*      placeholder="..."*/}
-          {/*      type="text"*/}
-          {/*      value={values.search}*/}
-          {/*      endAdornment={*/}
-          {/*        <InputAdornment position="end">*/}
-          {/*          <Search/>*/}
-          {/*        </InputAdornment>*/}
-          {/*      }*/}
-          {/*    />*/}
-          {/*  </FormControl>*/}
-          {/*</form>*/}
         </div>
       </div>
     );

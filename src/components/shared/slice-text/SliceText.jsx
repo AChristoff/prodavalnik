@@ -1,7 +1,8 @@
 import React from 'react';
 import "./sliceText.scss"
+import SanitizedText from '../SanitizedText';
 
-export default function SliceText({tag = 'p', text = '', length='100'}) {
+export default function SliceText({tag = 'p', text = '', length = '100', isSanitized = false}) {
 
   const Tag = tag;
   const textLength = Number(length);
@@ -14,6 +15,8 @@ export default function SliceText({tag = 'p', text = '', length='100'}) {
     : 'hidden-text';
 
   return (
-    <Tag className={hiddenText}>{slicedText}</Tag>
+    isSanitized
+      ? <SanitizedText tag={Tag} text={slicedText}/>
+      : <Tag className={hiddenText}>{slicedText}</Tag>
   );
 }

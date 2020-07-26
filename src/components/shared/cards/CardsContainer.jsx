@@ -16,6 +16,12 @@ class CardsContainer extends React.Component {
     this.method = props.method;
     this.headingText = props.headingText;
     this.isCreator = props.isCreator;
+    this.page = props.page;
+    this.limit = props.limit;
+    this.sort = props.sort;
+    this.order = props.order;
+    this.search = props.search;
+    this.filter = props.filter;
   }
 
   static service = new OffersService();
@@ -62,13 +68,14 @@ class CardsContainer extends React.Component {
   }
 
   async componentDidMount() {
+    const {page, limit, sort, order, search, filter} = this.props;
 
     this.isLoading = true;
     let res;
 
     try {
       if (this.method === 'all') {
-        res = await CardsContainer.service.getAllOffers();
+        res = await CardsContainer.service.getAllOffers(page, limit, sort, order, search, filter);
       } else {
         res = await CardsContainer.service.getUserOffers();
       }

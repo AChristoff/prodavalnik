@@ -3,8 +3,9 @@ import "./Card.scss"
 import Button from "@material-ui/core/Button";
 import {Link, NavLink} from "react-router-dom";
 import SliceText from "../../slice-text/SliceText";
+import SanitizedText from "../../SanitizedText";
 
-export default function Card({title, subtitle, content, price, image, _id, isCreator}) {
+export default function Card({title, category, content, price, image, _id, isCreator}) {
 
   return (
     <div className="site-card">
@@ -16,9 +17,9 @@ export default function Card({title, subtitle, content, price, image, _id, isCre
       </div>
 
       <div className="card-body">
-        <h5>{title}</h5>
-        <p>{subtitle}</p>
-        <SliceText text={content}/>
+        <SanitizedText tag="h5" text={title}/>
+        <SanitizedText text={category}/>
+        <SliceText text={content} isSanitized={true}/>
 
         <p className="price"><span>{price}</span> BGN</p>
 

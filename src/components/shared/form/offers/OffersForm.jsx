@@ -52,13 +52,11 @@ class OffersForm extends React.Component {
   handleCreate = async (values) => {
     try {
       const res = await OffersForm.service.createOffer(values);
-
+      console.log(res);
       if (res.errors) {
         const message = res.message;
         throw new Error(message);
-        console.log(res.status);
-      } else if (res.status === 201) {
-        console.log("before");
+      } else {
         this.props.history.push("/user/offers");
       }
 
@@ -73,7 +71,7 @@ class OffersForm extends React.Component {
   handleEdit = async (values) => {
     try {
       const res = await OffersForm.service.editOffer(this.offerId, values);
-
+      console.log(res);
       if (res.errors) {
         const message = res.message;
         throw new Error(message);
@@ -92,7 +90,7 @@ class OffersForm extends React.Component {
   handleDelete = async () => {
     try {
       const res = await OffersForm.service.deleteOffer(this.offerId);
-
+      console.log(res);
       if (res.errors) {
         const message = res.message;
         throw new Error(message);
@@ -122,6 +120,14 @@ class OffersForm extends React.Component {
     }
   };
 
+  // Converts HTML Entities from DB text to display the corresponding symbols
+  sanitizedText = (text) => {
+    const textConverter = document.createElement('textarea');
+    textConverter.innerHTML = text;
+
+    return textConverter.value;
+  };
+
   render() {
     const {title, category, content, price, image, formType} = this.props;
 
@@ -129,9 +135,9 @@ class OffersForm extends React.Component {
       <Formik
         initialValues={
           {
-            title: title || '',
-            category: category || '',
-            content: content || '',
+            title: this.sanitizedText(title) || '',
+            category: this.sanitizedText(category) || '',
+            content: this.sanitizedText(content) || '',
             price: price || '',
             image: image || ''
           }

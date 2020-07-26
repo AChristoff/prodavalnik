@@ -12,8 +12,8 @@ class OffersService {
     this.deleteOfferUrl = `${this.baseUrl}/post/delete/`;
   }
 
-  getAllOffers(page = '1', limit = '6', sort = '', order = '', search = '', filter = '') {
-    return get(`${this.allOffersUrl}/${page}/${limit}${sort}${order}${search}${filter}`);
+  getAllOffers(page = '1', limit = '6', sort = 'createdAt', order = '-1', search = '', filter = '') {
+    return get(`${this.allOffersUrl}/${page}/${limit}/${sort}/${order}/${search}${filter}`);
   }
 
   getUserOffers() {

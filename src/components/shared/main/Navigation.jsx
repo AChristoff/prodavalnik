@@ -29,7 +29,7 @@ class NavigationWithContex extends React.Component {
           </li>
 
           <li>
-            <NavLink to="/offers" exact activeClassName="active">
+            <NavLink to="/offers/all" exact activeClassName="active">
               <Button variant="contained" color="primary" disableElevation>Offers</Button>
             </NavLink>
           </li>

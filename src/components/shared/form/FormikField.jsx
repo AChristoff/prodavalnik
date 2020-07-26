@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import {ErrorMessage, Field} from "formik";
 import "./FormikField.scss"
 import InputAdornment from "@material-ui/core/InputAdornment";
+import IconButton from "@material-ui/core/IconButton";
 import {
   AccountCircle,
   Image,
@@ -13,19 +14,14 @@ import {
   Visibility,
   VisibilityOff
 } from "@material-ui/icons";
-import IconButton from "@material-ui/core/IconButton";
 
-export default function FormikField({name, label, type = "text", placeholder = '', icon, required, disabled = false}) {
+export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false}) {
 
   const handleClickShowPassword = () => {
     setValues({...values, showPassword: !values.showPassword});
   };
 
   const [values, setValues] = React.useState({
-    amount: '',
-    password: '',
-    weight: '',
-    weightRange: '',
     showPassword: false,
   });
 
