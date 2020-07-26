@@ -1,15 +1,13 @@
 import React from 'react';
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {UserConsumer} from "../../../context/user-context";
+import {AuthContext} from "../../../context/user-context";
 
-class NavigationWithContex extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+class Navigation extends React.Component {
+  static contextType = AuthContext;
 
   render() {
-    const {isAuth, username} = this.props;
+    const {isAuth, username} = this.context;
 
     return (
       <nav className="site-nav">
@@ -83,23 +81,5 @@ class NavigationWithContex extends React.Component {
     );
   }
 }
-
-const Navigation = (props) => {
-
-  return (
-    <UserConsumer>
-      {
-        (user) => (
-          <NavigationWithContex
-            {...props}
-            isAuth={user.isAuth}
-            username={user.username}
-            updateUserData={user.updateUserData}
-          />
-        )
-      }
-    </UserConsumer>
-  );
-};
 
 export default Navigation;

@@ -1,13 +1,32 @@
-import {createContext} from "react";
+import React, {Component, createContext} from "react";
 
-const defaultUserState = {
-  username: window.localStorage.getItem('username') || '',
-  role: window.localStorage.getItem('role') || '',
-  isAuth: !!window.localStorage.getItem('token'),
-  updateUserData() {
+export const AuthContext = createContext({});
+
+class AuthContextProvider extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: window.localStorage.getItem('username') || '',
+      role: window.localStorage.getItem('role') || '',
+      isAuth: !!window.localStorage.getItem('token'),
+    };
   }
-};
 
-const {Consumer: UserConsumer, Provider: UserProvider} = createContext(defaultUserState);
+  updateUserData = ({username, role, isAuth}) => {
+    this.setState({
+      username,
+      role,
+      isAuth,
+    })
+  };
 
-export {UserConsumer, UserProvider, defaultUserState,}
+  render() {
+    return (
+      <AuthContext.Provider value={{...this.state, updateUserData: this.updateUserData}}>
+        {this.props.children}
+      </AuthContext.Provider>
+    );
+  }
+}
+
+export default AuthContextProvider;

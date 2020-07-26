@@ -1,22 +1,19 @@
 import React from 'react';
 
 import {Redirect} from "react-router-dom";
-import {UserConsumer} from "../../../context/user-context";
+import {AuthContext} from "../../../context/user-context";
 
-class LogoutContext extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+class Logout extends React.Component {
+  static contextType = AuthContext;
 
   componentWillMount() {
-    const {updateUserData} = this.props;
+    const {updateUserData} = this.context;
 
     window.localStorage.clear();
     updateUserData({
       isAuth: false,
       username: '',
       role: '',
-      updateUserData,
     });
   }
 
@@ -26,22 +23,5 @@ class LogoutContext extends React.Component {
     );
   }
 }
-
-const Logout = (props) => {
-
-  return (
-    <UserConsumer>
-      {
-        (user) => (
-          <LogoutContext
-            {...props}
-            isAuth={user.isAuth}
-            updateUserData={user.updateUserData}
-          />
-        )
-      }
-    </UserConsumer>
-  );
-};
 
 export default Logout;

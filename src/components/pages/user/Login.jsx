@@ -7,7 +7,8 @@ import FormikField from "../../shared/form/FormikField";
 import Button from "@material-ui/core/Button";
 import Heading from "../../shared/Heading";
 import AuthService from "../../../services/auth-service";
-import {UserConsumer} from "../../../context/user-context"
+import {AuthContext} from "../../../context/user-context";
+
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -28,9 +29,11 @@ class Login extends React.Component {
   }
 
   static service = new AuthService();
+  static contextType = AuthContext;
 
   handleSubmit = (values) => {
-    const {updateUserData} = this.props;
+    const {updateUserData} = this.context;
+    console.log(this.context);
 
     this.setState({
       error: '',
@@ -51,7 +54,6 @@ class Login extends React.Component {
           isAuth: true,
           username: res.username,
           role: res.role,
-          updateUserData,
         });
 
       } catch (error) {
@@ -65,7 +67,7 @@ class Login extends React.Component {
 
   render() {
 
-    const {isAuth} = this.props;
+    const {isAuth} = this.context;
 
     if (isAuth) {
       return (
@@ -105,21 +107,4 @@ class Login extends React.Component {
   }
 }
 
-const LoginContext = (props) => {
-
-  return (
-    <UserConsumer>
-      {
-        (user) => (
-          <Login
-            {...props}
-            isAuth={user.isAuth}
-            updateUserData={user.updateUserData}
-          />
-        )
-      }
-    </UserConsumer>
-  );
-};
-
-export default LoginContext;
+export default Login;
