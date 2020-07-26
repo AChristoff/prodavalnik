@@ -135,9 +135,9 @@ class OffersForm extends React.Component {
       <Formik
         initialValues={
           {
-            title: this.sanitizedText(title) || '',
-            category: this.sanitizedText(category) || '',
-            content: this.sanitizedText(content) || '',
+            title: title ? this.sanitizedText(title) : '',
+            category: category ? this.sanitizedText(category) : '',
+            content: content ? this.sanitizedText(content) : '',
             price: price || '',
             image: image || ''
           }
@@ -160,7 +160,7 @@ class OffersForm extends React.Component {
               variant="contained"
               size="large"
               color="primary"
-              className={formType === 'delete' ? 'delete-btn' : ''}
+              className={`${formType}-btn`}
               disabled={formType !== 'delete' ? (!props.isValid || !props.dirty) : false}
             >
               {formType}

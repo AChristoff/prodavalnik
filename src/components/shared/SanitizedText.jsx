@@ -1,9 +1,9 @@
 import React from 'react';
 
 // Converts HTML Entities from DB texts to display the corresponding symbols
-export default function SanitizedText({tag = 'p', text = ''}) {
+export default function SanitizedText({tag = 'p', text = '', customClass = ''}) {
   const Tag = tag;
   return (
-    <Tag dangerouslySetInnerHTML={{__html: text}} />
+    <Tag className={customClass} dangerouslySetInnerHTML={{__html: text}} />
   );
 }

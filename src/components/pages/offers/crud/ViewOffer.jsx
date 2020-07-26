@@ -3,6 +3,7 @@ import Heading from "../../../shared/Heading";
 import OffersService from "../../../../services/offers-service";
 import Loading from "../../../shared/Loading";
 import Button from "@material-ui/core/Button";
+import SanitizedText from "../../../shared/SanitizedText";
 
 class ViewOffer extends React.Component {
   constructor(props) {
@@ -53,10 +54,10 @@ class ViewOffer extends React.Component {
         <div className="view-offer-img-wrapper">
           <img src={offer.image} alt={offer.title}/>
         </div>
-        <p>{offer.title}</p>
+        <SanitizedText tag="h5" text={offer.title}/>
+        <SanitizedText text={offer.category}/>
+        <SanitizedText text={offer.content}/>
         <p>{offer.price}</p>
-        <p>{offer.subtitle}</p>
-        <p>{offer.content}</p>
 
         <div className="view-offer-back-btn">
           <Button

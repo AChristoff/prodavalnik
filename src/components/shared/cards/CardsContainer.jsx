@@ -4,6 +4,7 @@ import OffersService from "../../../services/offers-service";
 import Loading from "../Loading";
 import Heading from "../Heading";
 import Card from "./partials/Card";
+import OffersPagination from "../Pagination";
 
 class CardsContainer extends React.Component {
   constructor(props) {
@@ -63,6 +64,9 @@ class CardsContainer extends React.Component {
             ))
           }
         </div>
+
+        <OffersPagination/>
+
       </div>
     )
   }

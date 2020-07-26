@@ -16,7 +16,7 @@ export default function SliceText({tag = 'p', text = '', length = '100', isSanit
 
   return (
     isSanitized
-      ? <SanitizedText tag={Tag} text={slicedText}/>
+      ? <SanitizedText tag={Tag} text={slicedText} customClass={hiddenText}/>
       : <Tag className={hiddenText}>{slicedText}</Tag>
   );
 }
