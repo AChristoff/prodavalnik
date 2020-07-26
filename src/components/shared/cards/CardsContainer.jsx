@@ -5,6 +5,7 @@ import Loading from "../Loading";
 import Heading from "../Heading";
 import Card from "./partials/Card";
 import OffersPagination from "../Pagination";
+import {OfferContext} from "../../../context/offer-context";
 
 class CardsContainer extends React.Component {
   constructor(props) {
@@ -26,9 +27,11 @@ class CardsContainer extends React.Component {
   }
 
   static service = new OffersService();
+  static contextType = OfferContext;
 
   render() {
     const {offers, isLoading, error} = this.state;
+    const {currentPage, pageCount, changePage} = this.context;
 
     if (isLoading) {
       return <Loading/>
@@ -65,7 +68,10 @@ class CardsContainer extends React.Component {
           }
         </div>
 
-        <OffersPagination/>
+        <OffersPagination
+          currentPage={currentPage}
+          pageCount={pageCount}
+          changePage={changePage}/>
 
       </div>
     )

@@ -1,33 +1,24 @@
 import React from 'react';
 import Pagination from '@material-ui/lab/Pagination';
-import {Redirect} from "react-router-dom";
-
 
 class OffersPagination extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currentPage: '1',
-      nexPage: '1'
-    };
   }
 
   handleChange = (event, value) => {
-    this.setState({
-      nexPage: value.toString(),
-    })
+    this.props.changePage(4)
   };
 
   render() {
 
-    if(this.state.currentPage !== this.state.nexPage){
-      return <Redirect to={`/offers/all/${this.state.nexPage}/4/createdAt/-1`} />
-    }
+    const {currentPage, pageCount, changePage} = this.props;
 
     return (
       <div>
         <Pagination
-          count={10}
+          defaultPage={currentPage}
+          count={pageCount}
           color="primary"
           onChange={this.handleChange}
         />

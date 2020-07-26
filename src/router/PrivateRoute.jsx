@@ -3,9 +3,6 @@ import {Route, Redirect} from 'react-router-dom';
 import {AuthContext} from "../context/user-context";
 
 class PrivateRoute extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   static contextType = AuthContext;
 

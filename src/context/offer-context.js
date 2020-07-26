@@ -7,7 +7,7 @@ class OfferContextProvider extends Component {
     super(props);
     this.state = {
       currentPage: 1,
-      nexPage: 0,
+      pageCount: 10,
     };
   }
 
