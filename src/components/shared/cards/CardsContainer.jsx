@@ -13,6 +13,7 @@ class CardsContainer extends React.Component {
     this.state = {
       error: '',
       offers: [],
+      pageCount: 1,
       isLoading: false,
     };
     this.method = props.method;
@@ -30,8 +31,8 @@ class CardsContainer extends React.Component {
   static contextType = OfferContext;
 
   render() {
-    const {offers, isLoading, error} = this.state;
-    const {currentPage, pageCount, updateOfferContext} = this.context;
+    const {offers, isLoading, pageCount, error} = this.state;
+    const {currentPage, updateOfferContext} = this.context;
 
     if (isLoading) {
       return <Loading/>
@@ -46,7 +47,7 @@ class CardsContainer extends React.Component {
       );
     }
 
-    if (!isLoading && !offers.length) {
+    if (!isLoading && !offers) {
       return (
         <div className="all-offers wrapper">
           <Heading text={this.headingText}/>
@@ -79,16 +80,35 @@ class CardsContainer extends React.Component {
 
   async componentDidMount() {
     const {page, limit, sort, order, search, filter} = this.props;
+    const {currentPage, offersPerPage, updateOfferContext} = this.context;
+
+    if (page) {
+      updateOfferContext('currentPage', page);
+    }
+
+    if (limit) {
+      updateOfferContext('offersPerPage', limit);
+    }
 
     this.isLoading = true;
     let res;
 
     try {
       if (this.method === 'all') {
-        res = await CardsContainer.service.getAllOffers(page, limit, sort, order, search, filter);
+        res = await CardsContainer.service.getAllOffers(
+          currentPage,
+          offersPerPage,
+          sort,
+          order,
+          search,
+          filter);
       } else {
         res = await CardsContainer.service.getUserOffers();
       }
+
+      const pageCount = Math.ceil(Number(res.count) / offersPerPage);
+      console.log(res.count);
+      console.log(pageCount);
 
       if (res.error) {
         const message = res.message + ' ' + res.error.message;
@@ -97,6 +117,7 @@ class CardsContainer extends React.Component {
 
       this.setState({
         offers: res.posts,
+        pageCount: pageCount,
         isLoading: false,
       });
     } catch (error) {

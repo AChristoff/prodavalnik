@@ -21,7 +21,7 @@ class OffersPagination extends React.Component {
     return (
       <div>
         <Pagination
-          defaultPage={currentPage}
+          page={currentPage}
           count={pageCount}
           color="primary"
           onChange={this.handleChange}
