@@ -7,7 +7,7 @@ class OfferContextProvider extends Component {
     super(props);
     this.state = {
       currentPage: 1,
-      offersPerPage: 3,
+      offersPerPage: 6,
     };
   }
 

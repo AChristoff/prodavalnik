@@ -47,7 +47,7 @@ class CardsContainer extends React.Component {
       );
     }
 
-    if (!isLoading && !offers) {
+    if ((!isLoading && !offers) || (!isLoading && pageCount === 0)) {
       return (
         <div className="all-offers wrapper">
           <Heading text={this.headingText}/>
@@ -83,11 +83,11 @@ class CardsContainer extends React.Component {
     const {currentPage, offersPerPage, updateOfferContext} = this.context;
 
     if (page) {
-      updateOfferContext('currentPage', page);
+      updateOfferContext('currentPage', Number(page));
     }
 
     if (limit) {
-      updateOfferContext('offersPerPage', limit);
+      updateOfferContext('offersPerPage', Number(limit));
     }
 
     this.isLoading = true;
