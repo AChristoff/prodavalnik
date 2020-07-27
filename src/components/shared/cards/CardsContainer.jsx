@@ -31,7 +31,7 @@ class CardsContainer extends React.Component {
 
   render() {
     const {offers, isLoading, error} = this.state;
-    const {currentPage, pageCount, changePage} = this.context;
+    const {currentPage, pageCount, updateOfferContext} = this.context;
 
     if (isLoading) {
       return <Loading/>
@@ -71,7 +71,7 @@ class CardsContainer extends React.Component {
         <OffersPagination
           currentPage={currentPage}
           pageCount={pageCount}
-          changePage={changePage}/>
+          update={updateOfferContext}/>
 
       </div>
     )

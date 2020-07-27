@@ -11,15 +11,13 @@ class OfferContextProvider extends Component {
     };
   }
 
-  changePage = (nextPage) => {
-    this.setState({
-      currentPage: nextPage,
-    })
+  updateOfferContext = (key, value) => {
+    this.setState({[key]: value})
   };
 
   render() {
     return (
-      <OfferContext.Provider value={{...this.state, changePage: this.changePage}}>
+      <OfferContext.Provider value={{...this.state, updateOfferContext: this.updateOfferContext}}>
         {this.props.children}
       </OfferContext.Provider>
     );

@@ -1,18 +1,22 @@
 import React from 'react';
 import Pagination from '@material-ui/lab/Pagination';
+import {OfferContext} from "../../context/offer-context";
 
 class OffersPagination extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  static contextType = OfferContext;
+
   handleChange = (event, value) => {
-    this.props.changePage(4)
+    value = Number(value);
+    this.props.update('currentPage', value)
   };
 
   render() {
 
-    const {currentPage, pageCount, changePage} = this.props;
+    const {currentPage, pageCount} = this.props;
 
     return (
       <div>

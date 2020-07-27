@@ -7,13 +7,13 @@ class AllOffers extends React.Component {
     this.params = props.match.params;
   }
 
-  render() {
+    render() {
 
     return (
-      <CardsContainer
-        method='all'
-        headingText='Offers'
-        {...this.params}/>
+
+      <>
+        <CardsContainer method='all' headingText='Offers'{...this.params}/>
+      </>
     )
   }
 }
