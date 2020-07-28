@@ -8,6 +8,10 @@ class OfferContextProvider extends Component {
     this.state = {
       currentPage: 1,
       offersPerPage: 3,
+      sort: '',
+      order: -1,
+      search: '',
+      filter: '',
     };
   }
 

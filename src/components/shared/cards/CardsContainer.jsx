@@ -13,14 +13,13 @@ class CardsContainer extends React.Component {
     this.state = {
       error: '',
       offers: [],
-      page: props.currentPage || 1,
+      page: props.currentPage,
       pageCount: 1,
       isLoading: false,
     };
     this.method = props.method;
     this.headingText = props.headingText;
     this.isCreator = props.isCreator;
-    this.page = props.currentPage;
     this.limit = props.limit;
     this.sort = props.sort;
     this.order = props.order;
@@ -32,8 +31,10 @@ class CardsContainer extends React.Component {
   static contextType = OfferContext;
 
   render() {
-    const {offers, isLoading, pageCount, error} = this.state;
+    const {offers, page, isLoading, pageCount, error} = this.state;
     const {currentPage, updateOfferContext} = this.context;
+
+    console.log(page);
 
     if (isLoading) {
       return <Loading/>
@@ -78,32 +79,45 @@ class CardsContainer extends React.Component {
     )
   }
 
-  async componentDidUpdate() {
+  async componentDidUpdate(prevProps, prevState) {
 
+    const {page} = this.state;
     const {sort, order, search, filter} = this.props;
     const {currentPage, offersPerPage} = this.context;
-    let res;
-    this.isLoading = true;
-    try {
-      if (this.method === 'all') {
-        res = await CardsContainer.service.getAllOffers(
-          currentPage,
-          offersPerPage,
-          sort,
-          order,
-          search,
-          filter);
 
-        this.setState({
-          offers: res.posts,
-          isLoading: false,
-        });
-      }
-    } catch (error) {
+    if (currentPage !== page) {
       this.setState({
-        error: error.message,
-        isLoading: false,
+        page: currentPage,
       })
+    }
+
+    if (prevState.page !== this.state.page) {
+
+      console.log('currentPage:', currentPage, 'offersPerPage:', offersPerPage, 'sort:', sort, 'order:', order, 'search:', search, 'filter:', filter);
+
+      let res;
+      this.isLoading = true;
+      try {
+        if (this.method === 'all') {
+          res = await CardsContainer.service.getAllOffers(
+            currentPage,
+            offersPerPage,
+            sort,
+            order,
+            search,
+            filter);
+
+          this.setState({
+            offers: res.posts,
+            isLoading: false,
+          });
+        }
+      } catch (error) {
+        this.setState({
+          error: error.message,
+          isLoading: false,
+        })
+      }
     }
   }
 
