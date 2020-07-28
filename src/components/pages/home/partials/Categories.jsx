@@ -20,7 +20,7 @@ class Categories extends React.Component {
         'Furniture & Decor': 'chair.svg',
         'Fashion & Beauty': 'bag.svg',
         'Pets': 'pet.svg',
-        'Sports & Equipments': 'ball.svg',
+        'Sports & Equipment': 'ball.svg',
         'Machines & Tools': 'tools.svg',
         'Art & Books': 'guitar.svg',
         'Antiques': 'antique.svg',

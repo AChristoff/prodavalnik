@@ -11,7 +11,9 @@ class OffersPagination extends React.Component {
 
   handleChange = (event, value) => {
     value = Number(value);
-    this.props.update('currentPage', value)
+    const {updateOfferContext} = this.context;
+
+    updateOfferContext('currentPage',value);
   };
 
   render() {

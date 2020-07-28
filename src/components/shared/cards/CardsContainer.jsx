@@ -13,13 +13,14 @@ class CardsContainer extends React.Component {
     this.state = {
       error: '',
       offers: [],
+      page: props.currentPage || 1,
       pageCount: 1,
       isLoading: false,
     };
     this.method = props.method;
     this.headingText = props.headingText;
     this.isCreator = props.isCreator;
-    this.page = props.page;
+    this.page = props.currentPage;
     this.limit = props.limit;
     this.sort = props.sort;
     this.order = props.order;
@@ -60,7 +61,6 @@ class CardsContainer extends React.Component {
       <div className="all-offers wrapper">
 
         <Heading text={this.headingText}/>
-
         <div className="card-list">
           {
             offers.map((offer) => (
@@ -76,6 +76,35 @@ class CardsContainer extends React.Component {
 
       </div>
     )
+  }
+
+  async componentDidUpdate() {
+
+    const {sort, order, search, filter} = this.props;
+    const {currentPage, offersPerPage} = this.context;
+    let res;
+    this.isLoading = true;
+    try {
+      if (this.method === 'all') {
+        res = await CardsContainer.service.getAllOffers(
+          currentPage,
+          offersPerPage,
+          sort,
+          order,
+          search,
+          filter);
+
+        this.setState({
+          offers: res.posts,
+          isLoading: false,
+        });
+      }
+    } catch (error) {
+      this.setState({
+        error: error.message,
+        isLoading: false,
+      })
+    }
   }
 
   async componentDidMount() {
@@ -107,8 +136,6 @@ class CardsContainer extends React.Component {
       }
 
       const pageCount = Math.ceil(Number(res.count) / offersPerPage);
-      console.log(res.count);
-      console.log(pageCount);
 
       if (res.error) {
         const message = res.message + ' ' + res.error.message;
@@ -121,7 +148,6 @@ class CardsContainer extends React.Component {
         isLoading: false,
       });
     } catch (error) {
-      console.log(error);
       this.setState({
         error: error.message,
         isLoading: false,

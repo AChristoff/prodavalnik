@@ -5,6 +5,7 @@ import {Form, Formik} from "formik";
 import FormikField from "../../../shared/form/FormikField";
 import OffersService from "../../../../services/offers-service";
 import * as Yup from "yup";
+import {OfferContext} from "../../../../context/offer-context";
 
 const SearchSchema = Yup.object().shape({
   search: Yup.string()
@@ -22,8 +23,9 @@ class Jumbotron extends React.Component {
   }
 
   static service = new OffersService();
+  static contextType = OfferContext;
 
-  handleSubmit = (values) => {
+  handleSearch = (values) => {
     console.log(values);
     this.setState({
       search: values.search,
@@ -34,9 +36,10 @@ class Jumbotron extends React.Component {
   render() {
 
     const {redirect, search} = this.state;
+    const {offersPerPage} = this.context;
 
     if (redirect) {
-      return <Redirect to={`/offers/all/1/4/createdAt/-1/${search}`} />
+      return <Redirect to={`/offers/all/1/${offersPerPage}/createdAt/-1/${search}`} />
     }
 
     return (
@@ -48,7 +51,7 @@ class Jumbotron extends React.Component {
           <Formik
             initialValues={{search: ''}}
             validationSchema={SearchSchema}
-            onSubmit={this.handleSubmit}
+            onSubmit={this.handleSearch}
           >
             {(props) => (
               <Form className="search-form">
