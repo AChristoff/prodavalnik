@@ -4,8 +4,9 @@ import OffersService from "../../../services/offers-service";
 import Loading from "../Loading";
 import Heading from "../Heading";
 import Card from "./partials/Card";
-import OffersPagination from "../Pagination";
+import Pagination from "../Pagination";
 import {OfferContext} from "../../../context/offer-context";
+import Search from "../Search";
 
 class CardsContainer extends React.Component {
   constructor(props) {
@@ -53,6 +54,7 @@ class CardsContainer extends React.Component {
       return (
         <div className="all-offers wrapper">
           <Heading text={this.headingText}/>
+          <Search/>
           <h5>No offers found!</h5>
         </div>
       )
@@ -62,6 +64,7 @@ class CardsContainer extends React.Component {
       <div className="all-offers wrapper">
 
         <Heading text={this.headingText}/>
+        <Search ableRedirect={false}/>
         <div className="card-list">
           {
             offers.map((offer) => (
@@ -70,7 +73,7 @@ class CardsContainer extends React.Component {
           }
         </div>
 
-        <OffersPagination
+        <Pagination
           currentPage={currentPage}
           pageCount={pageCount}
           update={updateOfferContext}/>
