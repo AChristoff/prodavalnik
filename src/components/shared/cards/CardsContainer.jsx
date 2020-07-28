@@ -15,6 +15,7 @@ class CardsContainer extends React.Component {
       error: '',
       offers: [],
       page: props.currentPage,
+      searchState: props.search,
       pageCount: 1,
       isLoading: false,
     };
@@ -84,7 +85,7 @@ class CardsContainer extends React.Component {
 
   async componentDidUpdate(prevProps, prevState) {
 
-    const {page} = this.state;
+    const {page, searchState} = this.state;
     const {sort, order} = this.props;
     const {currentPage, offersPerPage, search, filter} = this.context;
 
@@ -94,7 +95,13 @@ class CardsContainer extends React.Component {
       })
     }
 
-    if (prevState.page !== this.state.page) {
+    if (search !== searchState) {
+      this.setState({
+        searchState: search,
+      })
+    }
+
+    if (prevState.page !== this.state.page || prevState.searchState !== search) {
 
       console.log(this.context);
 
@@ -110,8 +117,11 @@ class CardsContainer extends React.Component {
             search,
             filter);
 
+          const pageCount = Math.ceil(Number(res.count) / offersPerPage);
+
           this.setState({
             offers: res.posts,
+            pageCount: pageCount,
             isLoading: false,
           });
         }

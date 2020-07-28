@@ -11,10 +11,16 @@ class AllOffers extends React.Component {
   static contextType = OfferContext;
 
   render() {
-    const {currentPage} = this.context;
+    const {currentPage, search} = this.context;
 
     return (
-      <CardsContainer method='all' headingText='Offers'{...this.params} currentPage={currentPage}/>
+      <CardsContainer
+        method='all'
+        headingText='Offers'
+        currentPage={currentPage}
+        search={search}
+        {...this.params}
+      />
     )
   }
 }
