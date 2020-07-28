@@ -82,8 +82,8 @@ class CardsContainer extends React.Component {
   async componentDidUpdate(prevProps, prevState) {
 
     const {page} = this.state;
-    const {sort, order, search, filter} = this.props;
-    const {currentPage, offersPerPage} = this.context;
+    const {sort, order} = this.props;
+    const {currentPage, offersPerPage, search, filter} = this.context;
 
     if (currentPage !== page) {
       this.setState({
@@ -93,7 +93,7 @@ class CardsContainer extends React.Component {
 
     if (prevState.page !== this.state.page) {
 
-      console.log('currentPage:', currentPage, 'offersPerPage:', offersPerPage, 'sort:', sort, 'order:', order, 'search:', search, 'filter:', filter);
+      console.log(this.context);
 
       let res;
       this.isLoading = true;
@@ -122,8 +122,9 @@ class CardsContainer extends React.Component {
   }
 
   async componentDidMount() {
-    const {page, limit, sort, order, search, filter} = this.props;
-    const {currentPage, offersPerPage, updateOfferContext} = this.context;
+    const {page, limit, sort, order} = this.props;
+    const {currentPage, offersPerPage, updateOfferContext, search, filter} = this.context;
+    console.log('context before fetch', this.context);
 
     if (page) {
       updateOfferContext('currentPage', Number(page));
@@ -138,6 +139,7 @@ class CardsContainer extends React.Component {
 
     try {
       if (this.method === 'all') {
+
         res = await CardsContainer.service.getAllOffers(
           currentPage,
           offersPerPage,

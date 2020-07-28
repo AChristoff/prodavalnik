@@ -17,20 +17,24 @@ class Category extends React.Component {
   static contextType = OfferContext;
 
   handleFilter = (category) => {
-    // console.log(event);
+
     this.setState({
       filter: category,
       redirect: true,
-    })
+    });
+
+    this.context.updateOfferContext('filter', category);
+    console.log('filter after category click', category);
   };
 
   render() {
     const {categories} = this.props;
-    const {redirect, filter} = this.state;
+    let {redirect, filter} = this.state;
     const {offersPerPage} = this.context;
+    filter = filter.replace(/\s/g, '+');
 
     if (redirect) {
-      return <Redirect to={`/offers/all/1/${offersPerPage}/createdAt/-1/?category=${filter}`} />
+      return <Redirect to={`/offers/all/1/${offersPerPage}/createdAt/-1/${filter}`} />
     }
 
     return (

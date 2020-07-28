@@ -12,7 +12,7 @@ class AllOffers extends React.Component {
 
   render() {
     const {currentPage} = this.context;
-    console.log(currentPage, ' from all');
+
     return (
       <CardsContainer method='all' headingText='Offers'{...this.params} currentPage={currentPage}/>
     )

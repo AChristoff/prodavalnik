@@ -30,7 +30,10 @@ class Jumbotron extends React.Component {
     this.setState({
       search: values.search,
       redirect: true,
-    })
+    });
+
+    this.context.updateOfferContext('search', values.search);
+    console.log('filter after category click', values.search);
   };
 
   render() {

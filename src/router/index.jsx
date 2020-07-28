@@ -25,7 +25,7 @@ export function RouterMain() {
         <Route path='/user/login' exact component={Login}/>
         <Route path='/user/register' exact component={Register}/>
         <Route path='/user/register/confirm' exact component={RegisterConfirm}/>
-        <Route path='/offers/all/:page?/:limit?/:sort?/:order?/:search?/:filters?' exact component={AllOffers}/>
+        <Route path='/offers/all/:page?/:limit?/:sort?/:order?/:search?/:filter?' exact component={AllOffers}/>
         <PrivateRoute path="/user/offers" exact component={UserOffers}/>
         <PrivateRoute path='/offers/create' exact component={CreateOffer}/>
         <PrivateRoute path='/offers/edit/:id' exact component={EditOffer}/>
