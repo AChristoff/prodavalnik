@@ -14,7 +14,7 @@ class Search extends React.Component {
     super(props);
     this.state = {
       error: '',
-      search: '',
+      searchState: '',
       redirect: false,
     };
   }
@@ -22,21 +22,19 @@ class Search extends React.Component {
   static contextType = OfferContext;
 
   handleSearch = (values) => {
-    console.log(values);
     this.setState({
-      search: values.search,
+      searchState: values.search,
       redirect: true,
     });
 
     this.context.updateOfferContext('search', values.search);
-    console.log('filter after category click', values.search);
   };
 
   render() {
 
     const {ableRedirect} = this.props;
-    const {redirect, search} = this.state;
-    const {offersPerPage} = this.context;
+    const {redirect} = this.state;
+    const {offersPerPage, search} = this.context;
 
     if (ableRedirect && redirect) {
       return <Redirect to={`/offers/all/1/${offersPerPage}/createdAt/-1/${search}`} />
@@ -44,7 +42,7 @@ class Search extends React.Component {
 
     return (
       <Formik
-        initialValues={{search: ''}}
+        initialValues={{search: search}}
         validationSchema={SearchSchema}
         onSubmit={this.handleSearch}
       >
