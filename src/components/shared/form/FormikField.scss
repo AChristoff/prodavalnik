@@ -16,3 +16,22 @@
 		margin: 0 !important;
 	}
 }
+
+.dark .formik-field {
+
+	.MuiInputAdornment-positionEnd > svg {
+
+		color: #FFFFFF;
+	}
+
+	.MuiIconButton-root {
+		padding: 0 5px;
+	}
+
+	.MuiFormHelperText-root {
+		min-height: 4em;
+		color: red;
+		padding: 0.5em 0 0;
+		margin: 0 !important;
+	}
+}

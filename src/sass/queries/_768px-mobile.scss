@@ -1,6 +1,6 @@
 .app {
 
-	transition: all 0.5s ease-in-out;
+	//transition: all 0.5s ease-in-out;
 
 	&.dark {
 		background-color: #474747;
@@ -296,6 +296,135 @@
 
 			.view-offer-back-btn {
 				width: 15em;
+			}
+		}
+	}
+}
+
+.dark .app-main {
+
+	color: rgba(255, 255, 255, 0.8);
+
+	.jumbotron {
+
+		background-image: url(../../assets/img/cover-dark.png);
+
+		h1 {
+
+			span {
+
+			}
+
+		}
+
+		.search-form {
+
+			.formik-field {
+				.MuiIconButton-root {
+
+					color: $pure-white;
+					&:hover {
+
+					}
+				}
+			}
+		}
+
+		&:after {
+			background-image: url(../../assets/svg/wave-mask-dark.svg);
+			//-webkit-transition: all 0.5s ease-in-out;
+			//transition: all 0.5s ease-in-out;
+		}
+	}
+
+	.wrapper {
+
+
+		&.categories {
+
+
+			.categories-container {
+
+
+				.category-point {
+
+
+					.category {
+
+
+						& ~ p {
+
+						}
+
+						&:hover ~ p {
+
+
+						}
+
+
+						&:hover {
+
+
+							img {
+
+							}
+						}
+
+						img {
+
+						}
+					}
+				}
+			}
+		}
+
+		&.login,
+		&.register,
+		&.create-offer,
+		&.edit-offer,
+		&.delete-offer {
+
+			.login-from,
+			.register-from,
+			.offer-from {
+
+
+
+				p {
+					.MuiFormControl-root {
+
+					}
+
+					.MuiSvgIcon-root {
+						color: #707070;
+					}
+
+					.email {
+						.MuiSvgIcon-root {
+
+						}
+					}
+
+
+				}
+
+				button.MuiButton-containedPrimary {
+
+				}
+			}
+		}
+
+		&.view-offer {
+			.view-offer-img-wrapper {
+
+
+				img {
+
+				}
+			}
+
+			.view-offer-back-btn {
+
 			}
 		}
 	}

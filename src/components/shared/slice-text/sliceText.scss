@@ -12,5 +12,17 @@
 		bottom: 0;
 		background: rgb(255,255,255);
 		background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 60%);
+
+		//-webkit-transition: all 0.5s ease-in-out;
+		//transition: all 0.5s ease-in-out;
+	}
+}
+
+.dark .hidden-text-active {
+
+	&:after {
+
+		background: rgb(71, 71, 71);
+		background: linear-gradient(0deg, rgba(71, 71, 71,1) 0%, rgba(71, 71, 71,0) 60%);
 	}
 }

@@ -15,6 +15,7 @@
 	}
 
 	.site-card {
+
 		flex: 0 1 31%;
 		margin-bottom: 4em;
 		overflow: hidden;
@@ -23,6 +24,9 @@
 		border-radius: 0.4em;
 		background: rgba(255, 255, 255, 0.5);
 		box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+
+		//-webkit-transition: all 0.5s ease-in-out;
+		//transition: all 0.5s ease-in-out;
 
 		.card-head {
 			position: relative;
@@ -83,5 +87,19 @@
 				justify-content: space-between;
 			}
 		}
+	}
+}
+
+.dark .card-list {
+
+	&:before,
+	&:after {
+
+	}
+
+	.site-card {
+		color: rgba(255, 255, 255, 0.8);
+		background: #474747;
+		box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
 	}
 }
