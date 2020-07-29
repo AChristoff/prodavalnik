@@ -33,10 +33,8 @@ class CardsContainer extends React.Component {
   static contextType = OfferContext;
 
   render() {
-    const {offers, page, isLoading, pageCount, error} = this.state;
+    const {offers, isLoading, pageCount, error} = this.state;
     const {currentPage, updateOfferContext} = this.context;
-
-    console.log(page);
 
     if (isLoading) {
       return <Loading/>
@@ -65,7 +63,9 @@ class CardsContainer extends React.Component {
       <div className="all-offers wrapper">
 
         <Heading text={this.headingText}/>
+
         <Search ableRedirect={false}/>
+
         <div className="card-list">
           {
             offers.map((offer) => (
@@ -102,8 +102,6 @@ class CardsContainer extends React.Component {
     }
 
     if (prevState.page !== this.state.page || prevState.searchState !== search) {
-
-      console.log(this.context);
 
       let res;
       this.isLoading = true;
@@ -173,6 +171,7 @@ class CardsContainer extends React.Component {
       this.setState({
         offers: res.posts,
         pageCount: pageCount,
+        searchState: this.context.search,
         isLoading: false,
       });
     } catch (error) {
