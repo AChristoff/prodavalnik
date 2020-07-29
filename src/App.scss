@@ -35,6 +35,7 @@
 	}
 
 	.app-main {
+
 		button.MuiButton-containedPrimary {
 			color: $pure-white;
 			background: $gradient-theme;
@@ -79,6 +80,14 @@
 }
 
 #root .dark{
+
+	.MuiSwitch-switchBase {
+		color: #8fDCCB;
+	}
+
+	.MuiSwitch-track {
+		background-color: #474747;
+	}
 
 	button:disabled {
 
