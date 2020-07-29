@@ -33,11 +33,11 @@ class Search extends React.Component {
   render() {
 
     const {ableRedirect} = this.props;
-    const {redirect} = this.state;
+    const {redirect, searchState} = this.state;
     const {offersPerPage, search} = this.context;
 
     if (ableRedirect && redirect) {
-      return <Redirect to={`/offers/all/1/${offersPerPage}/createdAt/-1/${search}`} />
+      return <Redirect to={`/offers/all/1/${offersPerPage}/createdAt/-1/${searchState}`} />
     }
 
     return (
