@@ -1,0 +1,17 @@
+.MuiSwitch-root.theme-switch {
+
+	margin: auto 0;
+
+	.MuiSwitch-switchBase {
+		color: #FFFFFF;
+	}
+
+	.MuiSwitch-colorPrimary.Mui-checked {
+		color: #FFFFFF;
+	}
+
+	.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+		background-color: #FFFFFF;
+	}
+
+}

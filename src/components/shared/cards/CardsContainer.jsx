@@ -7,6 +7,7 @@ import Card from "./partials/Card";
 import Pagination from "../Pagination";
 import {OfferContext} from "../../../context/offer-context";
 import Search from "../Search";
+import FormikSelect from "../form/select/FormikSelect";
 
 class CardsContainer extends React.Component {
   constructor(props) {
@@ -65,6 +66,8 @@ class CardsContainer extends React.Component {
         <Heading text={this.headingText}/>
 
         <Search ableRedirect={false}/>
+
+        <FormikSelect/>
 
         <div className="card-list">
           {

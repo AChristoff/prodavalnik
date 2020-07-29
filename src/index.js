@@ -3,15 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import {BrowserRouter as Router} from 'react-router-dom';
-import theme from "./assets/material-ui/theme";
-import {ThemeProvider} from  '@material-ui/core/styles'
+import ThemeContextProvider from "./context/theme-context";
+import OfferContextProvider from "./context/offer-context";
+import AuthContextProvider from "./context/user-context";
 
 ReactDOM.render(
-  <Router>
-    <ThemeProvider theme={theme}>
-      <App/>
-    </ThemeProvider>
-  </Router>,
+  <ThemeContextProvider>
+      <OfferContextProvider>
+        <AuthContextProvider>
+
+          <Router>
+
+            <App/>
+
+          </Router>
+
+        </AuthContextProvider>
+      </OfferContextProvider>
+  </ThemeContextProvider>,
+
   document.getElementById('root')
 );
 

@@ -1,3 +1,13 @@
+.app {
+
+	transition: all 0.5s ease-in-out;
+
+	&.dark {
+		background-color: #474747;
+	}
+}
+
+
 .app-header {
 	position: fixed;
 	z-index: 10;

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import Navigation from "./Navigation";
 import {NavLink} from "react-router-dom";
 import {Loyalty} from "@material-ui/icons";
+import ThemeSwitch from "../switch/Switch";
 
 class Header extends React.Component {
   constructor(props) {
@@ -38,6 +39,8 @@ class Header extends React.Component {
           </NavLink>
 
           <Navigation/>
+
+          <ThemeSwitch/>
 
         </div>
 
