@@ -137,7 +137,6 @@ class CardsContainer extends React.Component {
   async componentDidMount() {
     const {page, limit, sort, order} = this.props;
     const {currentPage, offersPerPage, updateOfferContext, search, filter} = this.context;
-    console.log('context before fetch', this.context);
 
     if (page) {
       updateOfferContext('currentPage', Number(page));
