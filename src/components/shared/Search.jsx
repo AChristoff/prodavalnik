@@ -37,7 +37,7 @@ class Search extends React.Component {
     const {offersPerPage, search} = this.context;
 
     if (ableRedirect && redirect) {
-      return <Redirect to={`/offers/all/1/${offersPerPage}/createdAt/-1/${searchState}`} />
+      return <Redirect to={'/offers/all/'} />
     }
 
     return (
@@ -56,4 +56,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search
+export default Search;

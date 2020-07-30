@@ -11,14 +11,12 @@ const FormikSelect = ({label, items}) => {
 
   const [category, setCategory] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  const [redirect, setRedirect] = React.useState(false);
 
   const {updateOfferContext, offersPerPage, search, filter} = useContext(OfferContext);
 
   const handleChange = (event) => {
     setCategory(event.target.value);
     updateOfferContext('filter', event.target.value);
-    setRedirect(true);
   };
 
   const handleClose = () => {
@@ -37,7 +35,7 @@ const FormikSelect = ({label, items}) => {
         open={open}
         onClose={handleClose}
         onOpen={handleOpen}
-        value={category}
+        value={filter}
         onChange={handleChange}
       >
         {
