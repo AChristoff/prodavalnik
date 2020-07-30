@@ -36,6 +36,44 @@ class CardsContainer extends React.Component {
   render() {
     const {offers, isLoading, pageCount, error} = this.state;
     const {currentPage, updateOfferContext} = this.context;
+    const categoryItems = [
+      {
+        value: 'Vehicles',
+        category: 'Vehicles',
+      },
+      {
+        value: 'Electronics & Appliances',
+        category: 'Electronics & Appliances',
+      },
+      {
+        value: 'Furniture & Decor',
+        category: 'Furniture & Decor',
+      },
+      {
+        value: 'Fashion & Beauty',
+        category: 'Fashion & Beauty',
+      },
+      {
+        value: 'Pets',
+        category: 'Pets',
+      },
+      {
+        value: 'Sports & Equipment',
+        category: 'Sports & Equipment',
+      },
+      {
+        value: 'Machines & Tools',
+        category: 'Machines & Tools',
+      },
+      {
+        value: 'Art & Books',
+        category: 'Art & Books',
+      },
+      {
+        value: 'Antiques',
+        category: 'Antiques',
+      },
+    ];
 
     if (isLoading) {
       return <Loading/>
@@ -65,9 +103,12 @@ class CardsContainer extends React.Component {
 
         <Heading text={this.headingText}/>
 
-        <Search ableRedirect={false}/>
+        <section className="search-and-filters">
 
-        <FormikSelect/>
+          <Search ableRedirect={false}/>
+          <FormikSelect label="Category" items={categoryItems}/>
+
+        </section>
 
         <div className="card-list">
           {

@@ -235,6 +235,23 @@
 			}
 		}
 
+		&.all-offers {
+
+			.search-and-filters {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+
+				.search-form {
+					width: 40%;
+				}
+
+				.formik-select {
+					width: 40%;
+				}
+			}
+		}
+
 		&.login,
 		&.register,
 		&.create-offer,

@@ -8,13 +8,14 @@ class ThemeSwitch extends React.Component {
     super(props);
     this.state = {
       checkedA: true,
-      checkedB: true,
     };
   }
 
   static contextType = ThemeContext;
 
     handleChange = (event) => {
+      console.log(event.target.name);
+      console.log(event.target.checked);
    this.setState({
      ...this.state,
      [event.target.name]: event.target.checked }
@@ -26,15 +27,15 @@ class ThemeSwitch extends React.Component {
   };
 
   render() {
+    const {isLightTheme} = this.context;
 
     return (
       <Switch
         className="theme-switch"
-        checked={this.state.checkedA}
+        checked={isLightTheme}
         onChange={this.handleChange}
         color="primary"
         name="checkedA"
-        inputProps={{'aria-label': 'primary checkbox'}}
       />
     );
   }

@@ -19,20 +19,21 @@ class App extends React.Component {
 
   render() {
 
-    const {lightTheme} = this.state;
+    const {isLightTheme} = this.context;
+
     const theme = createMuiTheme({
       palette: {
         primary: {
           main: '#4AD295',
           contrastText: '#FFFFFF',
         },
-        type: lightTheme ? 'light' : 'dark',
+        type: isLightTheme ? 'light' : 'dark',
       },
     });
 
 
     return (
-      <div className={lightTheme ? 'app light' : 'app dark'}>
+      <div className={isLightTheme ? 'app light' : 'app dark'}>
         <ThemeProvider theme={theme}>
 
         <Header/>
