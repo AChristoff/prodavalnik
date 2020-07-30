@@ -1,4 +1,11 @@
 .formik-select {
 	width: 100%;
-	padding-top: 8px;
+	//padding-top: 2px;
+
+	.MuiFormHelperText-root {
+		min-height: 4em;
+		color: red;
+		padding: 0.5em 0 0;
+		margin: 0 !important;
+	}
 }

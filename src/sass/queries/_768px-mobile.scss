@@ -241,14 +241,13 @@
 				width: 100%;
 				display: flex;
 				justify-content: space-between;
+				margin-bottom: 0.5em;
 
-				.search-form {
-					width: 40%;
-				}
-
+				.search-form,
 				.formik-select {
-					width: 40%;
+					width: 42%;
 				}
+
 			}
 		}
 

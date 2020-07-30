@@ -8,7 +8,7 @@ import Pagination from "../Pagination";
 import {OfferContext} from "../../../context/offer-context";
 import Search from "../Search";
 import FormikSelect from "../form/select/FormikSelect";
-import FormikSelectTwo from "../form/select/select";
+import Conditional from "../Conditional";
 
 class CardsContainer extends React.Component {
   constructor(props) {
@@ -36,6 +36,7 @@ class CardsContainer extends React.Component {
   static contextType = OfferContext;
 
   render() {
+    const {method} = this.props;
     const {offers, isLoading, pageCount, error} = this.state;
     const {currentPage, updateOfferContext} = this.context;
     const categoryItems = [
@@ -94,48 +95,43 @@ class CardsContainer extends React.Component {
       );
     }
 
-    if ((!isLoading && !offers) || (!isLoading && pageCount === 0)) {
-      return (
-        <div className="all-offers wrapper">
+    const noOffers = (!isLoading && !offers) || (!isLoading && pageCount === 0);
 
-          <Heading text={this.headingText}/>
+    return (
+      <div className="all-offers wrapper">
 
+
+        <Heading text={this.headingText}/>
+
+        <Conditional if={method === 'all'}>
           <section className="search-and-filters">
 
             <Search ableRedirect={false}/>
             <FormikSelect name="category" label="Category" items={categoryItems}/>
 
           </section>
+        </Conditional>
 
+        <Conditional if={noOffers}>
           <h5>No offers found!</h5>
-        </div>
-      )
-    }
+        </Conditional>
 
-    return (
-      <div className="all-offers wrapper">
+        <Conditional if={!noOffers}>
+          <div className="card-list">
+            {
+              offers.map((offer) => (
+                <Card key={offer._id} {...offer} isCreator={this.isCreator}/>
+              ))
+            }
+          </div>
+        </Conditional>
 
-        <Heading text={this.headingText}/>
-
-        <section className="search-and-filters">
-
-          <Search ableRedirect={false}/>
-          <FormikSelect name="category" label="Category" items={categoryItems}/>
-
-        </section>
-
-        <div className="card-list">
-          {
-            offers.map((offer) => (
-              <Card key={offer._id} {...offer} isCreator={this.isCreator}/>
-            ))
-          }
-        </div>
-
+        <Conditional if={method === 'all'}>
         <Pagination
           currentPage={currentPage}
           pageCount={pageCount}
           update={updateOfferContext}/>
+        </Conditional>
 
       </div>
     )
