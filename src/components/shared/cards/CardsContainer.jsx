@@ -141,7 +141,7 @@ class CardsContainer extends React.Component {
 
     const {page, searchState, filterState} = this.state;
     const {sort, order} = this.props;
-    const {currentPage, offersPerPage, search, filter} = this.context;
+    const {currentPage, offersPerPage, search, filter, updateOfferContext} = this.context;
 
     if (currentPage !== page) {
       this.setState({
@@ -152,13 +152,15 @@ class CardsContainer extends React.Component {
     if (search !== searchState) {
       this.setState({
         searchState: search,
-      })
+      });
+      updateOfferContext('currentPage', 1);
     }
 
     if (filter !== filterState) {
       this.setState({
         filterState: filter,
-      })
+      });
+      updateOfferContext('currentPage', 1);
     }
 
     if (prevState.page !== this.state.page
