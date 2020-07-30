@@ -8,6 +8,7 @@ import Pagination from "../Pagination";
 import {OfferContext} from "../../../context/offer-context";
 import Search from "../Search";
 import FormikSelect from "../form/select/FormikSelect";
+import FormikSelectTwo from "../form/select/select";
 
 class CardsContainer extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class CardsContainer extends React.Component {
       offers: [],
       page: props.currentPage,
       searchState: props.search,
+      filterState: props.filter,
       pageCount: 1,
       isLoading: false,
     };
@@ -37,6 +39,10 @@ class CardsContainer extends React.Component {
     const {offers, isLoading, pageCount, error} = this.state;
     const {currentPage, updateOfferContext} = this.context;
     const categoryItems = [
+      {
+        value: '',
+        category: 'All categories',
+      },
       {
         value: 'Vehicles',
         category: 'Vehicles',
@@ -91,8 +97,16 @@ class CardsContainer extends React.Component {
     if ((!isLoading && !offers) || (!isLoading && pageCount === 0)) {
       return (
         <div className="all-offers wrapper">
+
           <Heading text={this.headingText}/>
-          <Search/>
+
+          <section className="search-and-filters">
+
+            <Search ableRedirect={false}/>
+            <FormikSelect name="category" label="Category" items={categoryItems}/>
+
+          </section>
+
           <h5>No offers found!</h5>
         </div>
       )
@@ -106,7 +120,7 @@ class CardsContainer extends React.Component {
         <section className="search-and-filters">
 
           <Search ableRedirect={false}/>
-          <FormikSelect label="Category" items={categoryItems}/>
+          <FormikSelect name="category" label="Category" items={categoryItems}/>
 
         </section>
 
@@ -129,7 +143,7 @@ class CardsContainer extends React.Component {
 
   async componentDidUpdate(prevProps, prevState) {
 
-    const {page, searchState} = this.state;
+    const {page, searchState, filterState} = this.state;
     const {sort, order} = this.props;
     const {currentPage, offersPerPage, search, filter} = this.context;
 
@@ -145,7 +159,15 @@ class CardsContainer extends React.Component {
       })
     }
 
-    if (prevState.page !== this.state.page || prevState.searchState !== search) {
+    if (filter !== filterState) {
+      this.setState({
+        filterState: filter,
+      })
+    }
+
+    if (prevState.page !== this.state.page
+      || prevState.filterState !== filter
+      || prevState.searchState !== search) {
 
       let res;
       this.isLoading = true;

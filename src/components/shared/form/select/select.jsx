@@ -9,6 +9,7 @@ export default function FormikSelectTwo() {
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
+    console.log(event.target.value);
     setCategory(event.target.value);
   };
 
@@ -22,7 +23,7 @@ export default function FormikSelectTwo() {
 
   return (
     <FormControl>
-      <InputLabel id="demo-controlled-open-select-label">Age</InputLabel>
+      <InputLabel id="demo-controlled-open-zselect-label">Age</InputLabel>
       <Select
         labelId="demo-controlled-open-select-label"
         id="demo-controlled-open-select"

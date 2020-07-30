@@ -76,6 +76,13 @@
 				background: $gradient-theme-disabled;
 			}
 		}
+
+		.MuiSelect-select.MuiSelect-select {
+			color: #3CC0AA !important;
+			font-weight: bold !important;
+			font-size: 1.4em !important;
+			min-height: 1em;
+		}
 	}
 }
 
