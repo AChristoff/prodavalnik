@@ -126,11 +126,11 @@ class CardsContainer extends React.Component {
           </div>
         </Conditional>
 
-        <Conditional if={method === 'all'}>
-        <Pagination
-          currentPage={currentPage}
-          pageCount={pageCount}
-          update={updateOfferContext}/>
+        <Conditional if={method === 'all' && !noOffers}>
+          <Pagination
+            currentPage={currentPage}
+            pageCount={pageCount}
+            update={updateOfferContext}/>
         </Conditional>
 
       </div>
