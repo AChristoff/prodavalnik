@@ -16,7 +16,7 @@ import {
   VisibilityOff
 } from "@material-ui/icons";
 
-export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false, isSelect = false, filterProp = false} ) {
+export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false, required = false ,isSelect = false, filterProp = false} ) {
 
   const handleClickShowPassword = () => {
     setValues({...values, showPassword: !values.showPassword});
@@ -73,6 +73,7 @@ export default function FormikField({name, label, type = "text", placeholder = '
         as={filterProp || filterProp === '' ? FormikSelect : TextField}
         filterProp={filterProp}
         name={name}
+        required={required}
         label={label}
         type={getType(type)}
         helperText={<ErrorMessage className="error-msg" name={name}/>}

@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import OffersService from "../../../../services/offers-service";
 import {OfferContext} from "../../../../context/offer-context";
+import FormikSelectPro from "../select/FormikSelectPro";
 
 const OfferSchema = Yup.object().shape({
   title: Yup.string()
@@ -132,16 +133,61 @@ class OffersForm extends React.Component {
 
 
   render() {
-    const {title, content, price, image, formType, filterProp} = this.props;
+    const {title, content, price, image, formType, filterProp, category} = this.props;
     console.log('form values', this.props);
     const {filter} = this.context;
+
+/////////////////////////////////////////////
+    const items = [
+      {
+        value: '',
+        category: 'All categories',
+      },
+      {
+        value: 'Vehicles',
+        category: 'Vehicles',
+      },
+      {
+        value: 'Electronics & Appliances',
+        category: 'Electronics & Appliances',
+      },
+      {
+        value: 'Furniture & Decor',
+        category: 'Furniture & Decor',
+      },
+      {
+        value: 'Fashion & Beauty',
+        category: 'Fashion & Beauty',
+      },
+      {
+        value: 'Pets',
+        category: 'Pets',
+      },
+      {
+        value: 'Sports & Equipment',
+        category: 'Sports & Equipment',
+      },
+      {
+        value: 'Machines & Tools',
+        category: 'Machines & Tools',
+      },
+      {
+        value: 'Art & Books',
+        category: 'Art & Books',
+      },
+      {
+        value: 'Antiques',
+        category: 'Antiques',
+      },
+    ];
+/////////////////////////////////////////////
 
     return (
       <Formik
         initialValues={
           {
             title: title ? this.sanitizedText(title) : '',
-            category: filterProp || filterProp === '' ? this.sanitizedText(filterProp) : filter,
+            category: category ? this.sanitizedText(category) : '',
             content: content ? this.sanitizedText(content) : '',
             price: price || '',
             image: image || ''
@@ -153,18 +199,18 @@ class OffersForm extends React.Component {
         {(props) => (
           <Form className="offer-from">
 
-            <FormikField name="title" label="Title" icon="text" disabled={formType === 'delete'}/>
-            <FormikField
-              name="category"
-              label="Category"
-              disabled={formType === 'delete'}
-              filterProp={this.sanitizedText(filterProp)}
-              isSelect={true}
-            />
-            <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'}/>
-            <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'}/>
-            <FormikField name="image" label="Image" icon="image" disabled={formType === 'delete'}/>
-            <p>{filterProp}</p>
+            <FormikField name="title" label="Title" icon="text" required={true} disabled={formType === 'delete'}/>
+
+
+
+            <FormikSelectPro name='category' label='Category' items={items} required={true} disabled={formType === 'delete'}/>
+
+
+
+            <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'} required={true}/>
+            <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'} required={true}/>
+            <FormikField name="image" label="Image" icon="image" disabled={formType === 'delete'} required={true}/>
+
             <Button
               fullWidth
               type="submit"
@@ -172,7 +218,7 @@ class OffersForm extends React.Component {
               size="large"
               color="primary"
               className={`${formType}-btn`}
-              // disabled={formType !== 'delete' ? (!props.isValid || !props.dirty) : false}
+              disabled={formType !== 'delete' ? (!props.isValid || !props.dirty) : false}
             >
               {formType}
             </Button>

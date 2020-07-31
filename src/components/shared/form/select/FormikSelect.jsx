@@ -2,9 +2,9 @@ import React, {useContext} from 'react';
 import "./FormikSelect.scss"
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import FormHelperText from "@material-ui/core/FormHelperText";
 import {OfferContext} from "../../../../context/offer-context";
 
 const FormikSelect = ({label, name, helperText, filterProp, disabled, changeContext}) => {
@@ -79,14 +79,14 @@ const FormikSelect = ({label, name, helperText, filterProp, disabled, changeCont
   ];
 
 
-  console.log('filterProp', filterProp);
+  console.log('editFilter', editFilter);
 
   return <div className="formik-select">
     <FormControl fullWidth>
-      <InputLabel htmlFor="category-select">{label}</InputLabel>
+      <InputLabel htmlFor="category">{label}</InputLabel>
       <Select
         name={name}
-        id="category-select"
+        id="category"
         open={open}
         onClose={handleClose}
         onOpen={handleOpen}
@@ -97,7 +97,7 @@ const FormikSelect = ({label, name, helperText, filterProp, disabled, changeCont
       >
         {
           items.map((item) => (
-            <MenuItem key={item.value} value={item.value}>{item.category}</MenuItem>
+            <MenuItem  key={item.value} value={item.value}>{item.category}</MenuItem>
           ))
         }
       </Select>
