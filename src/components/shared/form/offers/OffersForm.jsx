@@ -51,8 +51,7 @@ class OffersForm extends React.Component {
   static contextType = OfferContext;
 
   handleCreate = async (values) => {
-    console.log(values);
-    alert(values);
+
     try {
       const res = await OffersForm.service.createOffer(values);
       console.log(res);
