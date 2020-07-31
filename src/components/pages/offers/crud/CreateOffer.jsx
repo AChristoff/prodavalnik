@@ -20,7 +20,7 @@ class CreateOffer extends React.Component {
 
         <Heading text="Create Offer"/>
 
-        <OffersForm history={this.props.history} match={this.props.match} formType='create' filterProp={true}/>
+        <OffersForm history={this.props.history} match={this.props.match} formType='create' filterProp=''/>
 
       </div>
     );

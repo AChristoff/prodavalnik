@@ -141,7 +141,7 @@ class OffersForm extends React.Component {
         initialValues={
           {
             title: title ? this.sanitizedText(title) : '',
-            category: filterProp ? '' : filter,
+            category: filterProp || filterProp === '' ? this.sanitizedText(filterProp) : filter,
             content: content ? this.sanitizedText(content) : '',
             price: price || '',
             image: image || ''
@@ -157,9 +157,8 @@ class OffersForm extends React.Component {
             <FormikField
               name="category"
               label="Category"
-              icon="text"
               disabled={formType === 'delete'}
-              filterProp={filterProp}
+              filterProp={this.sanitizedText(filterProp)}
               isSelect={true}
             />
             <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'}/>

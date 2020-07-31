@@ -7,18 +7,18 @@ import Select from '@material-ui/core/Select';
 import FormHelperText from "@material-ui/core/FormHelperText";
 import {OfferContext} from "../../../../context/offer-context";
 
-const FormikSelect = ({label, name, helperText, filterProp}) => {
+const FormikSelect = ({label, name, helperText, filterProp, disabled, changeContext}) => {
 
   const [category, setCategory] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  const [currentFilter, setCurrentFilter] = React.useState('');
+  const [editFilter, setEditFilter] = React.useState(filterProp);
 
   const {updateOfferContext, offersPerPage, search, filter} = useContext(OfferContext);
 
   const handleChange = (event) => {
-    setCurrentFilter(event.target.value);
+    setEditFilter(event.target.value);
     setCategory(event.target.value);
-    if (!filterProp) {
+    if (changeContext) {
       updateOfferContext('filter', event.target.value);
     }
   };
@@ -78,9 +78,8 @@ const FormikSelect = ({label, name, helperText, filterProp}) => {
     },
   ];
 
-  console.log(label);
-  console.log(filterProp);
-  console.log(currentFilter);
+
+  console.log('filterProp', filterProp);
 
   return <div className="formik-select">
     <FormControl fullWidth>
@@ -91,7 +90,8 @@ const FormikSelect = ({label, name, helperText, filterProp}) => {
         open={open}
         onClose={handleClose}
         onOpen={handleOpen}
-        value={filterProp ? currentFilter : filter}
+        value={filterProp || filterProp === '' ? editFilter : filter}
+        disabled={disabled}
         onBlur={handleBlur}
         onChange={handleChange}
       >

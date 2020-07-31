@@ -70,7 +70,7 @@ export default function FormikField({name, label, type = "text", placeholder = '
   return (
     <div className="formik-field">
       <Field
-        as={filterProp ? FormikSelect : TextField}
+        as={filterProp || filterProp === '' ? FormikSelect : TextField}
         filterProp={filterProp}
         name={name}
         label={label}

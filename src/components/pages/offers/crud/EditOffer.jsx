@@ -54,6 +54,7 @@ class EditOffer extends React.Component {
           history={this.props.history}
           match={this.props.match}
           {...offer}
+          filterProp={offer.category}
           formType='edit'/>
 
       </div>

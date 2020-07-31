@@ -65,7 +65,7 @@ class CardsContainer extends React.Component {
           <section className="search-and-filters">
 
             <Search ableRedirect={false}/>
-            <FormikSelect name="category" label="Category"/>
+            <FormikSelect name="category" label="Category" changeContext={true}/>
 
           </section>
         </Conditional>
