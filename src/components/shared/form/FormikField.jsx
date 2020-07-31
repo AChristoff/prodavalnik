@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from "@material-ui/core/TextField";
 import {ErrorMessage, Field} from "formik";
+import FormikSelect from "./select/FormikSelect";
 import "./FormikField.scss"
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
@@ -15,7 +16,7 @@ import {
   VisibilityOff
 } from "@material-ui/icons";
 
-export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false}) {
+export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false, isSelect = false, filterProp = false} ) {
 
   const handleClickShowPassword = () => {
     setValues({...values, showPassword: !values.showPassword});
@@ -47,12 +48,12 @@ export default function FormikField({name, label, type = "text", placeholder = '
         return <LocalOffer/>;
       case 'password':
         return <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
-                {values.showPassword ? <Visibility/> : <VisibilityOff/>}
-              </IconButton>;
+          {values.showPassword ? <Visibility/> : <VisibilityOff/>}
+        </IconButton>;
       case 'search':
         return <IconButton type="submit" onClick={handleSearch}>
-                <Search/>
-              </IconButton>;
+          <Search/>
+        </IconButton>;
       default:
         return null;
     }
@@ -66,11 +67,11 @@ export default function FormikField({name, label, type = "text", placeholder = '
     }
   }
 
-
   return (
     <div className="formik-field">
       <Field
-        as={TextField}
+        as={filterProp ? FormikSelect : TextField}
+        filterProp={filterProp}
         name={name}
         label={label}
         type={getType(type)}

@@ -39,48 +39,6 @@ class CardsContainer extends React.Component {
     const {method} = this.props;
     const {offers, isLoading, pageCount, error} = this.state;
     const {currentPage, updateOfferContext} = this.context;
-    const categoryItems = [
-      {
-        value: '',
-        category: 'All categories',
-      },
-      {
-        value: 'Vehicles',
-        category: 'Vehicles',
-      },
-      {
-        value: 'Electronics & Appliances',
-        category: 'Electronics & Appliances',
-      },
-      {
-        value: 'Furniture & Decor',
-        category: 'Furniture & Decor',
-      },
-      {
-        value: 'Fashion & Beauty',
-        category: 'Fashion & Beauty',
-      },
-      {
-        value: 'Pets',
-        category: 'Pets',
-      },
-      {
-        value: 'Sports & Equipment',
-        category: 'Sports & Equipment',
-      },
-      {
-        value: 'Machines & Tools',
-        category: 'Machines & Tools',
-      },
-      {
-        value: 'Art & Books',
-        category: 'Art & Books',
-      },
-      {
-        value: 'Antiques',
-        category: 'Antiques',
-      },
-    ];
 
     if (isLoading) {
       return <Loading/>
@@ -107,7 +65,7 @@ class CardsContainer extends React.Component {
           <section className="search-and-filters">
 
             <Search ableRedirect={false}/>
-            <FormikSelect name="category" label="Category" items={categoryItems}/>
+            <FormikSelect name="category" label="Category"/>
 
           </section>
         </Conditional>
