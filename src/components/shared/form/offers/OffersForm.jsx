@@ -138,6 +138,7 @@ class OffersForm extends React.Component {
     const {filter} = this.context;
 
 /////////////////////////////////////////////
+    //TODO: get items from db
     const items = [
       {
         value: '',
@@ -201,14 +202,12 @@ class OffersForm extends React.Component {
 
             <FormikField name="title" label="Title" icon="text" required={true} disabled={formType === 'delete'}/>
 
+            <FormikSelectPro name='category' label='Category' items={items} required={true} disabled={formType === 'delete'} />
 
+            <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'} required={true} multiline={true} rows={7} />
 
-            <FormikSelectPro name='category' label='Category' items={items} required={true} disabled={formType === 'delete'}/>
-
-
-
-            <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'} required={true}/>
             <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'} required={true}/>
+
             <FormikField name="image" label="Image" icon="image" disabled={formType === 'delete'} required={true}/>
 
             <Button

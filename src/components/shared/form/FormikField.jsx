@@ -1,8 +1,7 @@
 import React from 'react';
+import "./FormikField.scss"
 import TextField from "@material-ui/core/TextField";
 import {ErrorMessage, Field} from "formik";
-import FormikSelect from "./select/FormikSelect";
-import "./FormikField.scss"
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import {
@@ -16,7 +15,11 @@ import {
   VisibilityOff
 } from "@material-ui/icons";
 
-export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false, required = false ,isSelect = false, filterProp = false} ) {
+export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false, required = false , multiline = false, rows = 1, variant = 'filled'} ) {
+
+  console.log(multiline);
+  console.log(rows);
+
 
   const handleClickShowPassword = () => {
     setValues({...values, showPassword: !values.showPassword});
@@ -67,11 +70,14 @@ export default function FormikField({name, label, type = "text", placeholder = '
     }
   }
 
+
   return (
     <div className="formik-field">
       <Field
-        as={filterProp || filterProp === '' ? FormikSelect : TextField}
-        filterProp={filterProp}
+        // variant={variant}
+        as={TextField}
+        multiline={multiline}
+        rows={rows}
         name={name}
         required={required}
         label={label}

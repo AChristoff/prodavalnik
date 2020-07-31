@@ -34,8 +34,8 @@ const MuiSelect = ({name, label, items, errorString, value, onChange, onBlur, re
   );
 };
 
-export default function FormikSelectPro({name, label, items, required = false, disabled = false}) {
-  console.log(name);
+export default function FormikSelectPro({name, label, items, required = false, disabled = false, variant = 'filled'}) {
+
   return (
     <div className="formik-select">
       <Field

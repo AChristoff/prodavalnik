@@ -6,6 +6,7 @@
 
 #root {
 
+
 	button:disabled {
 		cursor: not-allowed;
 		pointer-events: all !important;
@@ -59,7 +60,7 @@
 			}
 
 			&:disabled {
-				//background: $gradient-theme-disabled;
+				background: $gradient-theme-disabled;
 			}
 		}
 
@@ -77,12 +78,24 @@
 			}
 		}
 
+		.MuiFilledInput-adornedEnd {
+			padding-right: 45px;
+		}
+
 		.MuiSelect-select.MuiSelect-select,
-		.MuiInputBase-input.MuiInput-input {
+		.MuiInputBase-input {
 			color: #3CC0AA !important;
 			font-weight: bold !important;
-			font-size: 1.4em !important;
+			font-size: 1.3em !important;
 			min-height: 1em;
+		}
+
+		.MuiInput-multiline  {
+			.MuiSvgIcon-root {
+				position: absolute;
+				top: 0;
+				right: 0.1em;
+			}
 		}
 	}
 }
@@ -167,6 +180,10 @@
 				background: $gradient-theme-disabled;
 			}
 		}
+
+		.MuiFilledInput-root {
+			background-color: rgba(0, 0, 0, 0.05);
+		}
 	}
 }
 
@@ -174,7 +191,7 @@
 	.MuiInputBase-input {
 		color: #3CC0AA !important;
 		font-weight: bold !important;
-		font-size: 1.4em !important;
+		font-size: 1.3em !important;
 		padding-top: 2px;
 	}
 }
@@ -189,7 +206,8 @@
 
 // scrollbar
 
-html {
+html,
+.MuiTextField-root textarea {
 
 	&::-webkit-scrollbar {
 		width: 10px;
@@ -201,12 +219,12 @@ html {
 	}
 
 	&::-webkit-scrollbar-track {
-		background: $pure-white;
+		background: rgba(255, 255, 255, 0);
 	}
 
 	// for Mozilla
 	scrollbar-width: thin;
-	scrollbar-color: $color-theme-green $pure-white;
+	scrollbar-color: $color-theme-green rgba(255, 255, 255, 0);
 }
 
 .app {
