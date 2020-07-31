@@ -15,7 +15,7 @@ import {
   VisibilityOff
 } from "@material-ui/icons";
 
-export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false, required = false , multiline = false, rows = 1, variant = 'filled'} ) {
+export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false, required = false , multiline = false, rows = 1} ) {
 
   console.log(multiline);
   console.log(rows);
@@ -74,7 +74,6 @@ export default function FormikField({name, label, type = "text", placeholder = '
   return (
     <div className="formik-field">
       <Field
-        // variant={variant}
         as={TextField}
         multiline={multiline}
         rows={rows}
