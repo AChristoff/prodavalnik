@@ -4,67 +4,103 @@ import * as Yup from "yup";
 import Button from "@material-ui/core/Button";
 import FormikField from "../../shared/form/FormikField";
 import Heading from "../../shared/Heading";
-
-const lowercaseRegex = /(?=.*[a-z])/;
-const uppercaseRegex = /(?=.*[A-Z])/;
-const numericRegex = /(?=.*[0-9])/;
-const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
-const letterRegex = /^[A-Za-z]+$/;
+import AuthService from "../../../services/auth-service";
+import Loading from "../../shared/Loading";
+import Conditional from "../../shared/Conditional";
 
 const RegisterSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(2, 'Username must be at least 2 characters!')
-    .max(20, 'Username must be maximum 20 characters!')
-    .matches(letterRegex, 'Username must contain only letters!')
-    .required('Username is required!'),
   email: Yup.string()
     .email('Invalid email!')
     .required('Email is required!'),
-  password: Yup.string()
-    .min(6, 'Minimum 6 character required!')
-    .max(40, 'Maximum 40 character!')
-    .matches(lowercaseRegex, 'One lowercase required')
-    .matches(uppercaseRegex, 'One uppercase required')
-    .matches(numericRegex, 'One number required')
-    .matches(specialRegex, 'One special character required')
-    .required('Password is required!'),
-  rePassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Passwords do not match!')
-    .required('Password confirmation is required!'),
 });
 
-export default function Register() {
+class Register extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      success: '',
+      error: '',
+      isLoading: false,
+    };
+    this.userId = window.localStorage.getItem('userId')
+  }
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  static service = new AuthService();
+
+  handleSubmit = async (values) => {
+    this.setState({
+      isLoading: true,
+    });
+
+    try {
+
+      const res = await Register.service.register(values);
+
+      if (res.errors) {
+        const message = res.message;
+        throw new Error(message);
+      }
+
+      this.setState({
+        success: res.message,
+        error: '',
+        isLoading: false,
+      });
+
+    } catch (error) {
+
+      this.setState({
+        error: error.message,
+        isLoading: false,
+      });
+
+    }
   };
 
-  return (
-    <div className="wrapper register">
+  render() {
+    const {isLoading, success, error} = this.state;
 
-      <Heading text="Register"/>
 
-      <Formik
-        initialValues={{username: '', email: '', password: '', rePassword: ''}}
-        validationSchema={RegisterSchema}
-        onSubmit={handleSubmit}
-      >
-        {(props) => (
-          <Form className="register-from">
+    if (isLoading) {
+      return <Loading/>
+    }
 
-            <FormikField name="username" label="Username" placeholder="Ex. John" icon="username"/>
-            <FormikField name="email" label="Email" placeholder="Ex. john-doe@mail.com" icon="email"/>
-            <FormikField name="password" label="Password" type="password" placeholder="Ex. John#567" icon="password"/>
-            <FormikField name="rePassword" label="Confirm Password" type="password" icon="password"/>
+    return (
 
-            <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>
-              Register
-            </Button>
+      <div className="wrapper register">
 
-          </Form>
-        )}
-      </Formik>
+        <Conditional if={error.length}>
+          <div className='error-message'>Error: {error}</div>
+        </Conditional>
 
-    </div>
-  );
+        <Conditional if={success}>
+          <div className='success-message'>{success}</div>
+        </Conditional>
+
+        <Heading text="Register"/>
+
+        <Formik
+          initialValues={{email: ''}}
+          validationSchema={RegisterSchema}
+          onSubmit={this.handleSubmit}
+        >
+          {(props) => (
+            <Form className="register-from">
+
+              <FormikField name="email" label="Email" placeholder="Ex. john-doe@mail.com" icon="email"/>
+
+              <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>
+                Register
+              </Button>
+
+            </Form>
+          )}
+        </Formik>
+
+      </div>
+    )
+      ;
+  }
 }
+
+export default Register;

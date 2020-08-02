@@ -1,17 +1,28 @@
 .MuiSwitch-root.theme-switch {
 
-	margin: auto 0;
+  margin: auto 0;
 
-	.MuiSwitch-switchBase {
-		color: #FFFFFF;
-	}
+  .MuiSwitch-switchBase {
+    color: #FFFFFF;
+    left: -2px;
+  }
 
-	.MuiSwitch-colorPrimary.Mui-checked {
-		color: #FFFFFF;
-	}
+  .MuiSwitch-thumb {
+    height: 0.75em;
+    width: 0.75em;
+  }
 
-	.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
-		background-color: #FFFFFF;
-	}
+  .MuiSwitch-colorPrimary.Mui-checked {
+    color: #FFFFFF;
+  }
+
+  .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+    background-color: #FFFFFF;
+  }
+
+  .MuiSwitch-track {
+    width: 1.7em;
+    height: 0.8em;
+  }
 
 }

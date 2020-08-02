@@ -53,7 +53,11 @@ class CardsContainer extends React.Component {
       );
     }
 
-    const noOffers = (!isLoading && !offers) || (!isLoading && pageCount === 0);
+    const noOffers = (!isLoading && offers.length === 0) || (!isLoading && pageCount === 0);
+    console.log('isLoading', isLoading);
+    console.log('offers', offers);
+    console.log('pageCount', !pageCount);
+    console.log(noOffers);
 
     return (
       <div className="all-offers wrapper">

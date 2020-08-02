@@ -90,14 +90,14 @@ class UserForm extends React.Component {
   render() {
 
     const {email} = this.props;
-    const {username, success} = this.state;
+    const {username, success, error} = this.state;
 
     return (
 
       <div className="user-details-form">
 
-        <Conditional if={this.state.error.length}>
-          <div className='error-message'>Error: {this.state.error}</div>
+        <Conditional if={error.length}>
+          <div className='error-message'>Error: {error}</div>
         </Conditional>
 
         <Conditional if={success}>

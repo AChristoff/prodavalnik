@@ -365,6 +365,7 @@
 
 		&.login,
 		&.register,
+		&.register-confirm,
 		&.user-details,
 		&.create-offer,
 		&.edit-offer,
@@ -373,6 +374,7 @@
 			.login-from,
 			.user-from,
 			.register-from,
+			.register-confirm-from,
 			.offer-from {
 
 				width: 28em;
