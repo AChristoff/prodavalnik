@@ -7,6 +7,7 @@ import Heading from "../../shared/Heading";
 import AuthService from "../../../services/auth-service";
 import Loading from "../../shared/Loading";
 import Conditional from "../../shared/Conditional";
+import Stepper from "../../shared/stepper/Stepper";
 
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
@@ -78,6 +79,8 @@ class Register extends React.Component {
         </Conditional>
 
         <Heading text="Register"/>
+
+        <Stepper/>
 
         <Formik
           initialValues={{email: ''}}

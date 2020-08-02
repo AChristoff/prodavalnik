@@ -8,6 +8,7 @@ import AuthService from "../../../services/auth-service";
 import {AuthContext} from "../../../context/user-context";
 import Conditional from "../../shared/Conditional";
 import Loading from "../../shared/Loading";
+import Stepper from "../../shared/stepper/Stepper";
 
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
@@ -113,6 +114,8 @@ class RegisterConfirm extends React.Component {
         </Conditional>
 
         <Heading text="Register"/>
+
+        <Stepper stepOneDone={true}/>
 
         <Formik
           initialValues={{name: '', password: '', rePassword: ''}}
