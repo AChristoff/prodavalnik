@@ -111,7 +111,7 @@ class OffersForm extends React.Component {
 
   handleSubmit = (formType) => {
     switch (formType) {
-      case 'create':
+      case 'add':
         return this.handleCreate;
       case 'edit':
         return this.handleEdit;

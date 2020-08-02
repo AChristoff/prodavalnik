@@ -49,6 +49,7 @@ class Login extends React.Component {
         window.localStorage.setItem('username', res.username);
         window.localStorage.setItem('role', res.role);
         window.localStorage.setItem('token', res.token);
+        window.localStorage.setItem('userId', res.userId);
 
         updateUserData({
           isAuth: true,

@@ -12,6 +12,7 @@ const Home = lazy(() => import('../components/pages/home/Home'));
 const AllOffers = lazy(() => import('../components/pages/offers/AllOffers'));
 const UserOffers = lazy(() => import('../components/pages/offers/UserOffers'));
 const Login = lazy(() => import('../components/pages/user/Login'));
+const UserProfile = lazy(() => import('../components/pages/user/Profile'));
 const Register = lazy(() => import('../components/pages/user/Register'));
 const RegisterConfirm = lazy(() => import('../components/pages/user/RegisterConfirm'));
 const NotFound = lazy(() => import('../components/pages/errors/NotFound'));
@@ -27,6 +28,7 @@ export function RouterMain() {
         <Route path='/user/register/confirm' exact component={RegisterConfirm}/>
         <Route path='/offers/all/:page?/:limit?/:sort?/:order?/:search?/:filter?' exact component={AllOffers}/>
         <PrivateRoute path="/user/offers" exact component={UserOffers}/>
+        <PrivateRoute path="/user/profile" exact component={UserProfile}/>
         <PrivateRoute path='/offers/create' exact component={CreateOffer}/>
         <PrivateRoute path='/offers/edit/:id' exact component={EditOffer}/>
         <PrivateRoute path='/offers/delete/:id' exact component={DeleteOffer}/>

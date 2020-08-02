@@ -2,6 +2,9 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import {AuthContext} from "../../../context/user-context";
+import {Home} from "@material-ui/icons";
+import Submenu from "../submenu/Submenu";
+import Conditional from "../Conditional";
 
 class Navigation extends React.Component {
   static contextType = AuthContext;
@@ -12,69 +15,48 @@ class Navigation extends React.Component {
     return (
       <nav className="site-nav">
 
-        {
-          isAuth
-            ? <span className="greeter">Hello, {username}!</span>
-            : null
-        }
 
         <ul>
 
           <li>
             <NavLink to="/" exact activeClassName="active">
-              <Button variant="contained" color="primary" disableElevation>Home</Button>
+              <Button variant="contained" color="primary" disableElevation>
+                <Home/>
+              </Button>
             </NavLink>
           </li>
 
-          <li>
+          <li className="all-offers-tab">
             <NavLink to="/offers/all" exact activeClassName="active">
-              <Button variant="contained" color="primary" disableElevation>Offers</Button>
+              <Button variant="contained" color="primary" disableElevation>
+                Offers
+              </Button>
             </NavLink>
           </li>
 
-          {
-            isAuth
-              ? <li>
-                <NavLink to="/user/offers" exact activeClassName="active">
-                  <Button variant="contained" color="primary" disableElevation>My Offers</Button>
-                </NavLink>
-              </li>
-              : null
-          }
+          <Conditional if={isAuth}>
+              <Submenu username={username}/>
+          </Conditional>
 
-          {
-            isAuth
-              ? <li>
-                <NavLink to="/offers/create" exact activeClassName="active">
-                  <Button variant="contained" color="primary" disableElevation>Create Offers</Button>
-                </NavLink>
-              </li>
-              : null
-          }
+          <Conditional if={!isAuth}>
+            <li>
+              <NavLink to="/user/register" activeClassName="active">
+                <Button variant="contained" color="primary" disableElevation>
+                  Register
+                </Button>
+              </NavLink>
+            </li>
+          </Conditional>
 
-          {
-            isAuth
-              ? null
-              : <li>
-                <NavLink to="/user/register" activeClassName="active">
-                  <Button variant="contained" color="primary" disableElevation>Register</Button>
-                </NavLink>
-              </li>
-          }
-
-          {
-            isAuth
-              ? <li>
-                <NavLink to="/user/logout" exact activeClassName="active">
-                  <Button variant="contained" color="primary" disableElevation>Logout</Button>
-                </NavLink>
-              </li>
-              : <li>
+          <Conditional if={!isAuth}>
+              <li>
                 <NavLink to="/user/login" exact activeClassName="active">
-                  <Button variant="contained" color="primary" disableElevation>Login</Button>
+                  <Button variant="contained" color="primary" disableElevation>
+                    Login
+                  </Button>
                 </NavLink>
               </li>
-          }
+          </Conditional>
 
         </ul>
       </nav>

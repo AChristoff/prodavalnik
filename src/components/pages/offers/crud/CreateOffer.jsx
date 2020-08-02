@@ -18,9 +18,9 @@ class CreateOffer extends React.Component {
     return (
       <div className="create-offer wrapper">
 
-        <Heading text="Create Offer"/>
+        <Heading text="Add Offer"/>
 
-        <OffersForm history={this.props.history} match={this.props.match} formType='create'/>
+        <OffersForm history={this.props.history} match={this.props.match} formType='add'/>
 
       </div>
     );
