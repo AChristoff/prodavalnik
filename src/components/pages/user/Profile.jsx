@@ -48,7 +48,7 @@ class Profile extends React.Component {
     return (
       <div className="user-details wrapper">
 
-        <Heading text="User details"/>
+        <Heading text="Your details"/>
 
         <UserForm username={user.name} email={user.email}/>
 

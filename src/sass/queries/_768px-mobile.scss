@@ -138,6 +138,83 @@
 	}
 }
 
+.dark .app-header {
+
+	&.active {
+
+	}
+
+	.wrapper {
+
+		.header-logo {
+
+			.MuiSvgIcon-root {
+
+			}
+		}
+
+		.greeter {
+
+		}
+
+		.site-nav {
+
+
+			ul {
+
+
+				&.MuiList-root {
+
+
+					li {
+
+					}
+				}
+
+				li {
+
+					button {
+
+					}
+
+					&.all-offers-tab {
+						box-shadow: none;
+
+						.MuiButton-label {
+
+						}
+
+						&:hover {
+
+							.MuiButton-label {
+
+							}
+						}
+					}
+
+					a {
+
+						&.active {
+
+							&:after {
+
+							}
+						}
+					}
+
+					.MuiButton-contained {
+
+
+						&:hover {
+
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 .app-main {
 	padding: $header-height 0 0;
 
