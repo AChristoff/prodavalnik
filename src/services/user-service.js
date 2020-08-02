@@ -13,11 +13,11 @@ class UserService {
     return get(this.UserDetailsUrl);
   }
 
-  editOffer() {
-    return put(this.editUserUrl);
+  editUser(values) {
+    return put(this.editUserUrl, values);
   }
 
-  deleteOffer() {
+  deleteUser() {
     return del(this.deleteUserUrl);
   }
 }

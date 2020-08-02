@@ -80,7 +80,7 @@ class Login extends React.Component {
       <div className="wrapper login">
 
         {/* TODO: toaster component*/}
-        {this.state.error.length ? <div>Error: {this.state.error}</div> : null}
+        {this.state.error.length ? <div className="error-message">Error: {this.state.error}</div> : null}
 
         <Heading text="Login"/>
 

@@ -20,9 +20,16 @@ class AuthContextProvider extends Component {
     })
   };
 
+  updateUserContext = (key, value) => {
+    this.setState({[key]: value})
+  };
+
   render() {
     return (
-      <AuthContext.Provider value={{...this.state, updateUserData: this.updateUserData}}>
+      <AuthContext.Provider
+        value={{...this.state,
+          updateUserData: this.updateUserData,
+          updateUserContext: this.updateUserContext}}>
         {this.props.children}
       </AuthContext.Provider>
     );

@@ -17,10 +17,6 @@ import {
 
 export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false, required = false , multiline = false, rows = 1, className=''} ) {
 
-  console.log(multiline);
-  console.log(rows);
-
-
   const handleClickShowPassword = () => {
     setValues({...values, showPassword: !values.showPassword});
   };

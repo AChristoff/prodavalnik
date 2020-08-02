@@ -22,7 +22,7 @@ class Profile extends React.Component {
     try {
 
       const user = await Profile.service.getUserDetails(this.userId);
-      console.log(user.userDetails);
+
       this.setState({
         user: user.userDetails,
         isLoading: false,

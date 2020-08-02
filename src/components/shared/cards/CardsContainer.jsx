@@ -47,7 +47,7 @@ class CardsContainer extends React.Component {
     if (error) {
       // TODO: toastr component;
       return (
-        <div className="wrapper">
+        <div className="wrapper error-message">
           Error: {error}!
         </div>
       );
