@@ -1,28 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './stepper.scss';
 import {Done} from "@material-ui/icons";
 
-class Stepper extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stepOneDone: false,
-      stepTwoDone: false,
-      stepThreeDone: false,
-    };
-    this.userId = window.localStorage.getItem('userId')
-  }
+const Stepper = (props) => {
 
-  componentWillMount() {
+  const [stepOneDone, setStepOneDone] = useState(props.stepOneDone || false);
+  const [stepTwoDone, setStepTwoDone] = useState(props.stepTwoDone || false);
+  const [stepThreeDone, setStepThreeDone] = useState(props.stepThreeDone || false);
 
-    this.setState({
-      stepOneDone: this.props.stepOneDone,
-      stepTwoDone: this.props.stepTwoDone,
-    });
-  }
-
-  render() {
-    const {stepOneDone, stepTwoDone, stepThreeDone} = this.state;
 
     return (
       <div className="Stepper">
@@ -50,7 +35,7 @@ class Stepper extends React.Component {
         </div>
 
         <div className="step">
-          <div className="step-number-three disabled">
+          <div className={stepTwoDone ? 'step-number-three' : 'step-number-three disabled'}>
             {
               stepThreeDone
                 ? <Done className="done"/>
@@ -62,7 +47,6 @@ class Stepper extends React.Component {
 
       </div>
     );
-  }
-}
+};
 
 export default Stepper;

@@ -9,6 +9,7 @@ import {AuthContext} from "../../../context/user-context";
 import Conditional from "../../shared/Conditional";
 import Loading from "../../shared/Loading";
 import Stepper from "../../shared/stepper/Stepper";
+import {NavLink} from "react-router-dom";
 
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
@@ -41,6 +42,8 @@ class RegisterConfirm extends React.Component {
     this.state = {
       error: '',
       user: {},
+      stepTwoDone: false,
+      stepThreeDone: false,
       isLoading: false,
     };
     this.token = this.props.match.params.token;
@@ -51,6 +54,7 @@ class RegisterConfirm extends React.Component {
 
   handleSubmit = async (values) => {
     const {updateUserData} = this.context;
+
     this.setState({
       isLoading: true,
     });
@@ -62,15 +66,22 @@ class RegisterConfirm extends React.Component {
 
       const res = await RegisterConfirm.service.registerConfirm(this.token, values);
 
-      if (res.errors) {
-        const message = res.message;
-        throw new Error(message);
+      console.log(res);
+
+      if (res.error) {
+        console.log();
+        this.setState({
+          error: res.error.message,
+        });
+        throw new Error(res.error.message);
       }
 
       this.setState({
         success: res.message,
         error: '',
         isLoading: false,
+        stepTwoDone: true,
+        stepThreeDone: true,
       });
 
       window.localStorage.setItem('username', res.username);
@@ -96,10 +107,38 @@ class RegisterConfirm extends React.Component {
 
   render() {
 
-    const {isLoading, success, error} = this.state;
+    const {isLoading, success, error, stepTwoDone, stepThreeDone} = this.state;
 
     if (isLoading) {
       return <Loading/>
+    }
+
+
+    if (stepThreeDone) {
+    return (
+      <div className="wrapper register-confirm">
+
+        <Heading text="Register"/>
+
+        <Stepper stepOneDone={true} stepTwoDone={stepTwoDone} stepThreeDone={stepThreeDone}/>
+
+        <div className="register-confirm-from">
+
+          <Conditional if={error.length}>
+            <div className='error-message'>Error: {error}</div>
+          </Conditional>
+
+          <h5 className="headings">Congratulations!</h5>
+          <h6 className="headings">Your registration is complete.</h6>
+
+          <Button fullWidth type="submit" variant="contained" size="large" color="primary">
+            <NavLink to="/offers/create" exact>
+              Add your first offer
+            </NavLink>
+          </Button>
+        </div>
+      </div>
+    );
     }
 
     return (
@@ -115,7 +154,7 @@ class RegisterConfirm extends React.Component {
 
         <Heading text="Register"/>
 
-        <Stepper stepOneDone={true}/>
+        <Stepper stepOneDone={true} stepTwoDone={stepTwoDone} stepThreeDone={stepThreeDone}/>
 
         <Formik
           initialValues={{name: '', password: '', rePassword: ''}}

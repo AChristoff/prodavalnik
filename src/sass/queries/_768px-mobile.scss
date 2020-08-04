@@ -406,6 +406,16 @@
 					width: 100%;
 				}
 			}
+
+			.register-confirm-from {
+				.headings {
+					text-align: center;
+				}
+
+				a {
+					color: $pure-white;
+				}
+			}
 		}
 
 		&.view-offer {
