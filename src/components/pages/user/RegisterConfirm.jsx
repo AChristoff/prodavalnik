@@ -20,7 +20,7 @@ const letterRegex = /^[A-Za-z]+$/;
 const RegisterSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Username must be at least 2 characters!')
-    .max(20, 'Username must be maximum 20 characters!')
+    .max(12, 'Username must be maximum 12 characters!')
     .matches(letterRegex, 'Username must contain only letters!')
     .required('Username is required!'),
   password: Yup.string()
