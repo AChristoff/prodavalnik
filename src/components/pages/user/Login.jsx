@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 
 import * as Yup from "yup";
 import {Form, Formik} from 'formik';
@@ -102,6 +102,10 @@ class Login extends React.Component {
             </Form>
           )}
         </Formik>
+
+        <NavLink className="go-to-register" to="/user/register" exact>
+          New to Prodavalnik? Register here!
+        </NavLink>
 
       </div>
     );

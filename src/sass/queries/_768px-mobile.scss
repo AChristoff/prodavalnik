@@ -371,6 +371,17 @@
 		&.edit-offer,
 		&.delete-offer {
 
+			.go-to-register,
+			.go-to-login {
+				margin-top: 2em;
+				opacity: 0.7;
+			}
+
+			.go-to-register:hover,
+			.go-to-login:hover {
+				opacity: 1;
+			}
+
 			.login-from,
 			.user-from,
 			.register-from,
@@ -450,6 +461,10 @@
 .dark .app-main {
 
 	color: rgba(255, 255, 255, 0.8);
+
+	a {
+		color: rgba(255, 255, 255, 0.8);
+	}
 
 	.jumbotron {
 

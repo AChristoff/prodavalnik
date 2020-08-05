@@ -8,6 +8,7 @@ import AuthService from "../../../services/auth-service";
 import Loading from "../../shared/Loading";
 import Conditional from "../../shared/Conditional";
 import Stepper from "../../shared/stepper/Stepper";
+import {NavLink} from "react-router-dom";
 
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
@@ -99,6 +100,10 @@ class Register extends React.Component {
             </Form>
           )}
         </Formik>
+
+        <NavLink className="go-to-login" to="/user/login" exact>
+          Already have an account? Login here!
+        </NavLink>
 
       </div>
     )
