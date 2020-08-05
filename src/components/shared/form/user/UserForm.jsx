@@ -59,8 +59,6 @@ class UserForm extends React.Component {
     try {
       const res = await UserForm.service.editUser(values);
 
-      console.log(res);
-
       if (res.errors) {
 
         const message = res.message;

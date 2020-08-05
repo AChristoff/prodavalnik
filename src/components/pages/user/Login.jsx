@@ -33,7 +33,6 @@ class Login extends React.Component {
 
   handleSubmit = (values) => {
     const {updateUserData} = this.context;
-    console.log(this.context);
 
     this.setState({
       error: '',

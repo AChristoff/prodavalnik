@@ -24,7 +24,7 @@ class Category extends React.Component {
     });
 
     this.context.updateOfferContext('filter', category);
-    console.log('filter after category click', category);
+
   };
 
   render() {

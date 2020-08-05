@@ -4,7 +4,7 @@ import './switch.scss'
 import {ThemeContext} from "../../../context/theme-context";
 
 class ThemeSwitch extends React.Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       checkedA: true,
@@ -13,13 +13,12 @@ class ThemeSwitch extends React.Component {
 
   static contextType = ThemeContext;
 
-    handleChange = (event) => {
-      console.log(event.target.name);
-      console.log(event.target.checked);
-   this.setState({
-     ...this.state,
-     [event.target.name]: event.target.checked }
-     );
+  handleChange = (event) => {
+    this.setState({
+        ...this.state,
+        [event.target.name]: event.target.checked
+      }
+    );
 
     let {isLightTheme, updateThemeContext} = this.context;
     isLightTheme = !isLightTheme;

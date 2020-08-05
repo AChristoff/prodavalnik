@@ -54,7 +54,7 @@ class OffersForm extends React.Component {
 
     try {
       const res = await OffersForm.service.createOffer(values);
-      console.log(res);
+
       if (res.errors) {
         const message = res.message;
         throw new Error(message);
@@ -73,7 +73,7 @@ class OffersForm extends React.Component {
   handleEdit = async (values) => {
     try {
       const res = await OffersForm.service.editOffer(this.offerId, values);
-      console.log(res);
+
       if (res.errors) {
         const message = res.message;
         throw new Error(message);
@@ -92,7 +92,7 @@ class OffersForm extends React.Component {
   handleDelete = async () => {
     try {
       const res = await OffersForm.service.deleteOffer(this.offerId);
-      console.log(res);
+
       if (res.errors) {
         const message = res.message;
         throw new Error(message);
@@ -133,7 +133,7 @@ class OffersForm extends React.Component {
 
   render() {
     const {title, content, price, image, formType, filterProp, category} = this.props;
-    console.log('form values', this.props);
+
     const {filter} = this.context;
 
 /////////////////////////////////////////////

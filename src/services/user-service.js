@@ -2,7 +2,7 @@ import {del, get, put} from './data/requester';
 
 class UserService {
   constructor() {
-    this.baseUrl = 'http://localhost:5000/user';
+    this.baseUrl = `${process.env.REACT_APP_API}/user`;
 
     this.UserDetailsUrl = `${this.baseUrl}/profile`;
     this.editUserUrl = `${this.baseUrl}/edit`;

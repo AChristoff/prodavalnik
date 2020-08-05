@@ -78,9 +78,6 @@ const FormikSelect = ({label, name, helperText, filterProp, disabled, changeCont
     },
   ];
 
-
-  console.log('editFilter', editFilter);
-
   return <div className="formik-select">
     <FormControl fullWidth>
       <InputLabel htmlFor="category">{label}</InputLabel>

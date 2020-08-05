@@ -2,7 +2,7 @@ import {post, put} from './data/requester';
 
 class AuthService {
   constructor() {
-    this.baseUrl = 'http://localhost:5000/user';
+    this.baseUrl = `${process.env.REACT_APP_API}/user`;
 
     this.loginUrl = `${this.baseUrl}/login`;
     this.registerUrl = `${this.baseUrl}/register`;

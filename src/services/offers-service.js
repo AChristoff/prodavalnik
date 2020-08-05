@@ -2,7 +2,7 @@ import {del, get, post, put} from './data/requester';
 
 class OffersService {
   constructor() {
-    this.baseUrl = 'http://localhost:5000/blog';
+    this.baseUrl = `${process.env.REACT_APP_API}/blog`;
 
     this.allOffersUrl = `${this.baseUrl}/posts/all`;
     this.UserOffersUrl = `${this.baseUrl}/posts`;

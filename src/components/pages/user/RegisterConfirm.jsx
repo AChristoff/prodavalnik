@@ -60,16 +60,12 @@ class RegisterConfirm extends React.Component {
     });
 
     delete values.rePassword;
-    console.log(values);
 
     try {
 
       const res = await RegisterConfirm.service.registerConfirm(this.token, values);
 
-      console.log(res);
-
       if (res.error) {
-        console.log();
         this.setState({
           error: res.error.message,
         });
