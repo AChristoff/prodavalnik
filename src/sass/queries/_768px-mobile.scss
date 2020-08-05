@@ -250,7 +250,6 @@
 			.formik-field {
 				.MuiIconButton-root {
 					padding: 5px;
-					margin-top: 4px;
 					border-radius: 8px 8px 0 0;
 					color: $pure-white;
 					background-color: $color-theme-green;
@@ -373,8 +372,9 @@
 
 			.go-to-register,
 			.go-to-login {
-				margin-top: 2em;
-				opacity: 0.7;
+				color: #3CC1A9;
+				margin-top: 1em;
+				opacity: 0.75;
 			}
 
 			.go-to-register:hover,

@@ -20,7 +20,7 @@ export default function Submenu({username}) {
   return (
     <li>
       <Button className="submenu-btn" aria-controls="nav-menu" aria-haspopup="true" onClick={handleClick}>
-        <span className="greeter">Hello {username},</span><AccountCircle/>
+        <AccountCircle/><span className="greeter">{username}</span>
       </Button>
       <Menu
         id="nav-menu"
