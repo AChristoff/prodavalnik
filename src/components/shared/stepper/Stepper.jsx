@@ -10,7 +10,7 @@ const Stepper = (props) => {
 
 
     return (
-      <div className="Stepper">
+      <div className="stepper">
 
         <div className="step">
           <div className="step-number-one">
