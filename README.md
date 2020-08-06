@@ -1,4 +1,7 @@
-# Prodavalnik is live at [<img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />][prodavalnik]
+<h2> Prodavalnik is live at: <a href="https://prodavalnik.herokuapp.com/">
+<img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />
+</a>
+</h1>
 
 ### Public pages:
 
@@ -26,10 +29,11 @@ MERN stack <br>
 [<img align="left" alt="React" width="110px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png" />][react]
 [<img align="left" alt="Node.js" width="110px" src="https://alekshristov.com/images/node.png" />][node]
 [<img align="left" alt="Node.js" width="110px" src="https://alekshristov.com/images/express.png" />][express]
-[<img align="left" alt="MongoDB" width="110px" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/MongoDB-Logo.svg/375px-MongoDB-Logo.svg.png" />][mongo] <br>  
+[<img align="left" alt="MongoDB" width="110px" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/MongoDB-Logo.svg/375px-MongoDB-Logo.svg.png" />][mongo] <br> 
+
+<div></div>
 
  *  *  *  *  *
-<br>
 
 `Accompanying:` <br>
 [<img align="left" alt="Sass" width="90px" src="https://alekshristov.com/images/sass.png" />][sass]
