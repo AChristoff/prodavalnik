@@ -25,14 +25,20 @@
 
 ### Technologies used for "Prodavalnik":
 
-<p>Core: MEAN stack</p>
+<img align="left" alt="React" width="60px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png" />
+<img align="left" alt="Node.js" width="60px" src="https://alekshristov.com/images/node.png" />
+<img align="left" alt="Node.js" width="60px" src="https://alekshristov.com/images/express.png" />
+<img align="left" alt="MongoDB" width="60px" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/MongoDB-Logo.svg/375px-MongoDB-Logo.svg.png" />
+<img align="left" alt="Sass" width="60px" src="https://alekshristov.com/images/sass.png" />
+<img align="left" alt="Git" width="60px" src="https://material-ui.com/static/logo_raw.svg" />
+<img align="left" alt="Git" width="60px" src="https://user-images.githubusercontent.com/4060187/61057426-4e5a4600-a3c3-11e9-9114-630743e05814.png" />
+<img align="left" alt="Git" width="60px" src="https://www.blog.plint-sites.nl/wordpress/wp-content/uploads/2016/07/react-router.png" />
+<img align="left" alt="Git" width="60px" src="https://nodemailer.com/nm_logo_200x136.png" />
+<img align="left" alt="Git" width="60px" src="https://git-scm.com/images/logo@2x.png" /> 
 
-<img align="left" alt="React" width="110px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png" />
-<img align="left" alt="Node.js" width="110px" src="https://alekshristov.com/images/node.png" />
-<img align="left" alt="Node.js" width="110px" src="https://alekshristov.com/images/express.png" />
-<img align="left" alt="MongoDB" width="110px" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/MongoDB-Logo.svg/375px-MongoDB-Logo.svg.png" />
+<br>
 
-<br />  
+ * * *
 
 ### React is core technologies for "Prodavalnik" and it is developed by using:
 `Props`
