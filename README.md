@@ -36,9 +36,10 @@
 <img align="left" alt="Git" width="60px" src="https://nodemailer.com/nm_logo_200x136.png" />
 <img align="left" alt="Git" width="60px" src="https://git-scm.com/images/logo@2x.png" /> 
 
-<br>
+<br />
+<br />
 
- * * *
+---
 
 ### React is core technologies for "Prodavalnik" and it is developed by using:
 `Props`
