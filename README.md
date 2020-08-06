@@ -42,6 +42,11 @@
 <br />
 
 ---
+---
+
+<br />
+<br />
+
 
 ### React is core technologies for "Prodavalnik" and it is developed by using:
 `Props`<br />
