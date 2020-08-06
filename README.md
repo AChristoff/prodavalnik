@@ -34,22 +34,6 @@
 
 <br />  
 
-&nbsp;
-
-<p>Аccompanying:</p>
-
-<img align="left" alt="Sass" width="90px" src="https://alekshristov.com/images/sass.png" />
-<img align="left" alt="Git" width="90px" src="https://material-ui.com/static/logo_raw.svg" />
-<img align="left" alt="Git" width="90px" src="https://user-images.githubusercontent.com/4060187/61057426-4e5a4600-a3c3-11e9-9114-630743e05814.png" />
-<img align="left" alt="Git" width="110px" src="https://www.blog.plint-sites.nl/wordpress/wp-content/uploads/2016/07/react-router.png" />
-<img align="left" alt="Git" width="90px" src="https://nodemailer.com/nm_logo_200x136.png" />
-<img align="left" alt="Git" width="90px" src="https://git-scm.com/images/logo@2x.png" /> 
-
-<br />  
-
-&nbsp;
-<p></p>
-
 ### React is core technologies for "Prodavalnik" and it is developed by using:
 `Props`
 `State` 
