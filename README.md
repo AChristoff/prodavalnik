@@ -30,12 +30,10 @@
 
 ### Technologies used for "Prodavalnik":
 
-`Core:`MEAN stack
+`Core:`
 
-<img align="left" alt="React" width="70px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png" />
-<img align="left" alt="Node.js" width="60px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1024px-Node.js_logo.svg.png" />
-<img align="left" alt="Expess.js" width="65px" src="https://cdn2.hubspot.net/hubfs/4305976/s3-files/express_0.png" />
-<img align="left" alt="MongoDB" width="95px" src="https://www.edgexfoundry.org/wp-content/uploads/sites/25/2019/07/mongodb-logo-39d3026cd557c2ff1912112d620b88c7.png" />
+<img align="left" alt="MERN" width="200px" src="https://masterblocks.co.in/static/img/technologies/mern.png" />
+
 <br />
 <br />
 
