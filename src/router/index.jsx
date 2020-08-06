@@ -22,6 +22,8 @@ export function RouterMain() {
     <Suspense fallback={<Loading/>}>
       <Switch>
         <Route path='/' exact component={Home}/>
+        <Route path='/#' exact component={Home}/>
+        <Route path='/home' exact component={Home}/>
         <Route path='/offers/view/:id' exact component={ViewOffer}/>
         <Route path='/user/login' exact component={Login}/>
         <Route path='/user/register' exact component={Register}/>
