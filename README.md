@@ -57,18 +57,18 @@
 ---
 
 ### React is core technologies for "Prodavalnik" and it is developed by using:
-`Props`
-`State` 
-`Context` 
-`Hooks` 
-`Client-side rendering & routing via React Router` 
-`Conditional rendering of components` 
-`Synthetic events` 
-`HOC` 
-`Consuming REST API via Fetch` 
-`Form validation via Formik & Yup` 
-`Material-UI components integration` 
-`Error handling` 
+`Props`<br />
+`State` <br />
+`Context` <br />
+`Hooks` <br />
+`Client-side rendering & routing via React Router` <br />
+`Conditional rendering of components` <br />
+`Synthetic events` <br />
+`HOC` <br />
+`Consuming REST API via Fetch` <br />
+`Form validation via Formik & Yup` <br />
+`Material-UI components integration` <br />
+`Error handling` <br />
 
 <br>
 
