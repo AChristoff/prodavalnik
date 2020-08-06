@@ -1,4 +1,5 @@
-<h2> Prodavalnik is live at: <a href="https://prodavalnik.herokuapp.com/">
+<h2> Prodavalnik is live at: <br />
+<a href="https://prodavalnik.herokuapp.com/">
 <img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />
 </a>
 </h1>
@@ -24,8 +25,7 @@
 
 ### Technologies used for "Prodavalnik":
 
-`Core:`
-MEAN stack
+<p>Core: MEAN stack</p>
 
 <img align="left" alt="React" width="110px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png" />
 <img align="left" alt="Node.js" width="110px" src="https://alekshristov.com/images/node.png" />
@@ -36,7 +36,7 @@ MEAN stack
 
 &nbsp;
 
-`Аccompanying:`
+<p>Аccompanying:</p>
 
 <img align="left" alt="Sass" width="90px" src="https://alekshristov.com/images/sass.png" />
 <img align="left" alt="Git" width="90px" src="https://material-ui.com/static/logo_raw.svg" />
@@ -48,6 +48,7 @@ MEAN stack
 <br />  
 
 &nbsp;
+<p></p>
 
 ### React is core technologies for "Prodavalnik" and it is developed by using:
 `Props`
