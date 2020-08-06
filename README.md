@@ -1,8 +1,11 @@
-<h2> Prodavalnik is live at: <br />
+## Prodavalnik is live at
 <a href="https://prodavalnik.herokuapp.com/">
 <img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />
 </a>
-</h1>
+
+<br />
+<br />
+
 
 ### Public pages:
 
