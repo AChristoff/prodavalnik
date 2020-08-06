@@ -19,7 +19,7 @@
 `https://prodavalnik.herokuapp.com/offers/view/offer-id` <br>
 `https://prodavalnik.herokuapp.com/offers/edit/offer-id` <br>
 `https://prodavalnik.herokuapp.com/offers/delete/offer-id` <br>
-<br>
+<br />
  *  *  *  *  *
 
 ### Technologies used for "Prodavalnik":
@@ -32,7 +32,9 @@ MEAN stack
 <img align="left" alt="Node.js" width="110px" src="https://alekshristov.com/images/express.png" />
 <img align="left" alt="MongoDB" width="110px" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/MongoDB-Logo.svg/375px-MongoDB-Logo.svg.png" />
 
-<br>
+<br />  
+
+&nbsp;
 
 `Аccompanying:`
 
@@ -43,7 +45,9 @@ MEAN stack
 <img align="left" alt="Git" width="90px" src="https://nodemailer.com/nm_logo_200x136.png" />
 <img align="left" alt="Git" width="90px" src="https://git-scm.com/images/logo@2x.png" /> 
 
-<br>
+<br />  
+
+&nbsp;
 
 ### React is core technologies for "Prodavalnik" and it is developed by using:
 `Props`
