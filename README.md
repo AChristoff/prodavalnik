@@ -1,6 +1,5 @@
-### "Prodavalnik" is at:
-
-[<img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />][prodavalnik]
+### "Prodavalnik" is deployed to:
+[<img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />][prodavalnik]<br>
 
 ### "Prodavalnik" public pages:
 
@@ -19,36 +18,36 @@
 `https://prodavalnik.herokuapp.com/offers/edit/offer-id` <br>
 `https://prodavalnik.herokuapp.com/offers/delete/offer-id` <br>
 
-
 ### Technologies used for "Prodavalnik":
 
 `Core:` <br>
 MERN stack <br>
-[<img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png" />][react]
+[<img align="left" alt="React" width="110px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png" />][react]
 [<img align="left" alt="Node.js" width="110px" src="https://alekshristov.com/images/node.png" />][node]
 [<img align="left" alt="Node.js" width="110px" src="https://alekshristov.com/images/express.png" />][express]
 [<img align="left" alt="MongoDB" width="110px" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/MongoDB-Logo.svg/375px-MongoDB-Logo.svg.png" />][mongo] <br>
+<br>
 `Accompanying:` <br>
 [<img align="left" alt="Sass" width="90px" src="https://alekshristov.com/images/sass.png" />][sass]
-[<img align="left" alt="Git" width="110px" src="https://material-ui.com/static/logo_raw.svg" />][mui]
-[<img align="left" alt="Git" width="110px" src="https://user-images.githubusercontent.com/4060187/61057426-4e5a4600-a3c3-11e9-9114-630743e05814.png" />][formik]
-[<img align="left" alt="Git" width="110px" src="https://www.blog.plint-sites.nl/wordpress/wp-content/uploads/2016/07/react-router.png" />][reactrouter]
-[<img align="left" alt="Git" width="110px" src="https://nodemailer.com/nm_logo_200x136.png" />][nodemailer]
-[<img align="left" alt="Git" width="110px" src="https://git-scm.com/images/logo@2x.png" />][git]
-
+[<img align="left" alt="Git" width="90px" src="https://material-ui.com/static/logo_raw.svg" />][mui]
+[<img align="left" alt="Git" width="9px" src="https://user-images.githubusercontent.com/4060187/61057426-4e5a4600-a3c3-11e9-9114-630743e05814.png" />][formik]
+[<img align="left" alt="Git" width="90px" src="https://www.blog.plint-sites.nl/wordpress/wp-content/uploads/2016/07/react-router.png" />][reactrouter]
+[<img align="left" alt="Git" width="9px" src="https://nodemailer.com/nm_logo_200x136.png" />][nodemailer]
+[<img align="left" alt="Git" width="90px" src="https://git-scm.com/images/logo@2x.png" />][git]<br>
+<br>
 ### React is core technologies for "Prodavalnik" and it is developed by using:
-`Props` <br>
-`State` <br>
-`Context` <br>
-`Hooks` <br>
-`Client-side rendering & routing via React Router` <br>
-`Conditional rendering of components` <br>
-`Synthetic events` <br>
-`HOC` <br>
-`Consuming REST API via Fetch` <br>
-`Form validation via Formik & Yup` <br>
-`Material-UI components integration` <br>
-`Error handling` <br>
+`Props`
+`State` 
+`Context` 
+`Hooks` 
+`Client-side rendering & routing via React Router` 
+`Conditional rendering of components` 
+`Synthetic events` 
+`HOC` 
+`Consuming REST API via Fetch` 
+`Form validation via Formik & Yup` 
+`Material-UI components integration` 
+`Error handling` 
 
 <br>
 <hr>
