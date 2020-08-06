@@ -10,7 +10,7 @@
 
 ### Public pages:
 
-[`https://prodavalnik.herokuapp.com/home`][prodavalnik-home] <br>
+[`https://prodavalnik.herokuapp.com/`][prodavalnik-home] <br>
 [`https://prodavalnik.herokuapp.com/offers/all`][prodavalnik-all-offers] <br>
 [`https://prodavalnik.herokuapp.com/offers/view/offer-id`][prodavalnik-view-offer] <br>
 [`https://prodavalnik.herokuapp.com/user/register`][prodavalnik-register] <br>
@@ -78,7 +78,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 [prodavalnik]: https://prodavalnik.herokuapp.com/
-[prodavalnik-home]: https://prodavalnik.herokuapp.com/home
+[prodavalnik-home]: https://prodavalnik.herokuapp.com/
 [prodavalnik-all-offers]: https://prodavalnik.herokuapp.com/offers/all
 [prodavalnik-view-offer]: https://prodavalnik.herokuapp.com/offers/view/5f2b22d519fabb0017aea741
 [prodavalnik-register]: https://prodavalnik.herokuapp.com/user/register
