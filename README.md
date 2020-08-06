@@ -31,10 +31,6 @@
 ### Technologies used for "Prodavalnik":
 
 <img align="left" alt="MERN" width="200px" src="https://masterblocks.co.in/static/img/technologies/mern.png" />
-
-<br />
-<br />
-
 <img align="left" alt="Sass" width="60px" src="https://alekshristov.com/images/sass.png" />
 <img align="left" alt="Git" width="50px" src="https://material-ui.com/static/logo_raw.svg" />
 <img align="left" alt="Git" width="60px" src="https://user-images.githubusercontent.com/4060187/61057426-4e5a4600-a3c3-11e9-9114-630743e05814.png" />
