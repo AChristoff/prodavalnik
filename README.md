@@ -25,14 +25,20 @@
 
 ### Technologies used for "Prodavalnik":
 
-<img alt="React" width="60px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png" />
-<img alt="Node.js" width="60px" src="https://alekshristov.com/images/node.png" />
-<img alt="Node.js" width="60px" src="https://alekshristov.com/images/express.png" />
-<img alt="MongoDB" width="60px" src="https://www.edgexfoundry.org/wp-content/uploads/sites/25/2019/07/mongodb-logo-39d3026cd557c2ff1912112d620b88c7.png" />
+`Core:`MEAN stack
+
+<img align="left" alt="React" width="60px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png" />
+<img align="left" alt="Node.js" width="60px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1024px-Node.js_logo.svg.png" />
+<img align="left" alt="Expess.js" width="90px" src="https://expressjs.com/images/express-facebook-share.png" />
+<img align="left" alt="MongoDB" width="90px" src="https://www.edgexfoundry.org/wp-content/uploads/sites/25/2019/07/mongodb-logo-39d3026cd557c2ff1912112d620b88c7.png" />
 <br />
 <br />
 
 ---
+`Аccompanying`
+<br />
+<br />
+
 <img align="left" alt="Sass" width="60px" src="https://alekshristov.com/images/sass.png" />
 <img align="left" alt="Git" width="60px" src="https://material-ui.com/static/logo_raw.svg" />
 <img align="left" alt="Git" width="60px" src="https://user-images.githubusercontent.com/4060187/61057426-4e5a4600-a3c3-11e9-9114-630743e05814.png" />
