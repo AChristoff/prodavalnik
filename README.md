@@ -30,16 +30,8 @@
 
 ### Technologies used for "Prodavalnik":
 
-`Core:`
-
 <img align="left" alt="MERN" width="200px" src="https://masterblocks.co.in/static/img/technologies/mern.png" />
 
-<br />
-<br />
-
-
-
-`Аccompanying:`
 <br />
 <br />
 
