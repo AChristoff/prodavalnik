@@ -1,4 +1,4 @@
-## Prodavalnik is live at
+### Prodavalnik is live at
 <a href="https://prodavalnik.herokuapp.com/">
 <img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />
 </a>
@@ -6,6 +6,7 @@
 <br />
 <br />
 
+---
 
 ### Public pages:
 
@@ -24,7 +25,8 @@
 `https://prodavalnik.herokuapp.com/offers/edit/offer-id` <br>
 `https://prodavalnik.herokuapp.com/offers/delete/offer-id` <br>
 <br />
- *  *  *  *  *
+
+---
 
 ### Technologies used for "Prodavalnik":
 
