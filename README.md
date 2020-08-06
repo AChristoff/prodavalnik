@@ -1,5 +1,8 @@
-## Prodavalnik is deployed to: [<img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />][prodavalnik]
+## Prodavalnik is deployed to: 
 
+[<img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />][prodavalnik]
+
+ *  *  *  *  *
 
 ### Public pages:
 
@@ -17,9 +20,8 @@
 `https://prodavalnik.herokuapp.com/offers/view/offer-id` <br>
 `https://prodavalnik.herokuapp.com/offers/edit/offer-id` <br>
 `https://prodavalnik.herokuapp.com/offers/delete/offer-id` <br>
-
 <br>
----
+ *  *  *  *  *
 
 ### Technologies used for "Prodavalnik":
 
@@ -30,6 +32,7 @@ MERN stack <br>
 [<img align="left" alt="Node.js" width="110px" src="https://alekshristov.com/images/express.png" />][express]
 [<img align="left" alt="MongoDB" width="110px" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/MongoDB-Logo.svg/375px-MongoDB-Logo.svg.png" />][mongo] <br>
 
+ *  *  *  *  *
 <br>
 
 `Accompanying:` <br>
@@ -55,7 +58,8 @@ MERN stack <br>
 `Error handling` 
 
 <br>
----
+
+ *  *  *  *  *
 
 
 #### Available Scripts for local build
