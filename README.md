@@ -1,5 +1,5 @@
 ### Prodavalnik is live at
-<a href="https://prodavalnik.herokuapp.com/">
+<a href="https://prodavalnik.herokuapp.com/" target=”_blank”>
 <img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />
 </a>
 
@@ -38,6 +38,7 @@
 <img align="left" alt="Git" width="60px" src="https://nodemailer.com/nm_logo_200x136.png" />
 <img align="left" alt="Git" width="60px" src="https://git-scm.com/images/logo@2x.png" /> 
 
+<br />
 <br />
 <br />
 
