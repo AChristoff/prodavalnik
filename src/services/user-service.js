@@ -7,6 +7,8 @@ class UserService {
     this.UserDetailsUrl = `${this.baseUrl}/profile`;
     this.editUserUrl = `${this.baseUrl}/edit`;
     this.deleteUserUrl = `${this.baseUrl}/delete`;
+    this.addFavoriteOfferUrl = `${this.baseUrl}/favorites/add`;
+    this.removeFavoriteOfferUrl = `${this.baseUrl}/favorites/remove`;
   }
 
   getUserDetails() {
@@ -15,6 +17,14 @@ class UserService {
 
   editUser(values) {
     return put(this.editUserUrl, values);
+  }
+
+  addFavoriteOffer(id) {
+    return put(this.addFavoriteOfferUrl, id);
+  }
+
+  removeFavoriteOffer(id) {
+    return put(this.removeFavoriteOfferUrl, id);
   }
 
   deleteUser() {

@@ -1,102 +1,142 @@
 .card-list {
 
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 
-	&:before,
-	&:after {
-		display: block;
-		content: '';
-		flex: 0 1 22%;
-		order: 1000;
-	}
+  &:before,
+  &:after {
+    display: block;
+    content: '';
+    flex: 0 1 22%;
+    order: 1000;
+  }
 
-	.site-card {
+  .site-card {
 
-		flex: 0 1 31%;
-		margin-bottom: 4em;
-		overflow: hidden;
-		display: flex;
-		flex-direction: column;
-		border-radius: 0.4em;
-		background: rgba(255, 255, 255, 0.5);
-		box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+    flex: 0 1 31%;
+    margin-bottom: 4em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.4em;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
 
-		.card-head {
-			position: relative;
-			overflow: hidden;
-			flex: 0 0 auto;
-			transition: all 0.3s ease-in;
+    .card-head {
+      position: relative;
+      overflow: hidden;
+      flex: 0 0 auto;
+      transition: all 0.3s ease-in;
 
-			&:before {
-				display: block;
-				content: '';
-				padding-top: 65%;
-			}
+      &:before {
+        display: block;
+        content: '';
+        padding-top: 65%;
+      }
 
-			img {
-				display: block;
-				position: absolute;
-				width: 100%;
-				height: auto;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				transition: all 0.25s ease-in;
-			}
+      img {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.25s ease-in;
+      }
 
-			&:hover img {
-				display: block;
-				width: 120%;
-				cursor: pointer;
-			}
-		}
+      &:hover img {
+        display: block;
+        width: 120%;
+        cursor: pointer;
+      }
+    }
 
-		.card-body {
-			display: flex;
-			flex-direction: column;
-			flex: 1 1 auto;
-			justify-content: flex-start;;
-			padding: 0 1em 1em;
-			height: 100%;
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      justify-content: flex-start;;
+      padding: 0 1em 1em;
+      height: 100%;
 
-			h5 {
-				margin: 0.75em 0 1em;
-			}
+      .card-icons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
 
-			.price {
-				margin-top: auto;
-				font-size: 1em;
+        &.added {
 
-				span {
-					font-size: 1.7em;
-					font-weight: bold;
-					color: #3CC0AA;
-				}
-			}
+          .added-offer {
+            color: #FEAD00;
+          }
 
-			.edit-card {
-				padding: 1em 0;
-				display: flex;
-				justify-content: space-between;
-			}
-		}
-	}
+          .not-added-offer {
+            display: none;
+          }
+        }
+
+        &.not-added {
+          .added-offer {
+            display: none;
+          }
+        }
+
+        .favorites {
+          font-size: 1.6em;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .share-offer {
+          font-size: 1.3em;
+          margin-left: 0.3em;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      h5 {
+        margin: 0.75em 0 1em;
+      }
+
+      .price {
+        margin-top: auto;
+        font-size: 1em;
+
+        span {
+          font-size: 1.7em;
+          font-weight: bold;
+          color: #3CC0AA;
+        }
+      }
+
+      .edit-card {
+        padding: 1em 0;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
 }
 
 .dark .card-list {
 
-	&:before,
-	&:after {
+  &:before,
+  &:after {
 
-	}
+  }
 
-	.site-card {
-		color: rgba(255, 255, 255, 0.8);
-		background: #474747;
-		box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
-	}
+  .site-card {
+    color: rgba(255, 255, 255, 0.8);
+    background: #474747;
+    box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+  }
 }
