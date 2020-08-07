@@ -1,6 +1,5 @@
-## Prodavalnik is live at: [`https://prodavalnik.herokuapp.com/`][prodavalnik-home] <img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />
+## Prodavalnik is live at: [`https://prodavalnik.herokuapp.com/`][prodavalnik-home]
 
-<br />
 <br />
 
 ## Idea
