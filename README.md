@@ -15,12 +15,12 @@ The application is split in to two main parts
 [`https://prodavalnik.herokuapp.com/home`][prodavalnik-home] <br>
 [`https://prodavalnik.herokuapp.com/offers/all`][prodavalnik-all-offers] <br>
 [`https://prodavalnik.herokuapp.com/offers/view/offer-id`][prodavalnik-view-offer] <br>
-<br>
+
   * Register and Login pages are also provided <br>
   (email confirmation is required) <br>
 [`https://prodavalnik.herokuapp.com/user/login`][prodavalnik-login] <br>
 [`https://prodavalnik.herokuapp.com/user/register`][prodavalnik-register] <br>
-<br>
+
   * Last parts ot the public area are forgot and reset password pages <br>
   (Forgot password page sends an email to user's email address with instructions and redirects to Reset password page) <br>
   (Client-side and server-side validation are applied to all forms)
