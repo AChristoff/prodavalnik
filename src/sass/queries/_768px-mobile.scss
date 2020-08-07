@@ -1,639 +1,653 @@
 .app {
 
-	//transition: all 0.5s ease-in-out;
+  //transition: all 0.5s ease-in-out;
 
-	&.dark {
-		background-color: #474747;
-	}
+  &.dark {
+    background-color: #474747;
+  }
 }
 
 
 .app-header {
-	position: fixed;
-	z-index: 10;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: $header-height;
-	background: $gradient-theme;
-	box-shadow: none;
-	transition: all 0.3s ease-in-out;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  background: $gradient-theme;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
 
-	&.active {
-		box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.6);
-	}
+  &.active {
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.6);
+  }
 
-	.wrapper {
-		display: flex;
-		height: 100%;
+  .wrapper {
+    display: flex;
+    height: 100%;
 
-		.header-logo {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			font-weight: bold;
-			font-size: 1.7em;
-			color: $pure-white;
-			text-decoration: none;
+    .header-logo {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      font-size: 1.7em;
+      color: $pure-white;
+      text-decoration: none;
 
-			.MuiSvgIcon-root {
-				width: 1.25em;
-				height: 1.25em;
-				margin: -0.2em 0 0 -0.25em;
-			}
-		}
+      .MuiSvgIcon-root {
+        width: 1.25em;
+        height: 1.25em;
+        margin: -0.2em 0 0 -0.25em;
+      }
+    }
 
-		.greeter {
-			display: flex;
-			align-items: center;
-			margin: 0 0.5em 0 0.75em;
-			color: white;
-			height: 3.5em;
-			text-transform: capitalize;
-		}
+    .greeter {
+      display: flex;
+      align-items: center;
+      margin: 0 0.5em 0 0.75em;
+      color: white;
+      height: 3.5em;
+      text-transform: capitalize;
+    }
 
-		.site-nav {
-			display: flex;
-			margin-left: auto;
+    .site-nav {
+      display: flex;
+      margin-left: auto;
 
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				margin: 0;
-				padding: 0;
-				height: 100%;
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        height: 100%;
 
-				&.MuiList-root {
-					flex-direction: column;
+        &.MuiList-root {
+          flex-direction: column;
 
-					li {
-						padding: 0.5em 1em;
-					}
-				}
+          li {
+            padding: 0.5em 1em;
+          }
+        }
 
-				li {
-					list-style: none;
-					height: 100%;
-					padding: 0;
+        li {
+          list-style: none;
+          height: 100%;
+          padding: 0;
 
-					button {
-						height: 100%;
-					}
+          button {
+            height: 100%;
+          }
 
-					&.all-offers-tab {
-						height: 4em;
-						overflow: hidden;
-						background: $pure-white;
-						border-radius: 0 0 0.5em 0.5em;
-						box-shadow: 0 0 0 0 white inset, 0 0.1em 0.2em 0 rgba(64, 197, 163, 0.6);
+          &.all-offers-tab {
+            height: 4em;
+            overflow: hidden;
+            background: $pure-white;
+            border-radius: 0 0 0.5em 0.5em;
+            box-shadow: 0 0 0 0 white inset, 0 0.1em 0.2em 0 rgba(64, 197, 163, 0.6);
 
-						.MuiButton-label {
-							color: #3CC0AA;
+            .MuiButton-label {
+              color: #3CC0AA;
               font-weight: bold;
               font-size: 1.2em;
               margin-bottom: 0.25em;
-						}
+            }
 
-						&:hover {
+            &:hover {
 
-							box-shadow: 0 0 1px 0 white inset, 0.1em 0.3em 0.5em 0 rgba(0, 0, 0, 0.3);
+              box-shadow: 0 0 1px 0 white inset, 0.1em 0.3em 0.5em 0 rgba(0, 0, 0, 0.3);
 
-							.MuiButton-label {
-								text-shadow: 1px 1px 1px rgba(64, 197, 163, 0.4);
-							}
-						}
-					}
+              .MuiButton-label {
+                text-shadow: 1px 1px 1px rgba(64, 197, 163, 0.4);
+              }
+            }
+          }
 
-					a {
-						position: relative;
-						height: 100%;
-						display: block;
-						transition: all 0.3s ease-in;
+          a {
+            position: relative;
+            height: 100%;
+            display: block;
+            transition: all 0.3s ease-in;
 
-						&.active {
+            &.active {
 
-							&:after {
-								content: '';
-								background-color: $pure-white;
-								height: 0.17em;
-								position: absolute;
-								top: 0;
-								left: 0;
-								right: 0;
-							}
-						}
-					}
+              &:after {
+                content: '';
+                background-color: $pure-white;
+                height: 0.17em;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+              }
+            }
+          }
 
-					.MuiButton-contained {
-						height: 100%;
+          .MuiButton-contained {
+            height: 100%;
 
-						&:hover {
-							background-color: rgba(255, 255, 255, 0.15);
-							border-radius: 0;
-						}
-					}
-				}
-			}
-		}
-	}
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.15);
+              border-radius: 0;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .dark .app-header {
 
-	&.active {
+  &.active {
 
-	}
+  }
 
-	.wrapper {
+  .wrapper {
 
-		.header-logo {
+    .header-logo {
 
-			.MuiSvgIcon-root {
+      .MuiSvgIcon-root {
 
-			}
-		}
+      }
+    }
 
-		.greeter {
+    .greeter {
 
-		}
+    }
 
-		.site-nav {
-
-
-			ul {
+    .site-nav {
 
 
-				&.MuiList-root {
+      ul {
 
 
-					li {
-
-					}
-				}
-
-				li {
-
-					button {
-
-					}
-
-					&.all-offers-tab {
-						box-shadow: none;
-
-						.MuiButton-label {
-
-						}
-
-						&:hover {
-
-							.MuiButton-label {
-
-							}
-						}
-					}
-
-					a {
-
-						&.active {
-
-							&:after {
-
-							}
-						}
-					}
-
-					.MuiButton-contained {
+        &.MuiList-root {
 
 
-						&:hover {
+          li {
 
-						}
-					}
-				}
-			}
-		}
-	}
+          }
+        }
+
+        li {
+
+          button {
+
+          }
+
+          &.all-offers-tab {
+            box-shadow: none;
+
+            .MuiButton-label {
+
+            }
+
+            &:hover {
+
+              .MuiButton-label {
+
+              }
+            }
+          }
+
+          a {
+
+            &.active {
+
+              &:after {
+
+              }
+            }
+          }
+
+          .MuiButton-contained {
+
+
+            &:hover {
+
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .app-main {
-	padding: $header-height 0 0;
+  padding: $header-height 0 0;
 
-	.jumbotron {
+  .jumbotron {
 
-		background-image: url(../../assets/img/cover.png);
-		color: $pure-white;
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-size: cover;
-		background-position: center center;
-		height: 31vh;
+    background-image: url(../../assets/img/cover.png);
+    color: $pure-white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center center;
+    height: 31vh;
 
-		h1 {
-			margin-top: 1em;
-			text-transform: uppercase;
-			font-weight: bold;
-			color: $pure-white;
-			font-size: 2.25em;
-			text-shadow: 1px 2px 2px rgba(35, 109, 97, 0.6);
+    h1 {
+      margin-top: 1em;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: $pure-white;
+      font-size: 2.25em;
+      text-shadow: 1px 2px 2px rgba(35, 109, 97, 0.6);
 
-			span {
-				font-size: 1.2em;
-				color: $color-theme-green;
-			}
-		}
+      span {
+        font-size: 1.2em;
+        color: $color-theme-green;
+      }
+    }
 
-		.search-form {
-			width: 100%;
+    .search-form {
+      width: 100%;
 
-			.formik-field {
-				.MuiIconButton-root {
-					padding: 5px;
-					border-radius: 8px 8px 0 0;
-					color: $pure-white;
-					background-color: $color-theme-green;
+      .formik-field {
+        .MuiIconButton-root {
+          padding: 5px;
+          border-radius: 8px 8px 0 0;
+          color: $pure-white;
+          background-color: $color-theme-green;
 
-					&:hover {
-						background-color: #43C99F;
-					}
-				}
-			}
-		}
+          &:hover {
+            background-color: #43C99F;
+          }
+        }
+      }
+    }
 
-		&:after {
-			content: " ";
-			position: absolute;
-			background-repeat: no-repeat;
-			overflow: hidden;
-			bottom: -3px;
-			left: 0;
-			right: 0;
-			width: 100%;
-			padding-bottom: 3.4722222222%;
-			background-image: url(../../assets/svg/wave-mask.svg);
-			background-size: cover;
-		}
-	}
+    &:after {
+      content: " ";
+      position: absolute;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      bottom: -3px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      padding-bottom: 3.4722222222%;
+      background-image: url(../../assets/svg/wave-mask.svg);
+      background-size: cover;
+    }
+  }
 
-	.wrapper {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: center;
-		padding: 1em 0 3em;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1em 0 3em;
 
-		&.categories {
+    &.categories {
 
-			padding-bottom: 2em;
+      padding-bottom: 2em;
 
-			.categories-container {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-between;
-				width: 80%;
+      .categories-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 80%;
 
-				.category-point {
-					position: relative;
-					flex: 1 1 15%;
-					margin: 0 0.5em 2.5em;
-					padding-bottom: 2em;
+        .category-point {
+          position: relative;
+          flex: 1 1 15%;
+          margin: 0 0.5em 2.5em;
+          padding-bottom: 2em;
 
-					.category {
-						color: $pure-white;
-						background-color: $color-theme-green;
-						border-radius: 50%;
-						width: 5.2em;
-						height: 5.2em;
-						display: flex;
-						flex-wrap: wrap;
-						justify-content: center;
-						align-items: center;
-						margin: 0 auto;
+          .category {
+            color: $pure-white;
+            background-color: $color-theme-green;
+            border-radius: 50%;
+            width: 5.2em;
+            height: 5.2em;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
 
-						& ~ p {
-							display: none;
-							position: absolute;
-							left: 0;
-							right: 0;
-							text-align: center;
-							min-height: 2em;
-							padding: 0.5em 0 0;
-							color: $color-theme-green;
-							font-size: 1.25em;
-						}
+            & ~ p {
+              display: none;
+              position: absolute;
+              left: 0;
+              right: 0;
+              text-align: center;
+              min-height: 2em;
+              padding: 0.5em 0 0;
+              color: $color-theme-green;
+              font-size: 1.25em;
+            }
 
-						&:hover ~ p {
-							display: block;
+            &:hover ~ p {
+              display: block;
 
-						}
+            }
 
 
-						&:hover {
-							background-color: #46CD9A;
+            &:hover {
+              background-color: #46CD9A;
 
-							img {
-								width: 90%;
-							}
-						}
+              img {
+                width: 90%;
+              }
+            }
 
-						img {
-							width: 80%;
-							transition: all 0.1s ease-in;
-						}
-					}
-				}
-			}
-		}
+            img {
+              width: 80%;
+              transition: all 0.1s ease-in;
+            }
+          }
+        }
+      }
+    }
 
-		&.all-offers {
+    &.all-offers {
 
-			.search-and-filters {
-				width: 100%;
-				display: flex;
-				justify-content: space-between;
-				margin-bottom: 0.5em;
+      .search-and-filters {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5em;
 
-				.search-form,
-				.formik-select {
-					width: 42%;
-				}
+        .search-form,
+        .formik-select {
+          width: 42%;
+        }
 
-			}
-		}
+      }
+    }
 
-		&.login,
-		&.register,
-		&.register-confirm,
-		&.user-details,
-		&.create-offer,
-		&.edit-offer,
-		&.delete-offer {
+    &.login,
+    &.forgot-password,
+    &.reset-password,
+    &.register,
+    &.register-confirm,
+    &.user-details,
+    &.create-offer,
+    &.edit-offer,
+    &.delete-offer {
 
-			.go-to-register,
-			.go-to-login {
-				color: #3CC1A9;
-				margin-top: 1em;
-				opacity: 0.75;
-			}
+      .headings {
+        text-align: center;
+      }
 
-			.go-to-register:hover,
-			.go-to-login:hover {
-				opacity: 1;
-			}
+      .go-to-register,
+      .go-to-login {
+        color: #3CC1A9;
+        margin-top: 1em;
+        opacity: 0.75;
+        font-size: 0.85em;
+      }
 
-			.login-from,
-			.user-from,
-			.register-from,
-			.register-confirm-from,
-			.offer-from {
+      .go-to-register:hover,
+      .go-to-login:hover {
+        opacity: 1;
+      }
 
-				width: 28em;
+      .login-addons {
+        display: flex;
+        width: 28em;
+        justify-content: space-between;
+      }
 
-				.new-password {
-					margin-top: 4em;
-				}
+      .login-from,
+      .forgot-password-form,
+      .reset-password-from,
+      .user-from,
+      .register-from,
+      .register-confirm-from,
+      .offer-from {
 
-				p {
-					.MuiFormControl-root {
-						width: 100%;
-					}
+        width: 28em;
 
-					.MuiSvgIcon-root {
-						color: #707070;
-					}
+        .new-password {
+          margin-top: 4em;
+        }
 
-					.email {
-						.MuiSvgIcon-root {
-							margin: 0 0.45em 0 0;
-						}
-					}
+        p {
+          .MuiFormControl-root {
+            width: 100%;
+          }
 
-					margin: 0 0 2em;
-				}
+          .MuiSvgIcon-root {
+            color: #707070;
+          }
 
-				button.MuiButton-containedPrimary {
-					margin-top: 2em;
-					width: 100%;
-				}
-			}
+          .email {
+            .MuiSvgIcon-root {
+              margin: 0 0.45em 0 0;
+            }
+          }
 
-			.register-confirm-from {
-				.headings {
-					text-align: center;
-				}
+          margin: 0 0 2em;
+        }
 
-				a {
-					color: $pure-white;
-				}
-			}
-		}
+        button.MuiButton-containedPrimary {
+          margin-top: 2em;
+          width: 100%;
+        }
+      }
 
-		&.view-offer {
-			.view-offer-img-wrapper {
-				display: block;
-				position: relative;
-				width: 80%;
-				height: 0;
-				padding-bottom: 45%;
-				overflow: hidden;
-				border-radius: 0.25em;
-				background: rgba(255, 255, 255, 0.5);
-				box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+      .register-confirm-from {
+        .headings {
+          text-align: center;
+        }
 
-				img {
-					width: 100%;
-					height: auto;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-				}
-			}
+        a {
+          color: $pure-white;
+        }
+      }
+    }
 
-			.view-offer-back-btn {
-				width: 15em;
-			}
-		}
-	}
+    &.view-offer {
+      .view-offer-img-wrapper {
+        display: block;
+        position: relative;
+        width: 80%;
+        height: 0;
+        padding-bottom: 45%;
+        overflow: hidden;
+        border-radius: 0.25em;
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+
+        img {
+          width: 100%;
+          height: auto;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .view-offer-back-btn {
+        width: 15em;
+      }
+    }
+  }
 }
 
 .dark .app-main {
 
-	color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 
-	a {
-		color: rgba(255, 255, 255, 0.8);
-	}
+  a {
+    color: rgba(255, 255, 255, 0.8);
+  }
 
-	.jumbotron {
+  .jumbotron {
 
-		background-image: url(../../assets/img/cover-dark.png);
+    background-image: url(../../assets/img/cover-dark.png);
 
-		h1 {
+    h1 {
 
-			span {
+      span {
 
-			}
+      }
 
-		}
+    }
 
-		.search-form {
+    .search-form {
 
-			.formik-field {
-				.MuiIconButton-root {
+      .formik-field {
+        .MuiIconButton-root {
 
-					color: $pure-white;
-					&:hover {
+          color: $pure-white;
 
-					}
-				}
-			}
-		}
+          &:hover {
 
-		&:after {
-			background-image: url(../../assets/svg/wave-mask-dark.svg);
-			//-webkit-transition: all 0.5s ease-in-out;
-			//transition: all 0.5s ease-in-out;
-		}
-	}
+          }
+        }
+      }
+    }
 
-	.wrapper {
+    &:after {
+      background-image: url(../../assets/svg/wave-mask-dark.svg);
+      //-webkit-transition: all 0.5s ease-in-out;
+      //transition: all 0.5s ease-in-out;
+    }
+  }
 
-
-		&.categories {
+  .wrapper {
 
 
-			.categories-container {
+    &.categories {
 
 
-				.category-point {
+      .categories-container {
 
 
-					.category {
+        .category-point {
 
 
-						& ~ p {
-
-						}
-
-						&:hover ~ p {
+          .category {
 
 
-						}
+            & ~ p {
+
+            }
+
+            &:hover ~ p {
 
 
-						&:hover {
+            }
 
 
-							img {
-
-							}
-						}
-
-						img {
-
-						}
-					}
-				}
-			}
-		}
-
-		&.login,
-		&.register,
-		&.create-offer,
-		&.edit-offer,
-		&.delete-offer {
-
-			.login-from,
-			.register-from,
-			.offer-from {
+            &:hover {
 
 
+              img {
 
-				p {
-					.MuiFormControl-root {
+              }
+            }
 
-					}
+            img {
 
-					.MuiSvgIcon-root {
-						color: #707070;
-					}
+            }
+          }
+        }
+      }
+    }
 
-					.email {
-						.MuiSvgIcon-root {
+    &.login,
+    &.register,
+    &.create-offer,
+    &.edit-offer,
+    &.delete-offer {
 
-						}
-					}
-
-
-				}
-
-				button.MuiButton-containedPrimary {
-
-				}
-			}
-		}
-
-		&.view-offer {
-			.view-offer-img-wrapper {
+      .login-from,
+      .register-from,
+      .offer-from {
 
 
-				img {
+        p {
+          .MuiFormControl-root {
 
-				}
-			}
+          }
 
-			.view-offer-back-btn {
+          .MuiSvgIcon-root {
+            color: #707070;
+          }
 
-			}
-		}
-	}
+          .email {
+            .MuiSvgIcon-root {
+
+            }
+          }
+
+
+        }
+
+        button.MuiButton-containedPrimary {
+
+        }
+      }
+    }
+
+    &.view-offer {
+      .view-offer-img-wrapper {
+
+
+        img {
+
+        }
+      }
+
+      .view-offer-back-btn {
+
+      }
+    }
+  }
 }
 
 .app-footer {
-	margin-top: auto;
-	background: $gradient-theme;
-	color: $pure-white;
-	font-size: 0.85em;
+  margin-top: auto;
+  background: $gradient-theme;
+  color: $pure-white;
+  font-size: 0.85em;
 
-	.wrapper {
-		min-height: 3em;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
+  .wrapper {
+    min-height: 3em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 
-		.copy-icon {
-			margin: -0.09em 0.15em 0;
-			height: 0.75em;
-		}
+    .copy-icon {
+      margin: -0.09em 0.15em 0;
+      height: 0.75em;
+    }
 
-		span {
+    span {
 
-			&.site-name {
-				font-weight: bold;
-				font-size: 1.25em;
-				padding: 0 0.5em;
-			}
+      &.site-name {
+        font-weight: bold;
+        font-size: 1.25em;
+        padding: 0 0.5em;
+      }
 
-			&.dev-by {
-				padding: 0 0.5em;
-			}
-		}
+      &.dev-by {
+        padding: 0 0.5em;
+      }
+    }
 
 
+    a {
+      color: $pure-white;
 
-		a {
-			color: $pure-white;
+      &.developer {
 
-			&.developer {
-
-				img {
-					height: 1.7em;
-					margin-top: 0.3em;
-				}
-			}
-		}
-	}
+        img {
+          height: 1.7em;
+          margin-top: 0.3em;
+        }
+      }
+    }
+  }
 }

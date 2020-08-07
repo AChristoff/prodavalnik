@@ -23,6 +23,8 @@ class Register extends React.Component {
       success: '',
       error: '',
       isLoading: false,
+      stepOneDone: false,
+      email: '',
     };
     this.userId = window.localStorage.getItem('userId')
   }
@@ -30,8 +32,10 @@ class Register extends React.Component {
   static service = new AuthService();
 
   handleSubmit = async (values) => {
+
     this.setState({
       isLoading: true,
+      email: values.email
     });
 
     try {
@@ -39,7 +43,11 @@ class Register extends React.Component {
       const res = await Register.service.register(values);
 
       if (res.errors) {
-        const message = res.message;
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
+        }
         throw new Error(message);
       }
 
@@ -47,12 +55,13 @@ class Register extends React.Component {
         success: res.message,
         error: '',
         isLoading: false,
+        stepOneDone: true,
       });
 
     } catch (error) {
 
       this.setState({
-        error: error.message,
+        error: error.toString(),
         isLoading: false,
       });
 
@@ -60,11 +69,38 @@ class Register extends React.Component {
   };
 
   render() {
-    const {isLoading, success, error} = this.state;
+    const {isLoading, success, error, stepOneDone, email} = this.state;
 
 
     if (isLoading) {
       return <Loading/>
+    }
+
+    if (stepOneDone) {
+      return (
+        <div className="wrapper register">
+
+          <Heading text="Register"/>
+
+          <Stepper stepOneDone={stepOneDone}/>
+
+          <h6 className="headings"><b>{email}</b> was successfully registered!</h6>
+
+          <div className="register-from">
+
+            <Conditional if={error.length}>
+              <h6  className='error-message'>{error}</h6>
+            </Conditional>
+
+            <Conditional if={success}>
+              <h6 className='success-message'>{success}</h6>
+            </Conditional>
+
+            <h6 className="headings">Please check your inbox to continue...</h6>
+
+          </div>
+        </div>
+      )
     }
 
     return (
@@ -72,7 +108,7 @@ class Register extends React.Component {
       <div className="wrapper register">
 
         <Conditional if={error.length}>
-          <div className='error-message'>Error: {error}</div>
+          <div className='error-message'>{error}</div>
         </Conditional>
 
         <Conditional if={success}>
@@ -81,7 +117,7 @@ class Register extends React.Component {
 
         <Heading text="Register"/>
 
-        <Stepper/>
+        <Stepper stepOneDone={stepOneDone}/>
 
         <Formik
           initialValues={{email: ''}}

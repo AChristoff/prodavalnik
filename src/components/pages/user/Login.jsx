@@ -102,9 +102,15 @@ class Login extends React.Component {
           )}
         </Formik>
 
-        <NavLink className="go-to-register" to="/user/register" exact>
-          New to Prodavalnik? Register here!
-        </NavLink>
+        <div className="login-addons">
+          <NavLink className="go-to-register" to="/user/register" exact>
+            Don't have an account? Register now!
+          </NavLink>
+
+          <NavLink className="go-to-register" to="/user/forgot-password" exact>
+            Forgot your password?
+          </NavLink>
+        </div>
 
       </div>
     );

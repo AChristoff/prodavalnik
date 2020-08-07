@@ -111,30 +111,30 @@ class RegisterConfirm extends React.Component {
 
 
     if (stepThreeDone) {
-    return (
-      <div className="wrapper register-confirm">
+      return (
+        <div className="wrapper register-confirm">
 
-        <Heading text="Register"/>
+          <Heading text="Register"/>
 
-        <Stepper stepOneDone={true} stepTwoDone={stepTwoDone} stepThreeDone={stepThreeDone}/>
+          <Stepper stepOneDone={true} stepTwoDone={stepTwoDone} stepThreeDone={stepThreeDone}/>
 
-        <div className="register-confirm-from">
+          <div className="register-confirm-from">
 
-          <Conditional if={error.length}>
-            <div className='error-message'>Error: {error}</div>
-          </Conditional>
+            <Conditional if={error.length}>
+              <div className='error-message'>Error: {error}</div>
+            </Conditional>
 
-          <h5 className="headings">Congratulations!</h5>
-          <h6 className="headings">Your registration is complete.</h6>
+            <h5 className="headings">Congratulations!</h5>
+            <h6 className="headings">Your registration is complete.</h6>
 
-          <Button fullWidth type="submit" variant="contained" size="large" color="primary">
-            <NavLink to="/offers/create" exact>
-              Add your first offer
-            </NavLink>
-          </Button>
+            <Button fullWidth type="submit" variant="contained" size="large" color="primary">
+              <NavLink to="/offers/create" exact>
+                Add your first offer
+              </NavLink>
+            </Button>
+          </div>
         </div>
-      </div>
-    );
+      )
     }
 
     return (
