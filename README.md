@@ -32,7 +32,7 @@ The application is split in to two main parts
   * Users:
     * Profile page - user can change his `username` and `password`
     * User offers page - lists only offers created by the user
-    * Create and manage they own offers (All CRUD operations) <br>
+    * Create and manage their own offers (a page for all CRUD operations) <br>
     
     **TODO:** Create user favorites offers list <br>
     **TODO:** Add comments to offers <br>
