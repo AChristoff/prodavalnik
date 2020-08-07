@@ -1,4 +1,4 @@
-## **Prodavalnik** is live at: ***[`https://prodavalnik.herokuapp.com/`][prodavalnik-home]***
+## ***Prodavalnik*** is live at: ***[`https://prodavalnik.herokuapp.com/`][prodavalnik-home]***
 
 <br />
 
@@ -10,7 +10,7 @@ A free platform to connect buyers and sellers.
 ## Design
 The application is split in to two main parts
 
-* Public area
+* **Public area**
   * Guests are allowed to see and search/filter from all available offers <br>
 [`https://prodavalnik.herokuapp.com/home`][prodavalnik-home] <br>
 [`https://prodavalnik.herokuapp.com/offers/all`][prodavalnik-all-offers] <br>
@@ -28,7 +28,7 @@ The application is split in to two main parts
   <br>
   
 
-* Private area - gives access for registered users to:
+* **Private area**
   * Users:
     * Profile page where they can change their `username` and `password`
     * My offers page to list only offers created by them
