@@ -1,30 +1,29 @@
-## Prodavalnik is live at: [`https://prodavalnik.herokuapp.com/`][prodavalnik-home] <br>
-<a href="https://prodavalnik.herokuapp.com/" target=”_blank”>
-<img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />
-</a>
+## Prodavalnik is live at: [`https://prodavalnik.herokuapp.com/`][prodavalnik-home] <img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />
 
 <br />
 <br />
 
 ## Idea
 
-An application that stores user offers of new or used products.
+An application that stores user offers of new or used products. <br>
 A free platform to connect buyers and sellers.
 
 ## Design
-The application is split in three parts
+The application is split in two main parts
 
 * Public area
-  * Guests are allowed to see and search from all available offers
+  * Guests are allowed to see and search/filter from all available offers <br>
 [`https://prodavalnik.herokuapp.com/home`][prodavalnik-home] <br>
 [`https://prodavalnik.herokuapp.com/offers/all`][prodavalnik-all-offers] <br>
 [`https://prodavalnik.herokuapp.com/offers/view/offer-id`][prodavalnik-view-offer] <br>
-  * Register and Login pages are also provided (email confirmation is required)
+  * Register and Login pages are also provided <br>
+  (email confirmation is required)
 [`https://prodavalnik.herokuapp.com/user/login`][prodavalnik-login] <br>
 [`https://prodavalnik.herokuapp.com/user/register`][prodavalnik-register] <br>
-  * Last parts ot the public area are forgot and reset password pages (from forgot password page an email is send to user email with instructions and redirects to reset password page).
+  * Last parts ot the public area are forgot and reset password pages <br>
+  (Forgot password page sends an email to user's email address with instructions and redirects to Reset password page) <br>
+  (Client-side and server-side validation are applied to all forms)
 [`https://prodavalnik.herokuapp.com/user/forgot-password`][prodavalnik-forgot] 
-  * Client-side and server-side validation are applied to all forms
   <br>
   
 
