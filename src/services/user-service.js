@@ -20,6 +20,7 @@ class UserService {
   }
 
   addFavoriteOffer(id) {
+    console.log('from service');
     return put(this.addFavoriteOfferUrl, id);
   }
 

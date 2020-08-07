@@ -6,6 +6,7 @@ class OffersService {
 
     this.allOffersUrl = `${this.baseUrl}/posts/all`;
     this.UserOffersUrl = `${this.baseUrl}/posts`;
+    this.favoriteOffersUrl = `${this.baseUrl}/favorites`;
     this.getOfferUrl = `${this.baseUrl}/post/`;
     this.createOfferUrl = `${this.baseUrl}/post/create`;
     this.editOfferUrl = `${this.baseUrl}/post/edit/`;
@@ -26,6 +27,10 @@ class OffersService {
 
   getUserOffers() {
     return get(`${this.UserOffersUrl}`);
+  }
+
+  getFavoriteOffers() {
+    return get(`${this.favoriteOffersUrl}`);
   }
 
   getOffer(id) {

@@ -61,7 +61,7 @@ class CardsContainer extends React.Component {
 
         <Heading text={this.headingText}/>
 
-        <Conditional if={method === 'all'}>
+        <Conditional if={method !== 'user'}>
           <section className="search-and-filters">
 
             <Search ableRedirect={false}/>
@@ -84,7 +84,7 @@ class CardsContainer extends React.Component {
           </div>
         </Conditional>
 
-        <Conditional if={method === 'all' && !noOffers}>
+        <Conditional if={method !== 'user' && !noOffers}>
           <Pagination
             currentPage={currentPage}
             pageCount={pageCount}
@@ -179,8 +179,10 @@ class CardsContainer extends React.Component {
           order,
           search,
           filter);
-      } else {
+      } else if (this.method === 'user') {
         res = await CardsContainer.service.getUserOffers();
+      } else if (this.method === 'favorites') {
+        res = await CardsContainer.service.getFavoriteOffers();
       }
 
       const pageCount = Math.ceil(Number(res.count) / offersPerPage);

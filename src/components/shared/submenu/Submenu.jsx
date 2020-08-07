@@ -3,7 +3,7 @@ import './submenu.scss'
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import {AccountCircle, Add, ExitToApp, LocalOffer, Settings} from "@material-ui/icons";
+import {AccountCircle, Add, ExitToApp, LocalOffer, Settings, Star} from "@material-ui/icons";
 import {NavLink} from "react-router-dom";
 
 export default function Submenu({username}) {
@@ -39,6 +39,11 @@ export default function Submenu({username}) {
         <MenuItem onClick={handleClose}>
           <NavLink to="/user/offers" exact>
             <LocalOffer className="submenu-icon"/> My Offers
+          </NavLink>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/user/favorites" exact>
+            <Star className="submenu-icon"/> Favorites
           </NavLink>
         </MenuItem>
         <MenuItem onClick={handleClose}>

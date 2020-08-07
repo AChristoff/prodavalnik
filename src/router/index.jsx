@@ -11,6 +11,7 @@ import DeleteOffer from "../components/pages/offers/crud/DeleteOffer";
 const Home = lazy(() => import('../components/pages/home/Home'));
 const AllOffers = lazy(() => import('../components/pages/offers/AllOffers'));
 const UserOffers = lazy(() => import('../components/pages/offers/UserOffers'));
+const FavoriteOffers = lazy(() => import('../components/pages/offers/FavoriteOffers'));
 const Login = lazy(() => import('../components/pages/user/Login'));
 const ForgotPassword = lazy(() => import('../components/pages/user/ForgotPassword'));
 const ResetPassword = lazy(() => import('../components/pages/user/ResetPassword'));
@@ -34,6 +35,7 @@ export function RouterMain() {
         <Route path='/user/register/confirm/:token' exact component={RegisterConfirm}/>
         <Route path='/offers/all/:page?/:limit?/:sort?/:order?/:search?/:filter?' exact component={AllOffers}/>
         <PrivateRoute path="/user/offers" exact component={UserOffers}/>
+        <PrivateRoute path="/user/favorites" exact component={FavoriteOffers}/>
         <PrivateRoute path="/user/profile" exact component={UserProfile}/>
         <PrivateRoute path='/offers/create' exact component={CreateOffer}/>
         <PrivateRoute path='/offers/edit/:id' exact component={EditOffer}/>
