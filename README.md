@@ -1,4 +1,4 @@
-## Prodavalnik is live at: [`https://prodavalnik.herokuapp.com/`][prodavalnik-home]
+## **Prodavalnik** is live at: ***[`https://prodavalnik.herokuapp.com/`][prodavalnik-home]***
 
 <br />
 
@@ -21,9 +21,9 @@ The application is split in to two main parts
 [`https://prodavalnik.herokuapp.com/user/login`][prodavalnik-login] <br>
 [`https://prodavalnik.herokuapp.com/user/register`][prodavalnik-register] <br>
 
-  * Last parts ot the public area are forgot and reset password pages <br>
-  (Forgot password page sends an email to user's email address with instructions and redirects to Reset password page) <br>
-  (Client-side and server-side validation are applied to all forms)
+  * Forgot and Reset password pages <br>
+  (an email is send with instructions to reset password) <br>
+  (client-side and server-side validation are applied to all forms)
 [`https://prodavalnik.herokuapp.com/user/forgot-password`][prodavalnik-forgot] 
   <br>
   
