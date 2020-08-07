@@ -1,4 +1,4 @@
-### Prodavalnik is live at
+## Prodavalnik is live at: [`https://prodavalnik.herokuapp.com/`][prodavalnik-home] <br>
 <a href="https://prodavalnik.herokuapp.com/" target=”_blank”>
 <img align="left" alt="React" width="128px" src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" />
 </a>
@@ -6,24 +6,40 @@
 <br />
 <br />
 
----
+## Idea
 
-### Public pages:
+An application that stores user offers of new or used products.
+A free platform to connect buyers and sellers.
 
-[`https://prodavalnik.herokuapp.com/`][prodavalnik-home] <br>
+## Design
+The application is split in three parts
+
+* Public area
+  * Guests are allowed to see and search from all available offers
+[`https://prodavalnik.herokuapp.com/home`][prodavalnik-home] <br>
 [`https://prodavalnik.herokuapp.com/offers/all`][prodavalnik-all-offers] <br>
 [`https://prodavalnik.herokuapp.com/offers/view/offer-id`][prodavalnik-view-offer] <br>
-[`https://prodavalnik.herokuapp.com/user/register`][prodavalnik-register] <br>
+  * Register and Login pages are also provided (email confirmation is required)
 [`https://prodavalnik.herokuapp.com/user/login`][prodavalnik-login] <br>
+[`https://prodavalnik.herokuapp.com/user/register`][prodavalnik-register] <br>
+  * Last parts ot the public area are forgot and reset password pages (from forgot password page an email is send to user email with instructions and redirects to reset password page).
+[`https://prodavalnik.herokuapp.com/user/forgot-password`][prodavalnik-forgot] 
+  * Client-side and server-side validation are applied to all forms
+  <br>
+  
 
-### Private pages:
-
-`https://prodavalnik.herokuapp.com/user/profile` <br>
-`https://prodavalnik.herokuapp.com/user/offers` <br>
-`https://prodavalnik.herokuapp.com/offers/create` <br>
-`https://prodavalnik.herokuapp.com/offers/view/offer-id` <br>
-`https://prodavalnik.herokuapp.com/offers/edit/offer-id` <br>
-`https://prodavalnik.herokuapp.com/offers/delete/offer-id` <br>
+* Private area - gives access for registered users to:
+  * Users:
+    * Profile page where they can change their `username` and `password`
+    * My offers page to list only offers created by them
+    * Create and manage they own offers (All CRUD operations) <br>
+  // TODO: Create favorites offers list. <br>
+  // TODO: Add comments to offers <br>
+  * Admin: <br>
+  // TODO: Admin must be able to add and edit categories <br>
+  // TODO: Admin must be able to approve user offers in order for them to appear in all offers <br>
+  // TODO: Admin must be able to delete and edin user offers and comments<br>
+  
 <br />
 
 ---
@@ -78,11 +94,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 [prodavalnik]: https://prodavalnik.herokuapp.com/
-[prodavalnik-home]: https://prodavalnik.herokuapp.com/
+[prodavalnik-home]: https://prodavalnik.herokuapp.com/home
 [prodavalnik-all-offers]: https://prodavalnik.herokuapp.com/offers/all
 [prodavalnik-view-offer]: https://prodavalnik.herokuapp.com/offers/view/5f2b22d519fabb0017aea741
 [prodavalnik-register]: https://prodavalnik.herokuapp.com/user/register
 [prodavalnik-login]: https://prodavalnik.herokuapp.com/user/login
+[prodavalnik-forgot]: https://prodavalnik.herokuapp.com/user/forgot-password
 
 [react]: https://reactjs.org/
 [sass]: https://sass-lang.com/
