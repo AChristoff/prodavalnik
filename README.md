@@ -1,4 +1,4 @@
-## ***Prodavalnik*** is live at: ***[`https://prodavalnik.herokuapp.com/`][prodavalnik-home]***
+## <ins>***Prodavalnik***</ins> is live at: ***[`https://prodavalnik.herokuapp.com/`][prodavalnik-home]***
 
 <br />
 
@@ -33,12 +33,14 @@ The application is split in to two main parts
     * Profile page - user can change his `username` and `password`
     * User offers page - lists only offers created by the user
     * Create and manage they own offers (All CRUD operations) <br>
-      **TODO:** Create favorites offers list <br>
-      **TODO:** Add comments to offers <br>
+    
+    **TODO:** Create user favorites offers list <br>
+    **TODO:** Add comments to offers <br>
   * Admin: <br>
-  **TODO:** Admin must be able to add and edit categories <br>
-  **TODO:** Admin must be able to approve user offers in order for them to appear in all offers <br>
-  **TODO:** Admin must be able to delete and edin user offers and comments<br>
+  
+    **TODO:** Admin must be able to add and edit categories <br>
+    **TODO:** Admin must be able to approve user offers in order for them to appear in all offers <br>
+    **TODO:** Admin must be able to delete and edin user offers and comments<br>
   
 <br />
 
