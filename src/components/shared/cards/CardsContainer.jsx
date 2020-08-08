@@ -78,7 +78,7 @@ class CardsContainer extends React.Component {
           <div className="card-list">
             {
               offers.map((offer) => (
-                <Card key={offer._id} {...offer} isCreator={this.isCreator}/>
+                <Card key={offer._id} {...offer} isCreator={this.isCreator} method={method}/>
               ))
             }
           </div>
@@ -144,7 +144,24 @@ class CardsContainer extends React.Component {
             pageCount: pageCount,
             isLoading: false,
           });
+        } else if (this.method === 'favorites') {
+          res = await CardsContainer.service.getFavoriteOffers(
+            currentPage,
+            offersPerPage,
+            sort,
+            order,
+            search,
+            filter);
         }
+
+        const pageCount = Math.ceil(Number(res.count) / offersPerPage);
+
+        console.log(res);
+        this.setState({
+          offers: res.posts,
+          pageCount: pageCount,
+          isLoading: false,
+        });
       } catch (error) {
         this.setState({
           error: error.message,
@@ -171,7 +188,6 @@ class CardsContainer extends React.Component {
 
     try {
       if (this.method === 'all') {
-
         res = await CardsContainer.service.getAllOffers(
           currentPage,
           offersPerPage,

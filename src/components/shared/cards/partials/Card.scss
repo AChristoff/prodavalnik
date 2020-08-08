@@ -68,22 +68,6 @@
         align-items: center;
         justify-content: flex-start;
 
-        &.added {
-
-          .added-offer {
-            color: #FEAD00;
-          }
-
-          .not-added-offer {
-            display: none;
-          }
-        }
-
-        &.not-added {
-          .added-offer {
-            display: none;
-          }
-        }
 
         .favorites {
           font-size: 1.6em;
@@ -93,13 +77,13 @@
           }
         }
 
-        .share-offer {
-          font-size: 1.3em;
-          margin-left: 0.3em;
+        .added-offer {
+          color: #FEAD00;
+        }
 
-          &:hover {
-            cursor: pointer;
-          }
+        .share-offer {
+          font-size: 1.2em;
+          margin-left: 0.3em;
         }
       }
 

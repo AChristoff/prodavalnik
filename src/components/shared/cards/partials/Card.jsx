@@ -7,9 +7,11 @@ import SanitizedText from "../../SanitizedText";
 import {Share, Star, StarBorder} from "@material-ui/icons";
 import UserService from "../../../../services/user-service";
 
-export default function Card({title, category, content, price, image, _id, isCreator}) {
+export default function Card({title, category, content, price, image, watched, _id, isCreator, method}) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const userId = window.localStorage.getItem('userId');
+  const [isFavorite, setIsFavorite] = useState(watched.includes(userId));
 
   const userService = new UserService();
 
@@ -30,17 +32,18 @@ export default function Card({title, category, content, price, image, _id, isCre
       parent.classList.remove('not-added');
       parent.classList.add('added');
 
+      setIsFavorite(true);
       setSuccess(res.message);
 
     } catch (error) {
 
-      console.log(error);
       setError(error);
     }
   };
 
   const removeFavoriteOffer = async (e) => {
-    // const offerId = e.currentTarget.getAttribute('data-offer-id');
+
+    const card = e.currentTarget.closest('.site-card');
     const parent = e.currentTarget.parentElement;
 
     try {
@@ -57,6 +60,11 @@ export default function Card({title, category, content, price, image, _id, isCre
       parent.classList.add('not-added');
       parent.classList.remove('added');
 
+      if (method === 'favorites') {
+        card.style.display = 'none';
+      }
+
+      setIsFavorite(false);
       setSuccess(res.message);
 
     } catch (error) {
@@ -78,10 +86,13 @@ export default function Card({title, category, content, price, image, _id, isCre
         <SanitizedText tag="h5" text={title}/>
         <SanitizedText text={category}/>
 
-        <section className="card-icons not-added">
+        <section className="card-icons">
 
-          <StarBorder className="favorites not-added-offer" data-offer-id={_id} onClick={addFavoriteOffer}/>
-          <Star className="favorites added-offer" data-offer-id={_id} onClick={removeFavoriteOffer}/>
+          {
+            isFavorite
+              ? <Star className="favorites added-offer" data-offer-id={_id} onClick={removeFavoriteOffer}/>
+              : <StarBorder className="favorites not-added-offer" data-offer-id={_id} onClick={addFavoriteOffer}/>
+          }
 
           <Share className="share-offer"/>
         </section>
