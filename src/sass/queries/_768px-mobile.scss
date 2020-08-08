@@ -76,6 +76,31 @@
           height: 100%;
           padding: 0;
 
+          &.share-icon {
+            position: relative;
+
+            &:before {
+              position: absolute;
+              content: '';
+              top: 14%;
+              border: 0;
+              left: 0;
+              right: 0;
+              width: 1px;
+              height: 70%;
+              background: #FFFFFF;
+            }
+
+            a {
+              display: flex;
+              color: $pure-white;
+
+              svg {
+                margin: auto 0 auto 0.5em;
+              }
+            }
+          }
+
           button {
             height: 100%;
           }

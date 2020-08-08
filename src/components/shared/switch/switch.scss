@@ -3,8 +3,9 @@
   margin: auto 0;
 
   .MuiSwitch-switchBase {
+    padding: 8px 6px 8px 10px;
     color: #FFFFFF;
-    left: -2px;
+    left: -6px;
   }
 
   .MuiSwitch-thumb {
@@ -21,7 +22,7 @@
   }
 
   .MuiSwitch-track {
-    width: 1.7em;
+    width: 1.9em;
     height: 0.8em;
   }
 

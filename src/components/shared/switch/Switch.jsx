@@ -2,6 +2,7 @@ import React from 'react';
 import Switch from "@material-ui/core/Switch";
 import './switch.scss'
 import {ThemeContext} from "../../../context/theme-context";
+import {Brightness4, Brightness5, Brightness7} from "@material-ui/icons";
 
 class ThemeSwitch extends React.Component {
   constructor(props) {
@@ -32,6 +33,8 @@ class ThemeSwitch extends React.Component {
       <Switch
         className="theme-switch"
         checked={isLightTheme}
+        icon={<Brightness4/>}
+        checkedIcon={<Brightness7/>}
         onChange={this.handleChange}
         color="primary"
         name="checkedA"

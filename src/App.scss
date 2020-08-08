@@ -6,9 +6,13 @@
 
 #root {
 
+	.MuiSwitch-track {
+		background-color: #bef1fb;
+		margin-top: 0.1em;
+	}
 
 	.Mui-disabled {
-		opacity: 0.8;
+		padding: 8px 6px 8px 8px;
 		cursor: not-allowed;
 
 		.MuiSvgIcon-root {
@@ -129,12 +133,15 @@
 
 #root .dark {
 
-	.MuiSwitch-switchBase {
-		color: #8FDCCB;
-	}
 
 	.MuiSwitch-track {
 		background-color: #474747;
+		opacity: 0.3;
+	}
+
+	.MuiSwitch-switchBase {
+		color: #FFFFFF;
+		left: 0;
 	}
 
 	button:disabled {

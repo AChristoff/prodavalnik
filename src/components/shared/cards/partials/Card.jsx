@@ -6,6 +6,7 @@ import SliceText from "../../slice-text/SliceText";
 import SanitizedText from "../../SanitizedText";
 import {Share, Star, StarBorder} from "@material-ui/icons";
 import UserService from "../../../../services/user-service";
+import Conditional from "../../Conditional";
 
 export default function Card({title, category, content, price, image, watched, _id, isCreator, method}) {
   const [error, setError] = useState('');
@@ -76,14 +77,13 @@ export default function Card({title, category, content, price, image, watched, _
   const shareOffer = async (e) => {
     const offerId = e.currentTarget.getAttribute('data-offer-id');
     console.log(offerId);
-
   };
 
   return (
     <div className="site-card">
 
       <div className="card-head">
-        <Link to={`/offers/view/${_id}`}>
+        <Link to={` / offers / view /${_id}`}>
           <img src={image} alt={title}/>
         </Link>
       </div>
@@ -100,7 +100,6 @@ export default function Card({title, category, content, price, image, watched, _
               : <StarBorder className="favorites not-added-offer" data-offer-id={_id} onClick={addFavoriteOffer}/>
           }
 
-          <Share className="share-offer" data-offer-id={_id} onClick={shareOffer}/>
         </section>
 
         <br/>
@@ -121,36 +120,35 @@ export default function Card({title, category, content, price, image, watched, _
           </Button>
         </Link>
 
-        {
-          isCreator
+        <Conditional if={isCreator}>
 
-            ? <div className="edit-card">
-              <Link to={`/offers/edit/${_id}`} className="btn-medium">
-                <Button
-                  fullWidth
-                  disableElevation
-                  variant="contained"
-                  size="large"
-                  className="edit-btn btn-small"
-                >
-                  Edit
-                </Button>
-              </Link>
+          <div className="edit-card">
+            <Link to={` / offers / edit /${_id}`} className="btn-medium">
+              <Button
+                fullWidth
+                disableElevation
+                variant="contained"
+                size="large"
+                className="edit-btn btn-small"
+              >
+                Edit
+              </Button>
+            </Link>
 
-              <Link to={`/offers/delete/${_id}`} className="btn-medium">
-                <Button
-                  fullWidth
-                  disableElevation
-                  variant="contained"
-                  size="large"
-                  className="delete-btn"
-                >
-                  Delete
-                </Button>
-              </Link>
-            </div>
-            : null
-        }
+            <Link to={` / offers / delete /${_id}`} className="btn-medium">
+              <Button
+                fullWidth
+                disableElevation
+                variant="contained"
+                size="large"
+                className="delete-btn"
+              >
+                Delete
+              </Button>
+            </Link>
+          </div>
+
+        </Conditional>
 
       </div>
     </div>
