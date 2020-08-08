@@ -73,6 +73,12 @@ export default function Card({title, category, content, price, image, watched, _
     }
   };
 
+  const shareOffer = async (e) => {
+    const offerId = e.currentTarget.getAttribute('data-offer-id');
+    console.log(offerId);
+
+  };
+
   return (
     <div className="site-card">
 
@@ -94,7 +100,7 @@ export default function Card({title, category, content, price, image, watched, _
               : <StarBorder className="favorites not-added-offer" data-offer-id={_id} onClick={addFavoriteOffer}/>
           }
 
-          <Share className="share-offer"/>
+          <Share className="share-offer" data-offer-id={_id} onClick={shareOffer}/>
         </section>
 
         <br/>

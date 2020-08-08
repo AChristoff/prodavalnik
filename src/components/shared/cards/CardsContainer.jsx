@@ -136,14 +136,8 @@ class CardsContainer extends React.Component {
             order,
             search,
             filter);
-
-          const pageCount = Math.ceil(Number(res.count) / offersPerPage);
-
-          this.setState({
-            offers: res.posts,
-            pageCount: pageCount,
-            isLoading: false,
-          });
+        } else if (this.method === 'user') {
+          res = await CardsContainer.service.getUserOffers();
         } else if (this.method === 'favorites') {
           res = await CardsContainer.service.getFavoriteOffers(
             currentPage,
