@@ -30,11 +30,11 @@ The application is split in to two main parts
 
 * **Private area**
   * Users:
-    * Profile page - user can change his `username` and `password`
     * User offers page - lists only offers created by the user
-    * Create and manage their own offers (a page for all CRUD operations) <br>
+    * Favorite offers page - lists only handpicked offers<br>
+    * CRUD operation pages - the user can create and manage their own offers <br>
+    * Profile page - user can change his `username` and `password`
     
-    **TODO:** Create user favorites offers list <br>
     **TODO:** Add comments to offers <br>
   * Admin: <br>
   
