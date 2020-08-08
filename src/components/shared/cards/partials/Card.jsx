@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import "./Card.scss"
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
@@ -7,12 +7,14 @@ import SanitizedText from "../../SanitizedText";
 import {Share, Star, StarBorder} from "@material-ui/icons";
 import UserService from "../../../../services/user-service";
 import Conditional from "../../Conditional";
+import {OfferContext} from "../../../../context/offer-context";
 
 export default function Card({title, category, content, price, image, watched, _id, isCreator, method}) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const userId = window.localStorage.getItem('userId');
   const [isFavorite, setIsFavorite] = useState(watched.includes(userId));
+  const context = useContext(OfferContext);
 
   const userService = new UserService();
 
@@ -44,7 +46,6 @@ export default function Card({title, category, content, price, image, watched, _
 
   const removeFavoriteOffer = async (e) => {
 
-    const card = e.currentTarget.closest('.site-card');
     const parent = e.currentTarget.parentElement;
 
     try {
@@ -62,7 +63,8 @@ export default function Card({title, category, content, price, image, watched, _
       parent.classList.remove('added');
 
       if (method === 'favorites') {
-        card.style.display = 'none';
+        context.updateOfferContext('favoritesContext', context.favoritesContext + 1);
+        console.log(context.favoritesContext);
       }
 
       setIsFavorite(false);
@@ -74,16 +76,11 @@ export default function Card({title, category, content, price, image, watched, _
     }
   };
 
-  const shareOffer = async (e) => {
-    const offerId = e.currentTarget.getAttribute('data-offer-id');
-    console.log(offerId);
-  };
-
   return (
     <div className="site-card">
 
       <div className="card-head">
-        <Link to={` / offers / view /${_id}`}>
+        <Link to={`/offers/view/${_id}`}>
           <img src={image} alt={title}/>
         </Link>
       </div>
@@ -123,7 +120,7 @@ export default function Card({title, category, content, price, image, watched, _
         <Conditional if={isCreator}>
 
           <div className="edit-card">
-            <Link to={` / offers / edit /${_id}`} className="btn-medium">
+            <Link to={`/offers/edit/${_id}`} className="btn-medium">
               <Button
                 fullWidth
                 disableElevation
@@ -135,7 +132,7 @@ export default function Card({title, category, content, price, image, watched, _
               </Button>
             </Link>
 
-            <Link to={` / offers / delete /${_id}`} className="btn-medium">
+            <Link to={`/offers/delete/${_id}`} className="btn-medium">
               <Button
                 fullWidth
                 disableElevation

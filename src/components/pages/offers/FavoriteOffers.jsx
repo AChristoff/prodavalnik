@@ -11,7 +11,7 @@ class FavoriteOffers extends React.Component {
   static contextType = OfferContext;
 
   render() {
-    const {currentPage, search} = this.context;
+    const {currentPage, search, favoritesContext} = this.context;
 
     return (
       <CardsContainer
@@ -20,6 +20,7 @@ class FavoriteOffers extends React.Component {
         currentPage={currentPage}
         search={search}
         {...this.params}
+        favoritesChange={favoritesContext}
       />
     )
   }

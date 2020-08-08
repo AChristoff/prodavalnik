@@ -21,6 +21,8 @@ class CardsContainer extends React.Component {
       filterState: props.filter,
       pageCount: 1,
       isLoading: false,
+      favoritesChange: props.favoritesChange,
+
     };
     this.method = props.method;
     this.headingText = props.headingText;
@@ -97,13 +99,19 @@ class CardsContainer extends React.Component {
 
   async componentDidUpdate(prevProps, prevState) {
 
-    const {page, searchState, filterState} = this.state;
+    const {page, searchState, filterState, favoritesChange} = this.state;
     const {sort, order} = this.props;
-    const {currentPage, offersPerPage, search, filter, updateOfferContext} = this.context;
+    const {currentPage, offersPerPage, search, filter, updateOfferContext, favoritesContext} = this.context;
 
     if (currentPage !== page) {
       this.setState({
         page: currentPage,
+      })
+    }
+
+    if (favoritesContext !== favoritesChange) {
+      this.setState({
+        favoritesChange: favoritesContext,
       })
     }
 
@@ -123,7 +131,8 @@ class CardsContainer extends React.Component {
 
     if (prevState.page !== this.state.page
       || prevState.filterState !== filter
-      || prevState.searchState !== search) {
+      || prevState.searchState !== search
+      || prevState.favoritesChange !== favoritesChange) {
 
       let res;
       this.isLoading = true;

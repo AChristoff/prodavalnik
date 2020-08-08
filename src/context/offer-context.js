@@ -12,6 +12,7 @@ class OfferContextProvider extends Component {
       order: -1,
       search: '',
       filter: '',
+      favoritesContext: 0,
     };
   }
 

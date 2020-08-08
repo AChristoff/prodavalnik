@@ -50,7 +50,7 @@ export default function FormikField({name, label, type = "text", placeholder = '
           {values.showPassword ? <Visibility/> : <VisibilityOff/>}
         </IconButton>;
       case 'search':
-        return <IconButton type="submit" onClick={handleSearch}>
+        return <IconButton id={'search-btn'} type="submit" onClick={handleSearch}>
           <Search/>
         </IconButton>;
       default:
