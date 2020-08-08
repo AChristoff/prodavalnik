@@ -204,14 +204,14 @@
           }
 
           &.all-offers-tab {
-            box-shadow: none;
+            box-shadow: 0 0 0 0 white inset, 0 0.1em 0.2em 0 rgba(100, 100, 100, 0.25);
 
             .MuiButton-label {
 
             }
 
             &:hover {
-
+              box-shadow: 0 0 0 0 white inset, 0 0.2em 0.3em 0 rgba(100, 100, 100, 0.7);
               .MuiButton-label {
 
               }

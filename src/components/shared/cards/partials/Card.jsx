@@ -8,13 +8,15 @@ import {Share, Star, StarBorder} from "@material-ui/icons";
 import UserService from "../../../../services/user-service";
 import Conditional from "../../Conditional";
 import {OfferContext} from "../../../../context/offer-context";
+import {AuthContext} from "../../../../context/user-context";
 
 export default function Card({title, category, content, price, image, watched, _id, isCreator, method}) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const userId = window.localStorage.getItem('userId');
   const [isFavorite, setIsFavorite] = useState(watched.includes(userId));
-  const context = useContext(OfferContext);
+  const offersContext = useContext(OfferContext);
+  const authContext = useContext(AuthContext);
 
   const userService = new UserService();
 
@@ -63,8 +65,7 @@ export default function Card({title, category, content, price, image, watched, _
       parent.classList.remove('added');
 
       if (method === 'favorites') {
-        context.updateOfferContext('favoritesContext', context.favoritesContext + 1);
-        console.log(context.favoritesContext);
+        offersContext.updateOfferContext('favoritesContext', offersContext.favoritesContext + 1);
       }
 
       setIsFavorite(false);
@@ -86,24 +87,32 @@ export default function Card({title, category, content, price, image, watched, _
       </div>
 
       <div className="card-body">
-        <SanitizedText tag="h5" text={title}/>
+        <SliceText
+          text={title}
+          tag="h6"
+          length="19"
+          className="card-heading"
+          shade={false}
+          isSanitized={true}/>
         <SanitizedText text={category}/>
 
         <section className="card-icons">
 
-          {
-            isFavorite
-              ? <Star className="favorites added-offer" data-offer-id={_id} onClick={removeFavoriteOffer}/>
-              : <StarBorder className="favorites not-added-offer" data-offer-id={_id} onClick={addFavoriteOffer}/>
-          }
+          <p className="price"><span>{price}</span> BGN</p>
+
+          <Conditional if={authContext.isAuth}>
+            {
+              isFavorite
+                ? <Star className="favorites added-offer" data-offer-id={_id} onClick={removeFavoriteOffer}/>
+                : <StarBorder className="favorites not-added-offer" data-offer-id={_id} onClick={addFavoriteOffer}/>
+            }
+          </Conditional>
 
         </section>
 
         <br/>
 
         <SliceText text={content} isSanitized={true}/>
-
-        <p className="price"><span>{price}</span> BGN</p>
 
         <Link to={`/offers/view/${_id}`} className="view-btn">
           <Button

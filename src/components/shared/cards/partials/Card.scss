@@ -1,130 +1,308 @@
-.card-list {
+@media (min-width: 1px) {
+  .card-list {
 
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
-
-  &:before,
-  &:after {
-    display: block;
-    content: '';
-    flex: 0 1 22%;
-    order: 1000;
-  }
-
-  .site-card {
-
-    flex: 0 1 31%;
-    margin-bottom: 4em;
-    overflow: hidden;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    border-radius: 0.4em;
-    background: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 
-    .card-head {
-      position: relative;
-      overflow: hidden;
-      flex: 0 0 auto;
-      transition: all 0.3s ease-in;
+    &:before,
+    &:after {
 
-      &:before {
-        display: block;
-        content: '';
-        padding-top: 65%;
-      }
-
-      img {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: auto;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        transition: all 0.25s ease-in;
-      }
-
-      &:hover img {
-        display: block;
-        width: 120%;
-        cursor: pointer;
-      }
     }
 
-    .card-body {
+    .site-card {
+
+      flex: 0 1 70%;
+      margin-bottom: 4em;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      flex: 1 1 auto;
-      justify-content: flex-start;;
-      padding: 0 1em 1em;
-      height: 100%;
+      border-radius: 0.4em;
+      background: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
 
-      .card-icons {
+      .card-head {
+        position: relative;
+        overflow: hidden;
+        flex: 0 0 auto;
+        transition: all 0.3s ease-in;
+
+        &:before {
+          display: block;
+          content: '';
+          padding-top: 65%;
+        }
+
+        img {
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: auto;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: all 0.25s ease-in;
+        }
+
+        &:hover img {
+          display: block;
+          width: 120%;
+          cursor: pointer;
+        }
+      }
+
+      .card-body {
         display: flex;
-        align-items: center;
-        justify-content: flex-start;
+        flex-direction: column;
+        flex: 1 1 auto;
+        justify-content: flex-start;;
+        padding: 0 1em 1em;
+        height: 100%;
 
+        .card-icons {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 2em;
 
-        .favorites {
-          font-size: 1.6em;
+          .price {
+            margin: 0;
+            padding: 0;
+            font-size: 1em;
 
-          &:hover {
-            cursor: pointer;
+            span {
+              font-size: 1.7em;
+              font-weight: bold;
+              color: #3CC0AA;
+            }
+          }
+
+          .favorites {
+            font-size: 1.6em;
+            margin-right: 0.2em;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          .added-offer {
+            color: #E8D257;
+            -webkit-filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
+            filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
+          }
+
+          .share-offer {
+            font-size: 1.2em;
+            margin-left: 0.3em;
+
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
 
-        .added-offer {
-          color: #FEAD00;
+        .card-heading {
+          margin: 0.75em 0 0.25em;
         }
 
-        .share-offer {
-          font-size: 1.2em;
-          margin-left: 0.3em;
+        .view-btn {
+          margin-top: auto;
+        }
 
-          &:hover {
-            cursor: pointer;
+        .edit-card {
+          padding: 1em 0 0;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .dark .card-list {
+
+    &:before,
+    &:after {
+
+    }
+
+    .site-card {
+      color: rgba(255, 255, 255, 0.8);
+      background: #474747;
+      box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+
+@media (min-width: 581px) {
+  .card-list {
+
+    justify-content: space-evenly;
+
+    &:before,
+    &:after {
+      display: block;
+      content: '';
+      flex: 0 1 41%;
+      order: 1000;
+    }
+
+    .site-card {
+
+      flex: 0 1 41%;
+
+      .card-head {
+
+        &:before {
+
+        }
+
+        img {
+
+        }
+
+        &:hover img {
+
+        }
+      }
+
+      .card-body {
+
+
+        .card-icons {
+
+
+          .price {
+
+
+            span {
+
+            }
+          }
+
+          .favorites {
+
+
+            &:hover {
+
+            }
+          }
+
+          .added-offer {
+
+          }
+
+          .share-offer {
+
+
+            &:hover {
+
+            }
           }
         }
-      }
 
-      h5 {
-        margin: 0.75em 0 1em;
-      }
+        .card-heading {
 
-      .price {
-        margin-top: auto;
-        font-size: 1em;
-
-        span {
-          font-size: 1.7em;
-          font-weight: bold;
-          color: #3CC0AA;
         }
-      }
 
-      .edit-card {
-        padding: 1em 0 0;
-        display: flex;
-        justify-content: space-between;
+        .view-btn {
+
+        }
+
+        .edit-card {
+
+        }
       }
     }
   }
 }
 
-.dark .card-list {
 
-  &:before,
-  &:after {
+@media (min-width: 769px) {
+}
 
-  }
+@media (min-width: 1281px) {
+  .card-list {
 
-  .site-card {
-    color: rgba(255, 255, 255, 0.8);
-    background: #474747;
-    box-shadow: 0 0 1px 0 white inset, 0.1em 0.2em 0.5em 0 rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+
+    &:before,
+    &:after {
+      display: block;
+      content: '';
+      flex: 0 1 31%;
+      order: 1000;
+    }
+
+    .site-card {
+
+      flex: 0 1 31%;
+
+      .card-head {
+
+        &:before {
+
+        }
+
+        img {
+
+        }
+
+        &:hover img {
+
+        }
+      }
+
+      .card-body {
+
+
+        .card-icons {
+
+
+          .price {
+
+
+            span {
+
+            }
+          }
+
+          .favorites {
+
+
+            &:hover {
+
+            }
+          }
+
+          .added-offer {
+
+          }
+
+          .share-offer {
+
+
+            &:hover {
+
+            }
+          }
+        }
+
+        .card-heading {
+
+        }
+
+        .view-btn {
+
+        }
+
+        .edit-card {
+
+        }
+      }
+    }
   }
 }
