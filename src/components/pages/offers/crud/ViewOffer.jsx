@@ -23,8 +23,6 @@ export default function ViewOffer() {
     return setCommentSubmit(commentSubmit + 1)
   }
 
-  console.log(commentSubmit);
-
   //Query params
   const {id} = useParams();
 
@@ -34,7 +32,6 @@ export default function ViewOffer() {
   //Component did mount
   useEffect(() => {
 
-    console.log('mount');
     (async () => {
 
       try {
