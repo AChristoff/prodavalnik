@@ -65,7 +65,6 @@ class UserForm extends React.Component {
         throw new Error(message);
       }
 
-
       this.setState({
         username: res.user.name,
         success: res.message,

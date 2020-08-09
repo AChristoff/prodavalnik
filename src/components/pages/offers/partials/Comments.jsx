@@ -5,7 +5,7 @@ export default function Comments(props) {
   const {comments} = props;
 
   const formatDateTime = (data) => {
-    data = data.split('.')[0]
+    data = data.split('.')[0];
     const year = data.split('T')[0].split('-').join('/');
     const time = data.split('T')[1].split(':');
     const setLocalTime = (time) => {
@@ -30,9 +30,9 @@ export default function Comments(props) {
       {
         comments.map((comment) => (
           <div>
+            <p>{comment.author}</p>
             <p>{comment.content}</p>
             <p>{formatDateTime(comment.createdAt)}</p>
-            <p>{comment.createdAt}</p>
           </div>
         ))
       }

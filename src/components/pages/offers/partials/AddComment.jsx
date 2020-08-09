@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import {Form, Formik} from "formik";
 import {useParams} from "react-router-dom";
 import FormikField from "../../../shared/form/FormikField";
-import FormikSelectPro from "../../../shared/form/select/FormikSelectPro";
 import Button from "@material-ui/core/Button";
 import OffersService from "../../../../services/offers-service";
 
@@ -24,7 +23,7 @@ export default function AddComment({updateCommentsOnSubmit}) {
   //Service
   const offersService = new OffersService();
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, {resetForm}) => {
 
     try {
       const res = await offersService.addComment(id, values);
@@ -34,7 +33,8 @@ export default function AddComment({updateCommentsOnSubmit}) {
         throw new Error(message);
       }
 
-      updateCommentsOnSubmit()
+      updateCommentsOnSubmit();
+      resetForm({content: ''});
 
     } catch (error) {
       setError(error.message);
