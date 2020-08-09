@@ -392,6 +392,7 @@
     &.forgot-password,
     &.reset-password,
     &.register,
+    &.add-comment,
     &.register-confirm,
     &.user-details,
     &.create-offer,
@@ -425,6 +426,7 @@
       .forgot-password-form,
       .reset-password-from,
       .user-from,
+      .comment-from,
       .register-from,
       .register-confirm-from,
       .offer-from {
@@ -492,8 +494,20 @@
         }
       }
 
-      .view-offer-back-btn {
-        width: 15em;
+      .offer-content {
+        width: 80%;
+      }
+
+      .price {
+        margin: 0;
+        padding: 0;
+        font-size: 1em;
+
+        span {
+          font-size: 1.7em;
+          font-weight: bold;
+          color: #3CC0AA;
+        }
       }
     }
   }

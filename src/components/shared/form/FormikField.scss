@@ -15,6 +15,23 @@
 		padding: 0.5em 0 0;
 		margin: 0 !important;
 	}
+
+	.formik-textarea {
+
+		.MuiFilledInput-adornedEnd {
+			padding-right: 0.5em;
+		}
+
+		.MuiInputLabel-root {
+			top: -0.5em
+		}
+
+		.MuiSvgIcon-root {
+			position: absolute;
+			top: 0.35em;
+			right: 0.1em;
+		}
+	}
 }
 
 .dark .formik-field {

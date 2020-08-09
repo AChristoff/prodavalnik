@@ -78,7 +78,7 @@ class OffersForm extends React.Component {
         const message = res.message;
         throw new Error(message);
       } else {
-        this.props.history.push("/user/offers");
+        this.props.history.push(`/offers/view/${this.offerId}`);
       }
 
     } catch (error) {
@@ -203,7 +203,7 @@ class OffersForm extends React.Component {
 
             <FormikSelectPro name='category' label='Category' items={items} required={true} disabled={formType === 'delete'} />
 
-            <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'} required={true} multiline={true} rows={7} />
+            <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'} fieldStyle="filled" required={true} multiline={true} rows={7} className="formik-textarea"/>
 
             <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'} required={true}/>
 

@@ -11,6 +11,7 @@ class OffersService {
     this.createOfferUrl = `${this.baseUrl}/post/create`;
     this.editOfferUrl = `${this.baseUrl}/post/edit/`;
     this.deleteOfferUrl = `${this.baseUrl}/post/delete/`;
+    this.commentUrl = `${this.baseUrl}/post/`;
   }
 
   getAllOffers(page = '1', limit = '6', sort = 'createdAt', order = '-1', search = '+', filter = '') {
@@ -55,6 +56,14 @@ class OffersService {
 
   deleteOffer(id) {
     return del(`${this.deleteOfferUrl}` + id);
+  }
+
+  addComment(offerId, comment) {
+    return post(`${this.commentUrl}` + offerId, comment);
+  }
+
+  getComments(offerId) {
+    return get(`${this.commentUrl}` + offerId + '/comments');
   }
 }
 
