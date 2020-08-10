@@ -6,37 +6,34 @@ export default function Comments(props) {
 
   const {comments} = props;
 
-  const formatDateTime = (data) => {
-    data = data.split('.')[0];
-    const year = data.split('T')[0].split('-').join('/');
-    const time = data.split('T')[1].split(':');
-    const setLocalTime = (time) => {
-      if (Number(time[0]) === 21) {
-        return '00';
-      } else if (Number(time[0]) === 22) {
-        return '01';
-      } else if (Number(time[0]) === 23) {
-        return '02';
-      } else {
-        return (Number(time[0]) + 4);
-      }
-    };
+  const formatDateTime = (dataUTC) => {
+    const date = new Date(dataUTC);
+    const gmt = date.toString().split(' ');
 
-    const localTime = `${setLocalTime(time)}:${time[1]}`;
+    let year = [...gmt].splice(1, 3);
+    const month = year.shift();
+    year = `${year[0]}/${month}/${year[1]}`
+    const time = [...gmt].splice(4, 1)[0].split(':').splice(0, 2).join(':');
 
-    return `${localTime} - ${year}`
+    return `${year} - ${time}h`
   };
 
   return (
     <div className="comments-list">
+
       {
-        comments.map((comment) => (
-          <div>
-            <p>{comment.author}</p>
-            <SanitizedText text={comment.content}/>
-            <p>{formatDateTime(comment.createdAt)}</p>
-          </div>
-        ))
+
+        comments.length
+          ? comments.map((comment) => (
+            <div className="comment">
+              <p className="comment-meta">
+                <span className="comment-author">{comment.author}</span>
+                <span className="comment-date">{formatDateTime(comment.createdAt)}</span>
+              </p>
+              <SanitizedText text={comment.content} customClass="comment-content"/>
+            </div>
+          ))
+          : <p className="no-comments">No comments yet</p>
       }
     </div>
   );

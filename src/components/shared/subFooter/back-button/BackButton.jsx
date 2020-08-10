@@ -8,7 +8,7 @@ export default function BackButton() {
   const history = useHistory();
 
   return (
-    <div className="view-offer-back-btn">
+    <div className="back-btn">
       <Button
         fullWidth
         disableElevation

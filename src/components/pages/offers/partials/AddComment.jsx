@@ -46,7 +46,7 @@ export default function AddComment({updateCommentsOnSubmit}) {
   };
 
   return (
-    <div className="wrapper add-comment">
+    <div className="add-comment">
       <Formik
         initialValues={
           {
@@ -59,7 +59,7 @@ export default function AddComment({updateCommentsOnSubmit}) {
         {(props) => (
           <Form className="comment-from">
 
-            <FormikField name="content" label="Comment" icon="text" multiline={true} rows={7} fieldStyle="filled" className="formik-textarea"/>
+            <FormikField name="content" label="Add comment:" icon="text" multiline={true} rows={7} fieldStyle="filled" className="formik-textarea"/>
 
             <Button
               fullWidth
