@@ -21,6 +21,12 @@
   //  }
   //}
 
+  .no-comments {
+    padding-top: 0.75em;
+    color: #4AD295;
+    opacity: 0.5;
+  }
+
   .comment {
     background-color: rgba(0, 0, 0, 0.09);
     border-radius: 0.3em;
@@ -39,6 +45,7 @@
       padding-bottom: 0.5em;
 
       .comment-author {
+        font-size: 1.1em;
         color: #3CC0AA;
         font-weight: bold;
         margin-right: 0.5em;
@@ -48,6 +55,10 @@
         opacity: 0.5;
         font-size: 0.7em;
       }
+    }
+
+    .comment-content {
+      padding: 0;
     }
   }
 }

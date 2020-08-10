@@ -6,4 +6,28 @@
   margin-top: 4em;
   padding-top: 2em;
   position: relative;
+
+  button {
+    max-height: 2.8em;
+  }
+}
+
+.create-offer,
+.edit-offer,
+.delete-offer {
+
+  .sub-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 28em;
+    margin-top: 4em;
+    padding-top: 2em;
+    position: relative;
+
+    button {
+      max-height: 2.8em;
+    }
+  }
+
 }

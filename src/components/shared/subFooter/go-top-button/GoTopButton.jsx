@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from "@material-ui/core/Button";
-import {KeyboardArrowUp} from "@material-ui/icons";
+import {ExpandLess, KeyboardArrowUp} from "@material-ui/icons";
 import './goTopButton.scss'
 
 export default function goTopButton() {

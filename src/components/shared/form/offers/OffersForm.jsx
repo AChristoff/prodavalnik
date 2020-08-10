@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {Form, Formik} from "formik";
 import FormikField from "../FormikField";
 import Button from "@material-ui/core/Button";
@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import OffersService from "../../../../services/offers-service";
 import {OfferContext} from "../../../../context/offer-context";
 import FormikSelectPro from "../select/FormikSelectPro";
+import SubFooter from "../../subFooter/SubFooter";
 
 const OfferSchema = Yup.object().shape({
   title: Yup.string()
@@ -183,47 +184,51 @@ class OffersForm extends React.Component {
 /////////////////////////////////////////////
 
     return (
-      <Formik
-        initialValues={
-          {
-            title: title ? this.sanitizedText(title) : '',
-            category: category ? this.sanitizedText(category) : '',
-            content: content ? this.sanitizedText(content) : '',
-            price: price || '',
-            image: image || ''
+      <Fragment>
+        <Formik
+          initialValues={
+            {
+              title: title ? this.sanitizedText(title) : '',
+              category: category ? this.sanitizedText(category) : '',
+              content: content ? this.sanitizedText(content) : '',
+              price: price || '',
+              image: image || ''
+            }
           }
-        }
-        validationSchema={formType === 'delete' ? DeleteSchema : OfferSchema}
-        onSubmit={this.handleSubmit(formType)}
-      >
-        {(props) => (
-          <Form className="offer-from">
+          validationSchema={formType === 'delete' ? DeleteSchema : OfferSchema}
+          onSubmit={this.handleSubmit(formType)}
+        >
+          {(props) => (
+            <Form className="offer-from">
 
-            <FormikField name="title" label="Title" icon="text" required={true} disabled={formType === 'delete'}/>
+              <FormikField name="title" label="Title" icon="text" required={true} disabled={formType === 'delete'}/>
 
-            <FormikSelectPro name='category' label='Category' items={items} required={true} disabled={formType === 'delete'} />
+              <FormikSelectPro name='category' label='Category' items={items} required={true} disabled={formType === 'delete'}/>
 
-            <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'} fieldStyle="filled" required={true} multiline={true} rows={7} className="formik-textarea"/>
+              <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'} fieldStyle="filled" required={true} multiline={true} rows={7} className="formik-textarea"/>
 
-            <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'} required={true}/>
+              <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'} required={true}/>
 
-            <FormikField name="image" label="Image" icon="image" disabled={formType === 'delete'} required={true}/>
+              <FormikField name="image" label="Image" icon="image" disabled={formType === 'delete'} required={true}/>
 
-            <Button
-              fullWidth
-              type="submit"
-              variant="contained"
-              size="large"
-              color="primary"
-              className={`${formType}-btn`}
-              disabled={formType !== 'delete' ? (!props.isValid || !props.dirty) : false}
-            >
-              {formType}
-            </Button>
+              <Button
+                fullWidth
+                type="submit"
+                variant="contained"
+                size="large"
+                color="primary"
+                className={`${formType}-btn`}
+                disabled={formType !== 'delete' ? (!props.isValid || !props.dirty) : false}
+              >
+                {formType}
+              </Button>
 
-          </Form>
-        )}
-      </Formik>
+            </Form>
+          )}
+        </Formik>
+
+        <SubFooter/>
+      </Fragment>
     );
   }
 }

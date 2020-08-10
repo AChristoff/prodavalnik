@@ -79,6 +79,9 @@ export default function ViewOffer() {
     const parent = e.currentTarget.parentElement;
     console.log(parent);
 
+    parent.classList.remove('not-added');
+    parent.classList.add('added');
+
     // try {
     //
     //   const res = await userService.addFavoriteOffer({
@@ -106,6 +109,9 @@ export default function ViewOffer() {
 
     const parent = e.currentTarget.parentElement;
     console.log(parent);
+
+    parent.classList.add('not-added');
+    parent.classList.remove('added');
 
     // try {
     //

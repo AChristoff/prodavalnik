@@ -1,3 +1,11 @@
 .go-top-btn {
   width: auto;
+
+  button {
+    padding-left: 1em;
+
+    svg {
+      font-size: 2em;
+    }
+  }
 }
