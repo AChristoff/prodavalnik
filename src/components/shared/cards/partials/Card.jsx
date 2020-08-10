@@ -1,81 +1,13 @@
-import React, {useContext, useState} from 'react';
+import React from 'react';
 import "./Card.scss"
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
 import SliceText from "../../slice-text/SliceText";
 import SanitizedText from "../../SanitizedText";
-import {Share, Star, StarBorder} from "@material-ui/icons";
-import UserService from "../../../../services/user-service";
 import Conditional from "../../Conditional";
-import {OfferContext} from "../../../../context/offer-context";
-import {AuthContext} from "../../../../context/user-context";
+import Favorite from "../../favorites/Favorite";
 
 export default function Card({title, category, content, price, image, watched, _id, isCreator, method}) {
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const userId = window.localStorage.getItem('userId');
-  const [isFavorite, setIsFavorite] = useState(watched.includes(userId));
-  const offersContext = useContext(OfferContext);
-  const authContext = useContext(AuthContext);
-
-  const userService = new UserService();
-
-  const addFavoriteOffer = async (e) => {
-    const parent = e.currentTarget.parentElement;
-
-    try {
-
-      const res = await userService.addFavoriteOffer({
-        offerId: e.currentTarget.getAttribute('data-offer-id')
-      });
-
-      if (res.errors) {
-        const message = res.message;
-        throw new Error(message);
-      }
-
-      parent.classList.remove('not-added');
-      parent.classList.add('added');
-
-      setIsFavorite(true);
-      setSuccess(res.message);
-
-    } catch (error) {
-
-      setError(error);
-    }
-  };
-
-  const removeFavoriteOffer = async (e) => {
-
-    const parent = e.currentTarget.parentElement;
-
-    try {
-
-      const res = await userService.removeFavoriteOffer({
-        offerId: e.currentTarget.getAttribute('data-offer-id')
-      });
-
-      if (res.errors) {
-        const message = res.message;
-        throw new Error(message);
-      }
-
-      parent.classList.add('not-added');
-      parent.classList.remove('added');
-
-      if (method === 'favorites') {
-        offersContext.updateOfferContext('favoritesContext', offersContext.favoritesContext + 1);
-      }
-
-      setIsFavorite(false);
-      setSuccess(res.message);
-
-    } catch (error) {
-
-      setError(error);
-    }
-  };
 
   return (
     <div className="site-card">
@@ -97,20 +29,9 @@ export default function Card({title, category, content, price, image, watched, _
         <SanitizedText text={category}/>
 
         <section className="card-icons">
-
           <p className="price"><span>{price}</span> BGN</p>
-
-          <Conditional if={authContext.isAuth}>
-            {
-              isFavorite
-                ? <Star className="favorites added-offer" data-offer-id={_id} onClick={removeFavoriteOffer}/>
-                : <StarBorder className="favorites not-added-offer" data-offer-id={_id} onClick={addFavoriteOffer}/>
-            }
-          </Conditional>
-
+          <Favorite method={method} watched={watched} offerId={_id}/>
         </section>
-
-        <br/>
 
         <SliceText text={content} isSanitized={true}/>
 

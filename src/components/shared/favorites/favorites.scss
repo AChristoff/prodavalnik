@@ -1,0 +1,14 @@
+.favorites {
+  font-size: 1.6em;
+  margin-left: 0.5em;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.added-offer {
+  color: #E8D257;
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
+  filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
+}
