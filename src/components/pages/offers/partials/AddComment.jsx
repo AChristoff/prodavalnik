@@ -36,6 +36,10 @@ export default function AddComment({updateCommentsOnSubmit}) {
       updateCommentsOnSubmit();
       resetForm({content: ''});
 
+      //scroll to newest comment
+      const commentsList = document.querySelector('.comments-list');
+      commentsList.scrollTop = 0;
+
     } catch (error) {
       setError(error.message);
     }

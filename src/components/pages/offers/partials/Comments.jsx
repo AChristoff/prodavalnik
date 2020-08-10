@@ -1,4 +1,6 @@
 import React from 'react';
+import SanitizedText from "../../../shared/SanitizedText";
+import './comments.scss'
 
 export default function Comments(props) {
 
@@ -31,7 +33,7 @@ export default function Comments(props) {
         comments.map((comment) => (
           <div>
             <p>{comment.author}</p>
-            <p>{comment.content}</p>
+            <SanitizedText text={comment.content}/>
             <p>{formatDateTime(comment.createdAt)}</p>
           </div>
         ))
