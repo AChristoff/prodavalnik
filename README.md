@@ -33,9 +33,9 @@ The application is split in to two main parts
     * User offers page - lists only offers created by the user
     * Favorite offers page - lists only handpicked offers<br>
     * CRUD operation pages - the user can create and manage their own offers <br>
-    * Profile page - user can change his `username` and `password`
+    * Registered users can add comments on the offers <br>
+    * Profile page - user can change his `username` and `password` <br>
     
-    **TODO:** Add comments to offers <br>
   * Admin: <br>
   
     **TODO:** Admin must be able to add and edit categories <br>
