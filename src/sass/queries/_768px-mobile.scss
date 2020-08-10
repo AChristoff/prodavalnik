@@ -482,33 +482,57 @@
         margin: 2em 0 0;
         width: 90%;
         font-size: 1.1em;
+        position: relative;
 
-        .price {
-          margin: 0;
-          padding: 0;
-          font-size: 1em;
-
-          span {
-            font-size: 1.7em;
-            font-weight: bold;
-            color: #3CC0AA;
-          }
+        .price-tag-icon {
+          color: $color-theme-green;
+          transform: rotate(-45deg) translateY(-60%);
+          font-size: 8em;
+          position: absolute;
+          top: 38%;
+          left: 0.5em;
+          z-index: 1;
         }
 
-        .favorites {
-          font-size: 1.6em;
-          margin-right: 0.2em;
+        .price-tag {
+          position: relative;
+          z-index: 2;
+          border-radius: 0.5em;
+          background: #3CC0AA;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 1em 1em 1em 1.2em;
+          height: 4.7em;
+          margin-left: 2.06em;
+          color: $pure-white;
 
-          &:hover {
-            cursor: pointer;
+          .price {
+            margin: 0;
+            padding: 0;
+            font-size: 1.1em;
+
+            span {
+              font-size: 1.7em;
+              font-weight: bold;
+              color: $pure-white;
+            }
           }
-        }
 
-        .added-offer {
-          color: #E8D257;
-          margin-left: 0.5em;
-          -webkit-filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
-          filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
+          .favorites {
+            font-size: 1.6em;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          .added-offer {
+            color: #E8D257;
+            margin-left: 0.5em;
+            -webkit-filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
+            filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
+          }
         }
 
         .share-offer {
@@ -553,7 +577,7 @@
 
       .offer-content {
         width: 90%;
-        margin: 4em 0 0;
+        margin: 2em 0;
       }
 
       .price {

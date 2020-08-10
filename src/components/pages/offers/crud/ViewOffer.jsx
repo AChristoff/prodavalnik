@@ -8,6 +8,7 @@ import Comments from "../partials/Comments";
 import AddComment from "../partials/AddComment";
 import SubFooter from "../../../shared/subFooter/SubFooter";
 import Favorite from "../../../shared/favorites/Favorite";
+import {LocalOffer} from "@material-ui/icons";
 
 export default function ViewOffer() {
 
@@ -85,14 +86,20 @@ export default function ViewOffer() {
       </div>
 
       <section className="offer-icons">
-        <p className="price"><span>{offer.price}</span> BGN</p>
 
-        {
-          watched
-          ? <Favorite watched={watched} offerId={id}/>
-          : null
-        }
+        <div className="price-tag">
+          <p className="price">
+            <span>{offer.price}</span> BGN
+          </p>
 
+          {
+            watched
+              ? <Favorite watched={watched} offerId={id}/>
+              : null
+          }
+        </div>
+
+        <LocalOffer className="price-tag-icon"/>
       </section>
 
       <SanitizedText customClass="offer-content" text={offer.content}/>
