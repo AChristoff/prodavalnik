@@ -20,7 +20,7 @@ class CardsContainer extends React.Component {
       searchState: props.search,
       filterState: props.filter,
       pageCount: 1,
-      isLoading: false,
+      isLoading: true,
       favoritesChange: props.favoritesChange,
 
     };

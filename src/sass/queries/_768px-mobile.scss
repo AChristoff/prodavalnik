@@ -595,6 +595,14 @@
   }
 }
 
+.loading {
+  .MuiCircularProgress-root {
+    height: 4.5em;
+    width: 4.5em;
+    color: #3CC0AA;
+  }
+}
+
 .dark .app-main {
 
   color: rgba(255, 255, 255, 0.8);
