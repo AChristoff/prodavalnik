@@ -8,7 +8,8 @@ import AuthService from "../../../services/auth-service";
 import Loading from "../../shared/Loading";
 import Conditional from "../../shared/Conditional";
 import Stepper from "../../shared/stepper/Stepper";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
+import {AuthContext} from "../../../context/user-context";
 
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
@@ -30,6 +31,7 @@ class Register extends React.Component {
   }
 
   static service = new AuthService();
+  static contextType = AuthContext;
 
   handleSubmit = async (values) => {
 
@@ -70,6 +72,13 @@ class Register extends React.Component {
 
   render() {
     const {isLoading, success, error, stepOneDone, email} = this.state;
+    const {isAuth} = this.context;
+
+    if (isAuth) {
+      return (
+        <Redirect to="/"/>
+      );
+    }
 
 
     if (isLoading) {

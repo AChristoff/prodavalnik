@@ -9,7 +9,7 @@ import {AuthContext} from "../../../context/user-context";
 import Conditional from "../../shared/Conditional";
 import Loading from "../../shared/Loading";
 import Stepper from "../../shared/stepper/Stepper";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
@@ -128,13 +128,18 @@ class RegisterConfirm extends React.Component {
   };
 
   render() {
-
     const {isLoading, success, error, username, password ,rePassword, stepTwoDone, stepThreeDone} = this.state;
+    const {isAuth} = this.context;
+
+    if (isAuth) {
+      return (
+        <Redirect to="/"/>
+      );
+    }
 
     if (isLoading) {
       return <Loading/>
     }
-
 
     if (stepThreeDone) {
       return (

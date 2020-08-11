@@ -66,7 +66,6 @@ class Login extends React.Component {
   };
 
   render() {
-
     const {isAuth} = this.context;
 
     if (isAuth) {

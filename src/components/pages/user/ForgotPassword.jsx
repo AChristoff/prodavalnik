@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Heading from "../../shared/Heading";
 import {Form, Formik} from "formik";
 import FormikField from "../../shared/form/FormikField";
@@ -7,6 +7,8 @@ import * as Yup from "yup";
 import AuthService from "../../../services/auth-service";
 import Conditional from "../../shared/Conditional";
 import Loading from "../../shared/Loading";
+import {Redirect} from "react-router-dom";
+import {AuthContext} from "../../../context/user-context";
 
 const forgoPasswordSchema = Yup.object().shape({
   email: Yup.string()
@@ -18,6 +20,7 @@ export default function ForgotPassword() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const authContext = useContext(AuthContext);
 
   const authService = new AuthService();
 
@@ -53,6 +56,12 @@ export default function ForgotPassword() {
     return <Loading/>
   }
 
+  if (authContext.isAuth) {
+    return (
+      <Redirect to="/"/>
+    );
+  }
+
   if (success) {
     return (
       <div className="wrapper forgot-password">
@@ -73,7 +82,7 @@ export default function ForgotPassword() {
       <Heading text="Forgot Your Password?"/>
 
       <Conditional if={error.length}>
-        <h6  className='error-message'>{error}</h6>
+        <h6 className='error-message'>{error}</h6>
       </Conditional>
 
       <div className="forgot-password-from">
