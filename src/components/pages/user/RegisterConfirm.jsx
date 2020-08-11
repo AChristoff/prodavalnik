@@ -15,13 +15,13 @@ const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
 const numericRegex = /(?=.*[0-9])/;
 const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
-const letterRegex = /^[A-Za-z]+$/;
+const alphanumericRegex = /^\w+$/;
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Username must be at least 2 characters!')
     .max(12, 'Username must be maximum 12 characters!')
-    .matches(letterRegex, 'Username must contain only letters!')
+    .matches(alphanumericRegex, 'Username must contain only letters, numbers and "_"!')
     .required('Username is required!'),
   password: Yup.string()
     .min(6, 'Minimum 6 character required!')
@@ -45,6 +45,9 @@ class RegisterConfirm extends React.Component {
       stepTwoDone: false,
       stepThreeDone: false,
       isLoading: false,
+      username: '',
+      password: '',
+      rePassword: '',
     };
     this.token = this.props.match.params.token;
   }
@@ -65,11 +68,34 @@ class RegisterConfirm extends React.Component {
 
       const res = await RegisterConfirm.service.registerConfirm(this.token, values);
 
-      if (res.error) {
+      if (res.errors) {
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
+        }
+        this.setState({
+          error: message,
+          success: '',
+          username: values.name,
+          password: values.password,
+        });
+        throw new Error(message);
+      } else if (res.error) {
         this.setState({
           error: res.error.message,
+          success: '',
+          username: values.name,
+          password: values.password,
         });
         throw new Error(res.error.message);
+      } else {
+
+        this.setState({
+          username: res.username,
+          success: res.message,
+          error: '',
+        });
       }
 
       this.setState({
@@ -103,7 +129,7 @@ class RegisterConfirm extends React.Component {
 
   render() {
 
-    const {isLoading, success, error, stepTwoDone, stepThreeDone} = this.state;
+    const {isLoading, success, error, username, password ,rePassword, stepTwoDone, stepThreeDone} = this.state;
 
     if (isLoading) {
       return <Loading/>
@@ -153,16 +179,16 @@ class RegisterConfirm extends React.Component {
         <Stepper stepOneDone={true} stepTwoDone={stepTwoDone} stepThreeDone={stepThreeDone}/>
 
         <Formik
-          initialValues={{name: '', password: '', rePassword: ''}}
+          initialValues={{name: username, password, rePassword}}
           validationSchema={RegisterSchema}
           onSubmit={this.handleSubmit}
         >
           {(props) => (
             <Form className="register-confirm-from">
 
-              <FormikField name="name" label="Username" placeholder="Ex. John" icon="username"/>
-              <FormikField name="password" label="Password" type="password" placeholder="Ex. John#567" icon="password"/>
-              <FormikField name="rePassword" label="Confirm Password" type="password" icon="password"/>
+              <FormikField required={true} name="name" label="Username" placeholder="Ex. John" icon="username"/>
+              <FormikField required={true} name="password" label="Password" type="password" placeholder="Ex. John#567" icon="password"/>
+              <FormikField required={true} name="rePassword" label="Confirm Password" type="password" icon="password"/>
 
               <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>
                 Register
