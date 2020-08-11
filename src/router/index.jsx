@@ -7,7 +7,7 @@ import Logout from "../components/pages/user/Logout";
 import PrivateRoute from "./PrivateRoute";
 import CreateOffer from "../components/pages/offers/crud/CreateOffer";
 import DeleteOffer from "../components/pages/offers/crud/DeleteOffer";
-import ErrorBoundary from "../components/shared/ErrorBoundary";
+import ErrorBoundary from "../components/pages/errors/ErrorBoundary";
 
 const Home = lazy(() => import('../components/pages/home/Home'));
 const AllOffers = lazy(() => import('../components/pages/offers/AllOffers'));

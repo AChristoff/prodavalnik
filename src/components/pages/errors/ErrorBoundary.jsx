@@ -1,5 +1,5 @@
 import React from 'react';
-import CodeError from "../pages/errors/code-error/CodeError";
+import CodeError from "./code-error/CodeError";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
