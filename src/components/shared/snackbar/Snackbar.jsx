@@ -18,6 +18,7 @@ export default function SnackbarAlert({type = 'success', message = '', isOpen = 
   const handleClose = () => {
     setOpen(false);
     updateAlertContext('counter', 0);
+    updateAlertContext('isInfo', false);
     updateAlertContext('errorContext', '');
     updateAlertContext('successContext', '');
   };
@@ -33,7 +34,7 @@ export default function SnackbarAlert({type = 'success', message = '', isOpen = 
     <div className="snackbar">
       <Snackbar
         open={open}
-        autoHideDuration={4000}
+        autoHideDuration={5000}
         anchorOrigin={{vertical: 'top', horizontal: 'right'}}
         onClose={handleClose}>
         <Alert onClose={handleClose} severity={type}>{message}</Alert>

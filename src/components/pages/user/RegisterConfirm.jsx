@@ -10,6 +10,7 @@ import Conditional from "../../shared/Conditional";
 import Loading from "../../shared/Loading";
 import Stepper from "../../shared/stepper/Stepper";
 import {NavLink, Redirect} from "react-router-dom";
+import SnackbarAlert from "../../shared/snackbar/Snackbar";
 
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
@@ -21,7 +22,7 @@ const RegisterSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Username must be at least 2 characters!')
     .max(12, 'Username must be maximum 12 characters!')
-    .matches(alphanumericRegex, 'Username must contain only letters, numbers and "_"!')
+    .matches(alphanumericRegex, 'Username must contain only letters, numbers and _')
     .required('Username is required!'),
   password: Yup.string()
     .min(6, 'Minimum 6 character required!')
@@ -48,6 +49,7 @@ class RegisterConfirm extends React.Component {
       username: '',
       password: '',
       rePassword: '',
+      isExpired: false,
     };
     this.token = this.props.match.params.token;
   }
@@ -74,6 +76,7 @@ class RegisterConfirm extends React.Component {
         if (errors && errors !== '') {
           message = errors
         }
+        console.log('errors', res.errors);
         this.setState({
           error: message,
           success: '',
@@ -88,7 +91,15 @@ class RegisterConfirm extends React.Component {
           username: values.name,
           password: values.password,
         });
-        throw new Error(res.error.message);
+        console.log('error', res.error);
+        if (res.error.message === 'jwt expired') {
+          this.setState({
+            isExpired: true
+          });
+          throw new Error('Your registration link is expired!');
+        } else {
+          throw new Error(res.error.message);
+        }
       } else {
 
         this.setState({
@@ -128,8 +139,18 @@ class RegisterConfirm extends React.Component {
   };
 
   render() {
-    const {isLoading, success, error, username, password ,rePassword, stepTwoDone, stepThreeDone} = this.state;
     const {isAuth} = this.context;
+    const {
+      isExpired,
+      isLoading,
+      success,
+      error,
+      username,
+      password,
+      rePassword,
+      stepTwoDone,
+      stepThreeDone
+    } = this.state;
 
     if (isAuth) {
       return (
@@ -139,6 +160,29 @@ class RegisterConfirm extends React.Component {
 
     if (isLoading) {
       return <Loading/>
+    }
+
+    if (isExpired) {
+      return (
+        <div className="wrapper register-confirm expired">
+
+          <Conditional if={error.length}>
+            <SnackbarAlert type="error" message={error} isOpen={true}/>
+          </Conditional>
+
+          <Heading text="Register"/>
+
+          <h5 className="headings">Your registration link is expired!</h5>
+          <h6 className="headings">Click the button bellow for new one.</h6>
+
+          <Button className="to-register-btn" fullWidth type="submit" variant="contained" size="large" color="primary">
+            <NavLink to="/user/register" exact>
+              Generate link here
+            </NavLink>
+          </Button>
+
+        </div>
+      )
     }
 
     if (stepThreeDone) {
@@ -151,10 +195,6 @@ class RegisterConfirm extends React.Component {
 
           <div className="register-confirm-from">
 
-            <Conditional if={error.length}>
-              <div className='error-message'>Error: {error}</div>
-            </Conditional>
-
             <h5 className="headings">Congratulations!</h5>
             <h6 className="headings">Your registration is complete.</h6>
 
@@ -164,6 +204,7 @@ class RegisterConfirm extends React.Component {
               </NavLink>
             </Button>
           </div>
+
         </div>
       )
     }
@@ -172,7 +213,7 @@ class RegisterConfirm extends React.Component {
       <div className="wrapper register-confirm">
 
         <Conditional if={error.length}>
-          <div className='error-message'>Error: {error}</div>
+          <SnackbarAlert type="error" message={error} isOpen={true}/>
         </Conditional>
 
         <Conditional if={success}>

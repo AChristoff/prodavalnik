@@ -11,7 +11,7 @@ import SnackbarAlert from "./components/shared/snackbar/Snackbar";
 import Conditional from "./components/shared/Conditional";
 
 export default function App() {
-  const {errorContext, successContext} = useContext(AlertContext);
+  const {errorContext, successContext, isInfo} = useContext(AlertContext);
   const {isLightTheme} = useContext(ThemeContext);
 
   const [error, setError] = useState(errorContext);
@@ -32,6 +32,8 @@ export default function App() {
     ? successContext
     : errorContext.length ? errorContext : '';
 
+  const type = isInfo ? 'info' : 'success';
+
   //Component did update
   useEffect(() => {
     setLightTheme(isLightTheme)
@@ -46,7 +48,7 @@ export default function App() {
         <Footer/>
 
         <Conditional if={successContext.length}>
-          <SnackbarAlert type="success" message={successContext} isOpen={true}/>
+          <SnackbarAlert type={type} message={successContext} isOpen={true}/>
         </Conditional>
 
         <Conditional if={errorContext.length}>

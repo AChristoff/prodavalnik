@@ -5,6 +5,7 @@ import './favorites.scss'
 import {OfferContext} from "../../../context/offer-context";
 import {AuthContext} from "../../../context/user-context";
 import UserService from "../../../services/user-service";
+import {AlertContext} from "../../../context/alert-context";
 
 export default function Favorite({method, watched, offerId}) {
 
@@ -14,6 +15,7 @@ export default function Favorite({method, watched, offerId}) {
   const [isFavorite, setIsFavorite] = useState([watched.includes(userId)]);
   const offersContext = useContext(OfferContext);
   const authContext = useContext(AuthContext);
+  const {updateAlertContext} = useContext(AlertContext);
 
   //Component did mount
   useEffect(() => {
@@ -31,13 +33,22 @@ export default function Favorite({method, watched, offerId}) {
       });
 
       if (res.errors) {
-        const message = res.message;
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
+        }
+        updateAlertContext('errorContext', message);
         throw new Error(message);
+      } else if (res.error) {
+        updateAlertContext('errorContext', res.error.message);
+        throw new Error(res.error.message);
+      } else {
+        updateAlertContext('successContext', res.message);
       }
 
       setIsFavorite(true);
       setSuccess(res.message);
-      console.log('from add to fav', isFavorite);
 
     } catch (error) {
 
@@ -54,8 +65,18 @@ export default function Favorite({method, watched, offerId}) {
       });
 
       if (res.errors) {
-        const message = res.message;
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
+        }
+        updateAlertContext('errorContext', message);
         throw new Error(message);
+      } else if (res.error) {
+        updateAlertContext('errorContext', res.error.message);
+        throw new Error(res.error.message);
+      } else {
+        updateAlertContext('successContext', res.message);
       }
 
       if (method === 'favorites') {
@@ -64,7 +85,6 @@ export default function Favorite({method, watched, offerId}) {
 
       setIsFavorite(false);
       setSuccess(res.message);
-      console.log('from remove fav', isFavorite);
 
     } catch (error) {
 

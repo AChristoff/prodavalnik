@@ -404,6 +404,13 @@
         text-align: center;
       }
 
+      &.expired {
+        .to-register-btn {
+          width: 28em;
+          margin-top: 3em;
+        };
+      }
+
       .go-to-register,
       .go-to-login {
         color: #3CC1A9;

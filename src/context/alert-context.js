@@ -10,6 +10,7 @@ class AlertContextProvider extends Component {
       successContext: '',
       warningContext: '',
       counter: 0,
+      isInfo: false,
     };
   }
 

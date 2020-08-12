@@ -10,6 +10,7 @@ import Conditional from "../../shared/Conditional";
 import Stepper from "../../shared/stepper/Stepper";
 import {NavLink, Redirect} from "react-router-dom";
 import {AuthContext} from "../../../context/user-context";
+import SnackbarAlert from "../../shared/snackbar/Snackbar";
 
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
@@ -117,7 +118,7 @@ class Register extends React.Component {
       <div className="wrapper register">
 
         <Conditional if={error.length}>
-          <div className='error-message'>{error}</div>
+          <SnackbarAlert type="error" message={error} isOpen={true}/>
         </Conditional>
 
         <Conditional if={success}>
