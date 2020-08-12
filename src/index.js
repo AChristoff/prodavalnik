@@ -6,11 +6,13 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import ThemeContextProvider from "./context/theme-context";
 import OfferContextProvider from "./context/offer-context";
 import AuthContextProvider from "./context/user-context";
+import AlertContextProvider from "./context/alert-context";
 
 ReactDOM.render(
   <ThemeContextProvider>
-      <OfferContextProvider>
-        <AuthContextProvider>
+    <OfferContextProvider>
+      <AuthContextProvider>
+        <AlertContextProvider>
 
           <Router>
 
@@ -18,8 +20,9 @@ ReactDOM.render(
 
           </Router>
 
-        </AuthContextProvider>
-      </OfferContextProvider>
+        </AlertContextProvider>
+      </AuthContextProvider>
+    </OfferContextProvider>
   </ThemeContextProvider>,
 
   document.getElementById('root')

@@ -1,62 +1,59 @@
-import React from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 
 import './App.scss';
 import Header from "./components/shared/main/Header";
 import Footer from "./components/shared/main/Footer";
-import {ThemeContext} from "./context/theme-context";
 import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles'
 import Main from "./components/shared/main/Main";
+import {ThemeContext} from "./context/theme-context";
+import {AlertContext} from "./context/alert-context";
+import SnackbarAlert from "./components/shared/snackbar/Snackbar";
+import Conditional from "./components/shared/Conditional";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lightTheme: true
-    }
-  }
+export default function App() {
+  const {errorContext, successContext} = useContext(AlertContext);
+  const {isLightTheme} = useContext(ThemeContext);
 
-  static contextType = ThemeContext;
+  const [error, setError] = useState(errorContext);
+  const [success, setSuccess] = useState(successContext);
+  const [lightTheme, setLightTheme] = useState(true);
 
-  render() {
-
-    const {isLightTheme} = this.context;
-
-    const theme = createMuiTheme({
-      palette: {
-        primary: {
-          main: '#4AD295',
-          contrastText: '#FFFFFF',
-        },
-        type: isLightTheme ? 'light' : 'dark',
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#4AD295',
+        contrastText: '#FFFFFF',
       },
-    });
+      type: isLightTheme ? 'light' : 'dark',
+    },
+  });
 
+  const message = successContext.length
+    ? successContext
+    : errorContext.length ? errorContext : '';
 
-    return (
-      <div className={isLightTheme ? 'app light' : 'app dark'}>
-        <ThemeProvider theme={theme}>
+  //Component did update
+  useEffect(() => {
+    setLightTheme(isLightTheme)
+  }, [lightTheme]);
+
+  return (
+    <div className={isLightTheme ? 'app light' : 'app dark'}>
+      <ThemeProvider theme={theme}>
 
         <Header/>
         <Main/>
         <Footer/>
 
-        </ThemeProvider>
-      </div>
-    );
-  }
+        <Conditional if={successContext.length}>
+          <SnackbarAlert type="success" message={successContext} isOpen={true}/>
+        </Conditional>
 
-  async componentDidUpdate(prevProps, prevState) {
+        <Conditional if={errorContext.length}>
+          <SnackbarAlert type="error" message={errorContext} isOpen={true}/>
+        </Conditional>
 
-    const {lightTheme} = this.state;
-    const {isLightTheme} = this.context;
-
-
-    if (lightTheme !== isLightTheme) {
-      this.setState({
-        lightTheme: isLightTheme,
-      })
-    }
-  }
+      </ThemeProvider>
+    </div>
+  );
 }
-
-export default App;

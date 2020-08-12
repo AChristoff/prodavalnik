@@ -1,27 +1,26 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 
 import {Redirect} from "react-router-dom";
 import {AuthContext} from "../../../context/user-context";
+import {AlertContext} from "../../../context/alert-context";
 
-class Logout extends React.Component {
-  static contextType = AuthContext;
+export default function Logout() {
 
-  componentWillMount() {
-    const {updateUserData} = this.context;
+  const {updateUserData} = useContext(AuthContext);
+  const {updateAlertContext} = useContext(AlertContext);
 
+  //Component did mount
+  useEffect(() => {
+    updateAlertContext('successContext', 'Successfully logged out');
     window.localStorage.clear();
     updateUserData({
       isAuth: false,
       username: '',
       role: '',
     });
-  }
+  }, []);
 
-  render() {
-    return (
-      <Redirect to='/'/>
-    );
-  }
+  return (
+    <Redirect to='/'/>
+  );
 }
-
-export default Logout;

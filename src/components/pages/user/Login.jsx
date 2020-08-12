@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavLink, Redirect} from "react-router-dom";
 
 import * as Yup from "yup";
@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Heading from "../../shared/Heading";
 import AuthService from "../../../services/auth-service";
 import {AuthContext} from "../../../context/user-context";
-
+import {AlertContext} from "../../../context/alert-context";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -20,100 +20,92 @@ const LoginSchema = Yup.object().shape({
     .required('Password is required!'),
 });
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: '',
-    };
-  }
+export default function Login() {
 
-  static service = new AuthService();
-  static contextType = AuthContext;
+  //Service
+  const authService = new AuthService();
 
-  handleSubmit = (values) => {
-    const {updateUserData} = this.context;
+  const {isAuth, updateUserData} = useContext(AuthContext);
+  const {updateAlertContext, counter} = useContext(AlertContext);
 
-    this.setState({
-      error: '',
-    }, async () => {
-      try {
-        const res = await Login.service.login(values);
+  const handleSubmit = async (values) => {
 
-        if (res.errors) {
-          const message = res.message;
-          throw new Error(message);
+    try {
+      const res = await authService.login(values);
+
+      if (res.errors) {
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
         }
+        throw new Error(message);
+      } else if (res.error) {
 
-        window.localStorage.setItem('username', res.username);
-        window.localStorage.setItem('role', res.role);
-        window.localStorage.setItem('token', res.token);
-        window.localStorage.setItem('userId', res.userId);
-
-        updateUserData({
-          isAuth: true,
-          username: res.username,
-          role: res.role,
-        });
-
-      } catch (error) {
-
-        this.setState({
-          error: error.message,
-        })
+        updateAlertContext('errorContext', res.error.message);
+        throw new Error(res.error.message);
       }
-    });
+
+      window.localStorage.setItem('username', res.username);
+      window.localStorage.setItem('role', res.role);
+      window.localStorage.setItem('token', res.token);
+      window.localStorage.setItem('userId', res.userId);
+
+      updateAlertContext('successContext', `Welcome, ${res.username}!`);
+
+      updateUserData({
+        isAuth: true,
+        username: res.username,
+        role: res.role,
+      });
+
+    } catch (error) {
+
+      updateAlertContext('counter', counter + 1);
+      updateAlertContext('errorContext', error.message);
+    }
   };
 
-  render() {
-    const {isAuth} = this.context;
-
-    if (isAuth) {
-      return (
-        <Redirect to="/"/>
-      );
-    }
-
+  if (isAuth) {
     return (
-      <div className="wrapper login">
-
-        {/* TODO: toaster component*/}
-        {this.state.error.length ? <div className="error-message">Error: {this.state.error}</div> : null}
-
-        <Heading text="Login"/>
-
-        <Formik
-          initialValues={{email: '', password: ''}}
-          validationSchema={LoginSchema}
-          onSubmit={this.handleSubmit}
-        >
-          {(props) => (
-            <Form className="login-from">
-
-              <FormikField name="email" label="Email" icon="email"/>
-              <FormikField name="password" label="Password" type="password" icon="password"/>
-
-              <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>
-                Login
-              </Button>
-
-            </Form>
-          )}
-        </Formik>
-
-        <div className="login-addons">
-          <NavLink className="go-to-register" to="/user/register" exact>
-            Don't have an account? Register now!
-          </NavLink>
-
-          <NavLink className="go-to-register" to="/user/forgot-password" exact>
-            Forgot your password?
-          </NavLink>
-        </div>
-
-      </div>
+      <Redirect to="/"/>
     );
   }
-}
 
-export default Login;
+  return (
+    <div className="wrapper login">
+
+      <Heading text="Login"/>
+
+      <Formik
+        initialValues={{email: '', password: ''}}
+        validationSchema={LoginSchema}
+        onSubmit={handleSubmit}
+      >
+        {(props) => (
+          <Form className="login-from">
+
+            <FormikField name="email" label="Email" icon="email"/>
+            <FormikField name="password" label="Password" type="password" icon="password"/>
+
+            <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>
+              Login
+            </Button>
+
+          </Form>
+        )}
+      </Formik>
+
+      <div className="login-addons">
+        <NavLink className="go-to-register" to="/user/register" exact>
+          Don't have an account? Register now!
+        </NavLink>
+
+        <NavLink className="go-to-register" to="/user/forgot-password" exact>
+          Forgot your password?
+        </NavLink>
+      </div>
+
+    </div>
+  );
+}

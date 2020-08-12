@@ -1,0 +1,12 @@
+.snackbar {
+  & > div {
+    top: 4.8em !important;
+    max-width: 25em;
+
+    .MuiAlert-action {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 2px;
+    }
+  }
+}
