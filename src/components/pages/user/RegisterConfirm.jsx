@@ -42,6 +42,7 @@ class RegisterConfirm extends React.Component {
     super(props);
     this.state = {
       error: '',
+      success: '',
       user: {},
       stepTwoDone: false,
       stepThreeDone: false,
@@ -91,7 +92,6 @@ class RegisterConfirm extends React.Component {
           username: values.name,
           password: values.password,
         });
-        console.log('error', res.error);
         if (res.error.message === 'jwt expired') {
           this.setState({
             isExpired: true
@@ -152,11 +152,6 @@ class RegisterConfirm extends React.Component {
       stepThreeDone
     } = this.state;
 
-    if (isAuth) {
-      return (
-        <Redirect to="/"/>
-      );
-    }
 
     if (isLoading) {
       return <Loading/>
@@ -167,7 +162,7 @@ class RegisterConfirm extends React.Component {
         <div className="wrapper register-confirm expired">
 
           <Conditional if={error.length}>
-            <SnackbarAlert type="error" message={error} isOpen={true}/>
+            <SnackbarAlert typeProp="error" messageProp={error} isOpen={true}/>
           </Conditional>
 
           <Heading text="Register"/>
@@ -189,6 +184,10 @@ class RegisterConfirm extends React.Component {
       return (
         <div className="wrapper register-confirm">
 
+          <Conditional if={success.length}>
+            <SnackbarAlert typeProp="success" messageProp={success} isOpen={true}/>
+          </Conditional>
+
           <Heading text="Register"/>
 
           <Stepper stepOneDone={true} stepTwoDone={stepTwoDone} stepThreeDone={stepThreeDone}/>
@@ -209,15 +208,17 @@ class RegisterConfirm extends React.Component {
       )
     }
 
+    if (isAuth) {
+      return (
+        <Redirect to="/"/>
+      );
+    }
+
     return (
       <div className="wrapper register-confirm">
 
         <Conditional if={error.length}>
-          <SnackbarAlert type="error" message={error} isOpen={true}/>
-        </Conditional>
-
-        <Conditional if={success}>
-          <div className='success-message'>{success}</div>
+          <SnackbarAlert typeProp="error" messageProp={error} isOpen={true}/>
         </Conditional>
 
         <Heading text="Register"/>

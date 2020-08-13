@@ -8,5 +8,13 @@
       align-items: flex-start;
       margin-top: 2px;
     }
+
+    .MuiAlert-filledSuccess {
+      background: linear-gradient(160deg, #34c32b 0%, #4AD295 100%);
+    }
+
+    .MuiAlert-filledError {
+      background: linear-gradient(160deg, #EE363E 0%, #e11d64 100%);
+    }
   }
 }

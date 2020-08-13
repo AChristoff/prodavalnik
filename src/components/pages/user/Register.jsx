@@ -90,22 +90,17 @@ class Register extends React.Component {
       return (
         <div className="wrapper register">
 
+          <Conditional if={success.length}>
+            <SnackbarAlert typeProp="success" messageProp={success} isOpen={true}/>
+          </Conditional>
+
           <Heading text="Register"/>
 
           <Stepper stepOneDone={stepOneDone}/>
 
-          <h6 className="headings"><b>{email}</b> was successfully registered!</h6>
-
           <div className="register-from">
 
-            <Conditional if={error.length}>
-              <h6  className='error-message'>{error}</h6>
-            </Conditional>
-
-            <Conditional if={success}>
-              <h6 className='success-message'>{success}</h6>
-            </Conditional>
-
+            <h6 className="headings"><b>{email}</b> was successfully registered!</h6>
             <h6 className="headings">Please check your inbox to continue...</h6>
 
           </div>
@@ -118,11 +113,7 @@ class Register extends React.Component {
       <div className="wrapper register">
 
         <Conditional if={error.length}>
-          <SnackbarAlert type="error" message={error} isOpen={true}/>
-        </Conditional>
-
-        <Conditional if={success}>
-          <div className='success-message'>{success}</div>
+          <SnackbarAlert typeProp="error" messageProp={error} isOpen={true}/>
         </Conditional>
 
         <Heading text="Register"/>

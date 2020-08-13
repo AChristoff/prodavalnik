@@ -72,21 +72,31 @@ class OffersForm extends React.Component {
   };
 
   handleEdit = async (values) => {
+
+    const {updateAlertContext, counter} = this.props;
+
     try {
       const res = await OffersForm.service.editOffer(this.offerId, values);
 
+
       if (res.errors) {
-        const message = res.message;
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
+        }
         throw new Error(message);
-      } else {
-        this.props.history.push(`/offers/view/${this.offerId}`);
+      } else if (res.error) {
+        throw new Error(res.error.message);
       }
+
+      updateAlertContext('successContext', `${res.post.title} was updated!`);
+      this.props.history.push(`/offers/view/${this.offerId}`);
 
     } catch (error) {
 
-      this.setState({
-        error: error.message,
-      })
+      updateAlertContext('counter', counter + 1);
+      updateAlertContext('errorContext', error.message);
     }
   };
 

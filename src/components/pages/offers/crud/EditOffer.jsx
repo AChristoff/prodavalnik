@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Heading from "../../../shared/Heading";
 import OffersForm from "../../../shared/form/offers/OffersForm";
 import OffersService from "../../../../services/offers-service";
 import Loading from "../../../shared/Loading";
+import {AlertContext} from "../../../../context/alert-context";
 
 class EditOffer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: '',
       offer: {},
       isLoading: true,
     };
@@ -16,30 +16,45 @@ class EditOffer extends React.Component {
   }
 
   static service = new OffersService();
+  static contextType = AlertContext;
 
   async componentDidMount() {
 
-    try {
+    const {updateAlertContext} = this.context;
 
-      const offer = await EditOffer.service.getOffer(this.offerId);
+    try {
+      const res = await EditOffer.service.getOffer(this.offerId);
+
+      if (res.errors) {
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
+        }
+        throw new Error(message);
+      } else if (res.error) {
+        throw new Error(res.error.message);
+      }
 
       this.setState({
-        offer: offer.post,
+        offer: res.post,
         isLoading: false,
       });
 
     } catch (error) {
 
+      updateAlertContext('errorContext', error.message);
       this.setState({
-        error: error.message,
         isLoading: false,
       });
-
     }
+
+
   };
 
   render() {
     const {offer, isLoading} = this.state;
+    const {updateAlertContext, counter} = this.context;
 
     if (isLoading) {
       return <Loading/>
@@ -54,6 +69,8 @@ class EditOffer extends React.Component {
           history={this.props.history}
           match={this.props.match}
           {...offer}
+          updateAlertContext={updateAlertContext}
+          errorCounter={counter}
           filterProp={offer.category}
           formType='edit'/>
 
