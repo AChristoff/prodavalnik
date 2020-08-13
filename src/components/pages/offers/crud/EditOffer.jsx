@@ -48,8 +48,6 @@ class EditOffer extends React.Component {
         isLoading: false,
       });
     }
-
-
   };
 
   render() {
@@ -68,10 +66,10 @@ class EditOffer extends React.Component {
         <OffersForm
           history={this.props.history}
           match={this.props.match}
+          filterProp={offer.category}
           {...offer}
           updateAlertContext={updateAlertContext}
           errorCounter={counter}
-          filterProp={offer.category}
           formType='edit'/>
 
       </div>

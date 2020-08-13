@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import * as Yup from "yup";
 import {Form, Formik} from "formik";
 import {useParams} from "react-router-dom";
 import FormikField from "../../../shared/form/FormikField";
 import Button from "@material-ui/core/Button";
 import OffersService from "../../../../services/offers-service";
+import {AlertContext} from "../../../../context/alert-context";
 
 const commentSchema = Yup.object().shape({
   content: Yup.string()
@@ -23,16 +24,28 @@ export default function AddComment({updateCommentsOnSubmit}) {
   //Service
   const offersService = new OffersService();
 
+  //Context
+  const {updateAlertContext, counter} = useContext(AlertContext);
+
   const handleSubmit = async (values, {resetForm}) => {
 
     try {
       const res = await offersService.addComment(id, values);
 
       if (res.errors) {
-        const message = res.message;
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
+        }
         throw new Error(message);
+      } else if (res.error) {
+
+        updateAlertContext('errorContext', res.error.message);
+        throw new Error(res.error.message);
       }
 
+      updateAlertContext('successContext', `Comment added!`);
       updateCommentsOnSubmit();
       resetForm({content: ''});
 

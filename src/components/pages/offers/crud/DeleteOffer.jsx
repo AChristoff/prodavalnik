@@ -3,6 +3,7 @@ import Heading from "../../../shared/Heading";
 import OffersService from "../../../../services/offers-service";
 import Loading from "../../../shared/Loading";
 import OffersForm from "../../../shared/form/offers/OffersForm";
+import {AlertContext} from "../../../../context/alert-context";
 
 class DeleteOffer extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class DeleteOffer extends React.Component {
   }
 
   static service = new OffersService();
+  static contextType = AlertContext;
 
   async componentDidMount() {
 
@@ -40,6 +42,7 @@ class DeleteOffer extends React.Component {
 
   render() {
     const {offer, isLoading} = this.state;
+    const {updateAlertContext, counter} = this.context;
 
     if (isLoading) {
       return <Loading/>
@@ -53,8 +56,10 @@ class DeleteOffer extends React.Component {
         <OffersForm
           history={this.props.history}
           match={this.props.match}
-          {...offer}
           filterProp={offer.category}
+          {...offer}
+          updateAlertContext={updateAlertContext}
+          errorCounter={counter}
           formType='delete'/>
 
       </div>

@@ -20,12 +20,10 @@ export default function Comments(props) {
 
   return (
     <div className="comments-list">
-
       {
-
         comments.length
           ? comments.map((comment) => (
-            <div className="comment">
+            <div key={comment._id} className="comment">
               <p className="comment-meta">
                 <span className="comment-author">{comment.author}</span>
                 <span className="comment-date">{formatDateTime(comment.createdAt)}</span>

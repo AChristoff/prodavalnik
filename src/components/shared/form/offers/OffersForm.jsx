@@ -52,32 +52,37 @@ class OffersForm extends React.Component {
   static contextType = OfferContext;
 
   handleCreate = async (values) => {
+    const {updateAlertContext, counter} = this.props;
 
     try {
       const res = await OffersForm.service.createOffer(values);
 
       if (res.errors) {
-        const message = res.message;
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
+        }
         throw new Error(message);
-      } else {
-        this.props.history.push("/user/offers");
+      } else if (res.error) {
+        throw new Error(res.error.message);
       }
+
+      updateAlertContext('successContext', `${res.post.title} was created!`);
+      this.props.history.push('/user/offers');
 
     } catch (error) {
 
-      this.setState({
-        error: error.message,
-      })
+      updateAlertContext('counter', counter + 1);
+      updateAlertContext('errorContext', error.message);
     }
   };
 
   handleEdit = async (values) => {
-
     const {updateAlertContext, counter} = this.props;
 
     try {
       const res = await OffersForm.service.editOffer(this.offerId, values);
-
 
       if (res.errors) {
         let message = res.message;
@@ -101,23 +106,30 @@ class OffersForm extends React.Component {
   };
 
   handleDelete = async () => {
+    const {updateAlertContext, counter} = this.props;
+
     try {
       const res = await OffersForm.service.deleteOffer(this.offerId);
 
       if (res.errors) {
-        const message = res.message;
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors
+        }
         throw new Error(message);
-      } else {
-        this.props.history.push("/user/offers");
+      } else if (res.error) {
+        throw new Error(res.error.message);
       }
+
+      updateAlertContext('successContext', `The offer was deleted successfully!`);
+      this.props.history.push('/user/offers');
 
     } catch (error) {
 
-      this.setState({
-        error: error.message,
-      })
+      updateAlertContext('counter', counter + 1);
+      updateAlertContext('errorContext', error.message);
     }
-
   };
 
   handleSubmit = (formType) => {
