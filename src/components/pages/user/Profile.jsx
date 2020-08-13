@@ -3,6 +3,8 @@ import Loading from "../../shared/Loading";
 import Heading from "../../shared/Heading";
 import UserOffers from "../../../services/user-service";
 import UserForm from "../../shared/form/user/UserForm";
+import {AlertContext} from "../../../context/alert-context";
+import OffersForm from "../../shared/form/offers/OffersForm";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -16,8 +18,10 @@ class Profile extends React.Component {
   }
 
   static service = new UserOffers();
+  static contextType = AlertContext;
 
   async componentDidMount() {
+    const {updateAlertContext} = this.context;
 
     try {
 
@@ -30,16 +34,17 @@ class Profile extends React.Component {
 
     } catch (error) {
 
+      updateAlertContext('errorContext', error.message);
       this.setState({
         error: error.message,
         isLoading: false,
       });
-
     }
   };
 
   render() {
     const {user, isLoading} = this.state;
+    const {updateAlertContext, counter} = this.context;
 
     if (isLoading) {
       return <Loading/>
@@ -50,7 +55,12 @@ class Profile extends React.Component {
 
         <Heading text="Your details"/>
 
-        <UserForm username={user.name} email={user.email}/>
+        <UserForm
+          username={user.name}
+          email={user.email}
+          updateAlertContext={updateAlertContext}
+          errorCounter={counter}
+        />
 
       </div>
     );
