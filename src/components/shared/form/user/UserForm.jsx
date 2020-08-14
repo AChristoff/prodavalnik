@@ -77,8 +77,8 @@ class UserForm extends React.Component {
         throw new Error(res.error.message);
       }
 
-      updateAlertContext('successContext', `Your password was changed successfully!`);
-      history.push('/user/offers');
+      updateAlertContext('successContext', res.message);
+      history.push('/');
 
     } catch (error) {
 
