@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {useParams} from "react-router-dom";
-import Heading from "../../../shared/Heading";
 import OffersService from "../../../../services/offers-service";
 import Loading from "../../../shared/Loading";
 import SanitizedText from "../../../shared/SanitizedText";
@@ -43,6 +42,11 @@ export default function ViewOffer() {
       try {
         const offerRes = await offersService.getOffer(id);
         const commentRes = await offersService.getComments(id);
+        const userRes = await userService.getUserById(offerRes.post.creator);
+
+        const {name, phone} = userRes.user;
+        setUser({name, phone});
+
         setWatched(offerRes.post.watched);
         setOffer(offerRes.post);
         setComments(commentRes.comments);
@@ -50,19 +54,6 @@ export default function ViewOffer() {
       } catch (error) {
         setError(error.message);
         setIsLoading(false);
-      }
-
-    })();
-
-    (async () => {
-
-      try {
-        const res = await userService.getUserDetails();
-        const {name, phone} = res.userDetails;
-        setUser({name, phone});
-        console.log(res.userDetails);
-      } catch (error) {
-        setError(error.message);
       }
 
     })();

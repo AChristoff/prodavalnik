@@ -9,10 +9,16 @@ const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
 const numericRegex = /(?=.*[0-9])/;
 const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
+const digitRegex = /^[0-9]+$/;
 
 const UserSchema = Yup.object().shape({
   name: Yup.string(),
   email: Yup.string(),
+  phone: Yup.string()
+    .matches(digitRegex, 'Only digits are allowed!')
+    .min(9, 'Phone number must be exactly 9 digits!')
+    .max(9, 'Phone number must be exactly 9 digits!')
+    .required('Phone is required!'),
   password: Yup.string()
     .min(6, 'Min 6 chars!')
     .max(40, 'Max 40 chars!')
@@ -27,11 +33,11 @@ const UserSchema = Yup.object().shape({
     .matches(lowercaseRegex, 'One lowercase required')
     .matches(uppercaseRegex, 'One uppercase required')
     .matches(numericRegex, 'One number required')
-    .matches(specialRegex, 'One special character required')
-    .required('Required field!'),
+    .matches(specialRegex, 'One special character required'),
+    // .required('Required field!'),
   rePassword: Yup.string()
-    .oneOf([Yup.ref('newPassword')], 'New passwords do not match!')
-    .required('New password confirmation is required!'),
+    .oneOf([Yup.ref('newPassword')], 'New passwords do not match!'),
+    // .required('New password confirmation is required!'),
 });
 
 
@@ -80,14 +86,14 @@ class UserForm extends React.Component {
 
   render() {
 
-    const {email, username} = this.props;
+    const {email, username, phone} = this.props;
 
     return (
 
       <div className="user-details-form">
 
         <Formik
-          initialValues={{name: username || '', email: email || '', password: '', newPassword: '', rePassword: ''}}
+          initialValues={{name: username || '', email: email || '', phone: phone || '', password: '', newPassword: '', rePassword: ''}}
           validationSchema={UserSchema}
           onSubmit={this.handleSubmit}
         >
@@ -96,8 +102,9 @@ class UserForm extends React.Component {
 
               <FormikField name="email" label="Email" icon="email" disabled={true}/>
               <FormikField required={true} name="name" label="Username" icon="username" disabled={true}/>
-              <FormikField required={true} name="newPassword" label="New password" type="password" icon="password"/>
-              <FormikField required={true} name="rePassword" label="Confirm your new password" type="password" icon="password"/>
+              <FormikField required={true} name="phone" label="Phone" placeholder="888177605" icon="phone"/>
+              <FormikField name="newPassword" label="New password" type="password" icon="password"/>
+              <FormikField name="rePassword" label="Confirm your new password" type="password" icon="password"/>
               <FormikField required={true} name="password" label="Your password" type="password" icon="password" className="new-password"/>
 
 

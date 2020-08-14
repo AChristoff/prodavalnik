@@ -4,7 +4,6 @@ import Heading from "../../shared/Heading";
 import UserOffers from "../../../services/user-service";
 import UserForm from "../../shared/form/user/UserForm";
 import {AlertContext} from "../../../context/alert-context";
-import OffersForm from "../../shared/form/offers/OffersForm";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -25,7 +24,7 @@ class Profile extends React.Component {
 
     try {
 
-      const user = await Profile.service.getUserDetails(this.userId);
+      const user = await Profile.service.getUserDetails();
 
       this.setState({
         user: user.userDetails,
@@ -58,6 +57,7 @@ class Profile extends React.Component {
         <UserForm
           username={user.name}
           email={user.email}
+          phone={user.phone}
           updateAlertContext={updateAlertContext}
           errorCounter={counter}
           history={this.props.history}
