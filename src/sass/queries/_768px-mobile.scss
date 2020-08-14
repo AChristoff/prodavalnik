@@ -408,7 +408,8 @@
         .to-register-btn {
           width: 28em;
           margin-top: 3em;
-        };
+        }
+      ;
       }
 
       .go-to-register,
@@ -482,72 +483,117 @@
 
     &.view-offer {
 
-      .offer-icons {
-        display: flex;
-        align-items: center;
-        justify-content: left;
-        margin: 2em 0 0;
+      .view-offer-title {
+        margin-top: 1em;
+      }
+
+      .view-offer-category {
         width: 90%;
-        font-size: 1.1em;
-        position: relative;
+        text-align: center;
+        padding-bottom: 2em;
+        border-bottom: 1px dashed #3CC0AA;
+        margin-bottom: 3em;
+      }
 
-        .price-tag-icon {
-          color: $color-theme-green;
-          transform: rotate(-45deg) translateY(-60%);
-          font-size: 8em;
-          position: absolute;
-          top: 38%;
-          left: 0.5em;
-          z-index: 1;
-        }
+      .offer-meta {
 
-        .price-tag {
-          position: relative;
-          z-index: 2;
-          border-radius: 0.5em;
-          background: #3CC0AA;
+        width: 90%;
+        display: flex;
+        margin: 2em 0 0;
+        justify-content: space-between;
+        align-items: center;
+
+        .offer-icons {
           display: flex;
-          justify-content: center;
           align-items: center;
-          padding: 1em 1em 1em 1.2em;
-          height: 4.7em;
-          margin-left: 2.06em;
-          color: $pure-white;
+          justify-content: left;
+          margin: 0;
+          font-size: 1.1em;
+          position: relative;
 
-          .price {
-            margin: 0;
-            padding: 0;
-            font-size: 1.1em;
+          .price-tag-icon {
+            color: $color-theme-green;
+            transform: rotate(-45deg) translateY(-60%);
+            font-size: 8em;
+            position: absolute;
+            top: 38%;
+            left: 0.5em;
+            z-index: 1;
+          }
 
-            span {
-              font-size: 1.7em;
-              font-weight: bold;
-              color: $pure-white;
+          .price-tag {
+            position: relative;
+            z-index: 2;
+            border-radius: 0.5em;
+            background: #3CC0AA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1em 1em 1em 1.2em;
+            height: 4.7em;
+            margin-left: 2.06em;
+            color: $pure-white;
+
+            .price {
+              margin: 0;
+              padding: 0;
+              font-size: 1.1em;
+
+              span {
+                font-size: 1.7em;
+                font-weight: bold;
+                color: $pure-white;
+              }
+            }
+
+            .favorites {
+              font-size: 1.6em;
+
+              &:hover {
+                cursor: pointer;
+              }
+            }
+
+            .added-offer {
+              color: #E8D257;
+              margin-left: 0.5em;
+              -webkit-filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
+              filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
             }
           }
 
-          .favorites {
-            font-size: 1.6em;
+          .share-offer {
+            font-size: 1.2em;
+            margin-left: 0.3em;
 
             &:hover {
               cursor: pointer;
             }
           }
-
-          .added-offer {
-            color: #E8D257;
-            margin-left: 0.5em;
-            -webkit-filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
-            filter: drop-shadow(1px 1px 1px rgba(120, 120, 120, 0.7));
-          }
         }
 
-        .share-offer {
-          font-size: 1.2em;
-          margin-left: 0.3em;
+        .creator-info {
 
-          &:hover {
-            cursor: pointer;
+          tr {
+            padding: 0;
+            color: $color-theme-green;
+
+            td:nth-child(1) {
+              text-align: right;
+              padding-right: 0.5em;
+            }
+
+            td:nth-child(2) {
+              font-weight: bold;
+
+              &.offer-created-date {
+                span {
+
+                  opacity: 1;
+                  font-size: 0.9em;
+                }
+              }
+            }
           }
         }
       }
@@ -559,6 +605,8 @@
         flex-wrap: wrap;
         justify-content: space-between;
         width: 90%;
+        padding: 4em 0 0;
+        border-top: 1px dashed #3CC0AA;
       }
 
       .view-offer-img-wrapper {

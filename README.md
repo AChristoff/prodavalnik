@@ -42,9 +42,11 @@ The application is split in to two main parts
     **TODO:** Admin must be able to approve user offers in order for them to appear in all offers <br>
     **TODO:** Admin must be able to delete and edin user offers and comments<br>
     
-* Error Pages
-    * 404 not found
-    * Compilation error with ErrorBoundary
+* Additional
+    * Error Pages
+        * 404 not found
+        * Compilation error with ErrorBoundary
+    * Alert notifications
     
   
 <br />

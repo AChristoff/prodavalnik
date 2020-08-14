@@ -1,6 +1,7 @@
 import React from 'react';
 import SanitizedText from "../../../shared/SanitizedText";
 import './comments.scss'
+import Timestamp from "../../../shared/helpers/timestamp/Timestamp";
 
 export default function Comments(props) {
 
@@ -26,7 +27,7 @@ export default function Comments(props) {
             <div key={comment._id} className="comment">
               <p className="comment-meta">
                 <span className="comment-author">{comment.author}</span>
-                <span className="comment-date">{formatDateTime(comment.createdAt)}</span>
+                <Timestamp data={comment.createdAt} customClass={"comment-date"}/>
               </p>
               <SanitizedText text={comment.content} customClass="comment-content"/>
             </div>

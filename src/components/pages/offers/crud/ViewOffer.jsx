@@ -8,15 +8,18 @@ import Comments from "../partials/Comments";
 import AddComment from "../partials/AddComment";
 import SubFooter from "../../../shared/subFooter/SubFooter";
 import Favorite from "../../../shared/favorites/Favorite";
-import {LocalOffer} from "@material-ui/icons";
+import {LocalOffer, Person, Phone, Today} from "@material-ui/icons";
+import Timestamp from "../../../shared/helpers/timestamp/Timestamp";
+import Conditional from "../../../shared/Conditional";
+import UserService from "../../../../services/user-service";
 
 export default function ViewOffer() {
 
   //State
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const [watched, setWatched] = useState(null);
   const [offer, setOffer] = useState({});
+  const [user, setUser] = useState({});
   const [comments, setComments] = useState([]);
   const [commentSubmit, setCommentSubmit] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +33,7 @@ export default function ViewOffer() {
 
   //Service
   const offersService = new OffersService();
+  const userService = new UserService();
 
   //Component did mount
   useEffect(() => {
@@ -46,6 +50,19 @@ export default function ViewOffer() {
       } catch (error) {
         setError(error.message);
         setIsLoading(false);
+      }
+
+    })();
+
+    (async () => {
+
+      try {
+        const res = await userService.getUserDetails();
+        const {name, phone} = res.userDetails;
+        setUser({name, phone});
+        console.log(res.userDetails);
+      } catch (error) {
+        setError(error.message);
       }
 
     })();
@@ -76,30 +93,59 @@ export default function ViewOffer() {
   return (
     <div className="view-offer wrapper">
 
-      <Heading text="View offer"/>
-
-      <SanitizedText tag="h5" text={offer.title}/>
-      <SanitizedText text={offer.category}/>
+      <SanitizedText tag="h4" customClass="view-offer-title" text={offer.title}/>
+      <SanitizedText customClass="view-offer-category" text={offer.category}/>
 
       <div className="view-offer-img-wrapper">
         <img src={offer.image} alt={offer.title}/>
       </div>
 
-      <section className="offer-icons">
+      <section className="offer-meta">
+        <div className="offer-icons">
+          <div className="price-tag">
+            <p className="price">
+              <span>{offer.price}</span> BGN
+            </p>
 
-        <div className="price-tag">
-          <p className="price">
-            <span>{offer.price}</span> BGN
-          </p>
+            {
+              watched
+                ? <Favorite watched={watched} offerId={id}/>
+                : null
+            }
+          </div>
 
-          {
-            watched
-              ? <Favorite watched={watched} offerId={id}/>
-              : null
-          }
+          <LocalOffer className="price-tag-icon"/>
         </div>
 
-        <LocalOffer className="price-tag-icon"/>
+        <table className="creator-info">
+          <tbody>
+
+            <Conditional if={user.name}>
+              <tr>
+                <td><Person/></td>
+                <td>{user.name}</td>
+              </tr>
+            </Conditional>
+
+            <Conditional if={user.phone}>
+              <tr>
+                <td><Phone/></td>
+                <td>+359 {user.phone}</td>
+              </tr>
+            </Conditional>
+
+            <Conditional if={offer.createdAt}>
+              <tr>
+                <td><Today/></td>
+                <td className="offer-created-date">
+                  <Timestamp data={offer.createdAt} addTime={false}/>
+                </td>
+              </tr>
+            </Conditional>
+
+          </tbody>
+        </table>
+
       </section>
 
       <SanitizedText customClass="offer-content" text={offer.content}/>
