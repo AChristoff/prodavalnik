@@ -4,14 +4,11 @@ import FormikField from "../FormikField";
 import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import UserOffers from "../../../../services/user-service";
-import {AuthContext} from "../../../../context/user-context";
-import Conditional from "../../Conditional";
 
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
 const numericRegex = /(?=.*[0-9])/;
 const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
-const alphanumericRegex = /^\w+$/;
 
 const UserSchema = Yup.object().shape({
   name: Yup.string(),
@@ -42,22 +39,23 @@ class UserForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: this.props.username,
       success: '',
       error: '',
     };
   }
 
   static service = new UserOffers();
-  static contextType = AuthContext;
 
-  handleSubmit = async (values, {resetForm}) => {
-    delete values.rePassword;
-    delete values.name;
+  handleSubmit = async (values) => {
+    const {updateAlertContext, counter, history} = this.props;
+
+    const userData = { ...values };
+    delete userData.rePassword;
+    delete userData.name;
 
     try {
 
-      const res = await UserForm.service.editUser(values);
+      const res = await UserForm.service.editUser(userData);
 
       if (res.errors) {
         let message = res.message;
@@ -67,53 +65,29 @@ class UserForm extends React.Component {
         }
         throw new Error(message);
       } else if (res.error) {
-        this.setState({
-          error: res.error.message,
-          success: '',
-        });
         throw new Error(res.error.message);
-      } else {
-
-        this.setState({
-          username: res.user.name,
-          success: res.message,
-          error: '',
-        });
       }
 
-      this.context.updateUserContext('username', res.user.name);
-      window.localStorage.setItem('username', res.user.name);
-
-      resetForm({name: this.context.username, password: '', newPassword: '', rePassword: ''});
+      updateAlertContext('successContext', `Your password was changed successfully!`);
+      history.push('/user/offers');
 
     } catch (error) {
 
-      this.setState({
-        error: error.message,
-        success: '',
-      })
+      updateAlertContext('counter', counter + 1);
+      updateAlertContext('errorContext', error.message);
     }
   };
 
   render() {
 
-    const {email} = this.props;
-    const {username, success, error} = this.state;
+    const {email, username} = this.props;
 
     return (
 
       <div className="user-details-form">
 
-        <Conditional if={error.length}>
-          <div className='error-message'>Error: {error}</div>
-        </Conditional>
-
-        <Conditional if={success}>
-          <div className='success-message'>{success}</div>
-        </Conditional>
-
         <Formik
-          initialValues={{name: username, email, password: '', newPassword: '', rePassword: ''}}
+          initialValues={{name: username || '', email: email || '', password: '', newPassword: '', rePassword: ''}}
           validationSchema={UserSchema}
           onSubmit={this.handleSubmit}
         >

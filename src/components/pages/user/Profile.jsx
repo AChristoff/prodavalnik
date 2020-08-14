@@ -60,6 +60,7 @@ class Profile extends React.Component {
           email={user.email}
           updateAlertContext={updateAlertContext}
           errorCounter={counter}
+          history={this.props.history}
         />
 
       </div>
