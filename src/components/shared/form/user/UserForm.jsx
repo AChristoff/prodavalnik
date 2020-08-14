@@ -34,10 +34,13 @@ const UserSchema = Yup.object().shape({
     .matches(uppercaseRegex, 'One uppercase required')
     .matches(numericRegex, 'One number required')
     .matches(specialRegex, 'One special character required'),
-    // .required('Required field!'),
   rePassword: Yup.string()
-    .oneOf([Yup.ref('newPassword')], 'New passwords do not match!'),
-    // .required('New password confirmation is required!'),
+    .when('newPassword', {
+      is: (value) => value ? value.length > 0 : '',
+      then: Yup.string()
+        .required('New password confirmation is required!')
+        .oneOf([Yup.ref('newPassword')], 'New passwords do not match!')
+    })
 });
 
 
@@ -55,7 +58,7 @@ class UserForm extends React.Component {
   handleSubmit = async (values) => {
     const {updateAlertContext, counter, history} = this.props;
 
-    const userData = { ...values };
+    const userData = {...values};
     delete userData.rePassword;
     delete userData.name;
 
@@ -93,7 +96,14 @@ class UserForm extends React.Component {
       <div className="user-details-form">
 
         <Formik
-          initialValues={{name: username || '', email: email || '', phone: phone || '', password: '', newPassword: '', rePassword: ''}}
+          initialValues={{
+            name: username || '',
+            email: email || '',
+            phone: phone || '',
+            password: '',
+            newPassword: '',
+            rePassword: ''
+          }}
           validationSchema={UserSchema}
           onSubmit={this.handleSubmit}
         >
