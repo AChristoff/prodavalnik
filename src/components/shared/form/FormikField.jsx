@@ -8,7 +8,7 @@ import {
   AccountCircle,
   Image,
   LocalOffer,
-  MailOutline,
+  MailOutline, Phone,
   Search,
   TextFields,
   Visibility,
@@ -45,6 +45,8 @@ export default function FormikField({name, label, type = "text", placeholder = '
         return <Image/>;
       case 'price':
         return <LocalOffer/>;
+      case 'phone':
+        return <Phone/>;
       case 'password':
         return <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
           {values.showPassword ? <Visibility/> : <VisibilityOff/>}

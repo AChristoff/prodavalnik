@@ -17,6 +17,7 @@ const uppercaseRegex = /(?=.*[A-Z])/;
 const numericRegex = /(?=.*[0-9])/;
 const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
 const alphanumericRegex = /^\w+$/;
+const digitRegex = /^[0-9]+$/;
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string()
@@ -24,6 +25,11 @@ const RegisterSchema = Yup.object().shape({
     .max(12, 'Username must be maximum 12 characters!')
     .matches(alphanumericRegex, 'Username must contain only letters, numbers and _')
     .required('Username is required!'),
+  phone: Yup.string()
+    .matches(digitRegex, 'Only digits are allowed!')
+    .min(9, 'Phone number must be exactly 9 digits!')
+    .max(9, 'Phone number must be exactly 9 digits!')
+    .required('Phone is required!'),
   password: Yup.string()
     .min(6, 'Minimum 6 character required!')
     .max(40, 'Maximum 40 character!')
@@ -48,6 +54,7 @@ class RegisterConfirm extends React.Component {
       stepThreeDone: false,
       isLoading: false,
       username: '',
+      phone: '',
       password: '',
       rePassword: '',
       isExpired: false,
@@ -82,6 +89,7 @@ class RegisterConfirm extends React.Component {
           error: message,
           success: '',
           username: values.name,
+          phone: values.phone,
           password: values.password,
         });
         throw new Error(message);
@@ -90,6 +98,7 @@ class RegisterConfirm extends React.Component {
           error: res.error.message,
           success: '',
           username: values.name,
+          phone: values.phone,
           password: values.password,
         });
         if (res.error.message === 'jwt expired') {
@@ -146,6 +155,7 @@ class RegisterConfirm extends React.Component {
       success,
       error,
       username,
+      phone,
       password,
       rePassword,
       stepTwoDone,
@@ -226,7 +236,7 @@ class RegisterConfirm extends React.Component {
         <Stepper stepOneDone={true} stepTwoDone={stepTwoDone} stepThreeDone={stepThreeDone}/>
 
         <Formik
-          initialValues={{name: username, password, rePassword}}
+          initialValues={{name: username, phone, password, rePassword}}
           validationSchema={RegisterSchema}
           onSubmit={this.handleSubmit}
         >
@@ -234,6 +244,7 @@ class RegisterConfirm extends React.Component {
             <Form className="register-confirm-from">
 
               <FormikField required={true} name="name" label="Username" placeholder="Ex. John" icon="username"/>
+              <FormikField required={true} name="phone" label="Phone" placeholder="888177605" icon="phone"/>
               <FormikField required={true} name="password" label="Password" type="password" placeholder="Ex. John#567" icon="password"/>
               <FormikField required={true} name="rePassword" label="Confirm Password" type="password" icon="password"/>
 
