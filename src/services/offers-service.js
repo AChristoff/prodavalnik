@@ -5,6 +5,7 @@ class OffersService {
     this.baseUrl = `${process.env.REACT_APP_API}/blog`;
 
     this.allOffersUrl = `${this.baseUrl}/posts/all`;
+    this.offersForApprovalUrl = `${this.baseUrl}/posts/approval`;
     this.UserOffersUrl = `${this.baseUrl}/posts`;
     this.favoriteOffersUrl = `${this.baseUrl}/favorites`;
     this.getOfferUrl = `${this.baseUrl}/post/`;
@@ -27,9 +28,24 @@ class OffersService {
     return get(`${this.allOffersUrl}/${page}/${limit}/${sort}/${order}/search=${search}/${filter}`);
   }
 
-  getUserOffers() {
-    return get(`${this.UserOffersUrl}`);
+
+
+  /////////////////////////////////////////////////////////////
+
+  getOffersForApproval(page = '1', limit = '6', sort = 'createdAt', order = '-1', search = '+', filter = '') {
+
+    if (filter) {
+      if (filter.includes('&')) {
+        filter = filter.replace(/&/g, '%26amp;');
+      }
+      filter = '?category=' + filter;
+    }
+
+    return get(`${this.offersForApprovalUrl}/${page}/${limit}/${sort}/${order}/search=${search}/?approval=false`);
   }
+
+  ///////////////////////////////////////////////////////////
+
 
   getFavoriteOffers(page = '1', limit = '6', sort = 'createdAt', order = '-1', search = '+', filter = '') {
 
@@ -41,6 +57,10 @@ class OffersService {
     }
 
     return get(`${this.favoriteOffersUrl}/${page}/${limit}/${sort}/${order}/search=${search}/${filter}`);
+  }
+
+  getUserOffers() {
+    return get(`${this.UserOffersUrl}`);
   }
 
   getOffer(id) {

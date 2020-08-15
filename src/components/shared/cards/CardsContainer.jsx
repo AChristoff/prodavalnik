@@ -152,6 +152,13 @@ class CardsContainer extends React.Component {
             order,
             search,
             filter);
+        } else if (this.method === 'approval') {
+          res = await CardsContainer.service.getOffersForApproval(
+            currentPage,
+            offersPerPage,
+            sort,
+            order,
+            search);
         } else if (this.method === 'user') {
           res = await CardsContainer.service.getUserOffers();
         } else if (this.method === 'favorites') {
@@ -177,6 +184,71 @@ class CardsContainer extends React.Component {
           isLoading: false,
         })
       }
+    }
+  }
+
+  async componentDidMount() {
+    const {page, limit, sort, order} = this.props;
+    const {currentPage, offersPerPage, updateOfferContext, search, filter} = this.context;
+
+    if (page) {
+      updateOfferContext('currentPage', Number(page));
+    }
+
+    if (limit) {
+      updateOfferContext('offersPerPage', Number(limit));
+    }
+
+    this.isLoading = true;
+    let res;
+
+    try {
+      if (this.method === 'all') {
+        res = await CardsContainer.service.getAllOffers(
+          currentPage,
+          offersPerPage,
+          sort,
+          order,
+          search,
+          filter);
+      } else if (this.method === 'approval') {
+        res = await CardsContainer.service.getOffersForApproval(
+          currentPage,
+          offersPerPage,
+          sort,
+          order,
+          search);
+      } else if (this.method === 'user') {
+        res = await CardsContainer.service.getUserOffers();
+      } else if (this.method === 'favorites') {
+        res = await CardsContainer.service.getFavoriteOffers(
+          currentPage,
+          offersPerPage,
+          sort,
+          order,
+          search,
+          filter
+        );
+      }
+
+      const pageCount = Math.ceil(Number(res.count) / offersPerPage);
+
+      if (res.error) {
+        const message = res.message + ' ' + res.error.message;
+        throw new Error(message);
+      }
+
+      this.setState({
+        offers: res.posts,
+        pageCount: pageCount,
+        searchState: this.context.search,
+        isLoading: false,
+      });
+    } catch (error) {
+      this.setState({
+        error: error.message,
+        isLoading: false,
+      })
     }
   }
 }
