@@ -4,6 +4,7 @@ import FormikField from "../FormikField";
 import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import UserOffers from "../../../../services/user-service";
+import StrengthBar from "../../helpers/bars/StrengthBar";
 
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
@@ -113,7 +114,8 @@ class UserForm extends React.Component {
               <FormikField name="email" label="Email" icon="email" disabled={true}/>
               <FormikField required={true} name="name" label="Username" icon="username" disabled={true}/>
               <FormikField required={true} name="phone" label="Phone" placeholder="888177605" icon="phone"/>
-              <FormikField name="newPassword" label="New password" type="password" icon="password"/>
+              <FormikField name="newPassword" label="New password" type="password" icon="password" strengthBar={true}/>
+              <StrengthBar/>
               <FormikField name="rePassword" label="Confirm your new password" type="password" icon="password"/>
               <FormikField required={true} name="password" label="Your password" type="password" icon="password" className="new-password"/>
 

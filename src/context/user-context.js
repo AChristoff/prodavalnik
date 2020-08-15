@@ -9,6 +9,7 @@ class AuthContextProvider extends Component {
       isAuth: !!window.localStorage.getItem('token'),
       username: window.localStorage.getItem('username') || '',
       role: window.localStorage.getItem('role') || '',
+      passLevel: 0,
     };
   }
 

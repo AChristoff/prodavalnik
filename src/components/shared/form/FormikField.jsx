@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import "./FormikField.scss"
 import TextField from "@material-ui/core/TextField";
 import {ErrorMessage, Field} from "formik";
@@ -14,8 +14,36 @@ import {
   Visibility,
   VisibilityOff
 } from "@material-ui/icons";
+import {AuthContext} from "../../../context/user-context";
 
-export default function FormikField({name, label, type = "text", placeholder = '', icon, disabled = false, required = false , multiline = false, rows = 1, className='', fieldStyle = "standard"} ) {
+const lowercaseRegex = /(?=.*[a-z])/;
+const uppercaseRegex = /(?=.*[A-Z])/;
+const numericRegex = /(?=.*[0-9])/;
+const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
+
+export default function FormikField({
+                                      name,
+                                      label,
+                                      type = "text",
+                                      placeholder = '',
+                                      icon,
+                                      disabled = false,
+                                      required = false,
+                                      multiline = false,
+                                      strengthBar = false,
+                                      rows = 1,
+                                      className = '',
+                                      fieldStyle = "standard"}) {
+
+  //Context
+  const {updateUserContext} = useContext(AuthContext);
+
+  //Component will unmount
+  useEffect(() => {
+    return () => {
+      updateUserContext('passLevel', 0)
+    }
+  }, []);
 
   const handleClickShowPassword = () => {
     setValues({...values, showPassword: !values.showPassword});
@@ -31,6 +59,31 @@ export default function FormikField({name, label, type = "text", placeholder = '
 
   const handleSearch = (event) => {
     console.log(event);
+  };
+
+  const handleInput = (e) => {
+    let value = e.target.value;
+
+    if (value.match(lowercaseRegex)
+      && value.match(uppercaseRegex)
+      && value.match(numericRegex)
+      && value.match(specialRegex)
+    ) {
+
+      if (value.length >= 16) {
+        updateUserContext('passLevel', 100);
+      } else if (value.length >= 13) {
+        updateUserContext('passLevel', 75);
+      } else if (value.length >= 9) {
+        updateUserContext('passLevel', 50);
+      } else if (value.length >= 6) {
+        updateUserContext('passLevel', 25);
+      } else if (!value.length) {
+        updateUserContext('passLevel', 0);
+      }
+    } else {
+      updateUserContext('passLevel', 0);
+    }
   };
 
   function getIcon(icon) {
@@ -85,6 +138,7 @@ export default function FormikField({name, label, type = "text", placeholder = '
         disabled={disabled}
         variant={fieldStyle}
         fullWidth
+        {...(strengthBar && {onInput: handleInput})}
         autoComplete="off"
         InputProps={{
           endAdornment: (

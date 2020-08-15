@@ -5,6 +5,7 @@ import {Beenhere, Block, Visibility, VisibilityOff} from "@material-ui/icons";
 import {AuthContext} from "../../../context/user-context";
 import OffersService from "../../../services/offers-service";
 import {AlertContext} from "../../../context/alert-context";
+import BootstrapTooltip from "../helpers/tooltip/Tooltip";
 
 export default function OfferStatus({approval, offerId}) {
   //State
@@ -18,11 +19,6 @@ export default function OfferStatus({approval, offerId}) {
 
   //Service
   const offersService = new OffersService();
-
-  const offerData = {
-    postId: '',
-    approval: '',
-  };
 
   const setOfferStatus = async (e) => {
     const offerId = e.currentTarget.getAttribute('data-offer-id');
@@ -65,8 +61,10 @@ export default function OfferStatus({approval, offerId}) {
                 : 'offer-status-icon live'
             }
             {...(isAdmin && {onClick: setOfferStatus})}
-            title="The offer is LIVE!">
-              <Beenhere/>
+            >
+              <BootstrapTooltip placement="top" title="The offer is LIVE!">
+                <Beenhere/>
+              </BootstrapTooltip>
             </span>
           : <span
             data-offer-id={offerId}
@@ -76,8 +74,10 @@ export default function OfferStatus({approval, offerId}) {
                 : 'offer-status-icon pending'
             }
             {...(isAdmin && {onClick: setOfferStatus})}
-            title="Pending admin`s approval!">
-              <Block/>
+            >
+              <BootstrapTooltip placement="top" title="Pending approval!">
+                <Block/>
+              </BootstrapTooltip>
             </span>
       }
     </Conditional>

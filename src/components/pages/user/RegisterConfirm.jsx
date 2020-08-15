@@ -11,6 +11,7 @@ import Loading from "../../shared/Loading";
 import Stepper from "../../shared/stepper/Stepper";
 import {NavLink, Redirect} from "react-router-dom";
 import SnackbarAlert from "../../shared/snackbar/Snackbar";
+import StrengthBar from "../../shared/helpers/bars/StrengthBar";
 
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
@@ -245,7 +246,8 @@ class RegisterConfirm extends React.Component {
 
               <FormikField required={true} name="name" label="Username" placeholder="Ex. John" icon="username"/>
               <FormikField required={true} name="phone" label="Phone" placeholder="888177605" icon="phone"/>
-              <FormikField required={true} name="password" label="Password" type="password" placeholder="Ex. John#567" icon="password"/>
+              <FormikField required={true} name="password" label="Password" type="password" placeholder="Ex. John#567" icon="password" strengthBar={true}/>
+              <StrengthBar/>
               <FormikField required={true} name="rePassword" label="Confirm Password" type="password" icon="password"/>
 
               <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>

@@ -6,6 +6,7 @@ import {OfferContext} from "../../../context/offer-context";
 import {AuthContext} from "../../../context/user-context";
 import UserService from "../../../services/user-service";
 import {AlertContext} from "../../../context/alert-context";
+import BootstrapTooltip from "../helpers/tooltip/Tooltip";
 
 export default function Favorite({method, watched, offerId}) {
   //State
@@ -96,8 +97,12 @@ export default function Favorite({method, watched, offerId}) {
     <Conditional if={authContext.isAuth}>
       {
         isFavorite
-          ? <Star className="favorites added-offer" data-offer-id={offerId} onClick={removeFavoriteOffer}/>
-          : <StarBorder className="favorites not-added-offer" data-offer-id={offerId} onClick={addFavoriteOffer}/>
+          ? <BootstrapTooltip placement="top" title="Remove from favorites">
+              <Star className="favorites added-offer" data-offer-id={offerId} onClick={removeFavoriteOffer}/>
+            </BootstrapTooltip>
+          : <BootstrapTooltip placement="top" title="Add to favorites">
+              <StarBorder className="favorites not-added-offer" data-offer-id={offerId} onClick={addFavoriteOffer}/>
+            </BootstrapTooltip>
       }
     </Conditional>
   );
