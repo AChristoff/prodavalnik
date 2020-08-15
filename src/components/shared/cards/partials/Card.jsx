@@ -7,7 +7,19 @@ import SanitizedText from "../../SanitizedText";
 import Conditional from "../../Conditional";
 import Favorite from "../../favorites/Favorite";
 
-export default function Card({title, category, content, price, image, watched, _id, isCreator, method}) {
+function Card(
+  {
+    title,
+    category,
+    content,
+    price,
+    image,
+    watched,
+    _id,
+    isCreator,
+    isAdmin,
+    method
+  }) {
 
   return (
     <div className="site-card">
@@ -47,7 +59,7 @@ export default function Card({title, category, content, price, image, watched, _
           </Button>
         </Link>
 
-        <Conditional if={isCreator}>
+        <Conditional if={isCreator || isAdmin}>
 
           <div className="edit-card">
             <Link to={`/offers/edit/${_id}`} className="btn-medium">
@@ -81,3 +93,5 @@ export default function Card({title, category, content, price, image, watched, _
     </div>
   )
 }
+
+export default Card;

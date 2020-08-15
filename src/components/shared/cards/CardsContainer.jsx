@@ -27,6 +27,7 @@ class CardsContainer extends React.Component {
     this.method = props.method;
     this.headingText = props.headingText;
     this.isCreator = props.isCreator;
+    this.isAdmin = props.isAdmin;
     this.limit = props.limit;
     this.sort = props.sort;
     this.order = props.order;
@@ -80,7 +81,13 @@ class CardsContainer extends React.Component {
           <div className="card-list">
             {
               offers.map((offer) => (
-                <Card key={offer._id} {...offer} isCreator={this.isCreator} method={method}/>
+                <Card
+                  key={offer._id}
+                  {...offer}
+                  isCreator={this.isCreator}
+                  isAdmin={this.isAdmin}
+                  method={method}
+                />
               ))
             }
           </div>

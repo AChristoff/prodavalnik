@@ -11,36 +11,33 @@ A free platform to connect buyers and sellers.
 The application is split in to two main parts
 
 * **Public area**
-  * Guests are allowed to see and search/filter from all available offers <br>
-[`https://prodavalnik.herokuapp.com/home`][prodavalnik-home] <br>
-[`https://prodavalnik.herokuapp.com/offers/all`][prodavalnik-all-offers] <br>
-[`https://prodavalnik.herokuapp.com/offers/view/offer-id`][prodavalnik-view-offer] <br>
+  * `Home` & `Offers` pages. <br>
+   Guests are allowed to see and `search` / `filter` from all available offers. <br>
 
-  * Register and Login pages are also provided <br>
+  * `Register` & `Login` pages <br>
   (email confirmation is required) <br>
-[`https://prodavalnik.herokuapp.com/user/login`][prodavalnik-login] <br>
-[`https://prodavalnik.herokuapp.com/user/register`][prodavalnik-register] <br>
 
-  * Forgot and Reset password pages <br>
+  * `Forgot` & `Reset` password pages are also provided <br>
   (an email is send with instructions to reset password) <br>
   (client-side and server-side validation are applied to all forms)
-[`https://prodavalnik.herokuapp.com/user/forgot-password`][prodavalnik-forgot] 
   <br>
   
 
 * **Private area**
   * Users:
-    * User offers page - lists only offers created by the user
-    * Favorite offers page - lists only handpicked offers<br>
-    * CRUD operation pages - the user can create and manage their own offers <br>
-    * Registered users can add comments on the offers <br>
-    * Profile page - user can see his credentials and change `password` <br>
+    * `User offers` page - lists only offers created by the user
+    * `Favorite offers` page - lists only handpicked offers<br>
+    * `Create`, `View`, `Edit` & `Delete` offer pages gives the registered users a way to create and fully manage their own offers <br>
+    * `Profile` page - is where user can see his credentials and change part of them: `phone` & `password` <br>
+    * Registered users can `add comments` on any offer <br>
     
   * Admin: <br>
   
-    **TODO:** Admin must be able to add and edit categories <br>
+    * Admin can `edin` and `delete` user offers<br>
+    
+    **TODO:** Admin must be able edit and delete comments<br>
     **TODO:** Admin must be able to approve user offers in order for them to appear in all offers <br>
-    **TODO:** Admin must be able to delete and edin user offers and comments<br>
+    **TODO:** Admin must be able to add and edit categories <br>
     
 * Additional
     * Error Pages

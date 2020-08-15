@@ -1,28 +1,27 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {useParams} from "react-router-dom";
 import CardsContainer from "../../shared/cards/CardsContainer";
 import {OfferContext} from "../../../context/offer-context";
+import {AuthContext} from "../../../context/user-context";
 
-class AllOffers extends React.Component {
-  constructor(props) {
-    super(props);
-    this.params = props.match.params;
-  }
 
-  static contextType = OfferContext;
+export default function AllOffers() {
 
-  render() {
-    const {currentPage, search} = this.context;
+  //Query params
+  const params = useParams();
 
-    return (
-      <CardsContainer
-        method='all'
-        headingText='Offers'
-        currentPage={currentPage}
-        search={search}
-        {...this.params}
-      />
-    )
-  }
+  // Context
+  const {role} = useContext(AuthContext);
+  const {currentPage, search} = useContext(OfferContext);
+
+  return (
+    <CardsContainer
+      method='all'
+      headingText='Offers'
+      currentPage={currentPage}
+      isAdmin={role === 'Admin'}
+      search={search}
+      {...params}
+    />
+  )
 }
-
-export default AllOffers;

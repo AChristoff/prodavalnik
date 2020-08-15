@@ -6,17 +6,17 @@ class AuthContextProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isAuth: !!window.localStorage.getItem('token'),
       username: window.localStorage.getItem('username') || '',
       role: window.localStorage.getItem('role') || '',
-      isAuth: !!window.localStorage.getItem('token'),
     };
   }
 
   updateUserData = ({username, role, isAuth}) => {
     this.setState({
+      isAuth,
       username,
       role,
-      isAuth,
     })
   };
 
