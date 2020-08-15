@@ -28,24 +28,16 @@ class OffersService {
     return get(`${this.allOffersUrl}/${page}/${limit}/${sort}/${order}/search=${search}/${filter}`);
   }
 
-
-
-  /////////////////////////////////////////////////////////////
-
   getOffersForApproval(page = '1', limit = '6', sort = 'createdAt', order = '-1', search = '+', filter = '') {
 
     if (filter) {
       if (filter.includes('&')) {
         filter = filter.replace(/&/g, '%26amp;');
       }
-      filter = '?category=' + filter;
     }
 
-    return get(`${this.offersForApprovalUrl}/${page}/${limit}/${sort}/${order}/search=${search}/?approval=false`);
+    return get(`${this.offersForApprovalUrl}/${page}/${limit}/${sort}/${order}/search=${search}/${filter}?approval=false`);
   }
-
-  ///////////////////////////////////////////////////////////
-
 
   getFavoriteOffers(page = '1', limit = '6', sort = 'createdAt', order = '-1', search = '+', filter = '') {
 

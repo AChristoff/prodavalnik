@@ -158,7 +158,8 @@ class CardsContainer extends React.Component {
             offersPerPage,
             sort,
             order,
-            search);
+            search,
+            filter);
         } else if (this.method === 'user') {
           res = await CardsContainer.service.getUserOffers();
         } else if (this.method === 'favorites') {
@@ -217,7 +218,8 @@ class CardsContainer extends React.Component {
           offersPerPage,
           sort,
           order,
-          search);
+          search,
+          filter);
       } else if (this.method === 'user') {
         res = await CardsContainer.service.getUserOffers();
       } else if (this.method === 'favorites') {
