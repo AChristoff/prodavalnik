@@ -16,11 +16,12 @@ export default function AllOffers() {
   const {currentPage, search} = useContext(OfferContext);
 
   const method = pathname === '/offers/approval' ? 'approval' : 'all';
+  const headingText = pathname === '/offers/approval' ? 'Offers pending approval' : 'Offers';
 
   return (
     <CardsContainer
       method={method}
-      headingText='Offers'
+      headingText={headingText}
       currentPage={currentPage}
       isAdmin={role === 'Admin'}
       search={search}

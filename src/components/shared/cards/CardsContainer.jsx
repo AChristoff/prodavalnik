@@ -9,6 +9,7 @@ import {OfferContext} from "../../../context/offer-context";
 import Search from "../Search";
 import FormikSelect from "../form/select/FormikSelect";
 import Conditional from "../Conditional";
+import SnackbarAlert from "../snackbar/Snackbar";
 
 class CardsContainer extends React.Component {
   constructor(props) {
@@ -47,20 +48,14 @@ class CardsContainer extends React.Component {
       return <Loading/>
     }
 
-    if (error) {
-      // TODO: toastr component;
-      return (
-        <div className="wrapper error-message">
-          Error: {error}!
-        </div>
-      );
-    }
-
     const noOffers = (!isLoading && offers.length === 0) || (!isLoading && pageCount === 0);
 
     return (
       <div className="all-offers wrapper">
 
+        <Conditional if={error.length}>
+          <SnackbarAlert typeProp="error" messageProp={error} isOpen={true}/>
+        </Conditional>
 
         <Heading text={this.headingText}/>
 
