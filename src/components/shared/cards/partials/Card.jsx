@@ -6,6 +6,7 @@ import SliceText from "../../slice-text/SliceText";
 import SanitizedText from "../../SanitizedText";
 import Conditional from "../../Conditional";
 import Favorite from "../../favorites/Favorite";
+import OfferStatus from "../../offer-status/OfferStatus";
 
 function Card(
   {
@@ -15,6 +16,7 @@ function Card(
     price,
     image,
     watched,
+    approval,
     _id,
     isCreator,
     isAdmin,
@@ -42,7 +44,15 @@ function Card(
 
         <section className="card-icons">
           <p className="price"><span>{price}</span> BGN</p>
-          <Favorite method={method} watched={watched} offerId={_id}/>
+          <section>
+
+            <Favorite method={method} watched={watched} offerId={_id}/>
+
+            <Conditional if={isAdmin || isCreator}>
+              <OfferStatus offerId={_id} approval={approval}/>
+            </Conditional>
+
+          </section>
         </section>
 
         <SliceText text={content} isSanitized={true}/>

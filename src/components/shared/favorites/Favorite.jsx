@@ -8,7 +8,7 @@ import UserService from "../../../services/user-service";
 import {AlertContext} from "../../../context/alert-context";
 
 export default function Favorite({method, watched, offerId}) {
-
+  //State
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const userId = window.localStorage.getItem('userId');

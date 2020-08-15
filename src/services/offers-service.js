@@ -8,6 +8,7 @@ class OffersService {
     this.UserOffersUrl = `${this.baseUrl}/posts`;
     this.favoriteOffersUrl = `${this.baseUrl}/favorites`;
     this.getOfferUrl = `${this.baseUrl}/post/`;
+    this.setPostStatusUrl = `${this.baseUrl}/post/status`;
     this.createOfferUrl = `${this.baseUrl}/post/create`;
     this.editOfferUrl = `${this.baseUrl}/post/edit/`;
     this.deleteOfferUrl = `${this.baseUrl}/post/delete/`;
@@ -44,6 +45,10 @@ class OffersService {
 
   getOffer(id) {
     return get(`${this.getOfferUrl}` + id);
+  }
+
+  setPostStatus(postData) {
+    return put(this.setPostStatusUrl, postData);
   }
 
   createOffer(offerData) {
