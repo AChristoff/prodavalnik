@@ -13,6 +13,9 @@ The application is split in to two main parts
 * **Public area**
   * `Home` & `Offers` pages. <br>
    Guests are allowed to see and `search` / `filter` from all available offers. <br>
+   
+  * `View offer` page. <br>
+      Guests are also allowed to see offer details: `full description`, `creator name`, `creator contacts` and `comments` <br>
 
   * `Register` & `Login` pages <br>
   (email confirmation is required) <br>
@@ -24,14 +27,14 @@ The application is split in to two main parts
   
 
 * **Private area**
-  * Users:
+  * <ins>User</ins>: <br>
     * `User offers` page - lists only offers created by the user
     * `Favorite offers` page - lists only handpicked offers<br>
     * `Create`, `View`, `Edit` & `Delete` offer pages gives the registered users a way to create and fully manage their own offers <br>
     * `Profile` page - is where user can see his credentials and change part of them: `phone` & `password` <br>
     * Registered users can `add comments` on any offer <br>
     
-  * Admin: <br>
+  * <ins>Admin</ins>: <br>
   
     * Admin can `edin` and `delete` user offers<br>
     

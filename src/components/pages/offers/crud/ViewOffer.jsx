@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useParams} from "react-router-dom";
 import OffersService from "../../../../services/offers-service";
 import Loading from "../../../shared/Loading";
@@ -11,6 +11,7 @@ import {LocalOffer, Person, Phone, Today} from "@material-ui/icons";
 import Timestamp from "../../../shared/helpers/timestamp/Timestamp";
 import Conditional from "../../../shared/Conditional";
 import UserService from "../../../../services/user-service";
+import {AuthContext} from "../../../../context/user-context";
 
 export default function ViewOffer() {
 
@@ -33,6 +34,9 @@ export default function ViewOffer() {
   //Service
   const offersService = new OffersService();
   const userService = new UserService();
+
+  // Context
+  const {isAuth} = useContext(AuthContext);
 
   //Component did mount
   useEffect(() => {
@@ -142,9 +146,11 @@ export default function ViewOffer() {
       <SanitizedText customClass="offer-content" text={offer.content}/>
 
       <section className="comments-wrapper">
-        <AddComment updateCommentsOnSubmit={updateCommentsOnSubmit}/>
-
         <Comments comments={comments}/>
+
+        <Conditional if={isAuth}>
+          <AddComment updateCommentsOnSubmit={updateCommentsOnSubmit}/>
+        </Conditional>
       </section>
 
       <SubFooter/>

@@ -32,8 +32,8 @@ export default function SnackbarAlert({typeProp = '', messageProp = '', isOpen =
       setMessage(successContext);
       setType('success');
       setOpen(true);
-    } else if (errorContext.length) {
-      setMessage(errorContext);
+    } else if (errorContext === undefined || errorContext.length) {
+      setMessage(errorContext || 'Error!');
       setType('error');
       setOpen(true);
     }
