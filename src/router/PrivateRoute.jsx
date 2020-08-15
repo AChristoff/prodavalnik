@@ -8,10 +8,13 @@ class PrivateRoute extends React.Component {
 
   render() {
     const {isAuth, role} = this.context;
-    const {path, exact, component} = this.props;
+    const {path, exact, component, adminRoute = false} = this.props;
+    const isAdmin = role === 'Admin';
 
-    if (isAuth && role === 'Admin') {
+    if (adminRoute && isAuth && isAdmin) {
       return <Route path={path} exact={exact} component={component}/>
+    } else if (adminRoute && !isAdmin){
+      return <Redirect to='/'/>
     }
 
     return isAuth

@@ -3,11 +3,13 @@ import './submenu.scss'
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import {AccountCircle, Add, ExitToApp, LocalOffer, Settings, Star} from "@material-ui/icons";
+import {AccountCircle, Add, Beenhere, ExitToApp, LocalOffer, Settings, Star} from "@material-ui/icons";
 import {NavLink} from "react-router-dom";
+import Conditional from "../Conditional";
 
-export default function Submenu({username}) {
+export default function Submenu({username, role}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const isAdmin = role === 'Admin';
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -31,6 +33,17 @@ export default function Submenu({username}) {
         elevation={0}
         className="submenu-list"
       >
+
+        {
+          isAdmin
+            ? <MenuItem onClick={handleClose}>
+              <NavLink to="/offers/approval" exact>
+                <Beenhere className="submenu-icon"/>Offer Approval
+              </NavLink>
+            </MenuItem>
+            : null
+        }
+
         <MenuItem onClick={handleClose}>
           <NavLink to="/offers/create" exact>
             <Add className="submenu-icon"/>Add Offer

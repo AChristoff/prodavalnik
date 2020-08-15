@@ -10,7 +10,7 @@ class Navigation extends React.Component {
   static contextType = AuthContext;
 
   render() {
-    const {isAuth, username} = this.context;
+    const {isAuth, username, role} = this.context;
     const baseUrl = `${process.env.REACT_APP_API}`;
 
     return (
@@ -36,7 +36,7 @@ class Navigation extends React.Component {
           </li>
 
           <Conditional if={isAuth}>
-              <Submenu username={username}/>
+              <Submenu username={username} role={role}/>
           </Conditional>
 
           <Conditional if={!isAuth}>

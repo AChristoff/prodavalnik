@@ -66,7 +66,7 @@ export default function OfferStatus({approval, offerId}) {
             }
             {...(isAdmin && {onClick: setOfferStatus})}
             title="The offer is LIVE!">
-              <Beenhere />
+              <Beenhere/>
             </span>
           : <span
             data-offer-id={offerId}

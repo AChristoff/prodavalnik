@@ -42,6 +42,7 @@ export function RouterMain() {
           <PrivateRoute path='/offers/create' exact component={CreateOffer}/>
           <PrivateRoute path='/offers/edit/:id' exact component={EditOffer}/>
           <PrivateRoute path='/offers/delete/:id' exact component={DeleteOffer}/>
+          <PrivateRoute path='/offers/approval' adminRoute={true} exact component={AllOffers}/>
           <PrivateRoute path="/user/logout" exact component={Logout}/>
           <Route path='*' exact component={NotFound}/>
         </Switch>
