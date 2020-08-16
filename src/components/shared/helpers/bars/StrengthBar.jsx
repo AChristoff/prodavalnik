@@ -12,7 +12,6 @@ export default function StrengthBar() {
   let color = '';
 
   switch (passLevel) {
-
     case 25:
       status = 'Weak!';
       color = 'orange';
@@ -32,6 +31,8 @@ export default function StrengthBar() {
     case 0:
       status = '';
       break;
+    default:
+      status = '';
   }
 
   return (

@@ -16,7 +16,7 @@ import StrengthBar from "../../shared/helpers/bars/StrengthBar";
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
 const numericRegex = /(?=.*[0-9])/;
-const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
+const specialRegex = /(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~`])/;
 const alphanumericRegex = /^\w+$/;
 const digitRegex = /^[0-9]+$/;
 

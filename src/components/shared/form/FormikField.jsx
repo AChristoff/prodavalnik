@@ -19,7 +19,7 @@ import {AuthContext} from "../../../context/user-context";
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
 const numericRegex = /(?=.*[0-9])/;
-const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
+const specialRegex = /(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~`])/;
 
 export default function FormikField({
                                       name,

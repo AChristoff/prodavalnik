@@ -18,7 +18,7 @@ const categorySchema = Yup.object().shape({
 export default function ManageCategories() {
 
   //State
-  const [addCategory, setAddCategory] = useState(0);
+  const [addCategory, setAddCategory] = useState('');
 
   //Context
   const {counter, updateAlertContext} = useContext(AlertContext);
@@ -46,18 +46,13 @@ export default function ManageCategories() {
       }
 
       updateAlertContext('successContext', res.message);
-      setAddCategory(addCategory + 1);
+      setAddCategory(res.category._id);
     } catch (error) {
 
       updateAlertContext('counter', counter + 1);
       updateAlertContext('errorContext', error.message);
     }
   };
-
-  //Component did update
-  useEffect(() => {
-
-  }, [addCategory]);
 
   return (
     <div className="manage-categories wrapper">
@@ -76,14 +71,30 @@ export default function ManageCategories() {
         {(props) => (
           <Form className="categories-from">
 
-            <FormikCategorySelect name='categories' label='Current Categories'/>
+            <FormikCategorySelect
+              name='categories'
+              label='Current categories:'
+              addCategory={addCategory}
+            />
 
-            <FormikField name="newCategory" updates={addCategory} label="Add Category" placeholder="" icon="category"/>
+            <FormikField
+              name="newCategory"
+              label="Add Category"
+              placeholder=""
+              icon="category"
+              className="add-category-input"
+            />
 
-            <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>
+            <Button
+              fullWidth
+              type="submit"
+              variant="contained"
+              size="large"
+              color="primary"
+              disabled={!props.isValid || !props.dirty}
+            >
               Add Category
             </Button>
-
 
           </Form>
         )}

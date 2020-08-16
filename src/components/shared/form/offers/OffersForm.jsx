@@ -155,9 +155,7 @@ class OffersForm extends React.Component {
 
 
   render() {
-    const {title, content, price, image, formType, filterProp, category} = this.props;
-
-    const {filter} = this.context;
+    const {title, content, price, image, formType, category} = this.props;
 
     return (
       <Fragment>

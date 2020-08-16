@@ -15,7 +15,7 @@ const sanitizedText = (text) => {
   textConverter.innerHTML = text;
 
   return textConverter.value;
-}
+};
 
 const MuiSelect = ({name, label, items, errorString, value, onChange, onBlur, required, disabled}) => {
 
@@ -43,19 +43,27 @@ const MuiSelect = ({name, label, items, errorString, value, onChange, onBlur, re
   );
 };
 
-export default function FormikCategorySelect({name, label, required = false, disabled = false}) {
+export default function FormikCategorySelect(
+  {
+    name,
+    label,
+    addCategory,
+    required = false,
+    disabled = false
+  }) {
 
   //State
   const [categories, setCategories] = useState([]);
 
   //Context
-  const {counter, updateAlertContext} = useContext(AlertContext);
+  const {updateAlertContext} = useContext(AlertContext);
 
   //Service
   const categoryService = new CategoryService();
 
   //Component did mount
   useEffect(() => {
+
     (async () => {
 
       try {
@@ -66,7 +74,7 @@ export default function FormikCategorySelect({name, label, required = false, dis
       }
     })();
 
-  }, []);
+  }, [addCategory]);
 
   return (
     <div className="formik-select">
@@ -74,6 +82,7 @@ export default function FormikCategorySelect({name, label, required = false, dis
         name={name}
         as={MuiSelect}
         label={label}
+        value={addCategory}
         items={categories}
         required={required}
         disabled={disabled}

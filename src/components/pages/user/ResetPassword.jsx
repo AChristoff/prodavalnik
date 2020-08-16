@@ -13,7 +13,7 @@ import * as Yup from "yup";
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
 const numericRegex = /(?=.*[0-9])/;
-const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
+const specialRegex = /(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~`])/;
 
 const resetPasswordSchema = Yup.object().shape({
   newPassword: Yup.string()

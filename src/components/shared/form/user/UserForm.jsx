@@ -9,7 +9,7 @@ import StrengthBar from "../../helpers/bars/StrengthBar";
 const lowercaseRegex = /(?=.*[a-z])/;
 const uppercaseRegex = /(?=.*[A-Z])/;
 const numericRegex = /(?=.*[0-9])/;
-const specialRegex = /(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`])/;
+const specialRegex = /(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~`])/;
 const digitRegex = /^[0-9]+$/;
 
 const UserSchema = Yup.object().shape({
