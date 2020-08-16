@@ -19,6 +19,7 @@ const ResetPassword = lazy(() => import('../components/pages/user/ResetPassword'
 const UserProfile = lazy(() => import('../components/pages/user/Profile'));
 const Register = lazy(() => import('../components/pages/user/Register'));
 const RegisterConfirm = lazy(() => import('../components/pages/user/RegisterConfirm'));
+const ManageCategories = lazy(() => import('../components/pages/category/ManageCategories'));
 const NotFound = lazy(() => import('../components/pages/errors/not-found/NotFound'));
 
 export function RouterMain() {
@@ -43,6 +44,7 @@ export function RouterMain() {
           <PrivateRoute path='/offers/edit/:id' exact component={EditOffer}/>
           <PrivateRoute path='/offers/delete/:id' exact component={DeleteOffer}/>
           <PrivateRoute path='/offers/approval' adminRoute={true} exact component={AllOffers}/>
+          <PrivateRoute path='/categories' adminRoute={true} exact component={ManageCategories}/>
           <PrivateRoute path="/user/logout" exact component={Logout}/>
           <Route path='*' exact component={NotFound}/>
         </Switch>

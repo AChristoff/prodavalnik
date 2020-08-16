@@ -5,7 +5,7 @@ import {ErrorMessage, Field} from "formik";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import {
-  AccountCircle,
+  AccountCircle, Category,
   Image,
   LocalOffer,
   MailOutline, Phone,
@@ -98,6 +98,8 @@ export default function FormikField({
         return <Image/>;
       case 'price':
         return <LocalOffer/>;
+      case 'category':
+        return <Category/>;
       case 'phone':
         return <Phone/>;
       case 'password':

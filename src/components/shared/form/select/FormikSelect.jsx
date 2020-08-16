@@ -13,7 +13,7 @@ const FormikSelect = ({label, name, helperText, filterProp, disabled, changeCont
   const [open, setOpen] = React.useState(false);
   const [editFilter, setEditFilter] = React.useState(filterProp);
 
-  const {updateOfferContext, offersPerPage, search, filter} = useContext(OfferContext);
+  const {updateOfferContext, filter} = useContext(OfferContext);
 
   const handleChange = (event) => {
     setEditFilter(event.target.value);
@@ -23,11 +23,11 @@ const FormikSelect = ({label, name, helperText, filterProp, disabled, changeCont
     }
   };
 
-  const handleClose = (event) => {
+  const handleClose = () => {
     setOpen(false);
   };
 
-  const handleOpen = (event) => {
+  const handleOpen = () => {
     setOpen(true);
   };
 
