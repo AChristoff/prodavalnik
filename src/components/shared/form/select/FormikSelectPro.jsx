@@ -7,6 +7,13 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import FormHelperText from "@material-ui/core/FormHelperText";
 
+// Converts HTML Entities from DB text to display the corresponding symbols
+const sanitizedText = (text) => {
+  const textConverter = document.createElement('textarea');
+  textConverter.innerHTML = text;
+
+  return textConverter.value;
+}
 
 const MuiSelect = ({name, label, items, errorString, value, onChange, onBlur, required, disabled}) => {
 
@@ -24,7 +31,7 @@ const MuiSelect = ({name, label, items, errorString, value, onChange, onBlur, re
       >
         {
           items.map((item) => (
-            <MenuItem key={item.value} value={item.value}>{item.category}</MenuItem>
+            <MenuItem key={item._id} value={item._id}>{sanitizedText(item.category)}</MenuItem>
           ))
         }
       </Select>
