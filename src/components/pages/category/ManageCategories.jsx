@@ -7,8 +7,7 @@ import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import CategoryService from "../../../services/category-service";
 import {AlertContext} from "../../../context/alert-context";
-import FormikSelectPro from "../../shared/form/select/FormikSelectPro";
-
+import FormikCategorySelect from "../../shared/form/select/FormikCategorySelect";
 
 const categorySchema = Yup.object().shape({
   newCategory: Yup.string()
@@ -19,7 +18,6 @@ const categorySchema = Yup.object().shape({
 export default function ManageCategories() {
 
   //State
-  const [categories, setCategories] = useState([]);
   const [addCategory, setAddCategory] = useState(0);
 
   //Context
@@ -56,17 +54,8 @@ export default function ManageCategories() {
     }
   };
 
-  //Component did mount & update
+  //Component did update
   useEffect(() => {
-    (async () => {
-
-      try {
-        const res = await categoryService.getCategories();
-        setCategories(res.categories);
-      } catch (error) {
-        updateAlertContext('errorContext', error.message);
-      }
-    })();
 
   }, [addCategory]);
 
@@ -87,9 +76,9 @@ export default function ManageCategories() {
         {(props) => (
           <Form className="categories-from">
 
-            <FormikSelectPro name='categories' label='Current Categories' items={categories}/>
+            <FormikCategorySelect name='categories' label='Current Categories'/>
 
-            <FormikField name="newCategory" label="Add Category" placeholder="" icon="category"/>
+            <FormikField name="newCategory" updates={addCategory} label="Add Category" placeholder="" icon="category"/>
 
             <Button fullWidth type="submit" variant="contained" size="large" color="primary" disabled={!props.isValid || !props.dirty}>
               Add Category

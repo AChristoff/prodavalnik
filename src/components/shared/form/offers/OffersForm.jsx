@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import OffersService from "../../../../services/offers-service";
 import {OfferContext} from "../../../../context/offer-context";
-import FormikSelectPro from "../select/FormikSelectPro";
+import FormikCategorySelect from "../select/FormikCategorySelect";
 import SubFooter from "../../subFooter/SubFooter";
 
 const OfferSchema = Yup.object().shape({
@@ -159,52 +159,6 @@ class OffersForm extends React.Component {
 
     const {filter} = this.context;
 
-/////////////////////////////////////////////
-    //TODO: get items from db
-    const items = [
-      {
-        value: '',
-        category: 'All categories',
-      },
-      {
-        value: 'Vehicles',
-        category: 'Vehicles',
-      },
-      {
-        value: 'Electronics & Appliances',
-        category: 'Electronics & Appliances',
-      },
-      {
-        value: 'Furniture & Decor',
-        category: 'Furniture & Decor',
-      },
-      {
-        value: 'Fashion & Beauty',
-        category: 'Fashion & Beauty',
-      },
-      {
-        value: 'Pets',
-        category: 'Pets',
-      },
-      {
-        value: 'Sports & Equipment',
-        category: 'Sports & Equipment',
-      },
-      {
-        value: 'Machines & Tools',
-        category: 'Machines & Tools',
-      },
-      {
-        value: 'Art & Books',
-        category: 'Art & Books',
-      },
-      {
-        value: 'Antiques',
-        category: 'Antiques',
-      },
-    ];
-/////////////////////////////////////////////
-
     return (
       <Fragment>
         <Formik
@@ -225,7 +179,7 @@ class OffersForm extends React.Component {
 
               <FormikField name="title" label="Title" icon="text" required={true} disabled={formType === 'delete'}/>
 
-              <FormikSelectPro name='category' label='Category' items={items} required={true} disabled={formType === 'delete'}/>
+              <FormikCategorySelect name='category' label='Category' required={true} disabled={formType === 'delete'}/>
 
               <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'} fieldStyle="filled" required={true} multiline={true} rows={7} className="formik-textarea"/>
 
