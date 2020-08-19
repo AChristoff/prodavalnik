@@ -1,44 +1,45 @@
-import React, {useContext, useEffect, useState} from 'react';
-import './manage-categories.scss'
-import Heading from "../../shared/Heading";
-import {Form, Formik} from "formik";
-import FormikField from "../../shared/form/FormikField";
-import Button from "@material-ui/core/Button";
-import * as Yup from "yup";
-import CategoryService from "../../../services/category-service";
-import {AlertContext} from "../../../context/alert-context";
-import FormikCategorySelect from "../../shared/form/select/FormikCategorySelect";
+import React, { useContext, useEffect, useState } from 'react';
+import './manage-categories.scss';
+import Heading from '../../shared/Heading';
+import { Form, Formik } from 'formik';
+import FormikField from '../../shared/form/FormikField';
+import Button from '@material-ui/core/Button';
+import * as Yup from 'yup';
+import CategoryService from '../../../services/category-service';
+import { AlertContext } from '../../../context/alert-context';
+import FormikCategorySelect from '../../shared/form/select/FormikCategorySelect';
 
-const categorySchema = Yup.object().shape({
-  newCategory: Yup.string()
-    .required('Category is required!'),
-  categories: Yup.string()
+const categoryAddSchema = Yup.object().shape({
+  newCategory: Yup.string().required('Category is required!'),
+});
+
+const categoryEditSchema = Yup.object().shape({
+  categoryToEdit: Yup.string(),
+  newCategoryName: Yup.string().required('Category is required!'),
 });
 
 export default function ManageCategories() {
-
   //State
   const [addCategory, setAddCategory] = useState('');
 
   //Context
-  const {counter, updateAlertContext} = useContext(AlertContext);
+  const { counter, updateAlertContext } = useContext(AlertContext);
 
   //Service
   const categoryService = new CategoryService();
 
-  const handleSubmit = async (values, {resetForm}) => {
-    const {newCategory} = {...values};
+  const handleAdd = async (values, { resetForm }) => {
+    const { newCategory } = { ...values };
     resetForm({});
 
     try {
-
-      const res = await categoryService.createCategory({newCategory});
+      const res = await categoryService.createCategory({ newCategory });
 
       if (res.errors) {
         let message = res.message;
         const errors = res.errors[0].msg;
         if (errors && errors !== '') {
-          message = errors
+          message = errors;
         }
         throw new Error(message);
       } else if (res.error) {
@@ -48,7 +49,30 @@ export default function ManageCategories() {
       updateAlertContext('successContext', res.message);
       setAddCategory(res.category._id);
     } catch (error) {
+      updateAlertContext('counter', counter + 1);
+      updateAlertContext('errorContext', error.message);
+    }
+  };
 
+  const handleEdit = async (values, { resetForm }) => {
+    
+    try {
+      const res = await categoryService.editCategory(values);
+
+      if (res.errors) {
+        let message = res.message;
+        const errors = res.errors[0].msg;
+        if (errors && errors !== '') {
+          message = errors;
+        }
+        throw new Error(message);
+      } else if (res.error) {
+        throw new Error(res.error.message);
+      }
+
+      updateAlertContext('successContext', res.message);
+      setAddCategory(res.category._id);
+    } catch (error) {
       updateAlertContext('counter', counter + 1);
       updateAlertContext('errorContext', error.message);
     }
@@ -56,26 +80,17 @@ export default function ManageCategories() {
 
   return (
     <div className="manage-categories wrapper">
-      <Heading text="Manage Categories"/>
-
+      <Heading text="Manage Categories" />
+{/* -------------------- ADD ---------------------------- */}
       <Formik
-        initialValues={
-          {
-            newCategory: '',
-            categories: ''
-          }
-        }
-        validationSchema={categorySchema}
-        onSubmit={handleSubmit}
+        initialValues={{
+          newCategory: '',
+        }}
+        validationSchema={categoryAddSchema}
+        onSubmit={handleAdd}
       >
         {(props) => (
           <Form className="categories-from">
-
-            <FormikCategorySelect
-              name='categories'
-              label='Current categories:'
-              addCategory={addCategory}
-            />
 
             <FormikField
               name="newCategory"
@@ -95,12 +110,48 @@ export default function ManageCategories() {
             >
               Add Category
             </Button>
-
           </Form>
         )}
       </Formik>
 
+{/* -------------------- EDIT ---------------------------- */}
+      <Formik
+        initialValues={{
+          categoryToEdit: '',
+          newCategoryName: '',
+        }}
+        validationSchema={categoryEditSchema}
+        onSubmit={handleEdit}
+      >
+        {(props) => (
+          <Form className="categories-from">
+            <FormikCategorySelect
+              name="categoryToEdit"
+              label="Select category to edit:"
+              addCategory={addCategory}
+            />
 
+            <FormikField
+              name="newCategoryName"
+              label="Edit Category"
+              placeholder=""
+              icon="category"
+              className="Edit-category-input"
+            />
+
+            <Button
+              fullWidth
+              type="submit"
+              variant="contained"
+              size="large"
+              color="primary"
+              disabled={!props.isValid || !props.dirty}
+            >
+              Edit category
+            </Button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 }

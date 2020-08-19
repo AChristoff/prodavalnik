@@ -82,7 +82,6 @@ export default function FormikCategorySelect(
         name={name}
         as={MuiSelect}
         label={label}
-        value={addCategory}
         items={categories}
         required={required}
         disabled={disabled}
