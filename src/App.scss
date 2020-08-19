@@ -89,6 +89,7 @@
       }
 
       &:disabled {
+        color: rgba(255, 255, 255, 0.75);
         background: $gradient-edit-btn-disabled;
       }
     }
@@ -103,7 +104,8 @@
       }
 
       &:disabled {
-        background: $gradient-theme-disabled;
+        color: rgba(255, 255, 255, 0.75);
+        background: $gradient-delete-btn-disabled;
       }
     }
 

@@ -100,7 +100,7 @@ export default function ManageCategories() {
       }
 
       updateAlertContext('successContext', res.message);
-      setAddCategory(0);
+      setAddCategory(values);
     } catch (error) {
       updateAlertContext('counter', counter + 1);
       updateAlertContext('errorContext', error.message);
@@ -119,7 +119,7 @@ export default function ManageCategories() {
         onSubmit={handleAdd}
       >
         {(props) => (
-          <Form className="categories-from">
+          <Form className="categories-from category-add">
             <FormikField
               name="newCategory"
               label="Add Category"
@@ -151,10 +151,10 @@ export default function ManageCategories() {
         onSubmit={handleEdit}
       >
         {(props) => (
-          <Form className="categories-from">
+          <Form className="categories-from category-edit">
             <FormikCategorySelect
               name="categoryToEdit"
-              label="Select category to edit:"
+              label="Select category to edit"
               addCategory={addCategory}
             />
 
@@ -189,10 +189,10 @@ export default function ManageCategories() {
         onSubmit={handleDelete}
       >
         {(props) => (
-          <Form className="categories-from">
+          <Form className="categories-from category-delete">
             <FormikCategorySelect
               name="category"
-              label="Select category for delete:"
+              label="Select category for delete"
               addCategory={addCategory}
             />
 

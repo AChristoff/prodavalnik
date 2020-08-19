@@ -1,7 +1,24 @@
 .categories-from {
-  width: 28em;
+  width: 30em;
 }
 
 .add-category-input {
-  margin-top: 4em;
+  margin-top: 1em;
+}
+
+.category-add,
+.category-edit,
+.category-delete {
+  padding: 2em;
+  border: 1px dashed #3CC0AA;
+  border-radius: 1em;
+}
+
+.category-edit,
+.category-delete {
+  margin-top: 2em;
+}
+
+.category-delete {
+  padding-top: 3.5em;
 }
