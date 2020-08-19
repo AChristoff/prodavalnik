@@ -19,6 +19,7 @@ export default function ViewOffer() {
   const [error, setError] = useState('');
   const [watched, setWatched] = useState(null);
   const [offer, setOffer] = useState({});
+  const [category, setCategory] = useState([]);
   const [user, setUser] = useState({});
   const [comments, setComments] = useState([]);
   const [commentSubmit, setCommentSubmit] = useState(0);
@@ -53,6 +54,7 @@ export default function ViewOffer() {
 
         setWatched(offerRes.post.watched);
         setOffer(offerRes.post);
+        setCategory(offerRes.categoryName);
         setComments(commentRes.comments);
         setIsLoading(false);
       } catch (error) {
@@ -89,7 +91,7 @@ export default function ViewOffer() {
     <div className="view-offer wrapper">
 
       <SanitizedText tag="h4" customClass="view-offer-title" text={offer.title}/>
-      <SanitizedText customClass="view-offer-category" text={offer.category}/>
+      <SanitizedText customClass="view-offer-category" text={category}/>
 
       <div className="view-offer-img-wrapper">
         <img src={offer.image} alt={offer.title}/>
