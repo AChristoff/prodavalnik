@@ -38,9 +38,7 @@ The application is split in to two main parts
   
     * Admin can `edit` & `delete` user offers<br>
     * Admin can `approve` or `disapprove` user offers in order for them to appear / disappear at `Offers` page<br>
-    * Admin can `add` and `edit` categories <br>
-    
-    **TODO:** Admin must be able edit and delete comments<br>
+    * Admin can `add` `edit` & `delete` categories <br>
     
 * Additional
     * Error Pages
