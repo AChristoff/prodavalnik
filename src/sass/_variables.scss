@@ -38,9 +38,11 @@ $gradient-theme-disabled-dark: linear-gradient(160deg, #185D68 0%, #277051 100%)
 
 $gradient-edit-btn: linear-gradient(160deg, #1184BC 0%, #2EAEBF 100%);
 $gradient-edit-btn-hover: linear-gradient(160deg, #1581CB 0%, #2DBCCD 100%);
+$gradient-edit-btn-disabled: linear-gradient(160deg, #1581CB 0%, #1a8f9c 100%);
 
 $gradient-delete-btn: linear-gradient(160deg, #EE363E 0%, #7C57E1  100%);
 $gradient-delete-btn-hover: linear-gradient(160deg, #EA0329 0%, #FF3522 100%);
+$gradient-delete-btn-disabled: linear-gradient(160deg, #a02237 0%, #655297 100%);
 
 $color-button-delete: #FD1D1D;
 $color-delete-button-hover: #FF3522;

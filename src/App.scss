@@ -89,7 +89,7 @@
       }
 
       &:disabled {
-        background: $gradient-theme-disabled;
+        background: $gradient-edit-btn-disabled;
       }
     }
 
@@ -186,7 +186,7 @@
 
       &:disabled {
         color: rgba(255, 255, 255, 0.4);
-        background: $gradient-theme-disabled-dark;
+        background: $gradient-edit-btn-disabled;
       }
     }
 
@@ -195,12 +195,11 @@
       background: $gradient-delete-btn;
 
       &:hover {
-        color: $pure-white;
         background: $gradient-delete-btn-hover;
       }
 
       &:disabled {
-        background: $gradient-theme-disabled;
+        background: $gradient-delete-btn-disabled;
       }
     }
 
