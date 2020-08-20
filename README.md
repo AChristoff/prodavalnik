@@ -1,4 +1,4 @@
-## <ins>***Prodavalnik***</ins> is live at: ***[`https://prodavalnik.herokuapp.com/`][prodavalnik-home]***
+The app is still under construction :)
 
 <br />
 
