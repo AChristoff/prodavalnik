@@ -23,7 +23,7 @@ class CardsContainer extends React.Component {
       pageCount: 1,
       isLoading: true,
       favoritesChange: props.favoritesChange,
-
+      noOffers: false,
     };
     this.method = props.method;
     this.headingText = props.headingText;
@@ -34,21 +34,21 @@ class CardsContainer extends React.Component {
     this.order = props.order;
     this.search = props.search;
     this.filter = props.filter;
+    
   }
+
 
   static service = new OffersService();
   static contextType = OfferContext;
 
   render() {
     const {method} = this.props;
-    const {offers, isLoading, pageCount, error} = this.state;
+    const {offers, isLoading, pageCount, error, noOffers} = this.state;
     const {currentPage, updateOfferContext} = this.context;
 
     if (isLoading) {
       return <Loading/>
     }
-
-    const noOffers = (!isLoading && !offers) || (!isLoading && pageCount === 0);
 
     return (
       <div className="all-offers wrapper">
@@ -68,12 +68,9 @@ class CardsContainer extends React.Component {
           </section>
         </Conditional>
 
-        <Conditional if={noOffers}>
-          <h5>No offers found!</h5>
-        </Conditional>
-
-        <Conditional if={!noOffers}>
-          <div className="card-list">
+        {noOffers
+          ? <h5>No offers found!</h5>
+          :<div className="card-list">
             {
               offers.map((offer) => (
                 <Card
@@ -86,7 +83,7 @@ class CardsContainer extends React.Component {
               ))
             }
           </div>
-        </Conditional>
+        }
 
         <Conditional if={method !== 'user' && !noOffers}>
           <Pagination
@@ -101,7 +98,7 @@ class CardsContainer extends React.Component {
 
   async componentDidUpdate(prevProps, prevState) {
 
-    const {page, searchState, filterState, favoritesChange} = this.state;
+    let {page, searchState, filterState, favoritesChange, isLoading} = this.state;;
     const {sort, order} = this.props;
     const {currentPage, offersPerPage, search, filter, updateOfferContext, favoritesContext} = this.context;
 
@@ -136,8 +133,11 @@ class CardsContainer extends React.Component {
       || prevState.searchState !== search
       || prevState.favoritesChange !== favoritesChange) {
 
+      this.setState({
+        isLoading: true,
+      });
       let res;
-      this.isLoading = true;
+    
       try {
         if (this.method === 'all') {
           res = await CardsContainer.service.getAllOffers(
@@ -174,6 +174,13 @@ class CardsContainer extends React.Component {
           pageCount: pageCount,
           isLoading: false,
         });
+
+        const noOffers =
+          (isLoading === false && res.posts.length === 0) ||
+          (isLoading === false && pageCount === 0);
+        this.setState({
+          noOffers,
+        });
       } catch (error) {
         this.setState({
           error: error.message,
@@ -184,6 +191,7 @@ class CardsContainer extends React.Component {
   }
 
   async componentDidMount() {
+    let {isLoading} = this.state;
     const {page, limit, sort, order} = this.props;
     const {currentPage, offersPerPage, updateOfferContext, search, filter} = this.context;
 
@@ -195,7 +203,9 @@ class CardsContainer extends React.Component {
       updateOfferContext('offersPerPage', Number(limit));
     }
 
-    this.isLoading = true;
+    this.setState({
+      isLoading: true,
+    });
     let res;
 
     try {
@@ -241,6 +251,13 @@ class CardsContainer extends React.Component {
         searchState: this.context.search,
         isLoading: false,
       });
+
+      const noOffers =
+          (isLoading === false && res.posts.length === 0) ||
+          (isLoading === false && pageCount === 0);
+        this.setState({
+          noOffers,
+        });
     } catch (error) {
       this.setState({
         error: error.message,
