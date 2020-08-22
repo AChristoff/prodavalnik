@@ -1,43 +1,52 @@
-import React from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import Category from "./Category";
+import CategoryService from "../../../../services/category-service";
+import {AlertContext} from "../../../../context/alert-context";
 import Heading from "../../../shared/Heading";
 
-class Categories extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      categories: {}
-    }
-  }
+export default function Categories() {
+  const categoryIcons = {
+    Vehicles: 'car.svg',
+    Properties: 'key.svg',
+    'Electronics & Appliances': 'phone.svg',
+    'Furniture & Decor': 'chair.svg',
+    'Fashion & Beauty': 'bag.svg',
+    Pets: 'pet.svg',
+    'Sports & Equipment': 'ball.svg',
+    'Machines & Tools': 'tools.svg',
+    'Art & Books': 'guitar.svg',
+    Antiques: 'antique.svg',
+  };
 
-  componentWillMount() {
-    // TODO: getCategories from DB
-    this.setState({
-      categories: {
-        'Vehicles': 'car.svg',
-        'Properties': 'key.svg',
-        'Electronics & Appliances': 'phone.svg',
-        'Furniture & Decor': 'chair.svg',
-        'Fashion & Beauty': 'bag.svg',
-        'Pets': 'pet.svg',
-        'Sports & Equipment': 'ball.svg',
-        'Machines & Tools': 'tools.svg',
-        'Art & Books': 'guitar.svg',
-        'Antiques': 'antique.svg',
+  //State
+  const [categories, setCategories] = useState([]);
+
+  //Service
+  const categoryService = new CategoryService();
+
+  //Context
+  const {updateAlertContext} = useContext(AlertContext);
+
+   //Component did mount
+   useEffect(() => {
+
+    (async () => {
+
+      try {
+        const res = await categoryService.getCategories();
+        setCategories(res.categories);
+      } catch (error) {
+        updateAlertContext('errorContext', error.message);
       }
-    })
-  }
+    })();
 
-  render() {
-    return (
-      <div className="categories wrapper">
+  }, []);
 
-        <Heading text="Categories"/>
+  return (
+    <div className="categories wrapper">
+      <Heading text="Categories" />
 
-        <Category categories={this.state.categories}/>
-      </div>
-    );
-  }
+      <Category categories={categories} categoryIcons={categoryIcons}/>
+    </div>
+  );
 }
-
-export default Categories;

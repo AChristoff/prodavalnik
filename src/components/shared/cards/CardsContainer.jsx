@@ -98,7 +98,7 @@ class CardsContainer extends React.Component {
 
   async componentDidUpdate(prevProps, prevState) {
 
-    let {page, searchState, filterState, favoritesChange, isLoading} = this.state;;
+    let {page, searchState, filterState, favoritesChange} = this.state;;
     const {sort, order} = this.props;
     const {currentPage, offersPerPage, search, filter, updateOfferContext, favoritesContext} = this.context;
 
@@ -175,11 +175,9 @@ class CardsContainer extends React.Component {
           isLoading: false,
         });
 
-        const noOffers =
-          (isLoading === false && res.posts.length === 0) ||
-          (isLoading === false && pageCount === 0);
+      
         this.setState({
-          noOffers,
+          noOffers: res.posts.length === 0,
         });
       } catch (error) {
         this.setState({
@@ -191,7 +189,6 @@ class CardsContainer extends React.Component {
   }
 
   async componentDidMount() {
-    let {isLoading} = this.state;
     const {page, limit, sort, order} = this.props;
     const {currentPage, offersPerPage, updateOfferContext, search, filter} = this.context;
 
@@ -252,11 +249,9 @@ class CardsContainer extends React.Component {
         isLoading: false,
       });
 
-      const noOffers =
-          (isLoading === false && res.posts.length === 0) ||
-          (isLoading === false && pageCount === 0);
+      
         this.setState({
-          noOffers,
+          noOffers: res.posts.length === 0
         });
     } catch (error) {
       this.setState({
