@@ -1,56 +1,45 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Button from '@material-ui/core/Button';
+import { OfferContext } from '../../../../context/offer-context';
+import { useHistory } from 'react-router-dom';
 
-import Button from "@material-ui/core/Button";
-import {OfferContext} from "../../../../context/offer-context";
-import {Redirect} from "react-router-dom";
 
-class Category extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: '',
-      filter: '',
-      redirect: false,
-    };
-  }
+// Converts HTML Entities from DB text to display the corresponding symbols
+const sanitizedText = (text) => {
+  const textConverter = document.createElement('textarea');
+  textConverter.innerHTML = text;
 
-  static contextType = OfferContext;
+  return textConverter.value;
+};
 
-  handleFilter = (category) => {
+export default function Category({ error, filter, categories, categoryIcons }) {
+  //Context
+  const { offersPerPage, updateOfferContext } = useContext(OfferContext);
+  //History
+  const history = useHistory();
 
-    this.setState({
-      filter: category,
-      redirect: true,
-    });
+  const handleFilter = (category) => {
+    updateOfferContext('filter', category);
 
-    this.context.updateOfferContext('filter', category);
-
+    history.push(`/offers/all/1/${offersPerPage}/createdAt/-1/${filter}`);
   };
 
-  render() {
-    const {categories} = this.props;
-    let {redirect, filter} = this.state;
-    const {offersPerPage} = this.context;
-    filter = filter.replace(/\s/g, '+');
-
-    if (redirect) {
-      return <Redirect to={`/offers/all/1/${offersPerPage}/createdAt/-1/${filter}`} />
-    }
-
-    return (
-      <div className="categories-container">
-
-        {Object.keys(categories).map((category, index) =>
-          <div className="category-point" key={index}>
-            <Button className="category" onClick={() => this.handleFilter(category)}>
-              <img src={require(`../../../../assets/svg/categories/${categories[category]}`)} alt={category}/>
-            </Button>
-            <p>{category}</p>
-          </div>
-        )}
-      </div>
-    );
-  }
+  console.log(categories);
+  console.log(categoryIcons);
+  
+  return (
+    <div className="categories-container">
+      {categories.map((c, index) => (
+        <div className="category-point" key={index}>
+          <Button className="category" onClick={() => handleFilter(c._id)}>
+            <img
+              src={require(`../../../../assets/svg/categories/${categoryIcons[sanitizedText(c.category)]}`)}
+              alt={categoryIcons[sanitizedText(c.category)]}
+            />
+          </Button>
+          <p>{sanitizedText(c.category)}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
-
-export default Category;
