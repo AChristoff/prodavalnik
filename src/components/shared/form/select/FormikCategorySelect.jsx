@@ -33,7 +33,7 @@ const MuiSelect = ({name, label, items, errorString, value, onChange, onBlur, re
       >
         {
           items.map((item) => (
-            <MenuItem key={item._id} value={item._id}>{sanitizedText(item.category)}</MenuItem>
+            <MenuItem key={item._id} value={item._id}>{sanitizedText(item.name)}</MenuItem>
           ))
         }
       </Select>

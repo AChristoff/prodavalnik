@@ -61,7 +61,7 @@ const FormikSelect = ({label, name, helperText, filterProp, disabled, changeCont
 
       try {
         const res = await categoryService.getCategories();
-        res.categories.unshift({'_id': '', 'category': 'All'});
+        res.categories.unshift({'_id': '', 'name': 'All'});
         setCategories(res.categories)
       } catch (error) {
         updateAlertContext('errorContext', error.message);
@@ -87,7 +87,7 @@ const FormikSelect = ({label, name, helperText, filterProp, disabled, changeCont
         >
           {
             categories.map((category) => (
-              <MenuItem key={category._id} value={category._id}>{sanitizedText(category.category)}</MenuItem>
+              <MenuItem key={category._id} value={category._id}>{sanitizedText(category.name)}</MenuItem>
             ))
           }
         </Select>

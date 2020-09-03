@@ -40,7 +40,7 @@ function Card(
           className="card-heading"
           shade={false}
           isSanitized={true}/>
-        <SanitizedText text={category}/>
+        <SanitizedText text={category.name}/>
 
         <section className="card-icons">
           <p className="price"><span>{price}</span> BGN</p>

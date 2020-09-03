@@ -18,26 +18,24 @@ export default function Category({ error, filter, categories, categoryIcons }) {
   //History
   const history = useHistory();
 
-  const handleFilter = (category) => {
-    updateOfferContext('filter', category);
+  const handleFilter = (categoryId) => {
+    updateOfferContext('filter', categoryId);
 
     history.push(`/offers/all/1/${offersPerPage}/createdAt/-1/${filter}`);
   };
-
-  console.log(categories);
-  console.log(categoryIcons);
   
   return (
     <div className="categories-container">
-      {categories.map((c, index) => (
+      {categories.map((category, index) => (
         <div className="category-point" key={index}>
-          <Button className="category" onClick={() => handleFilter(c._id)}>
+          <Button className="category" onClick={() => handleFilter(category._id)}>
+          {console.log(category.name)}
             <img
-              src={require(`../../../../assets/svg/categories/${categoryIcons[sanitizedText(c.category)]}`)}
-              alt={categoryIcons[sanitizedText(c.category)]}
+              src={require(`../../../../assets/svg/categories/${categoryIcons[sanitizedText(category.name)]}`)}
+              alt={categoryIcons[sanitizedText(category.name)]}
             />
           </Button>
-          <p>{sanitizedText(c.category)}</p>
+          <p>{sanitizedText(category.name)}</p>
         </div>
       ))}
     </div>

@@ -156,14 +156,14 @@ class OffersForm extends React.Component {
 
   render() {
     const {title, content, price, image, formType, category} = this.props;
-
+  
     return (
       <Fragment>
         <Formik
           initialValues={
             {
               title: title ? this.sanitizedText(title) : '',
-              category: category ? this.sanitizedText(category) : '',
+              category: category ? category._id : '',
               content: content ? this.sanitizedText(content) : '',
               price: price || '',
               image: image || ''
