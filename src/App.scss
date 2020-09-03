@@ -240,7 +240,7 @@ html,
 
   &::-webkit-scrollbar-thumb {
     background: linear-gradient(160deg, #2baac3 0%, #4AD295 100%);
-    border-radius: 12px;
+    color: #aadacf;
   }
 
   &::-webkit-scrollbar-track {
@@ -250,6 +250,12 @@ html,
   // for Mozilla
   scrollbar-width: thin;
   scrollbar-color: $color-theme-green rgba(255, 255, 255, 0);
+}
+
+.comments-list {
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+  }
 }
 
 .app {
@@ -273,8 +279,9 @@ html,
 
 .page-heading {
   text-transform: uppercase;
-  margin-bottom: 2em;
+  margin: 1em 0 1.5em;
   position: relative;
+  text-align: center;
 
   &:after {
     content: '';

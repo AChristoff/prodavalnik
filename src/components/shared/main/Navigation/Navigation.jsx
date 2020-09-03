@@ -1,10 +1,11 @@
 import React from 'react';
+import './navigation.scss';
 import {NavLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {AuthContext} from "../../../context/user-context";
+import {AuthContext} from "../../../../context/user-context";
 import {Facebook, Home, Share} from "@material-ui/icons";
-import Submenu from "../submenu/Submenu";
-import Conditional from "../Conditional";
+import Submenu from "../../submenu/Submenu";
+import Conditional from "../../Conditional";
 
 class Navigation extends React.Component {
   static contextType = AuthContext;
@@ -19,7 +20,7 @@ class Navigation extends React.Component {
 
         <ul>
 
-          <li>
+          <li className="home-btn">
             <NavLink to="/" exact activeClassName="active">
               <Button variant="contained" color="primary" disableElevation>
                 <Home/>

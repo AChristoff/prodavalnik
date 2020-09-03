@@ -12,4 +12,78 @@ html {
 			margin-bottom: 2em;
 		}
 	}
+
+	.wrapper {
+    
+    &.all-offers {
+
+      .search-and-filters {
+
+        .search-form,
+        .formik-select {
+					width: 47%;
+					margin: unset;
+        }
+
+      }
+		}
+
+		&.login,
+    &.forgot-password,
+    &.reset-password,
+    &.register,
+    &.add-comment,
+    &.register-confirm,
+    &.user-details,
+    &.create-offer,
+    &.edit-offer,
+    &.delete-offer {
+
+      .headings {
+        text-align: center;
+      }
+
+      &.expired {
+        .to-register-btn {
+          width: 30em;
+          margin-top: 3em;
+        }
+      ;
+      }
+
+      .go-to-register,
+      .go-to-login {
+        color: #3CC1A9;
+        margin-top: 1em;
+        opacity: 0.75;
+        font-size: 0.85em;
+      }
+
+      .go-to-register:hover,
+      .go-to-login:hover {
+        opacity: 1;
+      }
+
+      .login-addons {
+        display: flex;
+        width: 30em;
+        justify-content: space-between;
+      }
+
+      .login-from,
+      .forgot-password-form,
+      .reset-password-from,
+      .user-from,
+      .comment-from,
+      .register-from,
+      .register-confirm-from,
+      .offer-from {
+        width: 30em;
+      }
+    }
+	}
+}
+
+.app-footer {
+	padding: 0.1em;
 }

@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import { OfferContext } from '../../../../context/offer-context';
 import { useHistory } from 'react-router-dom';
 
-
 // Converts HTML Entities from DB text to display the corresponding symbols
 const sanitizedText = (text) => {
   const textConverter = document.createElement('textarea');
@@ -29,7 +28,6 @@ export default function Category({ error, filter, categories, categoryIcons }) {
       {categories.map((category, index) => (
         <div className="category-point" key={index}>
           <Button className="category" onClick={() => handleFilter(category._id)}>
-          {console.log(category.name)}
             <img
               src={require(`../../../../assets/svg/categories/${categoryIcons[sanitizedText(category.name)]}`)}
               alt={categoryIcons[sanitizedText(category.name)]}

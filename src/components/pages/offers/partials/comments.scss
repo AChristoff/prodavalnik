@@ -1,52 +1,68 @@
-.comments-list {
-  overflow-y: scroll;
-  height: 15em;
-  flex: 0 1 45%;
-  position: relative;
-
-  border-radius: 0.5em;
-  padding: 0 0 0 1em;
-  box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.2);
-
-  .no-comments {
-    padding-top: 0.75em;
-    color: #4AD295;
-    opacity: 0.5;
-  }
-
-  .comment {
-    background-color: rgba(0, 0, 0, 0.09);
-    border-radius: 0.3em;
-    margin: 1em 0.4em 1em 0;
-    padding: 1em;
-
-    &:first-child {
-      margin-top: 0;
+@media (min-width: 1px) {
+  .comments-list {
+    overflow-y: scroll;
+    height: 15em;
+    flex: 0 1 100%;
+    position: relative;
+    margin: 1em 0;
+  
+    border-radius: 0.5em;
+    padding: 0 0 0 1em;
+    box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.2);
+  
+    .no-comments {
+      padding-top: 0.75em;
+      color: #4AD295;
+      opacity: 0.5;
     }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    .comment-meta {
-      padding-bottom: 0.5em;
-
-      .comment-author {
-        font-size: 1.1em;
-        color: #3CC0AA;
-        font-weight: bold;
-        margin-right: 0.5em;
+  
+    .comment {
+      background-color: rgba(0, 0, 0, 0.09);
+      border-radius: 0.3em;
+      margin: 1em 0.4em 1em 0;
+      padding: 1em;
+  
+      &:first-child {
+        margin-top: 0;
+      }
+  
+      &:last-child {
+        margin-bottom: 0;
+      }
+  
+      .comment-meta {
+        padding-bottom: 0.5em;
+  
+        .comment-author {
+          font-size: 1.1em;
+          color: #3CC0AA;
+          font-weight: bold;
+          margin-right: 0.5em;
+        }
+      }
+  
+      .comment-content {
+        padding: 0;
       }
     }
-
-    .comment-content {
-      padding: 0;
-    }
+  }
+  
+  .add-comment {
+    flex: 0 1 100%;
+    margin: 1em 0;
   }
 }
 
-.add-comment {
-  flex: 0 1 45%;
+@media (min-width: 769px) {
+  .comments-list {
+    flex: 0 1 45%;
+  }
+  
+  .add-comment {
+    flex: 0 1 45%;
+  }
 }
+
+

@@ -1,0 +1,501 @@
+@import '../../../../sass/variables';
+
+@media (min-width: 1px) {
+
+  .app-header {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $header-height;
+    background: $gradient-theme;
+    box-shadow: none;
+    transition: all 0.3s ease-in-out;
+  
+    &.active {
+      box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.6);
+    }
+  
+    .wrapper {
+      display: flex;
+      height: 100%;
+  
+      .header-logo {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        font-size: 1.7em;
+        color: $pure-white;
+        text-decoration: none;
+        margin-left: 0.5em;
+  
+        .MuiSvgIcon-root {
+          width: 1.25em;
+          height: 1.25em;
+          margin: -0.2em 0 0 -0.25em;
+        }
+      }
+        
+      .site-nav {
+        display: flex;
+        margin-left: auto;
+  
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0;
+          padding: 0;
+          height: 100%;
+  
+          &.MuiList-root {
+            flex-direction: column;
+  
+            li {
+              padding: 0.5em 1em;
+            }
+          }
+  
+          li {
+            list-style: none;
+            height: 100%;
+            padding: 0;
+
+            .submenu-btn {
+              padding-left: 1em;
+            }
+
+            &.home-btn,
+            &.share-icon,
+            .user-menu,
+            .greeter {
+              display: none;
+            }
+
+            .burger-menu {
+                font-size: 2rem;
+            }
+  
+            &.share-icon {
+              position: relative;
+  
+              &:before {
+                position: absolute;
+                content: '';
+                top: 14%;
+                border: 0;
+                left: 0;
+                right: 0;
+                width: 1px;
+                height: 70%;
+                background: #FFFFFF;
+              }
+  
+              a {
+                display: flex;
+                color: $pure-white;
+  
+                svg {
+                  margin: auto 0 auto 0.5em;
+                }
+              }
+            }
+  
+            button {
+              height: 100%;
+            }
+  
+            &.all-offers-tab {
+              height: 4em;
+              overflow: hidden;
+              background: $pure-white;
+              border-radius: 0 0 0.5em 0.5em;
+              box-shadow: 0 0 0 0 white inset, 0 0.1em 0.2em 0 rgba(64, 197, 163, 0.6);
+  
+              .MuiButton-label {
+                color: #3CC0AA;
+                font-weight: bold;
+                font-size: 1.5em;
+                font-style: italic;
+                margin-bottom: 0.25em;
+              }
+  
+              &:hover {
+  
+                box-shadow: 0 0 1px 0 white inset, 0.1em 0.3em 0.5em 0 rgba(0, 0, 0, 0.3);
+  
+                .MuiButton-label {
+                  text-shadow: 1px 1px 1px rgba(64, 197, 163, 0.4);
+                }
+              }
+            }
+  
+            a {
+              position: relative;
+              height: 100%;
+              display: block;
+              transition: all 0.3s ease-in;
+  
+              &.active {
+  
+                &:after {
+                  content: '';
+                  background-color: $pure-white;
+                  height: 0.17em;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                }
+              }
+            }
+  
+            .MuiButton-contained {
+              height: 100%;
+  
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+                border-radius: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .theme-switch {
+        display: none;
+      }
+    }
+  }
+  
+  .dark .app-header {
+  
+    &.active {
+  
+    }
+  
+    .wrapper {
+  
+      .header-logo {
+  
+        .MuiSvgIcon-root {
+  
+        }
+      }
+  
+      .greeter {
+  
+      }
+  
+      .site-nav {
+  
+  
+        ul {
+  
+  
+          &.MuiList-root {
+  
+  
+            li {
+  
+            }
+          }
+  
+          li {
+  
+            button {
+  
+            }
+  
+            &.all-offers-tab {
+              box-shadow: 0 0 0 0 white inset, 0 0.1em 0.2em 0 rgba(100, 100, 100, 0.25);
+  
+              .MuiButton-label {
+  
+              }
+  
+              &:hover {
+                box-shadow: 0 0 0 0 white inset, 0 0.2em 0.3em 0 rgba(100, 100, 100, 0.7);
+  
+                .MuiButton-label {
+  
+                }
+              }
+            }
+  
+            a {
+  
+              &.active {
+  
+                &:after {
+  
+                }
+              }
+            }
+  
+            .MuiButton-contained {
+  
+  
+              &:hover {
+  
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .app-header {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $header-height;
+    background: $gradient-theme;
+    box-shadow: none;
+    transition: all 0.3s ease-in-out;
+  
+    &.active {
+      box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.6);
+    }
+  
+    .wrapper {
+      display: flex;
+      height: 100%;
+  
+      .header-logo {
+        margin-left: 0;
+  
+        .MuiSvgIcon-root {
+          width: 1.25em;
+          height: 1.25em;
+          margin: -0.2em 0 0 -0.25em;
+        }
+      }
+
+      .burger-menu {
+          display: none;
+      }
+  
+      .site-nav {
+        display: flex;
+        margin-left: auto;
+  
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0;
+          padding: 0;
+          height: 100%;
+  
+          &.MuiList-root {
+            flex-direction: column;
+  
+            li {
+              padding: 0.5em 1em;
+            }
+          }
+  
+          li {
+            list-style: none;
+            height: 100%;
+            padding: 0;
+
+            &.home-btn,
+            &.share-icon,
+            .user-menu {
+              display: inline-block;
+            }
+
+            .greeter {
+              display: flex;
+              align-items: center;
+              margin: 0 0.5em 0 0.75em;
+              color: white;
+              height: 3.5em;
+              text-transform: capitalize;
+            }
+  
+            &.share-icon {
+              position: relative;
+  
+              &:before {
+                position: absolute;
+                content: '';
+                top: 14%;
+                border: 0;
+                left: 0;
+                right: 0;
+                width: 1px;
+                height: 70%;
+                background: #FFFFFF;
+              }
+  
+              a {
+                display: flex;
+                color: $pure-white;
+  
+                svg {
+                  margin: auto 0 auto 0.5em;
+                }
+              }
+            }
+  
+            button {
+              height: 100%;
+            }
+  
+            &.all-offers-tab {
+              height: 4em;
+              overflow: hidden;
+              background: $pure-white;
+              border-radius: 0 0 0.5em 0.5em;
+              box-shadow: 0 0 0 0 white inset, 0 0.1em 0.2em 0 rgba(64, 197, 163, 0.6);
+  
+              .MuiButton-label {
+                color: #3CC0AA;
+                font-weight: bold;
+                font-size: 1.5em;
+                font-style: italic;
+                margin-bottom: 0.25em;
+              }
+  
+              &:hover {
+  
+                box-shadow: 0 0 1px 0 white inset, 0.1em 0.3em 0.5em 0 rgba(0, 0, 0, 0.3);
+  
+                .MuiButton-label {
+                  text-shadow: 1px 1px 1px rgba(64, 197, 163, 0.4);
+                }
+              }
+            }
+  
+            a {
+              position: relative;
+              height: 100%;
+              display: block;
+              transition: all 0.3s ease-in;
+  
+              &.active {
+  
+                &:after {
+                  content: '';
+                  background-color: $pure-white;
+                  height: 0.17em;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                }
+              }
+            }
+  
+            .MuiButton-contained {
+              height: 100%;
+  
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+                border-radius: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .theme-switch {
+        display: inline-flex;
+      }
+    }
+  }
+  
+  .dark .app-header {
+  
+    &.active {
+  
+    }
+  
+    .wrapper {
+  
+      .header-logo {
+  
+        .MuiSvgIcon-root {
+  
+        }
+      }
+  
+      .greeter {
+  
+      }
+  
+      .site-nav {
+  
+  
+        ul {
+  
+  
+          &.MuiList-root {
+  
+  
+            li {
+  
+            }
+          }
+  
+          li {
+  
+            button {
+  
+            }
+  
+            &.all-offers-tab {
+              box-shadow: 0 0 0 0 white inset, 0 0.1em 0.2em 0 rgba(100, 100, 100, 0.25);
+  
+              .MuiButton-label {
+  
+              }
+  
+              &:hover {
+                box-shadow: 0 0 0 0 white inset, 0 0.2em 0.3em 0 rgba(100, 100, 100, 0.7);
+  
+                .MuiButton-label {
+  
+                }
+              }
+            }
+  
+            a {
+  
+              &.active {
+  
+                &:after {
+  
+                }
+              }
+            }
+  
+            .MuiButton-contained {
+  
+  
+              &:hover {
+  
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1281px) {
+	
+}
+
+@media (min-width: 1921px) {
+
+}

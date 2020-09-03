@@ -3,242 +3,8 @@
   //transition: all 0.5s ease-in-out;
 
   &.dark {
-    background-color: #474747;
-  }
-}
-
-
-.app-header {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: $header-height;
-  background: $gradient-theme;
-  box-shadow: none;
-  transition: all 0.3s ease-in-out;
-
-  &.active {
-    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.6);
-  }
-
-  .wrapper {
-    display: flex;
-    height: 100%;
-
-    .header-logo {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-weight: bold;
-      font-size: 1.7em;
-      color: $pure-white;
-      text-decoration: none;
-
-      .MuiSvgIcon-root {
-        width: 1.25em;
-        height: 1.25em;
-        margin: -0.2em 0 0 -0.25em;
-      }
-    }
-
-    .greeter {
-      display: flex;
-      align-items: center;
-      margin: 0 0.5em 0 0.75em;
-      color: white;
-      height: 3.5em;
-      text-transform: capitalize;
-    }
-
-    .site-nav {
-      display: flex;
-      margin-left: auto;
-
-      ul {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-
-        &.MuiList-root {
-          flex-direction: column;
-
-          li {
-            padding: 0.5em 1em;
-          }
-        }
-
-        li {
-          list-style: none;
-          height: 100%;
-          padding: 0;
-
-          &.share-icon {
-            position: relative;
-
-            &:before {
-              position: absolute;
-              content: '';
-              top: 14%;
-              border: 0;
-              left: 0;
-              right: 0;
-              width: 1px;
-              height: 70%;
-              background: #FFFFFF;
-            }
-
-            a {
-              display: flex;
-              color: $pure-white;
-
-              svg {
-                margin: auto 0 auto 0.5em;
-              }
-            }
-          }
-
-          button {
-            height: 100%;
-          }
-
-          &.all-offers-tab {
-            height: 4em;
-            overflow: hidden;
-            background: $pure-white;
-            border-radius: 0 0 0.5em 0.5em;
-            box-shadow: 0 0 0 0 white inset, 0 0.1em 0.2em 0 rgba(64, 197, 163, 0.6);
-
-            .MuiButton-label {
-              color: #3CC0AA;
-              font-weight: bold;
-              font-size: 1.5em;
-              font-style: italic;
-              margin-bottom: 0.25em;
-            }
-
-            &:hover {
-
-              box-shadow: 0 0 1px 0 white inset, 0.1em 0.3em 0.5em 0 rgba(0, 0, 0, 0.3);
-
-              .MuiButton-label {
-                text-shadow: 1px 1px 1px rgba(64, 197, 163, 0.4);
-              }
-            }
-          }
-
-          a {
-            position: relative;
-            height: 100%;
-            display: block;
-            transition: all 0.3s ease-in;
-
-            &.active {
-
-              &:after {
-                content: '';
-                background-color: $pure-white;
-                height: 0.17em;
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-              }
-            }
-          }
-
-          .MuiButton-contained {
-            height: 100%;
-
-            &:hover {
-              background-color: rgba(255, 255, 255, 0.15);
-              border-radius: 0;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.dark .app-header {
-
-  &.active {
-
-  }
-
-  .wrapper {
-
-    .header-logo {
-
-      .MuiSvgIcon-root {
-
-      }
-    }
-
-    .greeter {
-
-    }
-
-    .site-nav {
-
-
-      ul {
-
-
-        &.MuiList-root {
-
-
-          li {
-
-          }
-        }
-
-        li {
-
-          button {
-
-          }
-
-          &.all-offers-tab {
-            box-shadow: 0 0 0 0 white inset, 0 0.1em 0.2em 0 rgba(100, 100, 100, 0.25);
-
-            .MuiButton-label {
-
-            }
-
-            &:hover {
-              box-shadow: 0 0 0 0 white inset, 0 0.2em 0.3em 0 rgba(100, 100, 100, 0.7);
-
-              .MuiButton-label {
-
-              }
-            }
-          }
-
-          a {
-
-            &.active {
-
-              &:after {
-
-              }
-            }
-          }
-
-          .MuiButton-contained {
-
-
-            &:hover {
-
-            }
-          }
-        }
-      }
-    }
+    background: #383737;
+    background: linear-gradient(135deg, #383737 0%, #474747 100%);
   }
 }
 
@@ -256,6 +22,7 @@
     background-size: cover;
     background-position: center center;
     height: 31vh;
+    padding: 0 2em;
 
     h1 {
       margin-top: 1em;
@@ -379,11 +146,13 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 0.5em;
+        margin-bottom: 1em;
+        flex-wrap: wrap;
 
         .search-form,
         .formik-select {
-          width: 42%;
+          width: 70%;
+          margin: 0 auto;
         }
 
       }
@@ -406,7 +175,7 @@
 
       &.expired {
         .to-register-btn {
-          width: 28em;
+          width: 82%;
           margin-top: 3em;
         }
       ;
@@ -427,20 +196,20 @@
 
       .login-addons {
         display: flex;
-        width: 28em;
+        width: 82%;
         justify-content: space-between;
       }
 
       .login-from,
       .forgot-password-form,
       .reset-password-from,
-      .user-from,
+      .user-details-form,
       .comment-from,
       .register-from,
       .register-confirm-from,
       .offer-from {
 
-        width: 28em;
+        width: 82%;
 
         .new-password {
           margin-top: 4em;
@@ -499,6 +268,7 @@
 
         width: 90%;
         display: flex;
+        flex-flow: wrap;
         margin: 2em 0 0;
         justify-content: space-between;
         align-items: center;
@@ -507,7 +277,7 @@
           display: flex;
           align-items: center;
           justify-content: left;
-          margin: 0;
+          margin: 0 0 1em 0;
           font-size: 1.1em;
           position: relative;
 
@@ -796,6 +566,7 @@
   background: $gradient-theme;
   color: $pure-white;
   font-size: 0.85em;
+  padding: 0.4em 0 0.1em;
 
   .wrapper {
     min-height: 3em;

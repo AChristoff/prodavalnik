@@ -3,7 +3,7 @@ import './submenu.scss'
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import {AccountCircle, Add, Beenhere, ExitToApp, LocalOffer, Settings, Star, Category} from "@material-ui/icons";
+import {AccountCircle, Add, Beenhere, ExitToApp, LocalOffer, Settings, Star, Category, Menu as MenuIcon} from "@material-ui/icons";
 import {NavLink} from "react-router-dom";
 
 export default function Submenu({username, role}) {
@@ -21,7 +21,9 @@ export default function Submenu({username, role}) {
   return (
     <li>
       <Button className="submenu-btn" aria-controls="nav-menu" aria-haspopup="true" onClick={handleClick}>
-        <AccountCircle/><span className="greeter">{username}</span>
+        <MenuIcon className="burger-menu"/>
+        <AccountCircle className="user-menu"/>
+        <span className="greeter">{username}</span>
       </Button>
       <Menu
         id="nav-menu"
