@@ -1,8 +1,8 @@
 ## Idea
 
 An application that stores user offers of new or used products. <br>
-A free platform to connect buyers and sellers.
-*This app is proof of concept for non-commercial use*
+A free platform to connect buyers and sellers.<br><br>
+*Personal projects for non-commercial use*
  
 ## Design
 The application is split in to two main parts

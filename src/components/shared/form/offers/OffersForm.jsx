@@ -21,7 +21,7 @@ const OfferSchema = Yup.object().shape({
     .required('Description is required!'),
   price: Yup.number()
     .typeError('Price must a valid number!')
-    .min(0.01, 'Price must be more then 0!')
+    .min(1, 'Price can not be less than 1!')
     .required('Price is required!'),
   image: Yup.string()
     .min(6, 'Min 6 chars!')
