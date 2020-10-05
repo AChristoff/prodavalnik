@@ -12,7 +12,8 @@ import {
   Search,
   TextFields,
   Visibility,
-  VisibilityOff
+  VisibilityOff,
+  AttachFile,
 } from "@material-ui/icons";
 import {AuthContext} from "../../../context/user-context";
 
@@ -88,6 +89,8 @@ export default function FormikField({
 
   function getIcon(icon) {
     switch (icon) {
+      case 'file':
+        return <AttachFile/>;
       case 'email':
         return <MailOutline/>;
       case 'username':

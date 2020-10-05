@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import "./OffersForm.scss"
 import {Form, Formik} from "formik";
 import FormikField from "../FormikField";
 import Button from "@material-ui/core/Button";
@@ -44,6 +45,7 @@ class OffersForm extends React.Component {
       error: '',
       offer: {},
       isLoading: true,
+      file: '',
     };
     this.offerId = this.props.match.params.id
   }
@@ -145,6 +147,40 @@ class OffersForm extends React.Component {
     }
   };
 
+  handleChange = (event) => {
+    
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = (e) => {
+    
+      const canvas = document.createElement('canvas');
+      const MAX_WIDTH = 400;
+
+      const scaleSize = MAX_WIDTH / e.target.width;
+      canvas.width = MAX_WIDTH;
+      canvas.height = e.target.height * scaleSize;
+
+      const ctx = canvas.getContext('2d');
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      
+      const srcEncoded = ctx.canvas.toDataURL();
+      console.log(ctx.canvas.toDataURL())
+
+      this.setState({
+        file: img.src,
+      });
+
+      // document.querySelector('#output').src = srcEncoded;
+    }
+  }
+
   // Converts HTML Entities from DB text to display the corresponding symbols
   sanitizedText = (text) => {
     const textConverter = document.createElement('textarea');
@@ -183,7 +219,17 @@ class OffersForm extends React.Component {
 
               <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'} required={true}/>
 
-              <FormikField name="image" label="Image" icon="image" disabled={formType === 'delete'} required={true}/>
+              <label className="image-label">Add image *</label>
+              
+              <input className="upload-image" type="file" accept=".jpg, .jpeg, .png" onChange={this.handleChange}/>
+
+              { this.state.file 
+                ? <div>
+                    <img src={this.state.file} alt="Upload" className="img-preview file"></img>
+                    <img src={this.state.output} alt="Upload" className="img-preview output"></img>
+                  </div>
+                : null
+              }
 
               <Button
                 fullWidth
