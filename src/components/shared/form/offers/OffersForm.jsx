@@ -38,6 +38,26 @@ const DeleteSchema = Yup.object().shape({
   image: Yup.string(),
 });
 
+// export default function AllOffers() {
+
+  
+//   const {pathname} = useLocation();
+
+//   // Context
+//   const {role} = useContext(AuthContext);
+
+//   const method = pathname === '/offers/approval' ? 'approval' : 'all';
+//   const headingText = pathname === '/offers/approval' ? 'Offers pending approval' : 'Offers';
+
+//   return (
+//     <CardsContainer
+//       method={method}
+//       headingText={headingText}
+//       isAdmin={role === 'Admin'}
+//     />
+//   )
+// }
+
 class OffersForm extends React.Component {
   constructor(props) {
     super(props);
@@ -46,15 +66,16 @@ class OffersForm extends React.Component {
       offer: {},
       isLoading: true,
       file: '',
+      resizedImg: '',
     };
-    this.offerId = this.props.match.params.id
+    this.offerId = this.props.match.params.id;
   }
 
   static service = new OffersService();
   static contextType = OfferContext;
 
   handleCreate = async (values) => {
-    const {updateAlertContext, counter} = this.props;
+    const { updateAlertContext, counter } = this.props;
 
     try {
       const res = await OffersForm.service.createOffer(values);
@@ -63,7 +84,7 @@ class OffersForm extends React.Component {
         let message = res.message;
         const errors = res.errors[0].msg;
         if (errors && errors !== '') {
-          message = errors
+          message = errors;
         }
         throw new Error(message);
       } else if (res.error) {
@@ -72,16 +93,14 @@ class OffersForm extends React.Component {
 
       updateAlertContext('successContext', `${res.post.title} was created!`);
       this.props.history.push('/user/offers');
-
     } catch (error) {
-
       updateAlertContext('counter', counter + 1);
       updateAlertContext('errorContext', error.message);
     }
   };
 
   handleEdit = async (values) => {
-    const {updateAlertContext, counter} = this.props;
+    const { updateAlertContext, counter } = this.props;
 
     try {
       const res = await OffersForm.service.editOffer(this.offerId, values);
@@ -90,7 +109,7 @@ class OffersForm extends React.Component {
         let message = res.message;
         const errors = res.errors[0].msg;
         if (errors && errors !== '') {
-          message = errors
+          message = errors;
         }
         throw new Error(message);
       } else if (res.error) {
@@ -99,16 +118,14 @@ class OffersForm extends React.Component {
 
       updateAlertContext('successContext', `${res.post.title} was updated!`);
       this.props.history.push(`/offers/view/${this.offerId}`);
-
     } catch (error) {
-
       updateAlertContext('counter', counter + 1);
       updateAlertContext('errorContext', error.message);
     }
   };
 
   handleDelete = async () => {
-    const {updateAlertContext, counter} = this.props;
+    const { updateAlertContext, counter } = this.props;
 
     try {
       const res = await OffersForm.service.deleteOffer(this.offerId);
@@ -117,18 +134,19 @@ class OffersForm extends React.Component {
         let message = res.message;
         const errors = res.errors[0].msg;
         if (errors && errors !== '') {
-          message = errors
+          message = errors;
         }
         throw new Error(message);
       } else if (res.error) {
         throw new Error(res.error.message);
       }
 
-      updateAlertContext('successContext', `The offer was deleted successfully!`);
+      updateAlertContext(
+        'successContext',
+        `The offer was deleted successfully!`
+      );
       this.props.history.push('/user/offers');
-
     } catch (error) {
-
       updateAlertContext('counter', counter + 1);
       updateAlertContext('errorContext', error.message);
     }
@@ -148,38 +166,40 @@ class OffersForm extends React.Component {
   };
 
   handleChange = (event) => {
-    
     const file = event.target.files[0];
+    let output = '123';
     if (!file) return;
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
-    reader.onload = (e) => {
-    
-      const canvas = document.createElement('canvas');
-      const MAX_WIDTH = 400;
+    reader.onload = function (e) {
+      const imgElement = document.createElement('img');
+      imgElement.src = e.target.result;
 
-      const scaleSize = MAX_WIDTH / e.target.width;
-      canvas.width = MAX_WIDTH;
-      canvas.height = e.target.height * scaleSize;
+      imgElement.onload = function (evt) {
+        const canvas = document.createElement('canvas');
+        const MAX_WIDTH = 400;
 
-      const ctx = canvas.getContext('2d');
-      const img = document.createElement('img');
-      img.src = e.target.result;
+        const scaleSize = MAX_WIDTH / evt.target.width;
+        canvas.width = MAX_WIDTH;
+        canvas.height = evt.target.height * scaleSize;
+
+        const ctx = canvas.getContext('2d');
       
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      
-      const srcEncoded = ctx.canvas.toDataURL();
-      console.log(ctx.canvas.toDataURL())
-
-      this.setState({
-        file: img.src,
-      });
-
-      // document.querySelector('#output').src = srcEncoded;
-    }
-  }
+        ctx.drawImage(imgElement, 0, 0, canvas.width, canvas.height);
+        console.log(imgElement);
+        output = ctx.canvas.toDataURL(imgElement, "image/png");
+        console.log(output);
+        
+        this.setState({
+          file: e.target.result,
+          resizedImg: output,
+        });
+        
+      };
+    };
+  };
 
   // Converts HTML Entities from DB text to display the corresponding symbols
   sanitizedText = (text) => {
@@ -189,47 +209,82 @@ class OffersForm extends React.Component {
     return textConverter.value;
   };
 
-
   render() {
-    const {title, content, price, image, formType, category} = this.props;
-  
+    const { title, content, price, image, formType, category } = this.props;
+
     return (
       <Fragment>
         <Formik
-          initialValues={
-            {
-              title: title ? this.sanitizedText(title) : '',
-              category: category ? category._id : '',
-              content: content ? this.sanitizedText(content) : '',
-              price: price || '',
-              image: image || ''
-            }
-          }
+          initialValues={{
+            title: title ? this.sanitizedText(title) : '',
+            category: category ? category._id : '',
+            content: content ? this.sanitizedText(content) : '',
+            price: price || '',
+            image: image || '',
+          }}
           validationSchema={formType === 'delete' ? DeleteSchema : OfferSchema}
           onSubmit={this.handleSubmit(formType)}
         >
           {(props) => (
             <Form className="offer-from">
+              <FormikField
+                name="title"
+                label="Title"
+                icon="text"
+                required={true}
+                disabled={formType === 'delete'}
+              />
 
-              <FormikField name="title" label="Title" icon="text" required={true} disabled={formType === 'delete'}/>
+              <FormikCategorySelect
+                name="category"
+                label="Category"
+                required={true}
+                disabled={formType === 'delete'}
+              />
 
-              <FormikCategorySelect name='category' label='Category' required={true} disabled={formType === 'delete'}/>
+              <FormikField
+                name="content"
+                label="Description"
+                icon="text"
+                disabled={formType === 'delete'}
+                fieldStyle="filled"
+                required={true}
+                multiline={true}
+                rows={7}
+                className="formik-textarea"
+              />
 
-              <FormikField name="content" label="Description" icon="text" disabled={formType === 'delete'} fieldStyle="filled" required={true} multiline={true} rows={7} className="formik-textarea"/>
-
-              <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'} required={true}/>
+              <FormikField
+                name="price"
+                label="Price"
+                icon="price"
+                disabled={formType === 'delete'}
+                required={true}
+              />
 
               <label className="image-label">Add image *</label>
-              
-              <input className="upload-image" type="file" accept=".jpg, .jpeg, .png" onChange={this.handleChange}/>
 
-              { this.state.file 
-                ? <div>
-                    <img src={this.state.file} alt="Upload" className="img-preview file"></img>
-                    <img src={this.state.output} alt="Upload" className="img-preview output"></img>
-                  </div>
-                : null
-              }
+              <input
+                className="upload-image"
+                type="file"
+                accept=".jpg, .jpeg, .png"
+                onChange={this.handleChange}
+              />
+
+              {this.state.file ? (
+                <div>
+                  <img
+                    src={this.state.file}
+                    alt="Upload"
+                    className="img-preview file"
+                  ></img>
+                  <img
+                    src={this.state.resizedImg}
+                    alt="Upload"
+                    className="img-preview output"
+                  ></img>
+                </div>
+              ) : null}
 
               <Button
                 fullWidth
@@ -238,16 +293,17 @@ class OffersForm extends React.Component {
                 size="large"
                 color="primary"
                 className={`${formType}-btn`}
-                disabled={formType !== 'delete' ? (!props.isValid || !props.dirty) : false}
+                disabled={
+                  formType !== 'delete' ? !props.isValid || !props.dirty : false
+                }
               >
                 {formType}
               </Button>
-
             </Form>
           )}
         </Formik>
 
-        <SubFooter/>
+        <SubFooter />
       </Fragment>
     );
   }
