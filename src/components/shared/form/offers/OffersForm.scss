@@ -1,12 +1,23 @@
-.img-preview {
-  // width: 30em;
-  // height: auto;
-  margin-top: 1em;
-  border-radius: 0.25em;
-}
-
 .image-label {
   width: 100%;
   display: block;
-  margin:1em 0;
+  margin: 1em 0;
+}
+
+.img-preview-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 45%;
+  overflow: hidden;
+  margin-top: 1em;
+  border-radius: 0.25em;
+
+  .img-preview {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

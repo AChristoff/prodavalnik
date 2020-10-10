@@ -142,7 +142,7 @@ export default function OffersForm({ counter, title, content, price, image, form
 
       imgElement.onload = function (evt) {
         const canvas = document.createElement('canvas');
-        const MAX_WIDTH = 400;
+        const MAX_WIDTH = 900;
 
         const scaleSize = MAX_WIDTH / evt.target.width;
         canvas.width = MAX_WIDTH;
@@ -153,7 +153,7 @@ export default function OffersForm({ counter, title, content, price, image, form
         ctx.drawImage(imgElement, 0, 0, canvas.width, canvas.height);
         output = ctx.canvas.toDataURL(imgElement);
 
-        // setFile(e.target.result);
+        setFile(e.target.result);
         setResizedImg(output);
       };
     };
@@ -184,7 +184,7 @@ export default function OffersForm({ counter, title, content, price, image, form
           category: category ? category._id : '',
           content: content ? sanitizedText(content) : '',
           price: price || '',
-          image: image || '2',
+          image: image || '',
         }}
         validationSchema={formType === 'delete' ? DeleteSchema : OfferSchema}
         onSubmit={handleSubmit(formType)}
@@ -215,8 +215,7 @@ export default function OffersForm({ counter, title, content, price, image, form
             />
 
             {file ? (
-              <div>
-                {/* <img src={file} alt="Upload" className="img-preview file"></img> */}
+              <div className="img-preview-wrapper">
                 <img src={resizedImg} alt="Upload" className="img-preview output"></img>
               </div>
             ) : null}
