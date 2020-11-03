@@ -2,6 +2,7 @@ import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import MovieForm from './MovieForm';
 
+// Fix Error: Not implemented: HTMLFormElement.prototype.submit
 beforeEach(() => {
   ['log', 'warn', 'error'].forEach((type) => {
     window.console[type] = jest.fn()
