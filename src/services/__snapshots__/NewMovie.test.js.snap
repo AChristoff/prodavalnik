@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewMovie> 1`] = `
+<div>
+  <h2
+    data-testid="page-title"
+  >
+    New Movie
+  </h2>
+  <form
+    data-testid="movie-form"
+  >
+    <input
+      type="text"
+    />
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
