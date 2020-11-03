@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class MovieForm extends Component {
   state = {
-    text: '',
+    text: 'Label',
   }
 
   render() {
@@ -19,7 +19,7 @@ export default class MovieForm extends Component {
           })
       }>
     
-        <label htmlFor="text">Label</label>
+        <label htmlFor="text">{this.state.text}</label>
         <input type="text" id="text" onChange={e => this.setState({text: e.target.value})}></input>
         <button type="submit">Submit</button>
       </form>

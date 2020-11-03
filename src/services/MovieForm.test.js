@@ -2,6 +2,12 @@ import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import MovieForm from './MovieForm';
 
+beforeEach(() => {
+  ['log', 'warn', 'error'].forEach((type) => {
+    window.console[type] = jest.fn()
+  })
+})
+
 afterEach(cleanup);
 
 const onSubmit = jest.fn();
@@ -11,8 +17,8 @@ test('<MovieForm>', () => {
 
   expect(queryByTestId('movie-form')).toBeTruthy();
 
-  // getByLabelText('Label').value = 'hello';
-  // fireEvent.change(getByLabelText('Label'));
+  getByLabelText('Label').value = 'Label';
+  fireEvent.change(getByLabelText('Label'));
 
   fireEvent.change(getByLabelText('Label'), { 
     target: { value: 'hello'}
