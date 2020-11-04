@@ -1,16 +1,7 @@
 version: 2.1
-jobs:
-  build:
-    docker:
-      - image: node:10.19.0
-    working_directory: ~/prodavalnik
-    steps:
-      - checkout
-      - run: npm install
-      - run: npm test
-      - run: npm build
-    
+orbs:
+  node: circleci/node@3.0.0
 workflows:
-  tests_and_build:
+  node-tests:
     jobs:
-      - build
+      - node/test
