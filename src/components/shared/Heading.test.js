@@ -18,9 +18,7 @@ const text = 'Page heading text'
 
 test('<Heading />', async () => {
 
-  const { debug, getByTestId } = render(<Heading text={text}/>);
+  const { getByTestId } = render(<Heading text={text}/>);
 
   expect(getByTestId('page-heading').textContent).toBe(text);
-
-  debug();
 });
