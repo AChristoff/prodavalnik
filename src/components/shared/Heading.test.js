@@ -14,7 +14,7 @@ afterEach(() => {
   console.error.mockClear();
 });
 
-const text = 'Page heading text'
+const text = 'Page Heading'
 
 test('<Heading />', async () => {
 
