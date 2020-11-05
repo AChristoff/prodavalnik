@@ -22,7 +22,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm i
+    - run: mv maintenance_off.html maintenance_on.html
     - run: npm test
     - run: npm run build
+    - run: mv maintenance_on.html maintenance_off.html
     
