@@ -28,24 +28,8 @@ jobs:
     - name: Create .env
       run: cp /var/www/ci-runners/prodavalnik-app/prodavalnik/.env /var/www/ci-runners/prodavalnik-app/prodavalnik/prodavalnik/
     
-    - run: npm cache clean -f
-
-    - name: Update dependencies
-      run: npm update  
-
     - name: Install dependencies
       run: npm install
 
-    - name: Update sass
-      run: npm rebuild node-sass
-
     - name: Run the tests
       run: npm test
-
-    - name: Build
-      run: npm run build
-
-    - name: Deploy
-      run: rm -rf /var/www/html/prodavalnik/build & cp /var/www/ci-runners/prodavalnik-app/prodavalnik/prodavalnik/build /var/www/html/prodavalnik/
-    
-    
