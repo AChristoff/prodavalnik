@@ -39,5 +39,8 @@ jobs:
 
     - name: Deploy
       run: sudo rm -rf /var/www/html/prodavalnik/build & sudo mv build/ /var/www/html/prodavalnik/
+
+    - name: Purge
+      run: sudo rm -rf ~/ci/app/prodavalnik/prodavalnik/*
     
     
