@@ -34,8 +34,10 @@ jobs:
     - name: Run the tests
       run: npm test
 
-
     - name: Build
       run: sudo npm run build
+
+    - name: Deploy
+      run: sudo rm -rf /var/www/html/prodavalnik/build & sudo mv build/ /var/www/html/prodavalnik/
     
     
