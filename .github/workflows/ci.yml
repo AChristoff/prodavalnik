@@ -17,7 +17,7 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - name: Pull from repository
+    - name: Pull
       uses: actions/checkout@v2
 
     - name: Set up Node.js ${{ matrix.node-version }}
@@ -28,10 +28,10 @@ jobs:
     - name: Create .env
       run: cp ../.env ./
     
-    - name: Install dependencies
+    - name: Install
       run: npm install
 
-    - name: Run the tests
+    - name: Tests
       run: npm test
 
     - name: Build
