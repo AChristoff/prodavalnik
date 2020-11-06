@@ -23,7 +23,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cp /var/www/ci-runners/prodavalnik-app/prodavalnik/.env /var/www/ci-runners/prodavalnik-app/prodavalnik/prodavalnik/
-    - run: npm cache clean
+    - run: npm cache clean -f
     - run: npm i
     - run: npm test
     - run: npm run build
