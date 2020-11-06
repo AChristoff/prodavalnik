@@ -17,15 +17,28 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Pull from repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cp /var/www/ci-runners/prodavalnik-app/prodavalnik/.env /var/www/ci-runners/prodavalnik-app/prodavalnik/prodavalnik/
+    
+    - name: Create .env
+      run: cp /var/www/ci-runners/prodavalnik-app/prodavalnik/.env /var/www/ci-runners/prodavalnik-app/prodavalnik/prodavalnik/
+    
     - run: npm cache clean -f
-    - run: npm i
-    - run: npm test
-    - run: npm run build
-    - run: rm maintenance_on.html
+    
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run the tests
+      run: npm test
+
+    - name: Build
+      run: npm run build
+    
+    - name: Stop maintenance
+      run: rm maintenance_on.html
     
