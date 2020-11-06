@@ -25,9 +25,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     
-    - name: Create .env
-      run: cp /var/www/ci-runners/prodavalnik-app/prodavalnik/.env /var/www/ci-runners/prodavalnik-app/prodavalnik/prodavalnik/
-    
     - name: Install dependencies
       run: npm install
 
@@ -35,9 +32,6 @@ jobs:
       run: npm test
 
     - name: Build
-      run: sudo npm run build
-
-    - name: Deploy
-      run: sudo rm -rf /var/www/html/prodavalnik/build & sudo cp -r var/www/ci-runners/prodavalnik-app/prodavalnik/prodavalnik/build /var/www/html/prodavalnik/
+      run: npm run build
     
     
