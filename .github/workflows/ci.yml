@@ -22,10 +22,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cp /var/www/ci-runners/prodavalnik-app/prodavalnik/.env /var/www/ci-runners/prodavalnik-app/prodavalnik/
-    - run: mv maintenance_off.html maintenance_on.html
+    - run: cp /var/www/ci-runners/prodavalnik-app/prodavalnik/.env /var/www/ci-runners/prodavalnik-app/prodavalnik/prodavalnik/
     - run: npm i
     - run: npm test
     - run: npm run build
-    - run: mv maintenance_on.html maintenance_off.html
+    - run: rm maintenance_on.html
     
