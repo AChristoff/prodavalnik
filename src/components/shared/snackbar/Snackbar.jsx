@@ -4,7 +4,6 @@ import './snackbar.scss'
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import {AlertContext} from "../../../context/alert-context";
-import {AuthContext} from "../../../context/user-context";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -16,7 +15,6 @@ export default function SnackbarAlert({typeProp = '', messageProp = '', isOpen =
   const [message, setMessage] = React.useState(messageProp);
   const [type, setType] = React.useState(typeProp);
   const {errorContext, successContext, counter, updateAlertContext} = useContext(AlertContext);
-  const {updateUserData} = useContext(AuthContext);
 
   const handleClose = () => {
     setOpen(false);
