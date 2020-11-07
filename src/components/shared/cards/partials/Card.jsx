@@ -25,83 +25,55 @@ function Card(
 
   return (
     <div className="site-card">
-
       <div className="card-head">
         <Link to={`/offers/view/${_id}`}>
-          <img src={image} alt={title}/>
+          <img src={image} alt={title} />
         </Link>
       </div>
 
       <div className="card-body">
-        <SliceText
-          text={title}
-          tag="h6"
-          length="19"
-          className="card-heading"
-          shade={false}
-          isSanitized={true}/>
-        <SanitizedText text={category.name}/>
+        <SliceText text={title} tag="h6" length="19" className="card-heading" shade={false} isSanitized={true} />
+        <SanitizedText text={category.name} />
 
         <section className="card-icons">
-          <p className="price"><span>{price}</span> BGN</p>
+          <p className="price">
+            <span>{price}</span> BGN
+          </p>
           <section>
-
-            <Favorite method={method} watched={watched} offerId={_id}/>
+            <Favorite method={method} watched={watched} offerId={_id} />
 
             <Conditional if={isAdmin || isCreator}>
-              <OfferStatus offerId={_id} approval={approval}/>
+              <OfferStatus offerId={_id} approval={approval} />
             </Conditional>
-
           </section>
         </section>
 
-        <SliceText text={content} isSanitized={true}/>
+        <SliceText text={content} isSanitized={true} />
 
         <Link to={`/offers/view/${_id}`} className="view-btn">
-          <Button
-            fullWidth
-            disableElevation
-            variant="contained"
-            size="large"
-            color="primary"
-          >
+          <Button fullWidth disableElevation variant="contained" size="large" color="primary">
             View
           </Button>
         </Link>
 
         <Conditional if={isCreator || isAdmin}>
-
           <div className="edit-card">
             <Link to={`/offers/edit/${_id}`} className="btn-medium">
-              <Button
-                fullWidth
-                disableElevation
-                variant="contained"
-                size="large"
-                className="edit-btn btn-small"
-              >
+              <Button fullWidth disableElevation variant="contained" size="large" className="edit-btn btn-small">
                 Edit
               </Button>
             </Link>
 
             <Link to={`/offers/delete/${_id}`} className="btn-medium">
-              <Button
-                fullWidth
-                disableElevation
-                variant="contained"
-                size="large"
-                className="delete-btn"
-              >
+              <Button fullWidth disableElevation variant="contained" size="large" className="delete-btn">
                 Delete
               </Button>
             </Link>
           </div>
-
         </Conditional>
-
       </div>
     </div>
-  )
+  );
 }
 
 export default Card;

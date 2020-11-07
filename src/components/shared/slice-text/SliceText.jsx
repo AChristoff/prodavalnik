@@ -14,11 +14,11 @@ export default function SliceText({tag = 'p', text = '', length = '100', isSanit
     ? 'hidden-text-active'
     : 'hidden-text';
 
-  className = className + ' ' + hiddenText;
+  className ? className += ' ' + hiddenText : className = hiddenText;
 
   return (
     isSanitized
-      ? <SanitizedText tag={Tag} text={slicedText} customClass={className}/>
-      : <Tag className={className}>{slicedText}</Tag>
+      ? <SanitizedText data-testid="slice-text" tag={Tag} text={slicedText} customClass={className}/>
+      : <Tag data-testid="slice-text" className={className}>{slicedText}</Tag>
   );
 }
