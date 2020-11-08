@@ -75,7 +75,7 @@ export default function ViewOffer() {
       <SanitizedText customClass="view-offer-category" text={offer.category.name}/>
 
       <div className="view-offer-img-wrapper">
-        <img src={offer.image} alt={offer.title}/>
+        <img src={`${process.env.REACT_APP_API}/${offer.image}`} alt={offer.title}/>
       </div>
 
       <section className="offer-meta">

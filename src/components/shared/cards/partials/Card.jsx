@@ -28,7 +28,7 @@ function Card(
 
       <div className="card-head">
         <Link to={`/offers/view/${_id}`}>
-          <img src={image} alt={title}/>
+          <img src={`${process.env.REACT_APP_API}/${image}`} alt={title}/>
         </Link>
       </div>
 
