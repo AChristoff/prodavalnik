@@ -2,6 +2,7 @@
 	position: relative;
 	padding: 0;
 	margin-bottom: 2em;
+	overflow: hidden;
 
 	&:after {
 		position: absolute;
@@ -25,4 +26,8 @@
 		background: rgb(71, 71, 71);
 		background: linear-gradient(0deg, rgba(71, 71, 71,1) 0%, rgba(71, 71, 71,0) 60%);
 	}
+}
+
+.hidden-text {
+	overflow: hidden;
 }

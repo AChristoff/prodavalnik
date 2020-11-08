@@ -37,10 +37,15 @@ export default function App() {
 
   const isTokenExpired = () => {
     const token = window.localStorage.getItem('token');
-    const decodedToken = jwt_decode(token);
-    const isTokenExpired = decodedToken.exp * 1000 < Date.now();
-    
-    updateUserContext('isAuth', !isTokenExpired)
+    if(token) {
+      const decodedToken = jwt_decode(token);
+      const isTokenExpired = decodedToken.exp * 1000 < Date.now();
+      
+      if (isTokenExpired) {
+        updateUserContext('isAuth', false);
+        window.localStorage.clear();
+      }
+    }
   };
 
   return (
