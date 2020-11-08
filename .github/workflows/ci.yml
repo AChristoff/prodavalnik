@@ -37,8 +37,11 @@ jobs:
     - name: Build
       run: sudo npm run build
 
+    - name: Clear
+      run: sudo rm -rf /var/www/html/prodavalnik/build 
+      
     - name: Deploy
-      run: sudo rm -rf /var/www/html/prodavalnik/build & sudo cp -r build/ /var/www/html/prodavalnik/
+      run: sudo cp -r build/ /var/www/html/prodavalnik/
 
     - name: Purge
       run: sudo rm -rf ~/ci/app/prodavalnik/prodavalnik/*
