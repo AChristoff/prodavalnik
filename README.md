@@ -1,3 +1,5 @@
+&#128640; https://prodavalnik.aleksov.work/
+
 ## Idea
 
 An application that stores user offers of new or used products. <br>
@@ -80,6 +82,9 @@ The application is split in to two main parts
 `Form validation via Formik & Yup` <br />
 `Material-UI components integration` <br />
 `Error handling` <br />
+`Unit & Integration Tests` <br />
+`Continuous Integration` <br />
+
 
 <br>
 

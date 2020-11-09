@@ -1,14 +1,14 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Star, StarBorder} from "@material-ui/icons";
-import Conditional from "../Conditional";
-import './favorites.scss'
-import {OfferContext} from "../../../context/offer-context";
-import {AuthContext} from "../../../context/user-context";
-import UserService from "../../../services/user-service";
-import {AlertContext} from "../../../context/alert-context";
-import BootstrapTooltip from "../helpers/tooltip/Tooltip";
+import React, { useContext, useEffect, useState } from 'react';
+import { Star, StarBorder } from '@material-ui/icons';
+import Conditional from '../Conditional';
+import './favorites.scss';
+import { OfferContext } from '../../../context/offer-context';
+import { AuthContext } from '../../../context/user-context';
+import UserService from '../../../services/user-service';
+import { AlertContext } from '../../../context/alert-context';
+import BootstrapTooltip from '../helpers/tooltip/Tooltip';
 
-export default function Favorite({method, watched, offerId}) {
+export default function Favorite({ method, watched, offerId }) {
   //State
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -16,28 +16,26 @@ export default function Favorite({method, watched, offerId}) {
   const [isFavorite, setIsFavorite] = useState([watched.includes(userId)]);
   const offersContext = useContext(OfferContext);
   const authContext = useContext(AuthContext);
-  const {updateAlertContext} = useContext(AlertContext);
+  const { updateAlertContext } = useContext(AlertContext);
 
   //Component did mount
   useEffect(() => {
-    setIsFavorite(watched.includes(userId))
+    setIsFavorite(watched.includes(userId));
   }, []);
 
   const userService = new UserService();
 
   const addFavoriteOffer = async (e) => {
-
     try {
-
       const res = await userService.addFavoriteOffer({
-        offerId: e.currentTarget.getAttribute('data-offer-id')
+        offerId: e.currentTarget.getAttribute('data-offer-id'),
       });
 
       if (res.errors) {
         let message = res.message;
         const errors = res.errors[0].msg;
         if (errors && errors !== '') {
-          message = errors
+          message = errors;
         }
         updateAlertContext('errorContext', message);
         throw new Error(message);
@@ -50,26 +48,22 @@ export default function Favorite({method, watched, offerId}) {
 
       setIsFavorite(true);
       setSuccess(res.message);
-
     } catch (error) {
-
       setError(error);
     }
   };
 
   const removeFavoriteOffer = async (e) => {
-
     try {
-
       const res = await userService.removeFavoriteOffer({
-        offerId: e.currentTarget.getAttribute('data-offer-id')
+        offerId: e.currentTarget.getAttribute('data-offer-id'),
       });
 
       if (res.errors) {
         let message = res.message;
         const errors = res.errors[0].msg;
         if (errors && errors !== '') {
-          message = errors
+          message = errors;
         }
         updateAlertContext('errorContext', message);
         throw new Error(message);
@@ -86,24 +80,22 @@ export default function Favorite({method, watched, offerId}) {
 
       setIsFavorite(false);
       setSuccess(res.message);
-
     } catch (error) {
-
       setError(error);
     }
   };
 
   return (
     <Conditional if={authContext.isAuth}>
-      {
-        isFavorite
-          ? <BootstrapTooltip placement="top" title="Remove from favorites">
-              <Star className="favorites added-offer" data-offer-id={offerId} onClick={removeFavoriteOffer}/>
-            </BootstrapTooltip>
-          : <BootstrapTooltip placement="top" title="Add to favorites">
-              <StarBorder className="favorites not-added-offer" data-offer-id={offerId} onClick={addFavoriteOffer}/>
-            </BootstrapTooltip>
-      }
+      {isFavorite ? (
+        <BootstrapTooltip placement="top" title="Remove from favorites">
+          <Star className="favorites added-offer" data-offer-id={offerId} onClick={removeFavoriteOffer} />
+        </BootstrapTooltip>
+      ) : (
+        <BootstrapTooltip placement="top" title="Add to favorites">
+          <StarBorder className="favorites not-added-offer" data-offer-id={offerId} onClick={addFavoriteOffer} />
+        </BootstrapTooltip>
+      )}
     </Conditional>
   );
 }

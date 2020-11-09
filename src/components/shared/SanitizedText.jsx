@@ -4,6 +4,6 @@ import React from 'react';
 export default function SanitizedText({tag = 'p', text = '', customClass = ''}) {
   const Tag = tag;
   return (
-    <Tag className={customClass} dangerouslySetInnerHTML={{__html: text}} />
+    <Tag data-testid="sanitized-text" className={customClass} dangerouslySetInnerHTML={{__html: text}} />
   );
 }
