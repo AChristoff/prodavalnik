@@ -11,6 +11,8 @@ import { AlertContext } from '../../../../context/alert-context';
 import FormikCategorySelect from '../select/FormikCategorySelect';
 import { useHistory } from 'react-router-dom';
 import SubFooter from '../../subFooter/SubFooter';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
 
 const OfferSchema = Yup.object().shape({
   title: Yup.string().min(6, 'Min 6 chars!').max(40, 'Max 40 chars!').required('Title is required!'),
@@ -199,12 +201,13 @@ export default function OffersForm({ counter, title, content, price, image, form
 
             <FormikField name="price" label="Price" icon="price" disabled={formType === 'delete'} required={true} />
 
-            {/* <FormikField name="image" label="Image" icon="image" disabled={formType === 'delete'} required={true}/> */}
-
-            <label className="image-label">Add image *</label>
-
+            <label className={formType === 'delete' ? 'hidden' : 'image-label'} for="upload-image" disabled={formType === 'delete' ? 'disabled' : ''}>
+              Add image <span><AttachFileIcon/></span>
+            </label>
+            
             <input
               name="image"
+              id="upload-image"
               className="upload-image"
               type="file"
               accept=".jpg, .jpeg, .png"
@@ -214,13 +217,30 @@ export default function OffersForm({ counter, title, content, price, image, form
               }}
             />
 
-            {file ? (
-              <div className="img-preview-wrapper">
-                <img src={resizedImg} alt="Upload" className="img-preview output"></img>
-              </div>
-            ) : null}
+            {file 
+              ? <div className="img-preview-wrapper">
+                  <img src={resizedImg} alt="Upload" className="img-preview output"></img>
+                </div>
+              : image &&  
+                <div className="img-preview-wrapper">
+                  <img src={`${process.env.REACT_APP_API}/${image}`} alt="Upload" className="img-preview output"></img>
+                </div>
+            }
 
-            <Button fullWidth type="submit" variant="contained" size="large" color="primary" className={`${formType}-btn`} disabled={formType !== 'delete' ? !props.isValid || !props.dirty : false}>
+            <Button 
+              fullWidth type="submit" 
+              variant="contained" 
+              size="large" 
+              color="primary" 
+              className={`${formType}-btn`} 
+              disabled={
+                file && formType === 'edit' 
+                  ? false 
+                  : formType !== 'delete' 
+                    ? !props.isValid || !props.dirty || (!file && formType === 'add')
+                    : false
+              }
+            >
               {formType}
             </Button>
           </Form>

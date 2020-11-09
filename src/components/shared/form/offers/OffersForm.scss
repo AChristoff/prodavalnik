@@ -1,9 +1,3 @@
-.image-label {
-  width: 100%;
-  display: block;
-  margin: 1em 0;
-}
-
 .img-preview-wrapper {
   position: relative;
   width: 100%;
@@ -20,4 +14,34 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+.image-label {
+  background: #3bbfab;
+  color: #ffffff;
+  padding: 0.3rem 1em;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 9em;
+
+  span {
+    font-size: 1.75em;
+    margin-bottom: -0.15em;
+  }
+
+  &:hover {
+    background: linear-gradient(160deg, #2baac3 0%, #4AD295 100%);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.upload-image {
+  opacity: 0;
+  height: 1em;
 }
